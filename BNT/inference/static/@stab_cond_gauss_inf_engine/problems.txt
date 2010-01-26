@@ -1,0 +1,76 @@
+PROBLEMS WITH STAB_COND_GAUSS_INF_ENGINE
+
+
+- enter_evidence always returns ll=0
+  (I set ll=0 since it is not computed)
+
+- fails on scg_3node, probably because the engine needs to be
+re-initialized every time before enter_evidence is called, not just
+when the engine is constructed.
+
+??? Error using ==> assert
+assertion violated: 
+
+K>> dbstack
+dbstack
+> In /home/eecs/murphyk/matlab/BNT/HMM/assert.m at line 9
+  In /home/eecs/murphyk/matlab/BNT/examples/static/SCG/scg_3node.m at line 45
+
+
+
+- crashes on scg3
+
+Error in ==> /home/eecs/murphyk/matlab/BNT/inference/static/@stab_cond_gauss_inf_engine/stab_cond_gauss_inf_engine.m
+On line 77  ==>       clpot{cindex} = direct_combine_pots(pot{n}, clpot{cindex});
+
+K>> dbstack
+dbstack
+> In /home/eecs/murphyk/matlab/BNT/inference/static/@stab_cond_gauss_inf_engine/stab_cond_gauss_inf_engine.m at line 77
+  In /home/eecs/murphyk/matlab/BNT/examples/static/SCG/scg3.m at line 41
+K>> 
+
+
+
+
+
+- fails on scg1 and scg2
+
+Warning: One or more output arguments not assigned during call to 'min_subtree_conti_nodes (nearsest_node2)'.
+Warning in ==> /home/eecs/murphyk/matlab/BNT/graph/min_subtree_conti_nodes.m (nearsest_node2)
+On line 60  ==>     nea_node = nearsest_node2(tree, nodes, n);
+
+K>> dbstack
+dbstack
+> In /home/eecs/murphyk/matlab/BNT/graph/min_subtree_conti_nodes.m (nearsest_node2) at line 60
+  In /home/eecs/murphyk/matlab/BNT/graph/min_subtree_conti_nodes.m (nearest_node) at line 50
+  In /home/eecs/murphyk/matlab/BNT/graph/min_subtree_conti_nodes.m at line 11
+  In /home/eecs/murphyk/matlab/BNT/inference/static/@stab_cond_gauss_inf_engine/marginal_difclq_nodes.m at line 17
+  In /home/eecs/murphyk/matlab/BNT/inference/static/@stab_cond_gauss_inf_engine/marginal_nodes.m at line 23
+  In /home/eecs/murphyk/matlab/BNT/examples/static/SCG/scg1.m at line 42
+
+
+
+
+
+- This code fragment, from BNT/graph/min_subtree_conti_nodes, is clearly redundant
+
+function nea_node = nearest_node(tree, root, nodes)
+%get the nearest node to the root in the tree
+nea_node = nearsest_node2(tree, nodes, root);
+
+function nea_node = nearsest_node2(tree, nodes, inode)
+if myismember(inode, nodes)
+    nea_node = inode;
+    return;
+end
+cs = children(tree, inode);
+for i = 1:length(cs)
+    n = cs(i);
+    nea_node = nearsest_node2(tree, nodes, n);
+end
+    
+
+- Some names are badly chosen. 'nearsest' is a mis-spelling. 'min_subtree_conti_nodes' should be
+'min_subtree_containing_nodes' or 'min_subtree_con_nodes'.
+
+- In general, the code needs some heavy polishing.

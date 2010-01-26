@@ -1,0 +1,100 @@
+The following kinds of potentials are supported
+- dpot: discrete
+- upot: utility
+- mpot: Gaussian in moment form
+- cpot: Gaussian in canonical form
+- cgpot: conditional (mixture) Gaussian, a list of mpots/cpot
+- scgpot: stable conditional Gaussian, a list of scgcpots
+- scgcpot: just used by scgpot
+
+Many of these are described in the following book
+
+@book{Cowell99,
+  author = "R. G. Cowell and A. P. Dawid and S. L. Lauritzen and D. J. Spiegelhalter",
+  title = "Probabilistic Networks and Expert Systems",
+  year = 1999,
+  publisher = "Springer"
+}
+
+CPD_to_pot converts P(Z|A,B,...) to phi(A,B,...,Z).
+
+A table is like a dpot, except it is a structure, not an object.
+Code that uses tables is faster but less flexible.
+
+                         -----------
+
+A potential is a joint probability distribution on a set of nodes,
+which we call the potential's domain (which is always sorted).
+A potential supports the operations of multiplication and
+marginalization.
+
+If the nodes are discrete, the potential can be represented as a table
+(multi-dimensional array). If the nodes are Gaussian, the potential
+can be represented as a quadratic form. If there are both discrete and
+Gaussian nodes, we use a table of quadratic forms. For details on the
+Gaussian case, see below.
+
+For discrete potentials, the 'sizes' field specifies the number of
+values each node in the domain can take on. For continuous potentials,
+the 'sizes' field specifies the block-size of each node.
+
+If some of the nodes are observed, extra complications arise.  We
+handle the discrete and continuous cases differently.  Suppose the
+domain is [X Y], with sizes [6 2], where X is observed to have value x.
+In the discrete case, the potential will have many zeros in it
+(T(X,:) will be 0 for all X ~= x), which can be inefficient. Instead,
+we set sizes to [1 2], to indicate that X has only one possible value
+(namely x). For continuous nodes, we set sizes = [0 2], to indicate that X no
+longer appears in the mean vector or covariance matrix (we must avoid
+0s in Sigma, lest it be uninvertible). When a potential is created, we
+assume the sizes of the nodes have been adjusted to include the
+evidence. This is so that the evidence can be incorporated at the
+outset, and thereafter the inference algorithms can ignore it.
+
+                         ------------
+
+A Gaussian potential can be represented in terms of its
+moment characteristics (mu, Sigma, logp), or in terms of its canonical
+characteristics (g, h, K). Although the moment characteristics are
+more familiar, it turns out that canonical characteristics are
+more convenient for the junction tree algorithm, for the same kinds of
+reasons why backwards inference in an LDS uses the information form of
+the Kalman filter (see Murphy (1998a) for a discussion).
+
+When working with *conditional* Gaussian potentials, the method proposed
+by Lauritzen (1992), and implemented here, requires converting from
+canonical to moment form before marginalizing the discrete variables,
+and converting back from moment to canonical form before
+multiplying/dividing. A new algorithm, due to Lauritzen and Jensen
+(1999), works exclusively in moment form, and
+hence is more numerically stable. It can also handle 0s in the
+covariance matrix, i.e., deterministic relationships between cts
+variables. However, it has not yet been implemented,
+since it requires major changes to the jtree algorithm.
+
+In Murphy (1998b) we extend Lauritzen (1992) to handle
+vector-valued nodes. This means the vectors and matrices become block
+vectors and matrices. This manifests itself in the code as in the
+following example.
+Suppose we have a potential on nodes dom=[3,4,7] with block sizes=[2,1,3].
+Then nodes 3 and 7 correspond to blocks 1,3 which correspond to indices 1,2,4,5,6.
+>> find_equiv_posns([3 7], dom)=[1,3]
+>> block([1,3],blocks)=[1,2,4,5,6].
+
+For more details, see
+
+- "Filtering and Smoothing in Linear Dynamical Systems using the Junction Tree Algorithm",
+   K. Murphy, 1998a. UCB Tech Report.
+
+- "Inference and learning in hybrid Bayesian networks",
+   K. Murphy. UCB Technical Report CSD-98-990, 1998b.
+
+- "Propagation of probabilities, means and variances in mixed
+  graphical association models", S. L. Lauritzen, 1992, JASA 87(420):1098--1108.
+
+- "Causal probabilistic networks with both discrete and continuous variables",
+  K. G. Olesen, 1993. PAMI 3(15). This discusses implementation details.
+
+- "Stable local computation with Conditional Gaussian distributions",
+  S. Lauritzen and F. Jensen, 1999. Univ. Aalborg Tech Report R-99-2014.
+  www.math.auc.dk/research/Reports.html.

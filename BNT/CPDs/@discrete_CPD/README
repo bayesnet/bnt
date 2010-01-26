@@ -1,0 +1,5 @@
+Any CPD on a discrete child with discrete parents
+can be represented as a table (although this might be quite big).
+discrete_CPD uses this tabular representation to implement various
+functions. Subtypes are free to implement more efficient versions.
+

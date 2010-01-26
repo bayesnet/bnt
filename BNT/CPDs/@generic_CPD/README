@@ -1,0 +1,2 @@
+A generic CPD implements general purpose functions like 'display',
+that subtypes can inherit.

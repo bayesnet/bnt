@@ -1,0 +1,17 @@
+/approxeq_pot.m/1.1.1.1/Wed May 29 15:59:58 2002//
+/display.m/1.1.1.1/Wed May 29 15:59:58 2002//
+/divide_by_pot.m/1.1.1.1/Thu Aug  5 15:25:08 2004//
+/domain_pot.m/1.1.1.1/Wed May 29 15:59:58 2002//
+/dpot.m/1.1.1.1/Tue Oct  1 19:04:44 2002//
+/dpot_to_table.m/1.1.1.1/Wed May 29 15:59:58 2002//
+/find_most_prob_entry.m/1.1.1.1/Sun Jun 16 19:06:20 2002//
+/get_fields.m/1.1.1.1/Wed May 29 15:59:58 2002//
+/marginalize_pot.m/1.1.1.1/Wed Aug  4 19:59:14 2004//
+/multiply_by_pot.m/1.1.1.1/Wed Aug  4 19:59:14 2004//
+/multiply_pots.m/1.1.1.1/Wed May 29 15:59:58 2002//
+/normalize_pot.m/1.1.1.1/Wed Aug  4 15:54:48 2004//
+/pot_to_marginal.m/1.1.1.1/Wed May 29 15:59:58 2002//
+/set_domain_pot.m/1.1.1.1/Wed May 29 15:59:58 2002//
+/subsasgn.m/1.1.1.1/Wed Apr 27 18:34:48 2005//
+/subsref.m/1.1.1.1/Wed Apr 27 18:34:48 2005//
+D

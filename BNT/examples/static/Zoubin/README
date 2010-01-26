@@ -1,0 +1,61 @@
+This software was downloaded from
+   http://www.gatsby.ucl.ac.uk/~zoubin/software.html
+with permission of the author.
+
+
+This software was written by 
+
+Zoubin Ghahramani
+Dept of Computer Science
+University of Toronto
+zoubin@cs.toronto.edu
+
+This software is written in Matlab 4.2c and should run on all platforms
+supporting this version of Matlab. Matlab is a commercial software
+package available from The MathWorks (http://www.mathworks.com/). 
+
+This software is meant for free non-commercial use and distribution. See the
+copyright notice at the bottom of this page.
+
+If you use it, please refer to the accompanying technical report: 
+
+Ghahramani, Z. and Hinton, G.E. (1996) The EM Algorithm for Mixtures
+of Factor Analyzers. University of Toronto Technical Report CRG-TR-96-1. 
+Available at ftp://ftp.cs.toronto.edu/pub/zoubin/tr-96-1.ps.gz  
+
+If you find bugs, or would like to see if I've implemented any
+extensions, please send me email at zoubin@cs.toronto.edu. The
+software is provided "as is", and I cannot guarantee I will be able
+to fix all problems or answer all inquiries. 
+
+See mfademo.m for a demo.
+
+Hope you find it useful. Please send me email if you find it useful
+and I will put you on a mailing list announcing releases of other
+statistical machine learning software in Matlab.
+
+
+----------------------------------------------------------------------
+	Copyright (c) 1996 by Zoubin Ghahramani
+                Toronto, Ontario, Canada. 
+                   All Rights Reserved 
+
+Permission to use, copy, modify, and distribute this software and its
+documentation for non-commercial purposes only is hereby granted
+without fee, provided that the above copyright notice appears in all
+copies and that both the copyright notice and this permission notice
+appear in supporting documentation, and that my name not be used in
+advertising or publicity pertaining to distribution of the software
+without specific, written prior permission. I make no representations
+about the suitability of this software for any purpose. It is provided
+"as is" without express or implied warranty.
+
+I disclaim all warranties with regard to this software, including all
+implied warranties of merchantability and fitness. In no event shall I
+be liable for any special, indirect or consequential damages or any
+damages whatsoever resulting from loss of use, data or profits,
+whether in an action of contract, negligence or other tortious action,
+arising out of or in connection with the use or performance of this
+software.
+
+Zoubin Ghahramani					 Dec 17, 1996

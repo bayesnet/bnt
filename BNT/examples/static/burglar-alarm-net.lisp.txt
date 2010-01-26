@@ -1,0 +1,45 @@
+#|
+The following code represents the burglar alarm Bayes network from
+Chapter 14 of Russell & Norvig, 2nd Edition.  This network representation
+is used in the corresponding Bayes net code found in this directory.
+
+The conditional probability tables consist of the values listed here
+(along with the probabilities of the corresponding complementary events):
+
+P(Burglary = true) = 0.001    (=> P(Burglary = false) = 0.999)
+P(Earthquake = true) = 0.002  (=> P(Earthquake = false) = 0.998)
+
+P(Alarm = true | Burglary = true, Earthquake = true) = 0.95
+P(Alarm = true | Burglary = true, Earthquake = false) = 0.94
+P(Alarm = true | Burglary = false, Earthquake = true) = 0.29
+P(Alarm = true | Burglary = false, Earthquake = false) = 0.001
+
+P(JohnCalls = true | Alarm = true) = 0.90
+P(JohnCalls = true | Alarm = false) = 0.05
+
+P(MaryCalls = true | Alarm = true) = 0.70
+P(MaryCalls = true | Alarm = false) = 0.01
+|#
+
+(setf *burglar-alarm-net*
+      '((MaryCalls (true false)
+		   (Alarm)
+		   ((true) 0.70 0.30)
+		   ((false) 0.01 0.99))
+	(JohnCalls (true false)
+		   (Alarm)
+		   ((true) 0.90 0.10)
+		   ((false) 0.05 0.95))
+	(Alarm (true false)
+	       (Burglary Earthquake)
+	       ((true true) 0.95 0.05)
+	       ((true false) 0.94 0.06)
+	       ((false true) 0.29 0.71)
+	       ((false false) 0.001 0.999))
+	(Burglary (true false)
+		  ()
+		  (0.001 0.999))
+	(Earthquake (true false)
+		    ()
+		    (0.002 0.998))
+	))

@@ -1,0 +1,11 @@
+% Stable conditional Gaussian inference
+% Written by Rainer Deventer
+
+
+@techreport{Lauritzen99,
+  author = "S. Lauritzen and F. Jensen",
+  title = "Stable Local Computation with Conditional {G}aussian Distributions",
+  year = 1999,
+  number = "R-99-2014",
+  institution = "Dept. Math. Sciences, Aalborg Univ."
+}

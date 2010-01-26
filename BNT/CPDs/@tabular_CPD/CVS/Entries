@@ -1,0 +1,15 @@
+/CPD_to_CPT.m/1.1.1.1/Wed May 29 15:59:54 2002//
+/bayes_update_params.m/1.1.1.1/Wed May 29 15:59:54 2002//
+/display.m/1.1.1.1/Tue Apr 22 21:00:02 2003//
+/get_field.m/1.1.1.1/Sun Jan 16 02:27:30 2005//
+/learn_params.m/1.1.1.1/Thu Jun 10 01:25:02 2004//
+/log_marg_prob_node.m/1.1.1.1/Fri Jun 11 21:16:00 2004//
+/log_nextcase_prob_node.m/1.1.1.1/Wed May 29 15:59:54 2002//
+/log_prior.m/1.1.1.1/Wed May 29 15:59:54 2002//
+/maximize_params.m/1.1.1.1/Sun Mar  9 22:44:40 2003//
+/reset_ess.m/1.1.1.1/Wed May 29 15:59:54 2002//
+/set_fields.m/1.1.1.1/Sun Jan 16 02:27:30 2005//
+/tabular_CPD.m/1.1.1.1/Sun Jan 16 02:27:32 2005//
+/update_ess.m/1.1.1.1/Wed May 29 15:59:54 2002//
+/update_ess_simple.m/1.1.1.1/Wed May 29 15:59:54 2002//
+D

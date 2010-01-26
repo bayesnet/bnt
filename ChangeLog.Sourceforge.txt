@@ -1,0 +1,4436 @@
+
+
+2007-02-11 17:12  nsaunier
+
+	* BNT/learning/learn_struct_pdag_pc.m: Bug submitted by Imme Ebert-Uphoff (ebert@tree.com) (see Thu Feb 8, 2007 email on the BNT mailing list).
+
+2005-11-26 12:12  yozhik
+
+	* BNT/inference/dynamic/@hmm_inf_engine/fwdback_twoslice.m: merged
+	  fwdback_twoslice.m to release branch
+
+2005-11-25 17:24  nsaunier
+
+	* BNT/inference/dynamic/@hmm_inf_engine/fwdback_twoslice.m: adding
+	  old missing fwdback_twoslice.m
+
+2005-11-25 17:24  yozhik
+
+	* BNT/inference/dynamic/@hmm_inf_engine/fwdback_twoslice.m: file
+	  fwdback_twoslice.m was added on branch release-1_0 on 2005-11-26
+	  20:12:05 +0000
+
+2005-09-25 15:54  yozhik
+
+	* BNT/add_BNT_to_path.m: fix paths
+
+2005-09-25 15:30  yozhik
+
+	* BNT/add_BNT_to_path.m: Restored directories to path.
+
+2005-09-25 15:29  yozhik
+
+	* HMM/fwdback_twoslice.m: added missing fwdback_twoslice
+
+2005-09-17 11:14  yozhik
+
+	* ChangeLog, BNT/add_BNT_to_path.m, BNT/test_BNT.m,
+	  BNT/examples/static/cmp_inference_static.m,
+	  BNT/inference/dynamic/@hmm_inf_engine/enter_evidence.m: Merged
+	  bug fixes from HEAD.
+
+2005-09-17 11:11  yozhik
+
+	* ChangeLog: added change log
+
+2005-09-17 11:11  yozhik
+
+	* ChangeLog: file ChangeLog was added on branch release-1_0 on
+	  2005-09-17 18:14:47 +0000
+
+2005-09-17 10:00  yozhik
+
+	* BNT/inference/dynamic/@hmm_inf_engine/enter_evidence.m: Temporary
+	  rollback to fix error, per Kevin.
+
+2005-09-17 09:59  yozhik
+
+	* BNT/examples/static/cmp_inference_static.m: Commented out
+	  erroneous line, per Kevin.
+
+2005-09-17 09:58  yozhik
+
+	* BNT/add_BNT_to_path.m: Changed to require BNT_HOME to be
+	  predefined.
+
+2005-09-17 09:56  yozhik
+
+	* BNT/test_BNT.m: Commented out problematic tests.
+
+2005-09-17 09:38  yozhik
+
+	* BNT/test_BNT.m: renable tests
+
+2005-09-12 22:18  yozhik
+
+	* KPMtools/pca_kpm.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-09-12 22:18  yozhik
+
+	* KPMtools/pca_kpm.m: Initial revision
+
+2005-08-29 10:44  yozhik
+
+	* graph/: README.txt, Old/best_first_elim_order.m,
+	  Old/dag_to_jtree.m, Old/dfs.m, Old/dsep_test.m,
+	  Old/mk_2D_lattice_slow.m, acyclic.m, assignEdgeNums.m,
+	  best_first_elim_order.m, check_jtree_property.m,
+	  check_triangulated.m, children.m, cliques_to_jtree.m,
+	  cliques_to_strong_jtree.m, connected_graph.m,
+	  dag_to_essential_graph.m, dfs.m, dfs_test.m, dijkstra.m,
+	  family.m, graph_separated.m, graph_to_jtree.m,
+	  min_subtree_con_nodes.m, minimum_spanning_tree.m, minspan.m,
+	  mk_2D_lattice.m, mk_2D_lattice_slow.m, mk_adj_mat.m,
+	  mk_adjmat_chain.m, mk_all_dags.m, mk_nbrs_of_dag.m,
+	  mk_nbrs_of_digraph.m, mk_nbrs_of_digraph_broken.m,
+	  mk_nbrs_of_digraph_not_vectorized.m, mk_rnd_dag.m,
+	  mk_rnd_dag_given_edge_prob.m, mk_rooted_tree.m, mk_undirected.m,
+	  moralize.m, neighbors.m, parents.m, pred2path.m,
+	  reachability_graph.m, scc.m, strong_elim_order.m, test.m,
+	  test_strong_root.m, topological_sort.m, trees.txt, triangulate.c,
+	  triangulate.m, triangulate_2Dlattice_demo.m, triangulate_test.m:
+	  Initial import of code base from Kevin Murphy.
+
+2005-08-29 10:44  yozhik
+
+	* graph/: README.txt, Old/best_first_elim_order.m,
+	  Old/dag_to_jtree.m, Old/dfs.m, Old/dsep_test.m,
+	  Old/mk_2D_lattice_slow.m, acyclic.m, assignEdgeNums.m,
+	  best_first_elim_order.m, check_jtree_property.m,
+	  check_triangulated.m, children.m, cliques_to_jtree.m,
+	  cliques_to_strong_jtree.m, connected_graph.m,
+	  dag_to_essential_graph.m, dfs.m, dfs_test.m, dijkstra.m,
+	  family.m, graph_separated.m, graph_to_jtree.m,
+	  min_subtree_con_nodes.m, minimum_spanning_tree.m, minspan.m,
+	  mk_2D_lattice.m, mk_2D_lattice_slow.m, mk_adj_mat.m,
+	  mk_adjmat_chain.m, mk_all_dags.m, mk_nbrs_of_dag.m,
+	  mk_nbrs_of_digraph.m, mk_nbrs_of_digraph_broken.m,
+	  mk_nbrs_of_digraph_not_vectorized.m, mk_rnd_dag.m,
+	  mk_rnd_dag_given_edge_prob.m, mk_rooted_tree.m, mk_undirected.m,
+	  moralize.m, neighbors.m, parents.m, pred2path.m,
+	  reachability_graph.m, scc.m, strong_elim_order.m, test.m,
+	  test_strong_root.m, topological_sort.m, trees.txt, triangulate.c,
+	  triangulate.m, triangulate_2Dlattice_demo.m, triangulate_test.m:
+	  Initial revision
+
+2005-08-26 18:08  yozhik
+
+	* KPMtools/fullfileKPM.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-08-26 18:08  yozhik
+
+	* KPMtools/fullfileKPM.m: Initial revision
+
+2005-08-21 13:00  yozhik
+
+	*
+	  BNT/inference/static/@pearl_inf_engine/private/parallel_protocol.m:
+	  Initial import of code base from Kevin Murphy.
+
+2005-08-21 13:00  yozhik
+
+	*
+	  BNT/inference/static/@pearl_inf_engine/private/parallel_protocol.m:
+	  Initial revision
+
+2005-07-11 12:07  yozhik
+
+	* KPMtools/plotcov2New.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-07-11 12:07  yozhik
+
+	* KPMtools/plotcov2New.m: Initial revision
+
+2005-07-06 12:32  yozhik
+
+	* KPMtools/montageKPM2.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-07-06 12:32  yozhik
+
+	* KPMtools/montageKPM2.m: Initial revision
+
+2005-06-27 18:35  yozhik
+
+	* KPMtools/montageKPM3.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-06-27 18:35  yozhik
+
+	* KPMtools/montageKPM3.m: Initial revision
+
+2005-06-27 18:30  yozhik
+
+	* KPMtools/cell2matPad.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-06-27 18:30  yozhik
+
+	* KPMtools/cell2matPad.m: Initial revision
+
+2005-06-15 14:13  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/gaussian_CPD.m: Initial import of code
+	  base from Kevin Murphy.
+
+2005-06-15 14:13  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/gaussian_CPD.m: Initial revision
+
+2005-06-08 18:56  yozhik
+
+	* Kalman/testKalman.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-06-08 18:56  yozhik
+
+	* Kalman/testKalman.m: Initial revision
+
+2005-06-08 18:25  yozhik
+
+	* HMM/: testHMM.m, fixed_lag_smoother_demo.m: Initial import of
+	  code base from Kevin Murphy.
+
+2005-06-08 18:25  yozhik
+
+	* HMM/: testHMM.m, fixed_lag_smoother_demo.m: Initial revision
+
+2005-06-08 18:22  yozhik
+
+	* HMM/: README.txt, dhmm_em.m: Initial import of code base from
+	  Kevin Murphy.
+
+2005-06-08 18:22  yozhik
+
+	* HMM/: README.txt, dhmm_em.m: Initial revision
+
+2005-06-08 18:17  yozhik
+
+	* HMM/fwdback.m: Initial import of code base from Kevin Murphy.
+
+2005-06-08 18:17  yozhik
+
+	* HMM/fwdback.m: Initial revision
+
+2005-06-05 11:46  yozhik
+
+	* KPMtools/: rectintLoopC.c, rectintLoopC.dll: Initial import of
+	  code base from Kevin Murphy.
+
+2005-06-05 11:46  yozhik
+
+	* KPMtools/: rectintLoopC.c, rectintLoopC.dll: Initial revision
+
+2005-06-01 12:39  yozhik
+
+	* KPMtools/montageKPM.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-06-01 12:39  yozhik
+
+	* KPMtools/montageKPM.m: Initial revision
+
+2005-05-31 21:49  yozhik
+
+	* KPMtools/initFigures.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-31 21:49  yozhik
+
+	* KPMtools/initFigures.m: Initial revision
+
+2005-05-31 11:19  yozhik
+
+	* KPMstats/unidrndKPM.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-31 11:19  yozhik
+
+	* KPMstats/unidrndKPM.m: Initial revision
+
+2005-05-30 15:08  yozhik
+
+	* KPMtools/filepartsLast.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-30 15:08  yozhik
+
+	* KPMtools/filepartsLast.m: Initial revision
+
+2005-05-29 23:01  yozhik
+
+	* KPMtools/plotBox.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-29 23:01  yozhik
+
+	* KPMtools/plotBox.m: Initial revision
+
+2005-05-25 18:31  yozhik
+
+	* KPMtools/plotColors.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-25 18:31  yozhik
+
+	* KPMtools/plotColors.m: Initial revision
+
+2005-05-25 12:11  yozhik
+
+	* KPMtools/genpathKPM.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-25 12:11  yozhik
+
+	* KPMtools/genpathKPM.m: Initial revision
+
+2005-05-23 17:03  yozhik
+
+	* netlab3.3/demhmc1.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-23 17:03  yozhik
+
+	* netlab3.3/demhmc1.m: Initial revision
+
+2005-05-23 16:44  yozhik
+
+	* netlab3.3/gmminit.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-23 16:44  yozhik
+
+	* netlab3.3/gmminit.m: Initial revision
+
+2005-05-23 16:07  yozhik
+
+	* netlab3.3/metrop.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-23 16:07  yozhik
+
+	* netlab3.3/metrop.m: Initial revision
+
+2005-05-22 23:23  yozhik
+
+	* netlab3.3/demmet1.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-22 23:23  yozhik
+
+	* netlab3.3/demmet1.m: Initial revision
+
+2005-05-22 16:32  yozhik
+
+	* KPMstats/: dirichletrnd.m, dirichletpdf.m, test_dir.m,
+	  multirnd.m, multipdf.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-22 16:32  yozhik
+
+	* KPMstats/: dirichletrnd.m, dirichletpdf.m, test_dir.m,
+	  multirnd.m, multipdf.m: Initial revision
+
+2005-05-13 13:52  yozhik
+
+	* KPMtools/: asort.m, dirKPM.m: Initial import of code base from
+	  Kevin Murphy.
+
+2005-05-13 13:52  yozhik
+
+	* KPMtools/: asort.m, dirKPM.m: Initial revision
+
+2005-05-09 18:32  yozhik
+
+	* netlab3.3/dem2ddat.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-09 18:32  yozhik
+
+	* netlab3.3/dem2ddat.m: Initial revision
+
+2005-05-09 15:20  yozhik
+
+	* KPMtools/: mkdirKPM.m, optimalMatching.m, optimalMatchingTest.m,
+	  subsets1.m: Initial import of code base from Kevin Murphy.
+
+2005-05-09 15:20  yozhik
+
+	* KPMtools/: mkdirKPM.m, optimalMatching.m, optimalMatchingTest.m,
+	  subsets1.m: Initial revision
+
+2005-05-09 09:47  yozhik
+
+	* KPMtools/bipartiteMatchingDemo.m: Initial import of code base
+	  from Kevin Murphy.
+
+2005-05-09 09:47  yozhik
+
+	* KPMtools/bipartiteMatchingDemo.m: Initial revision
+
+2005-05-08 22:25  yozhik
+
+	* KPMtools/bipartiteMatchingIntProg.m: Initial import of code base
+	  from Kevin Murphy.
+
+2005-05-08 22:25  yozhik
+
+	* KPMtools/bipartiteMatchingIntProg.m: Initial revision
+
+2005-05-08 21:45  yozhik
+
+	* KPMtools/bipartiteMatchingDemoPlot.m: Initial import of code base
+	  from Kevin Murphy.
+
+2005-05-08 21:45  yozhik
+
+	* KPMtools/bipartiteMatchingDemoPlot.m: Initial revision
+
+2005-05-08 19:55  yozhik
+
+	* KPMtools/subsetsFixedSize.m: Initial import of code base from
+	  Kevin Murphy.
+
+2005-05-08 19:55  yozhik
+
+	* KPMtools/subsetsFixedSize.m: Initial revision
+
+2005-05-08 15:48  yozhik
+
+	* KPMtools/centeringMatrix.m: Initial import of code base from
+	  Kevin Murphy.
+
+2005-05-08 15:48  yozhik
+
+	* KPMtools/centeringMatrix.m: Initial revision
+
+2005-05-08 10:51  yozhik
+
+	* netlab3.3/demgmm1.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-08 10:51  yozhik
+
+	* netlab3.3/demgmm1.m: Initial revision
+
+2005-05-06 18:09  yozhik
+
+	* BNT/add_BNT_to_path.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-06 18:09  yozhik
+
+	* BNT/add_BNT_to_path.m: Initial revision
+
+2005-05-03 21:35  yozhik
+
+	* KPMstats/standardize.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-03 21:35  yozhik
+
+	* KPMstats/standardize.m: Initial revision
+
+2005-05-03 13:18  yozhik
+
+	* KPMstats/histCmpChi2.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-03 13:18  yozhik
+
+	* KPMstats/histCmpChi2.m: Initial revision
+
+2005-05-03 12:01  yozhik
+
+	* KPMtools/strsplit.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-05-03 12:01  yozhik
+
+	* KPMtools/strsplit.m: Initial revision
+
+2005-05-02 13:19  yozhik
+
+	* KPMtools/hsvKPM.m: Initial import of code base from Kevin Murphy.
+
+2005-05-02 13:19  yozhik
+
+	* KPMtools/hsvKPM.m: Initial revision
+
+2005-04-27 11:34  yozhik
+
+	* BNT/potentials/@dpot/: subsasgn.m, subsref.m: Initial import of
+	  code base from Kevin Murphy.
+
+2005-04-27 11:34  yozhik
+
+	* BNT/potentials/@dpot/: subsasgn.m, subsref.m: Initial revision
+
+2005-04-27 10:58  yozhik
+
+	* KPMtools/mahal2conf.m, nethelp3.3/conffig.htm,
+	  nethelp3.3/confmat.htm, nethelp3.3/conjgrad.htm,
+	  nethelp3.3/consist.htm, nethelp3.3/convertoldnet.htm,
+	  nethelp3.3/datread.htm, nethelp3.3/datwrite.htm,
+	  nethelp3.3/dem2ddat.htm, nethelp3.3/demard.htm,
+	  nethelp3.3/demev1.htm, nethelp3.3/demev2.htm,
+	  nethelp3.3/demev3.htm, nethelp3.3/demgauss.htm,
+	  nethelp3.3/demglm1.htm, nethelp3.3/demglm2.htm,
+	  nethelp3.3/demgmm1.htm, nethelp3.3/demgmm2.htm,
+	  nethelp3.3/demgmm3.htm, nethelp3.3/demgmm4.htm,
+	  nethelp3.3/demgmm5.htm, nethelp3.3/demgp.htm,
+	  nethelp3.3/demgpard.htm, nethelp3.3/demgpot.htm,
+	  nethelp3.3/demgtm1.htm, nethelp3.3/demgtm2.htm,
+	  nethelp3.3/demhint.htm, nethelp3.3/demhmc1.htm,
+	  nethelp3.3/demhmc2.htm, nethelp3.3/demhmc3.htm,
+	  nethelp3.3/demkmn1.htm, nethelp3.3/demknn1.htm,
+	  nethelp3.3/demmdn1.htm, nethelp3.3/demmet1.htm,
+	  nethelp3.3/demmlp1.htm, nethelp3.3/demmlp2.htm,
+	  nethelp3.3/demnlab.htm, nethelp3.3/demns1.htm,
+	  nethelp3.3/demolgd1.htm, nethelp3.3/demopt1.htm,
+	  nethelp3.3/dempot.htm, nethelp3.3/demprgp.htm,
+	  nethelp3.3/demprior.htm, nethelp3.3/demrbf1.htm,
+	  nethelp3.3/demsom1.htm, nethelp3.3/demtrain.htm,
+	  nethelp3.3/dist2.htm, nethelp3.3/eigdec.htm,
+	  nethelp3.3/errbayes.htm, nethelp3.3/evidence.htm,
+	  nethelp3.3/fevbayes.htm, nethelp3.3/gauss.htm,
+	  nethelp3.3/gbayes.htm, nethelp3.3/glm.htm,
+	  nethelp3.3/glmderiv.htm, nethelp3.3/glmerr.htm,
+	  nethelp3.3/glmevfwd.htm, nethelp3.3/glmfwd.htm,
+	  nethelp3.3/glmgrad.htm, nethelp3.3/glmhess.htm,
+	  nethelp3.3/glminit.htm, nethelp3.3/glmpak.htm,
+	  nethelp3.3/glmtrain.htm, nethelp3.3/glmunpak.htm,
+	  nethelp3.3/gmm.htm, nethelp3.3/gmmactiv.htm,
+	  nethelp3.3/gmmem.htm, nethelp3.3/gmminit.htm,
+	  nethelp3.3/gmmpak.htm, nethelp3.3/gmmpost.htm,
+	  nethelp3.3/gmmprob.htm, nethelp3.3/gmmsamp.htm,
+	  nethelp3.3/gmmunpak.htm, nethelp3.3/gp.htm,
+	  nethelp3.3/gpcovar.htm, nethelp3.3/gpcovarf.htm,
+	  nethelp3.3/gpcovarp.htm, nethelp3.3/gperr.htm,
+	  nethelp3.3/gpfwd.htm, nethelp3.3/gpgrad.htm,
+	  nethelp3.3/gpinit.htm, nethelp3.3/gppak.htm,
+	  nethelp3.3/gpunpak.htm, nethelp3.3/gradchek.htm,
+	  nethelp3.3/graddesc.htm, nethelp3.3/gsamp.htm,
+	  nethelp3.3/gtm.htm, nethelp3.3/gtmem.htm, nethelp3.3/gtmfwd.htm,
+	  nethelp3.3/gtminit.htm, nethelp3.3/gtmlmean.htm,
+	  nethelp3.3/gtmlmode.htm, nethelp3.3/gtmmag.htm,
+	  nethelp3.3/gtmpost.htm, nethelp3.3/gtmprob.htm,
+	  nethelp3.3/hbayes.htm, nethelp3.3/hesschek.htm,
+	  nethelp3.3/hintmat.htm, nethelp3.3/hinton.htm,
+	  nethelp3.3/histp.htm, nethelp3.3/hmc.htm, nethelp3.3/index.htm,
+	  nethelp3.3/kmeans.htm, nethelp3.3/knn.htm, nethelp3.3/knnfwd.htm,
+	  nethelp3.3/linef.htm, nethelp3.3/linemin.htm,
+	  nethelp3.3/maxitmess.htm, nethelp3.3/mdn.htm,
+	  nethelp3.3/mdn2gmm.htm, nethelp3.3/mdndist2.htm,
+	  nethelp3.3/mdnerr.htm, nethelp3.3/mdnfwd.htm,
+	  nethelp3.3/mdngrad.htm, nethelp3.3/mdninit.htm,
+	  nethelp3.3/mdnpak.htm, nethelp3.3/mdnpost.htm,
+	  nethelp3.3/mdnprob.htm, nethelp3.3/mdnunpak.htm,
+	  nethelp3.3/metrop.htm, nethelp3.3/minbrack.htm,
+	  nethelp3.3/mlp.htm, nethelp3.3/mlpbkp.htm,
+	  nethelp3.3/mlpderiv.htm, nethelp3.3/mlperr.htm,
+	  nethelp3.3/mlpevfwd.htm, nethelp3.3/mlpfwd.htm,
+	  nethelp3.3/mlpgrad.htm, nethelp3.3/mlphdotv.htm,
+	  nethelp3.3/mlphess.htm, nethelp3.3/mlphint.htm,
+	  nethelp3.3/mlpinit.htm, nethelp3.3/mlppak.htm,
+	  nethelp3.3/mlpprior.htm, nethelp3.3/mlptrain.htm,
+	  nethelp3.3/mlpunpak.htm, nethelp3.3/netderiv.htm,
+	  nethelp3.3/neterr.htm, nethelp3.3/netevfwd.htm,
+	  nethelp3.3/netgrad.htm, nethelp3.3/nethelp3.3.zip,
+	  nethelp3.3/nethess.htm, nethelp3.3/netinit.htm,
+	  nethelp3.3/netopt.htm, nethelp3.3/netpak.htm,
+	  nethelp3.3/netunpak.htm, nethelp3.3/olgd.htm, nethelp3.3/pca.htm,
+	  nethelp3.3/plotmat.htm, nethelp3.3/ppca.htm,
+	  nethelp3.3/quasinew.htm, nethelp3.3/rbf.htm,
+	  nethelp3.3/rbfbkp.htm, nethelp3.3/rbfderiv.htm,
+	  nethelp3.3/rbferr.htm, nethelp3.3/rbfevfwd.htm,
+	  nethelp3.3/rbffwd.htm, nethelp3.3/rbfgrad.htm,
+	  nethelp3.3/rbfhess.htm, nethelp3.3/rbfjacob.htm,
+	  nethelp3.3/rbfpak.htm, nethelp3.3/rbfprior.htm,
+	  nethelp3.3/rbfsetbf.htm, nethelp3.3/rbfsetfw.htm,
+	  nethelp3.3/rbftrain.htm, nethelp3.3/rbfunpak.htm,
+	  nethelp3.3/rosegrad.htm, nethelp3.3/rosen.htm,
+	  nethelp3.3/scg.htm, nethelp3.3/som.htm, nethelp3.3/somfwd.htm,
+	  nethelp3.3/sompak.htm, nethelp3.3/somtrain.htm,
+	  nethelp3.3/somunpak.htm, netlab3.3/Contents.m, netlab3.3/LICENSE,
+	  netlab3.3/conffig.m, netlab3.3/confmat.m, netlab3.3/conjgrad.m,
+	  netlab3.3/consist.m, netlab3.3/convertoldnet.m,
+	  netlab3.3/datread.m, netlab3.3/datwrite.m, netlab3.3/demard.m,
+	  netlab3.3/demev1.m, netlab3.3/demev2.m, netlab3.3/demev3.m,
+	  netlab3.3/demgauss.m, netlab3.3/demglm1.m, netlab3.3/demglm2.m,
+	  netlab3.3/demgmm2.m, netlab3.3/demgmm3.m, netlab3.3/demgmm4.m,
+	  netlab3.3/demgmm5.m, netlab3.3/demgp.m, netlab3.3/demgpard.m,
+	  netlab3.3/demgpot.m, netlab3.3/demgtm1.m, netlab3.3/demgtm2.m,
+	  netlab3.3/demhint.m, netlab3.3/demhmc2.m, netlab3.3/demhmc3.m,
+	  netlab3.3/demkmn1.m, netlab3.3/demknn1.m, netlab3.3/demmdn1.m,
+	  netlab3.3/demmlp1.m, netlab3.3/demmlp2.m, netlab3.3/demnlab.m,
+	  netlab3.3/demns1.m, netlab3.3/demolgd1.m, netlab3.3/demopt1.m,
+	  netlab3.3/dempot.m, netlab3.3/demprgp.m, netlab3.3/demprior.m,
+	  netlab3.3/demrbf1.m, netlab3.3/demsom1.m, netlab3.3/demtrain.m,
+	  netlab3.3/dist2.m, netlab3.3/eigdec.m, netlab3.3/errbayes.m,
+	  netlab3.3/evidence.m, netlab3.3/fevbayes.m, netlab3.3/gauss.m,
+	  netlab3.3/gbayes.m, netlab3.3/glm.m, netlab3.3/glmderiv.m,
+	  netlab3.3/glmerr.m, netlab3.3/glmevfwd.m, netlab3.3/glmfwd.m,
+	  netlab3.3/glmgrad.m, netlab3.3/glmhess.m, netlab3.3/glminit.m,
+	  netlab3.3/glmpak.m, netlab3.3/glmtrain.m, netlab3.3/glmunpak.m,
+	  netlab3.3/gmm.m, netlab3.3/gmmactiv.m, netlab3.3/gmmem.m,
+	  netlab3.3/gmmpak.m, netlab3.3/gmmpost.m, netlab3.3/gmmprob.m,
+	  netlab3.3/gmmsamp.m, netlab3.3/gmmunpak.m, netlab3.3/gp.m,
+	  netlab3.3/gpcovar.m, netlab3.3/gpcovarf.m, netlab3.3/gpcovarp.m,
+	  netlab3.3/gperr.m, netlab3.3/gpfwd.m, netlab3.3/gpgrad.m,
+	  netlab3.3/gpinit.m, netlab3.3/gppak.m, netlab3.3/gpunpak.m,
+	  netlab3.3/gradchek.m, netlab3.3/graddesc.m, netlab3.3/gsamp.m,
+	  netlab3.3/gtm.m, netlab3.3/gtmem.m, netlab3.3/gtmfwd.m,
+	  netlab3.3/gtminit.m, netlab3.3/gtmlmean.m, netlab3.3/gtmlmode.m,
+	  netlab3.3/gtmmag.m, netlab3.3/gtmpost.m, netlab3.3/gtmprob.m,
+	  netlab3.3/hbayes.m, netlab3.3/hesschek.m, netlab3.3/hintmat.m,
+	  netlab3.3/hinton.m, netlab3.3/histp.m, netlab3.3/hmc.m,
+	  netlab3.3/kmeansNetlab.m, netlab3.3/knn.m, netlab3.3/knnfwd.m,
+	  netlab3.3/linef.m, netlab3.3/linemin.m, netlab3.3/maxitmess.m,
+	  netlab3.3/mdn.m, netlab3.3/mdn2gmm.m, netlab3.3/mdndist2.m,
+	  netlab3.3/mdnerr.m, netlab3.3/mdnfwd.m, netlab3.3/mdngrad.m,
+	  netlab3.3/mdninit.m, netlab3.3/mdnnet.mat, netlab3.3/mdnpak.m,
+	  netlab3.3/mdnpost.m, netlab3.3/mdnprob.m, netlab3.3/mdnunpak.m,
+	  netlab3.3/minbrack.m, netlab3.3/mlp.m, netlab3.3/mlpbkp.m,
+	  netlab3.3/mlpderiv.m, netlab3.3/mlperr.m, netlab3.3/mlpevfwd.m,
+	  netlab3.3/mlpfwd.m, netlab3.3/mlpgrad.m, netlab3.3/mlphdotv.m,
+	  netlab3.3/mlphess.m, netlab3.3/mlphint.m, netlab3.3/mlpinit.m,
+	  netlab3.3/mlppak.m, netlab3.3/mlpprior.m, netlab3.3/mlptrain.m,
+	  netlab3.3/mlpunpak.m, netlab3.3/netderiv.m, netlab3.3/neterr.m,
+	  netlab3.3/netevfwd.m, netlab3.3/netgrad.m, netlab3.3/nethess.m,
+	  netlab3.3/netinit.m, netlab3.3/netlab3.3.zip,
+	  netlab3.3/netlogo.mat, netlab3.3/netopt.m, netlab3.3/netpak.m,
+	  netlab3.3/netunpak.m, netlab3.3/oilTrn.dat, netlab3.3/oilTst.dat,
+	  netlab3.3/olgd.m, netlab3.3/pca.m, netlab3.3/plotmat.m,
+	  netlab3.3/ppca.m, netlab3.3/quasinew.m, netlab3.3/rbf.m,
+	  netlab3.3/rbfbkp.m, netlab3.3/rbfderiv.m, netlab3.3/rbferr.m,
+	  netlab3.3/rbfevfwd.m, netlab3.3/rbffwd.m, netlab3.3/rbfgrad.m,
+	  netlab3.3/rbfhess.m, netlab3.3/rbfjacob.m, netlab3.3/rbfpak.m,
+	  netlab3.3/rbfprior.m, netlab3.3/rbfsetbf.m, netlab3.3/rbfsetfw.m,
+	  netlab3.3/rbftrain.m, netlab3.3/rbfunpak.m, netlab3.3/rosegrad.m,
+	  netlab3.3/rosen.m, netlab3.3/scg.m, netlab3.3/som.m,
+	  netlab3.3/somfwd.m, netlab3.3/sompak.m, netlab3.3/somtrain.m,
+	  netlab3.3/somunpak.m, netlab3.3/xor.dat, netlabKPM/README.txt,
+	  netlabKPM/demgmm1_movie.m, netlabKPM/evidence_weighted.m,
+	  netlabKPM/glmerr_weighted.m, netlabKPM/glmgrad_weighted.m,
+	  netlabKPM/glmhess_weighted.m, netlabKPM/glmtrain_weighted.m,
+	  netlabKPM/gmm1.avi, netlabKPM/gmmem2.m,
+	  netlabKPM/gmmem_multi_restart.m, netlabKPM/kmeans_demo.m,
+	  netlabKPM/mlperr_weighted.m, netlabKPM/mlpgrad_weighted.m,
+	  netlabKPM/mlphdotv_weighted.m, netlabKPM/mlphess_weighted.m,
+	  netlabKPM/neterr_weighted.m, netlabKPM/netgrad_weighted.m,
+	  netlabKPM/nethess_weighted.m, netlabKPM/netopt_weighted.m,
+	  netlabKPM/process_options.m: Initial import of code base from
+	  Kevin Murphy.
+
+2005-04-27 10:58  yozhik
+
+	* KPMtools/mahal2conf.m, nethelp3.3/conffig.htm,
+	  nethelp3.3/confmat.htm, nethelp3.3/conjgrad.htm,
+	  nethelp3.3/consist.htm, nethelp3.3/convertoldnet.htm,
+	  nethelp3.3/datread.htm, nethelp3.3/datwrite.htm,
+	  nethelp3.3/dem2ddat.htm, nethelp3.3/demard.htm,
+	  nethelp3.3/demev1.htm, nethelp3.3/demev2.htm,
+	  nethelp3.3/demev3.htm, nethelp3.3/demgauss.htm,
+	  nethelp3.3/demglm1.htm, nethelp3.3/demglm2.htm,
+	  nethelp3.3/demgmm1.htm, nethelp3.3/demgmm2.htm,
+	  nethelp3.3/demgmm3.htm, nethelp3.3/demgmm4.htm,
+	  nethelp3.3/demgmm5.htm, nethelp3.3/demgp.htm,
+	  nethelp3.3/demgpard.htm, nethelp3.3/demgpot.htm,
+	  nethelp3.3/demgtm1.htm, nethelp3.3/demgtm2.htm,
+	  nethelp3.3/demhint.htm, nethelp3.3/demhmc1.htm,
+	  nethelp3.3/demhmc2.htm, nethelp3.3/demhmc3.htm,
+	  nethelp3.3/demkmn1.htm, nethelp3.3/demknn1.htm,
+	  nethelp3.3/demmdn1.htm, nethelp3.3/demmet1.htm,
+	  nethelp3.3/demmlp1.htm, nethelp3.3/demmlp2.htm,
+	  nethelp3.3/demnlab.htm, nethelp3.3/demns1.htm,
+	  nethelp3.3/demolgd1.htm, nethelp3.3/demopt1.htm,
+	  nethelp3.3/dempot.htm, nethelp3.3/demprgp.htm,
+	  nethelp3.3/demprior.htm, nethelp3.3/demrbf1.htm,
+	  nethelp3.3/demsom1.htm, nethelp3.3/demtrain.htm,
+	  nethelp3.3/dist2.htm, nethelp3.3/eigdec.htm,
+	  nethelp3.3/errbayes.htm, nethelp3.3/evidence.htm,
+	  nethelp3.3/fevbayes.htm, nethelp3.3/gauss.htm,
+	  nethelp3.3/gbayes.htm, nethelp3.3/glm.htm,
+	  nethelp3.3/glmderiv.htm, nethelp3.3/glmerr.htm,
+	  nethelp3.3/glmevfwd.htm, nethelp3.3/glmfwd.htm,
+	  nethelp3.3/glmgrad.htm, nethelp3.3/glmhess.htm,
+	  nethelp3.3/glminit.htm, nethelp3.3/glmpak.htm,
+	  nethelp3.3/glmtrain.htm, nethelp3.3/glmunpak.htm,
+	  nethelp3.3/gmm.htm, nethelp3.3/gmmactiv.htm,
+	  nethelp3.3/gmmem.htm, nethelp3.3/gmminit.htm,
+	  nethelp3.3/gmmpak.htm, nethelp3.3/gmmpost.htm,
+	  nethelp3.3/gmmprob.htm, nethelp3.3/gmmsamp.htm,
+	  nethelp3.3/gmmunpak.htm, nethelp3.3/gp.htm,
+	  nethelp3.3/gpcovar.htm, nethelp3.3/gpcovarf.htm,
+	  nethelp3.3/gpcovarp.htm, nethelp3.3/gperr.htm,
+	  nethelp3.3/gpfwd.htm, nethelp3.3/gpgrad.htm,
+	  nethelp3.3/gpinit.htm, nethelp3.3/gppak.htm,
+	  nethelp3.3/gpunpak.htm, nethelp3.3/gradchek.htm,
+	  nethelp3.3/graddesc.htm, nethelp3.3/gsamp.htm,
+	  nethelp3.3/gtm.htm, nethelp3.3/gtmem.htm, nethelp3.3/gtmfwd.htm,
+	  nethelp3.3/gtminit.htm, nethelp3.3/gtmlmean.htm,
+	  nethelp3.3/gtmlmode.htm, nethelp3.3/gtmmag.htm,
+	  nethelp3.3/gtmpost.htm, nethelp3.3/gtmprob.htm,
+	  nethelp3.3/hbayes.htm, nethelp3.3/hesschek.htm,
+	  nethelp3.3/hintmat.htm, nethelp3.3/hinton.htm,
+	  nethelp3.3/histp.htm, nethelp3.3/hmc.htm, nethelp3.3/index.htm,
+	  nethelp3.3/kmeans.htm, nethelp3.3/knn.htm, nethelp3.3/knnfwd.htm,
+	  nethelp3.3/linef.htm, nethelp3.3/linemin.htm,
+	  nethelp3.3/maxitmess.htm, nethelp3.3/mdn.htm,
+	  nethelp3.3/mdn2gmm.htm, nethelp3.3/mdndist2.htm,
+	  nethelp3.3/mdnerr.htm, nethelp3.3/mdnfwd.htm,
+	  nethelp3.3/mdngrad.htm, nethelp3.3/mdninit.htm,
+	  nethelp3.3/mdnpak.htm, nethelp3.3/mdnpost.htm,
+	  nethelp3.3/mdnprob.htm, nethelp3.3/mdnunpak.htm,
+	  nethelp3.3/metrop.htm, nethelp3.3/minbrack.htm,
+	  nethelp3.3/mlp.htm, nethelp3.3/mlpbkp.htm,
+	  nethelp3.3/mlpderiv.htm, nethelp3.3/mlperr.htm,
+	  nethelp3.3/mlpevfwd.htm, nethelp3.3/mlpfwd.htm,
+	  nethelp3.3/mlpgrad.htm, nethelp3.3/mlphdotv.htm,
+	  nethelp3.3/mlphess.htm, nethelp3.3/mlphint.htm,
+	  nethelp3.3/mlpinit.htm, nethelp3.3/mlppak.htm,
+	  nethelp3.3/mlpprior.htm, nethelp3.3/mlptrain.htm,
+	  nethelp3.3/mlpunpak.htm, nethelp3.3/netderiv.htm,
+	  nethelp3.3/neterr.htm, nethelp3.3/netevfwd.htm,
+	  nethelp3.3/netgrad.htm, nethelp3.3/nethelp3.3.zip,
+	  nethelp3.3/nethess.htm, nethelp3.3/netinit.htm,
+	  nethelp3.3/netopt.htm, nethelp3.3/netpak.htm,
+	  nethelp3.3/netunpak.htm, nethelp3.3/olgd.htm, nethelp3.3/pca.htm,
+	  nethelp3.3/plotmat.htm, nethelp3.3/ppca.htm,
+	  nethelp3.3/quasinew.htm, nethelp3.3/rbf.htm,
+	  nethelp3.3/rbfbkp.htm, nethelp3.3/rbfderiv.htm,
+	  nethelp3.3/rbferr.htm, nethelp3.3/rbfevfwd.htm,
+	  nethelp3.3/rbffwd.htm, nethelp3.3/rbfgrad.htm,
+	  nethelp3.3/rbfhess.htm, nethelp3.3/rbfjacob.htm,
+	  nethelp3.3/rbfpak.htm, nethelp3.3/rbfprior.htm,
+	  nethelp3.3/rbfsetbf.htm, nethelp3.3/rbfsetfw.htm,
+	  nethelp3.3/rbftrain.htm, nethelp3.3/rbfunpak.htm,
+	  nethelp3.3/rosegrad.htm, nethelp3.3/rosen.htm,
+	  nethelp3.3/scg.htm, nethelp3.3/som.htm, nethelp3.3/somfwd.htm,
+	  nethelp3.3/sompak.htm, nethelp3.3/somtrain.htm,
+	  nethelp3.3/somunpak.htm, netlab3.3/Contents.m, netlab3.3/LICENSE,
+	  netlab3.3/conffig.m, netlab3.3/confmat.m, netlab3.3/conjgrad.m,
+	  netlab3.3/consist.m, netlab3.3/convertoldnet.m,
+	  netlab3.3/datread.m, netlab3.3/datwrite.m, netlab3.3/demard.m,
+	  netlab3.3/demev1.m, netlab3.3/demev2.m, netlab3.3/demev3.m,
+	  netlab3.3/demgauss.m, netlab3.3/demglm1.m, netlab3.3/demglm2.m,
+	  netlab3.3/demgmm2.m, netlab3.3/demgmm3.m, netlab3.3/demgmm4.m,
+	  netlab3.3/demgmm5.m, netlab3.3/demgp.m, netlab3.3/demgpard.m,
+	  netlab3.3/demgpot.m, netlab3.3/demgtm1.m, netlab3.3/demgtm2.m,
+	  netlab3.3/demhint.m, netlab3.3/demhmc2.m, netlab3.3/demhmc3.m,
+	  netlab3.3/demkmn1.m, netlab3.3/demknn1.m, netlab3.3/demmdn1.m,
+	  netlab3.3/demmlp1.m, netlab3.3/demmlp2.m, netlab3.3/demnlab.m,
+	  netlab3.3/demns1.m, netlab3.3/demolgd1.m, netlab3.3/demopt1.m,
+	  netlab3.3/dempot.m, netlab3.3/demprgp.m, netlab3.3/demprior.m,
+	  netlab3.3/demrbf1.m, netlab3.3/demsom1.m, netlab3.3/demtrain.m,
+	  netlab3.3/dist2.m, netlab3.3/eigdec.m, netlab3.3/errbayes.m,
+	  netlab3.3/evidence.m, netlab3.3/fevbayes.m, netlab3.3/gauss.m,
+	  netlab3.3/gbayes.m, netlab3.3/glm.m, netlab3.3/glmderiv.m,
+	  netlab3.3/glmerr.m, netlab3.3/glmevfwd.m, netlab3.3/glmfwd.m,
+	  netlab3.3/glmgrad.m, netlab3.3/glmhess.m, netlab3.3/glminit.m,
+	  netlab3.3/glmpak.m, netlab3.3/glmtrain.m, netlab3.3/glmunpak.m,
+	  netlab3.3/gmm.m, netlab3.3/gmmactiv.m, netlab3.3/gmmem.m,
+	  netlab3.3/gmmpak.m, netlab3.3/gmmpost.m, netlab3.3/gmmprob.m,
+	  netlab3.3/gmmsamp.m, netlab3.3/gmmunpak.m, netlab3.3/gp.m,
+	  netlab3.3/gpcovar.m, netlab3.3/gpcovarf.m, netlab3.3/gpcovarp.m,
+	  netlab3.3/gperr.m, netlab3.3/gpfwd.m, netlab3.3/gpgrad.m,
+	  netlab3.3/gpinit.m, netlab3.3/gppak.m, netlab3.3/gpunpak.m,
+	  netlab3.3/gradchek.m, netlab3.3/graddesc.m, netlab3.3/gsamp.m,
+	  netlab3.3/gtm.m, netlab3.3/gtmem.m, netlab3.3/gtmfwd.m,
+	  netlab3.3/gtminit.m, netlab3.3/gtmlmean.m, netlab3.3/gtmlmode.m,
+	  netlab3.3/gtmmag.m, netlab3.3/gtmpost.m, netlab3.3/gtmprob.m,
+	  netlab3.3/hbayes.m, netlab3.3/hesschek.m, netlab3.3/hintmat.m,
+	  netlab3.3/hinton.m, netlab3.3/histp.m, netlab3.3/hmc.m,
+	  netlab3.3/kmeansNetlab.m, netlab3.3/knn.m, netlab3.3/knnfwd.m,
+	  netlab3.3/linef.m, netlab3.3/linemin.m, netlab3.3/maxitmess.m,
+	  netlab3.3/mdn.m, netlab3.3/mdn2gmm.m, netlab3.3/mdndist2.m,
+	  netlab3.3/mdnerr.m, netlab3.3/mdnfwd.m, netlab3.3/mdngrad.m,
+	  netlab3.3/mdninit.m, netlab3.3/mdnnet.mat, netlab3.3/mdnpak.m,
+	  netlab3.3/mdnpost.m, netlab3.3/mdnprob.m, netlab3.3/mdnunpak.m,
+	  netlab3.3/minbrack.m, netlab3.3/mlp.m, netlab3.3/mlpbkp.m,
+	  netlab3.3/mlpderiv.m, netlab3.3/mlperr.m, netlab3.3/mlpevfwd.m,
+	  netlab3.3/mlpfwd.m, netlab3.3/mlpgrad.m, netlab3.3/mlphdotv.m,
+	  netlab3.3/mlphess.m, netlab3.3/mlphint.m, netlab3.3/mlpinit.m,
+	  netlab3.3/mlppak.m, netlab3.3/mlpprior.m, netlab3.3/mlptrain.m,
+	  netlab3.3/mlpunpak.m, netlab3.3/netderiv.m, netlab3.3/neterr.m,
+	  netlab3.3/netevfwd.m, netlab3.3/netgrad.m, netlab3.3/nethess.m,
+	  netlab3.3/netinit.m, netlab3.3/netlab3.3.zip,
+	  netlab3.3/netlogo.mat, netlab3.3/netopt.m, netlab3.3/netpak.m,
+	  netlab3.3/netunpak.m, netlab3.3/oilTrn.dat, netlab3.3/oilTst.dat,
+	  netlab3.3/olgd.m, netlab3.3/pca.m, netlab3.3/plotmat.m,
+	  netlab3.3/ppca.m, netlab3.3/quasinew.m, netlab3.3/rbf.m,
+	  netlab3.3/rbfbkp.m, netlab3.3/rbfderiv.m, netlab3.3/rbferr.m,
+	  netlab3.3/rbfevfwd.m, netlab3.3/rbffwd.m, netlab3.3/rbfgrad.m,
+	  netlab3.3/rbfhess.m, netlab3.3/rbfjacob.m, netlab3.3/rbfpak.m,
+	  netlab3.3/rbfprior.m, netlab3.3/rbfsetbf.m, netlab3.3/rbfsetfw.m,
+	  netlab3.3/rbftrain.m, netlab3.3/rbfunpak.m, netlab3.3/rosegrad.m,
+	  netlab3.3/rosen.m, netlab3.3/scg.m, netlab3.3/som.m,
+	  netlab3.3/somfwd.m, netlab3.3/sompak.m, netlab3.3/somtrain.m,
+	  netlab3.3/somunpak.m, netlab3.3/xor.dat, netlabKPM/README.txt,
+	  netlabKPM/demgmm1_movie.m, netlabKPM/evidence_weighted.m,
+	  netlabKPM/glmerr_weighted.m, netlabKPM/glmgrad_weighted.m,
+	  netlabKPM/glmhess_weighted.m, netlabKPM/glmtrain_weighted.m,
+	  netlabKPM/gmm1.avi, netlabKPM/gmmem2.m,
+	  netlabKPM/gmmem_multi_restart.m, netlabKPM/kmeans_demo.m,
+	  netlabKPM/mlperr_weighted.m, netlabKPM/mlpgrad_weighted.m,
+	  netlabKPM/mlphdotv_weighted.m, netlabKPM/mlphess_weighted.m,
+	  netlabKPM/neterr_weighted.m, netlabKPM/netgrad_weighted.m,
+	  netlabKPM/nethess_weighted.m, netlabKPM/netopt_weighted.m,
+	  netlabKPM/process_options.m: Initial revision
+
+2005-04-25 19:29  yozhik
+
+	* KPMstats/KLgauss.m, KPMstats/README.txt, KPMstats/beta_sample.m,
+	  KPMstats/chisquared_histo.m, KPMstats/chisquared_prob.m,
+	  KPMstats/chisquared_readme.txt, KPMstats/chisquared_table.m,
+	  KPMstats/clg_Mstep.m, KPMstats/clg_Mstep_simple.m,
+	  KPMstats/clg_prob.m, KPMstats/condGaussToJoint.m,
+	  KPMstats/cond_indep_fisher_z.m,
+	  KPMstats/condgaussTrainObserved.m, KPMstats/condgauss_sample.m,
+	  KPMstats/convertBinaryLabels.m, KPMstats/cwr_demo.m,
+	  KPMstats/cwr_em.m, KPMstats/cwr_predict.m, KPMstats/cwr_prob.m,
+	  KPMstats/cwr_readme.txt, KPMstats/cwr_test.m,
+	  KPMstats/dirichlet_sample.m, KPMstats/distchck.m,
+	  KPMstats/eigdec.m, KPMstats/est_transmat.m,
+	  KPMstats/fit_paritioned_model_testfn.m,
+	  KPMstats/fit_partitioned_model.m, KPMstats/gamma_sample.m,
+	  KPMstats/gaussian_prob.m, KPMstats/gaussian_sample.m,
+	  KPMstats/linear_regression.m, KPMstats/logist2.m,
+	  KPMstats/logist2Apply.m, KPMstats/logist2ApplyRegularized.m,
+	  KPMstats/logist2Fit.m, KPMstats/logist2FitRegularized.m,
+	  KPMstats/logistK.m, KPMstats/logistK_eval.m,
+	  KPMstats/marginalize_gaussian.m, KPMstats/matrix_T_pdf.m,
+	  KPMstats/matrix_normal_pdf.m, KPMstats/mc_stat_distrib.m,
+	  KPMstats/mixgauss_Mstep.m, KPMstats/mixgauss_classifier_apply.m,
+	  KPMstats/mixgauss_classifier_train.m, KPMstats/mixgauss_em.m,
+	  KPMstats/mixgauss_init.m, KPMstats/mixgauss_prob.m,
+	  KPMstats/mixgauss_prob_test.m, KPMstats/mixgauss_sample.m,
+	  KPMstats/mkPolyFvec.m, KPMstats/mk_unit_norm.m,
+	  KPMstats/multinomial_prob.m, KPMstats/multinomial_sample.m,
+	  KPMstats/normal_coef.m, KPMstats/partial_corr_coef.m,
+	  KPMstats/parzen.m, KPMstats/parzenC.c, KPMstats/parzenC.dll,
+	  KPMstats/parzenC.mexglx, KPMstats/parzenC_test.m,
+	  KPMstats/parzen_fit_select_unif.m, KPMstats/pca.m,
+	  KPMstats/rndcheck.m, KPMstats/sample.m,
+	  KPMstats/sample_discrete.m, KPMstats/sample_gaussian.m,
+	  KPMstats/student_t_logprob.m, KPMstats/student_t_prob.m,
+	  KPMstats/unif_discrete_sample.m, KPMstats/weightedRegression.m,
+	  KPMtools/README.txt, KPMtools/approx_unique.m,
+	  KPMtools/approxeq.m, KPMtools/argmax.m, KPMtools/argmin.m,
+	  KPMtools/assert.m, KPMtools/assignEdgeNums.m,
+	  KPMtools/assign_cols.m, KPMtools/axis_pct.m, KPMtools/block.m,
+	  KPMtools/cell2num.m, KPMtools/chi2inv.m, KPMtools/choose.m,
+	  KPMtools/collapse_mog.m, KPMtools/colmult.c,
+	  KPMtools/colmult.mexglx, KPMtools/computeROC.m,
+	  KPMtools/compute_counts.m, KPMtools/conf2mahal.m,
+	  KPMtools/cross_entropy.m, KPMtools/div.m, KPMtools/draw_circle.m,
+	  KPMtools/draw_ellipse.m, KPMtools/draw_ellipse_axes.m,
+	  KPMtools/em_converged.m, KPMtools/entropy.m,
+	  KPMtools/exportfig.m, KPMtools/extend_domain_table.m,
+	  KPMtools/factorial.m, KPMtools/find_equiv_posns.m,
+	  KPMtools/hash_add.m, KPMtools/hash_del.m, KPMtools/hash_lookup.m,
+	  KPMtools/hungarian.m, KPMtools/image_rgb.m,
+	  KPMtools/imresizeAspect.m, KPMtools/ind2subv.c,
+	  KPMtools/ind2subv.m, KPMtools/installC_KPMtools.m,
+	  KPMtools/is_psd.m, KPMtools/is_stochastic.m,
+	  KPMtools/isemptycell.m, KPMtools/isposdef.m, KPMtools/isscalar.m,
+	  KPMtools/isvector.m, KPMtools/junk.c, KPMtools/loadcell.m,
+	  KPMtools/logb.m, KPMtools/logdet.m, KPMtools/logsum.m,
+	  KPMtools/logsum_simple.m, KPMtools/logsum_test.m,
+	  KPMtools/logsumexp.m, KPMtools/logsumexpv.m,
+	  KPMtools/marg_table.m, KPMtools/marginalize_table.m,
+	  KPMtools/matprint.m, KPMtools/max_mult.c, KPMtools/max_mult.m,
+	  KPMtools/mexutil.c, KPMtools/mexutil.h,
+	  KPMtools/mk_multi_index.m, KPMtools/mk_stochastic.m,
+	  KPMtools/mult_by_table.m, KPMtools/myintersect.m,
+	  KPMtools/myismember.m, KPMtools/myones.m, KPMtools/myplot.m,
+	  KPMtools/myrand.m, KPMtools/myrepmat.m, KPMtools/myreshape.m,
+	  KPMtools/mysetdiff.m, KPMtools/mysize.m, KPMtools/mysubset.m,
+	  KPMtools/mysymsetdiff.m, KPMtools/bipartiteMatchingHungarian.m,
+	  KPMtools/myunion.m, KPMtools/nchoose2.m, KPMtools/ncols.m,
+	  KPMtools/nonmaxsup.m, KPMtools/normalise.m,
+	  KPMtools/normaliseC.c, KPMtools/normaliseC.dll,
+	  KPMtools/normalize.m, KPMtools/nrows.m, KPMtools/num2strcell.m,
+	  KPMtools/partitionData.m, KPMtools/partition_matrix_vec.m,
+	  KPMtools/pca_netlab.m, KPMtools/pick.m, KPMtools/plotROC.m,
+	  KPMtools/plotROCkpm.m, KPMtools/plot_axis_thru_origin.m,
+	  KPMtools/plot_ellipse.m, KPMtools/plot_matrix.m,
+	  KPMtools/plot_polygon.m, KPMtools/plotcov2.m,
+	  KPMtools/plotcov3.m, KPMtools/plotgauss1d.m,
+	  KPMtools/plotgauss2d.m, KPMtools/plotgauss2d_old.m,
+	  KPMtools/polygon_area.m, KPMtools/polygon_centroid.m,
+	  KPMtools/polygon_intersect.m, KPMtools/previewfig.m,
+	  KPMtools/process_options.m, KPMtools/rand_psd.m,
+	  KPMtools/rectintC.m, KPMtools/rectintLoopC.mexglx,
+	  KPMtools/rectintSparse.m, KPMtools/rectintSparseC.m,
+	  KPMtools/rectintSparseLoopC.c, KPMtools/rectintSparseLoopC.dll,
+	  KPMtools/repmatC.c, KPMtools/repmatC.dll,
+	  KPMtools/repmatC.mexglx, KPMtools/rgb2grayKPM.m,
+	  KPMtools/rnd_partition.m, KPMtools/rotate_xlabel.m,
+	  KPMtools/safeStr.m, KPMtools/sampleUniformInts.m,
+	  KPMtools/sample_discrete.m, KPMtools/set_xtick_label.m,
+	  KPMtools/set_xtick_label_demo.m, KPMtools/setdiag.m,
+	  KPMtools/softeye.m, KPMtools/sort_evec.m,
+	  KPMtools/splitLongSeqIntoManyShort.m, KPMtools/sprintf_intvec.m,
+	  KPMtools/sqdist.m, KPMtools/strmatch_multi.m,
+	  KPMtools/strmatch_substr.m, KPMtools/subplot2.m,
+	  KPMtools/subplot3.m, KPMtools/subsets.m, KPMtools/subv2ind.c,
+	  KPMtools/subv2ind.m, KPMtools/sumv.m, KPMtools/suptitle.m,
+	  KPMtools/unaryEncoding.m, KPMtools/wrap.m,
+	  KPMtools/xticklabel_rotate90.m, KPMtools/zipload.m,
+	  KPMtools/zipsave.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-04-25 19:29  yozhik
+
+	* KPMstats/KLgauss.m, KPMstats/README.txt, KPMstats/beta_sample.m,
+	  KPMstats/chisquared_histo.m, KPMstats/chisquared_prob.m,
+	  KPMstats/chisquared_readme.txt, KPMstats/chisquared_table.m,
+	  KPMstats/clg_Mstep.m, KPMstats/clg_Mstep_simple.m,
+	  KPMstats/clg_prob.m, KPMstats/condGaussToJoint.m,
+	  KPMstats/cond_indep_fisher_z.m,
+	  KPMstats/condgaussTrainObserved.m, KPMstats/condgauss_sample.m,
+	  KPMstats/convertBinaryLabels.m, KPMstats/cwr_demo.m,
+	  KPMstats/cwr_em.m, KPMstats/cwr_predict.m, KPMstats/cwr_prob.m,
+	  KPMstats/cwr_readme.txt, KPMstats/cwr_test.m,
+	  KPMstats/dirichlet_sample.m, KPMstats/distchck.m,
+	  KPMstats/eigdec.m, KPMstats/est_transmat.m,
+	  KPMstats/fit_paritioned_model_testfn.m,
+	  KPMstats/fit_partitioned_model.m, KPMstats/gamma_sample.m,
+	  KPMstats/gaussian_prob.m, KPMstats/gaussian_sample.m,
+	  KPMstats/linear_regression.m, KPMstats/logist2.m,
+	  KPMstats/logist2Apply.m, KPMstats/logist2ApplyRegularized.m,
+	  KPMstats/logist2Fit.m, KPMstats/logist2FitRegularized.m,
+	  KPMstats/logistK.m, KPMstats/logistK_eval.m,
+	  KPMstats/marginalize_gaussian.m, KPMstats/matrix_T_pdf.m,
+	  KPMstats/matrix_normal_pdf.m, KPMstats/mc_stat_distrib.m,
+	  KPMstats/mixgauss_Mstep.m, KPMstats/mixgauss_classifier_apply.m,
+	  KPMstats/mixgauss_classifier_train.m, KPMstats/mixgauss_em.m,
+	  KPMstats/mixgauss_init.m, KPMstats/mixgauss_prob.m,
+	  KPMstats/mixgauss_prob_test.m, KPMstats/mixgauss_sample.m,
+	  KPMstats/mkPolyFvec.m, KPMstats/mk_unit_norm.m,
+	  KPMstats/multinomial_prob.m, KPMstats/multinomial_sample.m,
+	  KPMstats/normal_coef.m, KPMstats/partial_corr_coef.m,
+	  KPMstats/parzen.m, KPMstats/parzenC.c, KPMstats/parzenC.dll,
+	  KPMstats/parzenC.mexglx, KPMstats/parzenC_test.m,
+	  KPMstats/parzen_fit_select_unif.m, KPMstats/pca.m,
+	  KPMstats/rndcheck.m, KPMstats/sample.m,
+	  KPMstats/sample_discrete.m, KPMstats/sample_gaussian.m,
+	  KPMstats/student_t_logprob.m, KPMstats/student_t_prob.m,
+	  KPMstats/unif_discrete_sample.m, KPMstats/weightedRegression.m,
+	  KPMtools/README.txt, KPMtools/approx_unique.m,
+	  KPMtools/approxeq.m, KPMtools/argmax.m, KPMtools/argmin.m,
+	  KPMtools/assert.m, KPMtools/assignEdgeNums.m,
+	  KPMtools/assign_cols.m, KPMtools/axis_pct.m, KPMtools/block.m,
+	  KPMtools/cell2num.m, KPMtools/chi2inv.m, KPMtools/choose.m,
+	  KPMtools/collapse_mog.m, KPMtools/colmult.c,
+	  KPMtools/colmult.mexglx, KPMtools/computeROC.m,
+	  KPMtools/compute_counts.m, KPMtools/conf2mahal.m,
+	  KPMtools/cross_entropy.m, KPMtools/div.m, KPMtools/draw_circle.m,
+	  KPMtools/draw_ellipse.m, KPMtools/draw_ellipse_axes.m,
+	  KPMtools/em_converged.m, KPMtools/entropy.m,
+	  KPMtools/exportfig.m, KPMtools/extend_domain_table.m,
+	  KPMtools/factorial.m, KPMtools/find_equiv_posns.m,
+	  KPMtools/hash_add.m, KPMtools/hash_del.m, KPMtools/hash_lookup.m,
+	  KPMtools/hungarian.m, KPMtools/image_rgb.m,
+	  KPMtools/imresizeAspect.m, KPMtools/ind2subv.c,
+	  KPMtools/ind2subv.m, KPMtools/installC_KPMtools.m,
+	  KPMtools/is_psd.m, KPMtools/is_stochastic.m,
+	  KPMtools/isemptycell.m, KPMtools/isposdef.m, KPMtools/isscalar.m,
+	  KPMtools/isvector.m, KPMtools/junk.c, KPMtools/loadcell.m,
+	  KPMtools/logb.m, KPMtools/logdet.m, KPMtools/logsum.m,
+	  KPMtools/logsum_simple.m, KPMtools/logsum_test.m,
+	  KPMtools/logsumexp.m, KPMtools/logsumexpv.m,
+	  KPMtools/marg_table.m, KPMtools/marginalize_table.m,
+	  KPMtools/matprint.m, KPMtools/max_mult.c, KPMtools/max_mult.m,
+	  KPMtools/mexutil.c, KPMtools/mexutil.h,
+	  KPMtools/mk_multi_index.m, KPMtools/mk_stochastic.m,
+	  KPMtools/mult_by_table.m, KPMtools/myintersect.m,
+	  KPMtools/myismember.m, KPMtools/myones.m, KPMtools/myplot.m,
+	  KPMtools/myrand.m, KPMtools/myrepmat.m, KPMtools/myreshape.m,
+	  KPMtools/mysetdiff.m, KPMtools/mysize.m, KPMtools/mysubset.m,
+	  KPMtools/mysymsetdiff.m, KPMtools/bipartiteMatchingHungarian.m,
+	  KPMtools/myunion.m, KPMtools/nchoose2.m, KPMtools/ncols.m,
+	  KPMtools/nonmaxsup.m, KPMtools/normalise.m,
+	  KPMtools/normaliseC.c, KPMtools/normaliseC.dll,
+	  KPMtools/normalize.m, KPMtools/nrows.m, KPMtools/num2strcell.m,
+	  KPMtools/partitionData.m, KPMtools/partition_matrix_vec.m,
+	  KPMtools/pca_netlab.m, KPMtools/pick.m, KPMtools/plotROC.m,
+	  KPMtools/plotROCkpm.m, KPMtools/plot_axis_thru_origin.m,
+	  KPMtools/plot_ellipse.m, KPMtools/plot_matrix.m,
+	  KPMtools/plot_polygon.m, KPMtools/plotcov2.m,
+	  KPMtools/plotcov3.m, KPMtools/plotgauss1d.m,
+	  KPMtools/plotgauss2d.m, KPMtools/plotgauss2d_old.m,
+	  KPMtools/polygon_area.m, KPMtools/polygon_centroid.m,
+	  KPMtools/polygon_intersect.m, KPMtools/previewfig.m,
+	  KPMtools/process_options.m, KPMtools/rand_psd.m,
+	  KPMtools/rectintC.m, KPMtools/rectintLoopC.mexglx,
+	  KPMtools/rectintSparse.m, KPMtools/rectintSparseC.m,
+	  KPMtools/rectintSparseLoopC.c, KPMtools/rectintSparseLoopC.dll,
+	  KPMtools/repmatC.c, KPMtools/repmatC.dll,
+	  KPMtools/repmatC.mexglx, KPMtools/rgb2grayKPM.m,
+	  KPMtools/rnd_partition.m, KPMtools/rotate_xlabel.m,
+	  KPMtools/safeStr.m, KPMtools/sampleUniformInts.m,
+	  KPMtools/sample_discrete.m, KPMtools/set_xtick_label.m,
+	  KPMtools/set_xtick_label_demo.m, KPMtools/setdiag.m,
+	  KPMtools/softeye.m, KPMtools/sort_evec.m,
+	  KPMtools/splitLongSeqIntoManyShort.m, KPMtools/sprintf_intvec.m,
+	  KPMtools/sqdist.m, KPMtools/strmatch_multi.m,
+	  KPMtools/strmatch_substr.m, KPMtools/subplot2.m,
+	  KPMtools/subplot3.m, KPMtools/subsets.m, KPMtools/subv2ind.c,
+	  KPMtools/subv2ind.m, KPMtools/sumv.m, KPMtools/suptitle.m,
+	  KPMtools/unaryEncoding.m, KPMtools/wrap.m,
+	  KPMtools/xticklabel_rotate90.m, KPMtools/zipload.m,
+	  KPMtools/zipsave.m: Initial revision
+
+2005-04-03 18:39  yozhik
+
+	* BNT/learning/score_dags.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-04-03 18:39  yozhik
+
+	* BNT/learning/score_dags.m: Initial revision
+
+2005-03-31 11:20  yozhik
+
+	* BNT/installC_BNT.m: Initial import of code base from Kevin
+	  Murphy.
+
+2005-03-31 11:20  yozhik
+
+	* BNT/installC_BNT.m: Initial revision
+
+2005-03-30 11:59  yozhik
+
+	* KPMtools/asdemo.html: Initial import of code base from Kevin
+	  Murphy.
+
+2005-03-30 11:59  yozhik
+
+	* KPMtools/asdemo.html: Initial revision
+
+2005-03-26 18:51  yozhik
+
+	* KPMtools/asdemo.m: Initial import of code base from Kevin Murphy.
+
+2005-03-26 18:51  yozhik
+
+	* KPMtools/asdemo.m: Initial revision
+
+2005-01-15 18:27  yozhik
+
+	* BNT/CPDs/@tabular_CPD/: get_field.m, set_fields.m, tabular_CPD.m:
+	  Initial import of code base from Kevin Murphy.
+
+2005-01-15 18:27  yozhik
+
+	* BNT/CPDs/@tabular_CPD/: get_field.m, set_fields.m, tabular_CPD.m:
+	  Initial revision
+
+2004-11-24 12:12  yozhik
+
+	* BNT/inference/dynamic/@cbk_inf_engine/junk: Initial import of
+	  code base from Kevin Murphy.
+
+2004-11-24 12:12  yozhik
+
+	* BNT/inference/dynamic/@cbk_inf_engine/junk: Initial revision
+
+2004-11-22 14:41  yozhik
+
+	* BNT/examples/dynamic/orig_water1.m: Initial import of code base
+	  from Kevin Murphy.
+
+2004-11-22 14:41  yozhik
+
+	* BNT/examples/dynamic/orig_water1.m: Initial revision
+
+2004-11-22 14:15  yozhik
+
+	* BNT/inference/dynamic/@cbk_inf_engine/cbk_inf_engine.m: Initial
+	  import of code base from Kevin Murphy.
+
+2004-11-22 14:15  yozhik
+
+	* BNT/inference/dynamic/@cbk_inf_engine/cbk_inf_engine.m: Initial
+	  revision
+
+2004-11-06 13:52  yozhik
+
+	* BNT/examples/static/StructLearn/model_select2.m: Initial import
+	  of code base from Kevin Murphy.
+
+2004-11-06 13:52  yozhik
+
+	* BNT/examples/static/StructLearn/model_select2.m: Initial revision
+
+2004-11-06 12:55  yozhik
+
+	* BNT/examples/static/StructLearn/model_select1.m: Initial import
+	  of code base from Kevin Murphy.
+
+2004-11-06 12:55  yozhik
+
+	* BNT/examples/static/StructLearn/model_select1.m: Initial revision
+
+2004-10-22 18:18  yozhik
+
+	* HMM/viterbi_path.m: Initial import of code base from Kevin
+	  Murphy.
+
+2004-10-22 18:18  yozhik
+
+	* HMM/viterbi_path.m: Initial revision
+
+2004-09-29 20:09  yozhik
+
+	* BNT/inference/static/@var_elim_inf_engine/marginal_nodes.m:
+	  Initial import of code base from Kevin Murphy.
+
+2004-09-29 20:09  yozhik
+
+	* BNT/inference/static/@var_elim_inf_engine/marginal_nodes.m:
+	  Initial revision
+
+2004-09-12 20:21  yozhik
+
+	* BNT/examples/limids/amnio.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-09-12 20:21  yozhik
+
+	* BNT/examples/limids/amnio.m: Initial revision
+
+2004-09-12 19:27  yozhik
+
+	* BNT/examples/limids/oil1.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-09-12 19:27  yozhik
+
+	* BNT/examples/limids/oil1.m: Initial revision
+
+2004-09-12 14:01  yozhik
+
+	* BNT/examples/static/sprinkler1.m: Initial import of code base
+	  from Kevin Murphy.
+
+2004-09-12 14:01  yozhik
+
+	* BNT/examples/static/sprinkler1.m: Initial revision
+
+2004-08-29 05:41  yozhik
+
+	* HMM/transmat_train_observed.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-08-29 05:41  yozhik
+
+	* HMM/transmat_train_observed.m: Initial revision
+
+2004-08-05 08:25  yozhik
+
+	* BNT/potentials/: @dpot/divide_by_pot.m, Tables/divide_by_table.m:
+	  Initial import of code base from Kevin Murphy.
+
+2004-08-05 08:25  yozhik
+
+	* BNT/potentials/: @dpot/divide_by_pot.m, Tables/divide_by_table.m:
+	  Initial revision
+
+2004-08-04 12:59  yozhik
+
+	* BNT/potentials/@dpot/: marginalize_pot.m, multiply_by_pot.m:
+	  Initial import of code base from Kevin Murphy.
+
+2004-08-04 12:59  yozhik
+
+	* BNT/potentials/@dpot/: marginalize_pot.m, multiply_by_pot.m:
+	  Initial revision
+
+2004-08-04 12:36  yozhik
+
+	* BNT/@assocarray/subsref.m: Initial import of code base from Kevin
+	  Murphy.
+
+2004-08-04 12:36  yozhik
+
+	* BNT/@assocarray/subsref.m: Initial revision
+
+2004-08-04 08:54  yozhik
+
+	* BNT/potentials/@dpot/normalize_pot.m: Initial import of code base
+	  from Kevin Murphy.
+
+2004-08-04 08:54  yozhik
+
+	* BNT/potentials/@dpot/normalize_pot.m: Initial revision
+
+2004-08-04 08:51  yozhik
+
+	* BNT/potentials/Tables/: marg_table.m, mult_by_table.m,
+	  extend_domain_table.m: Initial import of code base from Kevin
+	  Murphy.
+
+2004-08-04 08:51  yozhik
+
+	* BNT/potentials/Tables/: marg_table.m, mult_by_table.m,
+	  extend_domain_table.m: Initial revision
+
+2004-08-02 15:23  yozhik
+
+	* BNT/CPDs/@noisyor_CPD/CPD_to_CPT.m: Initial import of code base
+	  from Kevin Murphy.
+
+2004-08-02 15:23  yozhik
+
+	* BNT/CPDs/@noisyor_CPD/CPD_to_CPT.m: Initial revision
+
+2004-08-02 15:05  yozhik
+
+	* BNT/general/noisyORtoTable.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-08-02 15:05  yozhik
+
+	* BNT/general/noisyORtoTable.m: Initial revision
+
+2004-06-29 10:46  yozhik
+
+	* BNT/learning/learn_struct_pdag_pc.m: Initial import of code base
+	  from Kevin Murphy.
+
+2004-06-29 10:46  yozhik
+
+	* BNT/learning/learn_struct_pdag_pc.m: Initial revision
+
+2004-06-15 10:50  yozhik
+
+	* GraphViz/graph_to_dot.m: Initial import of code base from Kevin
+	  Murphy.
+
+2004-06-15 10:50  yozhik
+
+	* GraphViz/graph_to_dot.m: Initial revision
+
+2004-06-11 14:16  yozhik
+
+	* BNT/CPDs/@tabular_CPD/log_marg_prob_node.m: Initial import of
+	  code base from Kevin Murphy.
+
+2004-06-11 14:16  yozhik
+
+	* BNT/CPDs/@tabular_CPD/log_marg_prob_node.m: Initial revision
+
+2004-06-09 18:56  yozhik
+
+	* BNT/README.txt: Initial import of code base from Kevin Murphy.
+
+2004-06-09 18:56  yozhik
+
+	* BNT/README.txt: Initial revision
+
+2004-06-09 18:53  yozhik
+
+	* BNT/CPDs/@generic_CPD/learn_params.m: Initial import of code base
+	  from Kevin Murphy.
+
+2004-06-09 18:53  yozhik
+
+	* BNT/CPDs/@generic_CPD/learn_params.m: Initial revision
+
+2004-06-09 18:42  yozhik
+
+	* BNT/examples/static/nodeorderExample.m: Initial import of code
+	  base from Kevin Murphy.
+
+2004-06-09 18:42  yozhik
+
+	* BNT/examples/static/nodeorderExample.m: Initial revision
+
+2004-06-09 18:33  yozhik
+
+	* BNT/: learning/score_family.m, test_BNT.m: Initial import of code
+	  base from Kevin Murphy.
+
+2004-06-09 18:33  yozhik
+
+	* BNT/: learning/score_family.m, test_BNT.m: Initial revision
+
+2004-06-09 18:28  yozhik
+
+	* BNT/: learning/learn_params.m, CPDs/@gaussian_CPD/learn_params.m,
+	  examples/static/gaussian2.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-06-09 18:28  yozhik
+
+	* BNT/: learning/learn_params.m, CPDs/@gaussian_CPD/learn_params.m,
+	  examples/static/gaussian2.m: Initial revision
+
+2004-06-09 18:25  yozhik
+
+	* BNT/CPDs/@tabular_CPD/learn_params.m: Initial import of code base
+	  from Kevin Murphy.
+
+2004-06-09 18:25  yozhik
+
+	* BNT/CPDs/@tabular_CPD/learn_params.m: Initial revision
+
+2004-06-09 18:17  yozhik
+
+	* BNT/general/sample_bnet.m: Initial import of code base from Kevin
+	  Murphy.
+
+2004-06-09 18:17  yozhik
+
+	* BNT/general/sample_bnet.m: Initial revision
+
+2004-06-07 12:45  yozhik
+
+	* BNT/examples/static/discrete1.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-06-07 12:45  yozhik
+
+	* BNT/examples/static/discrete1.m: Initial revision
+
+2004-06-07 12:04  yozhik
+
+	* BNT/: inference/static/@global_joint_inf_engine/marginal_nodes.m,
+	  inference/static/@global_joint_inf_engine/enter_evidence.m,
+	  examples/dynamic/mk_bat_dbn.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-06-07 12:04  yozhik
+
+	* BNT/: inference/static/@global_joint_inf_engine/marginal_nodes.m,
+	  inference/static/@global_joint_inf_engine/enter_evidence.m,
+	  examples/dynamic/mk_bat_dbn.m: Initial revision
+
+2004-06-07 08:53  yozhik
+
+	* BNT/examples/limids/asia_dt1.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-06-07 08:53  yozhik
+
+	* BNT/examples/limids/asia_dt1.m: Initial revision
+
+2004-06-07 08:48  yozhik
+
+	* BNT/general/: solve_limid.m, compute_joint_pot.m: Initial import
+	  of code base from Kevin Murphy.
+
+2004-06-07 08:48  yozhik
+
+	* BNT/general/: solve_limid.m, compute_joint_pot.m: Initial
+	  revision
+
+2004-06-07 07:39  yozhik
+
+	* Kalman/README.txt: Initial import of code base from Kevin Murphy.
+
+2004-06-07 07:39  yozhik
+
+	* Kalman/README.txt: Initial revision
+
+2004-06-07 07:33  yozhik
+
+	* GraphViz/README.txt: Initial import of code base from Kevin
+	  Murphy.
+
+2004-06-07 07:33  yozhik
+
+	* GraphViz/README.txt: Initial revision
+
+2004-05-31 15:19  yozhik
+
+	* HMM/dhmm_sample.m: Initial import of code base from Kevin Murphy.
+
+2004-05-31 15:19  yozhik
+
+	* HMM/dhmm_sample.m: Initial revision
+
+2004-05-25 17:32  yozhik
+
+	* HMM/mhmm_sample.m: Initial import of code base from Kevin Murphy.
+
+2004-05-25 17:32  yozhik
+
+	* HMM/mhmm_sample.m: Initial revision
+
+2004-05-24 15:26  yozhik
+
+	* HMM/mc_sample.m: Initial import of code base from Kevin Murphy.
+
+2004-05-24 15:26  yozhik
+
+	* HMM/mc_sample.m: Initial revision
+
+2004-05-18 07:50  yozhik
+
+	* BNT/installC_graph.m: Initial import of code base from Kevin
+	  Murphy.
+
+2004-05-18 07:50  yozhik
+
+	* BNT/installC_graph.m: Initial revision
+
+2004-05-13 18:13  yozhik
+
+	* BNT/inference/static/@gaussian_inf_engine/gaussian_inf_engine.m:
+	  Initial import of code base from Kevin Murphy.
+
+2004-05-13 18:13  yozhik
+
+	* BNT/inference/static/@gaussian_inf_engine/gaussian_inf_engine.m:
+	  Initial revision
+
+2004-05-11 12:23  yozhik
+
+	* BNT/examples/dynamic/mk_chmm.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-05-11 12:23  yozhik
+
+	* BNT/examples/dynamic/mk_chmm.m: Initial revision
+
+2004-05-11 11:45  yozhik
+
+	* BNT/examples/dynamic/mk_water_dbn.m: Initial import of code base
+	  from Kevin Murphy.
+
+2004-05-11 11:45  yozhik
+
+	* BNT/examples/dynamic/mk_water_dbn.m: Initial revision
+
+2004-05-05 06:32  yozhik
+
+	* GraphViz/draw_dot.m: Initial import of code base from Kevin
+	  Murphy.
+
+2004-05-05 06:32  yozhik
+
+	* GraphViz/draw_dot.m: Initial revision
+
+2004-03-30 09:18  yozhik
+
+	* BNT/: general/mk_named_CPT.m,
+	  CPDs/@softmax_CPD/convert_to_table.m: Initial import of code base
+	  from Kevin Murphy.
+
+2004-03-30 09:18  yozhik
+
+	* BNT/: general/mk_named_CPT.m,
+	  CPDs/@softmax_CPD/convert_to_table.m: Initial revision
+
+2004-03-22 14:32  yozhik
+
+	* GraphViz/draw_graph.m: Initial import of code base from Kevin
+	  Murphy.
+
+2004-03-22 14:32  yozhik
+
+	* GraphViz/draw_graph.m: Initial revision
+
+2004-03-12 15:21  yozhik
+
+	* GraphViz/dot_to_graph.m: Initial import of code base from Kevin
+	  Murphy.
+
+2004-03-12 15:21  yozhik
+
+	* GraphViz/dot_to_graph.m: Initial revision
+
+2004-03-04 14:34  yozhik
+
+	* BNT/examples/static/burglary.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-03-04 14:34  yozhik
+
+	* BNT/examples/static/burglary.m: Initial revision
+
+2004-03-04 14:27  yozhik
+
+	* BNT/examples/static/burglar-alarm-net.lisp.txt: Initial import of
+	  code base from Kevin Murphy.
+
+2004-03-04 14:27  yozhik
+
+	* BNT/examples/static/burglar-alarm-net.lisp.txt: Initial revision
+
+2004-02-28 09:25  yozhik
+
+	* BNT/examples/static/learn1.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-02-28 09:25  yozhik
+
+	* BNT/examples/static/learn1.m: Initial revision
+
+2004-02-22 11:43  yozhik
+
+	* BNT/examples/static/brainy.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-02-22 11:43  yozhik
+
+	* BNT/examples/static/brainy.m: Initial revision
+
+2004-02-20 14:00  yozhik
+
+	* BNT/CPDs/@discrete_CPD/convert_to_pot.m: Initial import of code
+	  base from Kevin Murphy.
+
+2004-02-20 14:00  yozhik
+
+	* BNT/CPDs/@discrete_CPD/convert_to_pot.m: Initial revision
+
+2004-02-18 17:12  yozhik
+
+	*
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/enter_soft_evidence.m:
+	  Initial import of code base from Kevin Murphy.
+
+2004-02-18 17:12  yozhik
+
+	*
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/enter_soft_evidence.m:
+	  Initial revision
+
+2004-02-13 18:06  yozhik
+
+	* HMM/mhmmParzen_train_observed.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-02-13 18:06  yozhik
+
+	* HMM/mhmmParzen_train_observed.m: Initial revision
+
+2004-02-12 15:08  yozhik
+
+	* HMM/gausshmm_train_observed.m: Initial import of code base from
+	  Kevin Murphy.
+
+2004-02-12 15:08  yozhik
+
+	* HMM/gausshmm_train_observed.m: Initial revision
+
+2004-02-12 04:57  yozhik
+
+	* BNT/examples/static/HME/hmemenu.m: Initial import of code base
+	  from Kevin Murphy.
+
+2004-02-12 04:57  yozhik
+
+	* BNT/examples/static/HME/hmemenu.m: Initial revision
+
+2004-02-07 20:52  yozhik
+
+	* HMM/mhmm_em.m: Initial import of code base from Kevin Murphy.
+
+2004-02-07 20:52  yozhik
+
+	* HMM/mhmm_em.m: Initial revision
+
+2004-02-04 15:53  yozhik
+
+	* BNT/examples/dynamic/mk_orig_bat_dbn.m: Initial import of code
+	  base from Kevin Murphy.
+
+2004-02-04 15:53  yozhik
+
+	* BNT/examples/dynamic/mk_orig_bat_dbn.m: Initial revision
+
+2004-02-03 23:42  yozhik
+
+	* BNT/inference/dynamic/@cbk_inf_engine/enter_soft_evidence.m:
+	  Initial import of code base from Kevin Murphy.
+
+2004-02-03 23:42  yozhik
+
+	* BNT/inference/dynamic/@cbk_inf_engine/enter_soft_evidence.m:
+	  Initial revision
+
+2004-02-03 09:15  yozhik
+
+	* GraphViz/Old/graphToDot.m: Initial import of code base from Kevin
+	  Murphy.
+
+2004-02-03 09:15  yozhik
+
+	* GraphViz/Old/graphToDot.m: Initial revision
+
+2004-01-30 18:57  yozhik
+
+	* BNT/examples/dynamic/mk_orig_water_dbn.m: Initial import of code
+	  base from Kevin Murphy.
+
+2004-01-30 18:57  yozhik
+
+	* BNT/examples/dynamic/mk_orig_water_dbn.m: Initial revision
+
+2004-01-27 13:08  yozhik
+
+	* GraphViz/: my_call.m, editGraphGUI.m: Initial import of code base
+	  from Kevin Murphy.
+
+2004-01-27 13:08  yozhik
+
+	* GraphViz/: my_call.m, editGraphGUI.m: Initial revision
+
+2004-01-27 13:01  yozhik
+
+	* GraphViz/Old/: dot_to_graph.m, draw_graph.m: Initial import of
+	  code base from Kevin Murphy.
+
+2004-01-27 13:01  yozhik
+
+	* GraphViz/Old/: dot_to_graph.m, draw_graph.m: Initial revision
+
+2004-01-27 12:47  yozhik
+
+	* GraphViz/Old/pre_pesha_graph_to_dot.m: Initial import of code
+	  base from Kevin Murphy.
+
+2004-01-27 12:47  yozhik
+
+	* GraphViz/Old/pre_pesha_graph_to_dot.m: Initial revision
+
+2004-01-27 12:42  yozhik
+
+	* GraphViz/Old/draw_dot.m: Initial import of code base from Kevin
+	  Murphy.
+
+2004-01-27 12:42  yozhik
+
+	* GraphViz/Old/draw_dot.m: Initial revision
+
+2004-01-14 17:06  yozhik
+
+	* BNT/examples/static/Models/mk_hmm_bnet.m: Initial import of code
+	  base from Kevin Murphy.
+
+2004-01-14 17:06  yozhik
+
+	* BNT/examples/static/Models/mk_hmm_bnet.m: Initial revision
+
+2004-01-12 12:53  yozhik
+
+	* BNT/inference/dynamic/@cbk_inf_engine/enter_evidence.m: Initial
+	  import of code base from Kevin Murphy.
+
+2004-01-12 12:53  yozhik
+
+	* BNT/inference/dynamic/@cbk_inf_engine/enter_evidence.m: Initial
+	  revision
+
+2004-01-04 17:23  yozhik
+
+	* BNT/inference/static/@belprop_mrf2_inf_engine/bp_mrf2.m: Initial
+	  import of code base from Kevin Murphy.
+
+2004-01-04 17:23  yozhik
+
+	* BNT/inference/static/@belprop_mrf2_inf_engine/bp_mrf2.m: Initial
+	  revision
+
+2003-12-15 22:17  yozhik
+
+	* BNT/inference/dynamic/@cbk_inf_engine/marginal_nodes.m: Initial
+	  import of code base from Kevin Murphy.
+
+2003-12-15 22:17  yozhik
+
+	* BNT/inference/dynamic/@cbk_inf_engine/marginal_nodes.m: Initial
+	  revision
+
+2003-10-31 14:37  yozhik
+
+	* BNT/inference/static/@jtree_inf_engine/jtree_inf_engine.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-10-31 14:37  yozhik
+
+	* BNT/inference/static/@jtree_inf_engine/jtree_inf_engine.m:
+	  Initial revision
+
+2003-09-05 07:06  yozhik
+
+	* BNT/learning/learn_struct_mcmc.m: Initial import of code base
+	  from Kevin Murphy.
+
+2003-09-05 07:06  yozhik
+
+	* BNT/learning/learn_struct_mcmc.m: Initial revision
+
+2003-08-18 14:50  yozhik
+
+	* BNT/learning/learn_params_dbn_em.m: Initial import of code base
+	  from Kevin Murphy.
+
+2003-08-18 14:50  yozhik
+
+	* BNT/learning/learn_params_dbn_em.m: Initial revision
+
+2003-07-30 06:37  yozhik
+
+	* BNT/potentials/: @mpot/set_domain_pot.m,
+	  @cgpot/Old/set_domain_pot.m, @cgpot/set_domain_pot.m: Initial
+	  import of code base from Kevin Murphy.
+
+2003-07-30 06:37  yozhik
+
+	* BNT/potentials/: @mpot/set_domain_pot.m,
+	  @cgpot/Old/set_domain_pot.m, @cgpot/set_domain_pot.m: Initial
+	  revision
+
+2003-07-28 19:44  yozhik
+
+	* BNT/inference/dynamic/@cbk_inf_engine/: dbn_init_bel.m,
+	  dbn_marginal_from_bel.m, dbn_update_bel.m, dbn_update_bel1.m,
+	  marginal_family.m, update_engine.m: Initial import of code base
+	  from Kevin Murphy.
+
+2003-07-28 19:44  yozhik
+
+	* BNT/inference/dynamic/@cbk_inf_engine/: dbn_init_bel.m,
+	  dbn_marginal_from_bel.m, dbn_update_bel.m, dbn_update_bel1.m,
+	  marginal_family.m, update_engine.m: Initial revision
+
+2003-07-28 15:44  yozhik
+
+	* GraphViz/: approxeq.m, process_options.m: Initial import of code
+	  base from Kevin Murphy.
+
+2003-07-28 15:44  yozhik
+
+	* GraphViz/: approxeq.m, process_options.m: Initial revision
+
+2003-07-24 06:41  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/update_ess.m: Initial import of code base
+	  from Kevin Murphy.
+
+2003-07-24 06:41  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/update_ess.m: Initial revision
+
+2003-07-22 15:55  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/update_ess.m: Initial import of code base
+	  from Kevin Murphy.
+
+2003-07-22 15:55  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/update_ess.m: Initial revision
+
+2003-07-06 13:57  yozhik
+
+	* BNT/inference/static/@pearl_inf_engine/bethe_free_energy.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-07-06 13:57  yozhik
+
+	* BNT/inference/static/@pearl_inf_engine/bethe_free_energy.m:
+	  Initial revision
+
+2003-05-21 06:49  yozhik
+
+	* BNT/potentials/@scgpot/: complement_pot.m, normalize_pot.m,
+	  recursive_combine_pots.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-05-21 06:49  yozhik
+
+	* BNT/potentials/@scgpot/: complement_pot.m, normalize_pot.m,
+	  recursive_combine_pots.m: Initial revision
+
+2003-05-20 07:10  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/maximize_params.m: Initial import of code
+	  base from Kevin Murphy.
+
+2003-05-20 07:10  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/maximize_params.m: Initial revision
+
+2003-05-13 09:11  yozhik
+
+	* HMM/mhmm_em_demo.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-05-13 09:11  yozhik
+
+	* HMM/mhmm_em_demo.m: Initial revision
+
+2003-05-13 07:35  yozhik
+
+	* BNT/examples/dynamic/viterbi1.m: Initial import of code base from
+	  Kevin Murphy.
+
+2003-05-13 07:35  yozhik
+
+	* BNT/examples/dynamic/viterbi1.m: Initial revision
+
+2003-05-11 16:31  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/convert_to_table.m: Initial import of code
+	  base from Kevin Murphy.
+
+2003-05-11 16:31  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/convert_to_table.m: Initial revision
+
+2003-05-11 16:13  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/gaussian_CPD_params_given_dps.m: Initial
+	  import of code base from Kevin Murphy.
+
+2003-05-11 16:13  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/gaussian_CPD_params_given_dps.m: Initial
+	  revision
+
+2003-05-11 08:39  yozhik
+
+	* BNT/inference/static/@stab_cond_gauss_inf_engine/README: Initial
+	  import of code base from Kevin Murphy.
+
+2003-05-11 08:39  yozhik
+
+	* BNT/inference/static/@stab_cond_gauss_inf_engine/README: Initial
+	  revision
+
+2003-05-04 15:31  yozhik
+
+	* BNT/uninstallC_BNT.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-05-04 15:31  yozhik
+
+	* BNT/uninstallC_BNT.m: Initial revision
+
+2003-05-04 15:23  yozhik
+
+	* BNT/examples/dynamic/: dhmm1.m, ghmm1.m, mhmm1.m: Initial import
+	  of code base from Kevin Murphy.
+
+2003-05-04 15:23  yozhik
+
+	* BNT/examples/dynamic/: dhmm1.m, ghmm1.m, mhmm1.m: Initial
+	  revision
+
+2003-05-04 15:11  yozhik
+
+	* HMM/mhmm_logprob.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-05-04 15:11  yozhik
+
+	* HMM/mhmm_logprob.m: Initial revision
+
+2003-05-04 15:01  yozhik
+
+	* HMM/: dhmm_logprob.m, dhmm_em_online.m, dhmm_em_online_demo.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-05-04 15:01  yozhik
+
+	* HMM/: dhmm_logprob.m, dhmm_em_online.m, dhmm_em_online_demo.m:
+	  Initial revision
+
+2003-05-04 14:58  yozhik
+
+	* HMM/: pomdp_sample.m, dhmm_sample_endstate.m, dhmm_em_demo.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-05-04 14:58  yozhik
+
+	* HMM/: pomdp_sample.m, dhmm_sample_endstate.m, dhmm_em_demo.m:
+	  Initial revision
+
+2003-05-04 14:47  yozhik
+
+	*
+	  BNT/inference/online/@hmm_2TBN_inf_engine/private/mk_hmm_obs_lik_vec.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-05-04 14:47  yozhik
+
+	*
+	  BNT/inference/online/@hmm_2TBN_inf_engine/private/mk_hmm_obs_lik_vec.m:
+	  Initial revision
+
+2003-05-04 14:42  yozhik
+
+	*
+	  BNT/inference/dynamic/@hmm_inf_engine/private/mk_hmm_obs_lik_matrix.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-05-04 14:42  yozhik
+
+	*
+	  BNT/inference/dynamic/@hmm_inf_engine/private/mk_hmm_obs_lik_matrix.m:
+	  Initial revision
+
+2003-04-22 14:00  yozhik
+
+	* BNT/CPDs/@tabular_CPD/display.m: Initial import of code base from
+	  Kevin Murphy.
+
+2003-04-22 14:00  yozhik
+
+	* BNT/CPDs/@tabular_CPD/display.m: Initial revision
+
+2003-03-28 09:22  yozhik
+
+	* BNT/examples/dynamic/ho1.m: Initial import of code base from
+	  Kevin Murphy.
+
+2003-03-28 09:22  yozhik
+
+	* BNT/examples/dynamic/ho1.m: Initial revision
+
+2003-03-28 09:12  yozhik
+
+	*
+	  BNT/inference/static/@stab_cond_gauss_inf_engine/stab_cond_gauss_inf_engine.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-03-28 09:12  yozhik
+
+	*
+	  BNT/inference/static/@stab_cond_gauss_inf_engine/stab_cond_gauss_inf_engine.m:
+	  Initial revision
+
+2003-03-28 08:35  yozhik
+
+	* GraphViz/arrow.m: Initial import of code base from Kevin Murphy.
+
+2003-03-28 08:35  yozhik
+
+	* GraphViz/arrow.m: Initial revision
+
+2003-03-25 16:06  yozhik
+
+	* BNT/examples/static/Models/mk_asia_bnet.m: Initial import of code
+	  base from Kevin Murphy.
+
+2003-03-25 16:06  yozhik
+
+	* BNT/examples/static/Models/mk_asia_bnet.m: Initial revision
+
+2003-03-20 07:07  yozhik
+
+	* BNT/potentials/@scgpot/README: Initial import of code base from
+	  Kevin Murphy.
+
+2003-03-20 07:07  yozhik
+
+	* BNT/potentials/@scgpot/README: Initial revision
+
+2003-03-14 01:45  yozhik
+
+	*
+	  BNT/inference/dynamic/@stable_ho_inf_engine/stable_ho_inf_engine.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-03-14 01:45  yozhik
+
+	*
+	  BNT/inference/dynamic/@stable_ho_inf_engine/stable_ho_inf_engine.m:
+	  Initial revision
+
+2003-03-12 02:38  yozhik
+
+	*
+	  BNT/inference/static/@stab_cond_gauss_inf_engine/enter_evidence.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-03-12 02:38  yozhik
+
+	*
+	  BNT/inference/static/@stab_cond_gauss_inf_engine/enter_evidence.m:
+	  Initial revision
+
+2003-03-11 10:07  yozhik
+
+	* BNT/potentials/@scgpot/reduce_pot.m: Initial import of code base
+	  from Kevin Murphy.
+
+2003-03-11 10:07  yozhik
+
+	* BNT/potentials/@scgpot/reduce_pot.m: Initial revision
+
+2003-03-11 09:49  yozhik
+
+	* BNT/potentials/@scgpot/combine_pots.m: Initial import of code
+	  base from Kevin Murphy.
+
+2003-03-11 09:49  yozhik
+
+	* BNT/potentials/@scgpot/combine_pots.m: Initial revision
+
+2003-03-11 09:37  yozhik
+
+	* BNT/potentials/@scgcpot/reduce_pot.m: Initial import of code base
+	  from Kevin Murphy.
+
+2003-03-11 09:37  yozhik
+
+	* BNT/potentials/@scgcpot/reduce_pot.m: Initial revision
+
+2003-03-11 09:06  yozhik
+
+	* BNT/potentials/@scgpot/marginalize_pot.m: Initial import of code
+	  base from Kevin Murphy.
+
+2003-03-11 09:06  yozhik
+
+	* BNT/potentials/@scgpot/marginalize_pot.m: Initial revision
+
+2003-03-11 06:04  yozhik
+
+	* BNT/potentials/@scgpot/scgpot.m: Initial import of code base from
+	  Kevin Murphy.
+
+2003-03-11 06:04  yozhik
+
+	* BNT/potentials/@scgpot/scgpot.m: Initial revision
+
+2003-03-09 15:03  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/convert_to_pot.m: Initial import of code
+	  base from Kevin Murphy.
+
+2003-03-09 15:03  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/convert_to_pot.m: Initial revision
+
+2003-03-09 14:44  yozhik
+
+	* BNT/CPDs/@tabular_CPD/maximize_params.m: Initial import of code
+	  base from Kevin Murphy.
+
+2003-03-09 14:44  yozhik
+
+	* BNT/CPDs/@tabular_CPD/maximize_params.m: Initial revision
+
+2003-02-21 03:20  yozhik
+
+	*
+	  BNT/inference/static/@stab_cond_gauss_inf_engine/marginal_difclq_nodes.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-02-21 03:20  yozhik
+
+	*
+	  BNT/inference/static/@stab_cond_gauss_inf_engine/marginal_difclq_nodes.m:
+	  Initial revision
+
+2003-02-21 03:13  yozhik
+
+	*
+	  BNT/inference/static/@stab_cond_gauss_inf_engine/marginal_nodes.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-02-21 03:13  yozhik
+
+	*
+	  BNT/inference/static/@stab_cond_gauss_inf_engine/marginal_nodes.m:
+	  Initial revision
+
+2003-02-19 01:52  yozhik
+
+	* BNT/inference/dynamic/@stable_ho_inf_engine/: enter_evidence.m,
+	  marginal_family.m, marginal_nodes.m, test_ho_inf_enginge.m,
+	  update_engine.m: Initial import of code base from Kevin Murphy.
+
+2003-02-19 01:52  yozhik
+
+	* BNT/inference/dynamic/@stable_ho_inf_engine/: enter_evidence.m,
+	  marginal_family.m, marginal_nodes.m, test_ho_inf_enginge.m,
+	  update_engine.m: Initial revision
+
+2003-02-10 07:38  yozhik
+
+	* BNT/inference/static/@stab_cond_gauss_inf_engine/push.m: Initial
+	  import of code base from Kevin Murphy.
+
+2003-02-10 07:38  yozhik
+
+	* BNT/inference/static/@stab_cond_gauss_inf_engine/push.m: Initial
+	  revision
+
+2003-02-06 18:25  yozhik
+
+	* KPMtools/checkpsd.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-02-06 18:25  yozhik
+
+	* KPMtools/checkpsd.m: Initial revision
+
+2003-02-05 19:16  yozhik
+
+	* GraphViz/draw_hmm.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-02-05 19:16  yozhik
+
+	* GraphViz/draw_hmm.m: Initial revision
+
+2003-02-01 16:23  yozhik
+
+	* BNT/: general/dbn_to_hmm.m, learning/learn_params_dbn.m: Initial
+	  import of code base from Kevin Murphy.
+
+2003-02-01 16:23  yozhik
+
+	* BNT/: general/dbn_to_hmm.m, learning/learn_params_dbn.m: Initial
+	  revision
+
+2003-02-01 11:42  yozhik
+
+	* BNT/general/mk_dbn.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-02-01 11:42  yozhik
+
+	* BNT/general/mk_dbn.m: Initial revision
+
+2003-01-30 16:13  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/maximize_params_debug.m: Initial import of
+	  code base from Kevin Murphy.
+
+2003-01-30 16:13  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/maximize_params_debug.m: Initial revision
+
+2003-01-30 14:38  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/Old/maximize_params.m: Initial import of
+	  code base from Kevin Murphy.
+
+2003-01-30 14:38  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/Old/maximize_params.m: Initial revision
+
+2003-01-29 03:23  yozhik
+
+	*
+	  BNT/inference/static/@stab_cond_gauss_inf_engine/marginal_singleclq_nodes.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-01-29 03:23  yozhik
+
+	*
+	  BNT/inference/static/@stab_cond_gauss_inf_engine/marginal_singleclq_nodes.m:
+	  Initial revision
+
+2003-01-24 11:36  yozhik
+
+	* Kalman/sample_lds.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-01-24 11:36  yozhik
+
+	* Kalman/sample_lds.m: Initial revision
+
+2003-01-24 04:52  yozhik
+
+	* BNT/potentials/@scgpot/extension_pot.m: Initial import of code
+	  base from Kevin Murphy.
+
+2003-01-24 04:52  yozhik
+
+	* BNT/potentials/@scgpot/extension_pot.m: Initial revision
+
+2003-01-23 10:49  yozhik
+
+	* BNT/: general/convert_dbn_CPDs_to_tables1.m,
+	  inference/dynamic/@hmm_inf_engine/private/mk_hmm_obs_lik_vec.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-01-23 10:49  yozhik
+
+	* BNT/: general/convert_dbn_CPDs_to_tables1.m,
+	  inference/dynamic/@hmm_inf_engine/private/mk_hmm_obs_lik_vec.m:
+	  Initial revision
+
+2003-01-23 10:44  yozhik
+
+	* BNT/general/convert_dbn_CPDs_to_tables.m: Initial import of code
+	  base from Kevin Murphy.
+
+2003-01-23 10:44  yozhik
+
+	* BNT/general/convert_dbn_CPDs_to_tables.m: Initial revision
+
+2003-01-22 13:38  yozhik
+
+	* BNT/inference/dynamic/@hmm_inf_engine/enter_evidence.m: Initial
+	  import of code base from Kevin Murphy.
+
+2003-01-22 13:38  yozhik
+
+	* BNT/inference/dynamic/@hmm_inf_engine/enter_evidence.m: Initial
+	  revision
+
+2003-01-22 12:32  yozhik
+
+	* HMM/mc_sample_endstate.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-01-22 12:32  yozhik
+
+	* HMM/mc_sample_endstate.m: Initial revision
+
+2003-01-22 09:56  yozhik
+
+	* HMM/fixed_lag_smoother.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-01-22 09:56  yozhik
+
+	* HMM/fixed_lag_smoother.m: Initial revision
+
+2003-01-20 08:56  yozhik
+
+	* GraphViz/draw_graph_test.m: Initial import of code base from
+	  Kevin Murphy.
+
+2003-01-20 08:56  yozhik
+
+	* GraphViz/draw_graph_test.m: Initial revision
+
+2003-01-18 15:10  yozhik
+
+	* BNT/general/dsep_test.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-01-18 15:10  yozhik
+
+	* BNT/general/dsep_test.m: Initial revision
+
+2003-01-18 15:00  yozhik
+
+	* BNT/copyright.txt: Initial import of code base from Kevin Murphy.
+
+2003-01-18 15:00  yozhik
+
+	* BNT/copyright.txt: Initial revision
+
+2003-01-18 14:49  yozhik
+
+	* Kalman/tracking_demo.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-01-18 14:49  yozhik
+
+	* Kalman/tracking_demo.m: Initial revision
+
+2003-01-18 14:22  yozhik
+
+	* BNT/: examples/dummy, inference/dummy, inference/dynamic/dummy,
+	  inference/online/dummy, inference/static/dummy: Initial import of
+	  code base from Kevin Murphy.
+
+2003-01-18 14:22  yozhik
+
+	* BNT/: examples/dummy, inference/dummy, inference/dynamic/dummy,
+	  inference/online/dummy, inference/static/dummy: Initial revision
+
+2003-01-18 14:16  yozhik
+
+	* BNT/examples/dynamic/: ehmm1.m, jtree_clq_test.m: Initial import
+	  of code base from Kevin Murphy.
+
+2003-01-18 14:16  yozhik
+
+	* BNT/examples/dynamic/: ehmm1.m, jtree_clq_test.m: Initial
+	  revision
+
+2003-01-18 14:11  yozhik
+
+	* BNT/inference/static/:
+	  @jtree_sparse_inf_engine/jtree_sparse_inf_engine.m,
+	  @jtree_mnet_inf_engine/jtree_mnet_inf_engine.m: Initial import of
+	  code base from Kevin Murphy.
+
+2003-01-18 14:11  yozhik
+
+	* BNT/inference/static/:
+	  @jtree_sparse_inf_engine/jtree_sparse_inf_engine.m,
+	  @jtree_mnet_inf_engine/jtree_mnet_inf_engine.m: Initial revision
+
+2003-01-18 13:17  yozhik
+
+	* GraphViz/draw_dbn_test.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-01-18 13:17  yozhik
+
+	* GraphViz/draw_dbn_test.m: Initial revision
+
+2003-01-11 10:53  yozhik
+
+	* BNT/inference/static/@pearl_inf_engine/pearl_inf_engine.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-01-11 10:53  yozhik
+
+	* BNT/inference/static/@pearl_inf_engine/pearl_inf_engine.m:
+	  Initial revision
+
+2003-01-11 10:48  yozhik
+
+	* BNT/examples/dynamic/HHMM/Map/learn_map.m: Initial import of code
+	  base from Kevin Murphy.
+
+2003-01-11 10:48  yozhik
+
+	* BNT/examples/dynamic/HHMM/Map/learn_map.m: Initial revision
+
+2003-01-11 10:41  yozhik
+
+	* BNT/inference/dynamic/@jtree_dbn_inf_engine/enter_evidence.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-01-11 10:41  yozhik
+
+	* BNT/inference/dynamic/@jtree_dbn_inf_engine/enter_evidence.m:
+	  Initial revision
+
+2003-01-11 10:13  yozhik
+
+	* BNT/inference/dynamic/@bk_inf_engine/enter_soft_evidence.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-01-11 10:13  yozhik
+
+	* BNT/inference/dynamic/@bk_inf_engine/enter_soft_evidence.m:
+	  Initial revision
+
+2003-01-07 08:25  yozhik
+
+	* BNT/CPDs/@softmax_CPD/softmax_CPD.m: Initial import of code base
+	  from Kevin Murphy.
+
+2003-01-07 08:25  yozhik
+
+	* BNT/CPDs/@softmax_CPD/softmax_CPD.m: Initial revision
+
+2003-01-03 14:01  yozhik
+
+	*
+	  BNT/inference/static/@belprop_mrf2_inf_engine/belprop_mrf2_inf_engine.m:
+	  Initial import of code base from Kevin Murphy.
+
+2003-01-03 14:01  yozhik
+
+	*
+	  BNT/inference/static/@belprop_mrf2_inf_engine/belprop_mrf2_inf_engine.m:
+	  Initial revision
+
+2003-01-02 09:49  yozhik
+
+	* BNT/inference/static/@belprop_mrf2_inf_engine/find_mpe.m: Initial
+	  import of code base from Kevin Murphy.
+
+2003-01-02 09:49  yozhik
+
+	* BNT/inference/static/@belprop_mrf2_inf_engine/find_mpe.m: Initial
+	  revision
+
+2003-01-02 09:28  yozhik
+
+	* BNT/inference/static/@belprop_mrf2_inf_engine/: set_params.m,
+	  enter_soft_evidence.m: Initial import of code base from Kevin
+	  Murphy.
+
+2003-01-02 09:28  yozhik
+
+	* BNT/inference/static/@belprop_mrf2_inf_engine/: set_params.m,
+	  enter_soft_evidence.m: Initial revision
+
+2002-12-31 14:06  yozhik
+
+	* BNT/general/mk_mrf2.m: Initial import of code base from Kevin
+	  Murphy.
+
+2002-12-31 14:06  yozhik
+
+	* BNT/general/mk_mrf2.m: Initial revision
+
+2002-12-31 13:24  yozhik
+
+	* BNT/inference/static/@belprop_mrf2_inf_engine/marginal_nodes.m:
+	  Initial import of code base from Kevin Murphy.
+
+2002-12-31 13:24  yozhik
+
+	* BNT/inference/static/@belprop_mrf2_inf_engine/marginal_nodes.m:
+	  Initial revision
+
+2002-12-31 11:00  yozhik
+
+	* BNT/inference/static/@belprop_inf_engine/belprop_inf_engine.m:
+	  Initial import of code base from Kevin Murphy.
+
+2002-12-31 11:00  yozhik
+
+	* BNT/inference/static/@belprop_inf_engine/belprop_inf_engine.m:
+	  Initial revision
+
+2002-12-16 11:16  yozhik
+
+	* BNT/examples/dynamic/HHMM/remove_hhmm_end_state.m: Initial import
+	  of code base from Kevin Murphy.
+
+2002-12-16 11:16  yozhik
+
+	* BNT/examples/dynamic/HHMM/remove_hhmm_end_state.m: Initial
+	  revision
+
+2002-12-16 09:57  yozhik
+
+	* BNT/general/unroll_set.m: Initial import of code base from Kevin
+	  Murphy.
+
+2002-12-16 09:57  yozhik
+
+	* BNT/general/unroll_set.m: Initial revision
+
+2002-11-26 14:14  yozhik
+
+	* BNT/examples/dynamic/HHMM/Mgram/mgram3.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-11-26 14:14  yozhik
+
+	* BNT/examples/dynamic/HHMM/Mgram/mgram3.m: Initial revision
+
+2002-11-26 14:04  yozhik
+
+	* BNT/examples/dynamic/HHMM/Mgram/mgram2.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-11-26 14:04  yozhik
+
+	* BNT/examples/dynamic/HHMM/Mgram/mgram2.m: Initial revision
+
+2002-11-22 16:44  yozhik
+
+	* BNT/examples/dynamic/HHMM/Mgram/Old/mgram2.m: Initial import of
+	  code base from Kevin Murphy.
+
+2002-11-22 16:44  yozhik
+
+	* BNT/examples/dynamic/HHMM/Mgram/Old/mgram2.m: Initial revision
+
+2002-11-22 15:59  yozhik
+
+	* BNT/examples/dynamic/HHMM/Mgram/mgram1.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-11-22 15:59  yozhik
+
+	* BNT/examples/dynamic/HHMM/Mgram/mgram1.m: Initial revision
+
+2002-11-22 15:51  yozhik
+
+	* BNT/inference/dynamic/@jtree_dbn_inf_engine/marginal_nodes.m:
+	  Initial import of code base from Kevin Murphy.
+
+2002-11-22 15:51  yozhik
+
+	* BNT/inference/dynamic/@jtree_dbn_inf_engine/marginal_nodes.m:
+	  Initial revision
+
+2002-11-22 15:07  yozhik
+
+	* BNT/examples/dynamic/HHMM/Mgram/: num2letter.m, letter2num.m:
+	  Initial import of code base from Kevin Murphy.
+
+2002-11-22 15:07  yozhik
+
+	* BNT/examples/dynamic/HHMM/Mgram/: num2letter.m, letter2num.m:
+	  Initial revision
+
+2002-11-22 14:35  yozhik
+
+	* BNT/general/convert_dbn_CPDs_to_pots.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-11-22 14:35  yozhik
+
+	* BNT/general/convert_dbn_CPDs_to_pots.m: Initial revision
+
+2002-11-22 13:45  yozhik
+
+	* HMM/mk_rightleft_transmat.m: Initial import of code base from
+	  Kevin Murphy.
+
+2002-11-22 13:45  yozhik
+
+	* HMM/mk_rightleft_transmat.m: Initial revision
+
+2002-11-14 12:33  yozhik
+
+	* BNT/examples/dynamic/water2.m: Initial import of code base from
+	  Kevin Murphy.
+
+2002-11-14 12:33  yozhik
+
+	* BNT/examples/dynamic/water2.m: Initial revision
+
+2002-11-14 12:07  yozhik
+
+	* BNT/examples/dynamic/water1.m: Initial import of code base from
+	  Kevin Murphy.
+
+2002-11-14 12:07  yozhik
+
+	* BNT/examples/dynamic/water1.m: Initial revision
+
+2002-11-14 12:02  yozhik
+
+	* BNT/inference/: online/@hmm_2TBN_inf_engine/marginal_nodes.m,
+	  dynamic/@hmm_inf_engine/marginal_nodes.m,
+	  online/@hmm_2TBN_inf_engine/hmm_2TBN_inf_engine.m,
+	  dynamic/@hmm_inf_engine/hmm_inf_engine.m,
+	  dynamic/@hmm_inf_engine/marginal_family.m,
+	  online/@hmm_2TBN_inf_engine/marginal_family.m: Initial import of
+	  code base from Kevin Murphy.
+
+2002-11-14 12:02  yozhik
+
+	* BNT/inference/: online/@hmm_2TBN_inf_engine/marginal_nodes.m,
+	  dynamic/@hmm_inf_engine/marginal_nodes.m,
+	  online/@hmm_2TBN_inf_engine/hmm_2TBN_inf_engine.m,
+	  dynamic/@hmm_inf_engine/hmm_inf_engine.m,
+	  dynamic/@hmm_inf_engine/marginal_family.m,
+	  online/@hmm_2TBN_inf_engine/marginal_family.m: Initial revision
+
+2002-11-14 08:31  yozhik
+
+	* BNT/inference/:
+	  online/@jtree_2TBN_inf_engine/jtree_2TBN_inf_engine.m,
+	  dynamic/@jtree_dbn_inf_engine/jtree_dbn_inf_engine.m: Initial
+	  import of code base from Kevin Murphy.
+
+2002-11-14 08:31  yozhik
+
+	* BNT/inference/:
+	  online/@jtree_2TBN_inf_engine/jtree_2TBN_inf_engine.m,
+	  dynamic/@jtree_dbn_inf_engine/jtree_dbn_inf_engine.m: Initial
+	  revision
+
+2002-11-13 17:01  yozhik
+
+	* BNT/examples/: static/qmr2.m, dynamic/arhmm1.m: Initial import of
+	  code base from Kevin Murphy.
+
+2002-11-13 17:01  yozhik
+
+	* BNT/examples/: static/qmr2.m, dynamic/arhmm1.m: Initial revision
+
+2002-11-03 08:44  yozhik
+
+	* BNT/examples/static/Models/mk_alarm_bnet.m: Initial import of
+	  code base from Kevin Murphy.
+
+2002-11-03 08:44  yozhik
+
+	* BNT/examples/static/Models/mk_alarm_bnet.m: Initial revision
+
+2002-11-01 16:32  yozhik
+
+	* Kalman/kalman_forward_backward.m: Initial import of code base
+	  from Kevin Murphy.
+
+2002-11-01 16:32  yozhik
+
+	* Kalman/kalman_forward_backward.m: Initial revision
+
+2002-10-23 08:17  yozhik
+
+	* Kalman/learning_demo.m: Initial import of code base from Kevin
+	  Murphy.
+
+2002-10-23 08:17  yozhik
+
+	* Kalman/learning_demo.m: Initial revision
+
+2002-10-18 13:05  yozhik
+
+	* BNT/inference/static/@pearl_inf_engine/marginal_family.m: Initial
+	  import of code base from Kevin Murphy.
+
+2002-10-18 13:05  yozhik
+
+	* BNT/inference/static/@pearl_inf_engine/marginal_family.m: Initial
+	  revision
+
+2002-10-10 16:45  yozhik
+
+	* BNT/examples/dynamic/jtree_clq_test2.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-10-10 16:45  yozhik
+
+	* BNT/examples/dynamic/jtree_clq_test2.m: Initial revision
+
+2002-10-10 16:14  yozhik
+
+	* BNT/examples/dynamic/: mk_mildew_dbn.m, mk_uffe_dbn.m: Initial
+	  import of code base from Kevin Murphy.
+
+2002-10-10 16:14  yozhik
+
+	* BNT/examples/dynamic/: mk_mildew_dbn.m, mk_uffe_dbn.m: Initial
+	  revision
+
+2002-10-09 13:36  yozhik
+
+	* BNT/examples/dynamic/mk_ps_from_clqs.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-10-09 13:36  yozhik
+
+	* BNT/examples/dynamic/mk_ps_from_clqs.m: Initial revision
+
+2002-10-07 06:26  yozhik
+
+	* BNT/CPDs/@deterministic_CPD/deterministic_CPD.m: Initial import
+	  of code base from Kevin Murphy.
+
+2002-10-07 06:26  yozhik
+
+	* BNT/CPDs/@deterministic_CPD/deterministic_CPD.m: Initial revision
+
+2002-10-02 08:39  yozhik
+
+	* BNT/potentials/Tables/marg_tableC.c: Initial import of code base
+	  from Kevin Murphy.
+
+2002-10-02 08:39  yozhik
+
+	* BNT/potentials/Tables/marg_tableC.c: Initial revision
+
+2002-10-02 08:28  yozhik
+
+	* BNT/potentials/Tables/: mult_by_tableM.m, mult_by_table2.m:
+	  Initial import of code base from Kevin Murphy.
+
+2002-10-02 08:28  yozhik
+
+	* BNT/potentials/Tables/: mult_by_tableM.m, mult_by_table2.m:
+	  Initial revision
+
+2002-10-01 14:33  yozhik
+
+	* BNT/potentials/Tables/mult_by_tableC.c: Initial import of code
+	  base from Kevin Murphy.
+
+2002-10-01 14:33  yozhik
+
+	* BNT/potentials/Tables/mult_by_tableC.c: Initial revision
+
+2002-10-01 14:23  yozhik
+
+	* BNT/potentials/Tables/mult_by_table.c: Initial import of code
+	  base from Kevin Murphy.
+
+2002-10-01 14:23  yozhik
+
+	* BNT/potentials/Tables/mult_by_table.c: Initial revision
+
+2002-10-01 14:20  yozhik
+
+	* BNT/potentials/Tables/repmat_and_mult.c: Initial import of code
+	  base from Kevin Murphy.
+
+2002-10-01 14:20  yozhik
+
+	* BNT/potentials/Tables/repmat_and_mult.c: Initial revision
+
+2002-10-01 12:04  yozhik
+
+	* BNT/potentials/@dpot/dpot.m: Initial import of code base from
+	  Kevin Murphy.
+
+2002-10-01 12:04  yozhik
+
+	* BNT/potentials/@dpot/dpot.m: Initial revision
+
+2002-10-01 11:21  yozhik
+
+	* BNT/examples/static/Belprop/belprop_polytree_discrete.m: Initial
+	  import of code base from Kevin Murphy.
+
+2002-10-01 11:21  yozhik
+
+	* BNT/examples/static/Belprop/belprop_polytree_discrete.m: Initial
+	  revision
+
+2002-10-01 11:16  yozhik
+
+	* BNT/examples/static/cmp_inference_static.m: Initial import of
+	  code base from Kevin Murphy.
+
+2002-10-01 11:16  yozhik
+
+	* BNT/examples/static/cmp_inference_static.m: Initial revision
+
+2002-10-01 10:39  yozhik
+
+	* BNT/potentials/Tables/marg_tableM.m: Initial import of code base
+	  from Kevin Murphy.
+
+2002-10-01 10:39  yozhik
+
+	* BNT/potentials/Tables/marg_tableM.m: Initial revision
+
+2002-09-29 03:21  yozhik
+
+	* BNT/potentials/Tables/mult_by_table_global.m: Initial import of
+	  code base from Kevin Murphy.
+
+2002-09-29 03:21  yozhik
+
+	* BNT/potentials/Tables/mult_by_table_global.m: Initial revision
+
+2002-09-26 01:39  yozhik
+
+	* BNT/learning/learn_struct_K2.m: Initial import of code base from
+	  Kevin Murphy.
+
+2002-09-26 01:39  yozhik
+
+	* BNT/learning/learn_struct_K2.m: Initial revision
+
+2002-09-24 15:43  yozhik
+
+	* BNT/: CPDs/@hhmm2Q_CPD/update_ess.m,
+	  CPDs/@hhmm2Q_CPD/maximize_params.m,
+	  examples/dynamic/HHMM/Map/disp_map_hhmm.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-09-24 15:43  yozhik
+
+	* BNT/: CPDs/@hhmm2Q_CPD/update_ess.m,
+	  CPDs/@hhmm2Q_CPD/maximize_params.m,
+	  examples/dynamic/HHMM/Map/disp_map_hhmm.m: Initial revision
+
+2002-09-24 15:34  yozhik
+
+	* BNT/CPDs/@hhmm2Q_CPD/: hhmm2Q_CPD.m, reset_ess.m: Initial import
+	  of code base from Kevin Murphy.
+
+2002-09-24 15:34  yozhik
+
+	* BNT/CPDs/@hhmm2Q_CPD/: hhmm2Q_CPD.m, reset_ess.m: Initial
+	  revision
+
+2002-09-24 15:13  yozhik
+
+	* BNT/examples/dynamic/HHMM/Map/mk_rnd_map_hhmm.m: Initial import
+	  of code base from Kevin Murphy.
+
+2002-09-24 15:13  yozhik
+
+	* BNT/examples/dynamic/HHMM/Map/mk_rnd_map_hhmm.m: Initial revision
+
+2002-09-24 06:10  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/maximize_params.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-09-24 06:10  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/maximize_params.m: Initial revision
+
+2002-09-24 06:02  yozhik
+
+	* BNT/examples/dynamic/HHMM/Map/sample_from_map.m: Initial import
+	  of code base from Kevin Murphy.
+
+2002-09-24 06:02  yozhik
+
+	* BNT/examples/dynamic/HHMM/Map/sample_from_map.m: Initial revision
+
+2002-09-24 05:46  yozhik
+
+	* BNT/CPDs/@hhmm2Q_CPD/CPD_to_CPT.m: Initial import of code base
+	  from Kevin Murphy.
+
+2002-09-24 05:46  yozhik
+
+	* BNT/CPDs/@hhmm2Q_CPD/CPD_to_CPT.m: Initial revision
+
+2002-09-24 03:49  yozhik
+
+	* BNT/examples/dynamic/HHMM/Map/mk_map_hhmm.m: Initial import of
+	  code base from Kevin Murphy.
+
+2002-09-24 03:49  yozhik
+
+	* BNT/examples/dynamic/HHMM/Map/mk_map_hhmm.m: Initial revision
+
+2002-09-24 00:02  yozhik
+
+	* BNT/examples/dynamic/HHMM/Map/Old/mk_map_hhmm.m: Initial import
+	  of code base from Kevin Murphy.
+
+2002-09-24 00:02  yozhik
+
+	* BNT/examples/dynamic/HHMM/Map/Old/mk_map_hhmm.m: Initial revision
+
+2002-09-23 21:19  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/hhmmQ_CPD.m: Initial import of code base from
+	  Kevin Murphy.
+
+2002-09-23 21:19  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/hhmmQ_CPD.m: Initial revision
+
+2002-09-23 19:58  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/update_CPT.m: Initial import of code base
+	  from Kevin Murphy.
+
+2002-09-23 19:58  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/update_CPT.m: Initial revision
+
+2002-09-23 19:30  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/Old/update_CPT.m: Initial import of code base
+	  from Kevin Murphy.
+
+2002-09-23 19:30  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/Old/update_CPT.m: Initial revision
+
+2002-09-21 14:37  yozhik
+
+	* BNT/examples/dynamic/HHMM/abcd_hhmm.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-09-21 14:37  yozhik
+
+	* BNT/examples/dynamic/HHMM/abcd_hhmm.m: Initial revision
+
+2002-09-21 13:58  yozhik
+
+	* BNT/examples/dynamic/HHMM/mk_hhmm.m: Initial import of code base
+	  from Kevin Murphy.
+
+2002-09-21 13:58  yozhik
+
+	* BNT/examples/dynamic/HHMM/mk_hhmm.m: Initial revision
+
+2002-09-10 10:44  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/log_prob_node.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-09-10 10:44  yozhik
+
+	* BNT/CPDs/@gaussian_CPD/log_prob_node.m: Initial revision
+
+2002-07-28 16:09  yozhik
+
+	* BNT/learning/: learn_struct_pdag_pc_constrain.m, CovMat.m:
+	  Initial import of code base from Kevin Murphy.
+
+2002-07-28 16:09  yozhik
+
+	* BNT/learning/: learn_struct_pdag_pc_constrain.m, CovMat.m:
+	  Initial revision
+
+2002-07-24 07:48  yozhik
+
+	* BNT/general/hodbn_to_bnet.m: Initial import of code base from
+	  Kevin Murphy.
+
+2002-07-24 07:48  yozhik
+
+	* BNT/general/hodbn_to_bnet.m: Initial revision
+
+2002-07-23 06:17  yozhik
+
+	* BNT/general/mk_higher_order_dbn.m: Initial import of code base
+	  from Kevin Murphy.
+
+2002-07-23 06:17  yozhik
+
+	* BNT/general/mk_higher_order_dbn.m: Initial revision
+
+2002-07-20 18:25  yozhik
+
+	* BNT/inference/online/@jtree_2TBN_inf_engine/set_fields.m: Initial
+	  import of code base from Kevin Murphy.
+
+2002-07-20 18:25  yozhik
+
+	* BNT/inference/online/@jtree_2TBN_inf_engine/set_fields.m: Initial
+	  revision
+
+2002-07-20 17:32  yozhik
+
+	* BNT/inference/online/@jtree_2TBN_inf_engine/back_mpe.m: Initial
+	  import of code base from Kevin Murphy.
+
+2002-07-20 17:32  yozhik
+
+	* BNT/inference/online/@jtree_2TBN_inf_engine/back_mpe.m: Initial
+	  revision
+
+2002-07-02 15:56  yozhik
+
+	* BNT/examples/dynamic/HHMM/Motif/learn_motif_hhmm.m: Initial
+	  import of code base from Kevin Murphy.
+
+2002-07-02 15:56  yozhik
+
+	* BNT/examples/dynamic/HHMM/Motif/learn_motif_hhmm.m: Initial
+	  revision
+
+2002-06-27 13:34  yozhik
+
+	* BNT/general/add_ev_to_dmarginal.m: Initial import of code base
+	  from Kevin Murphy.
+
+2002-06-27 13:34  yozhik
+
+	* BNT/general/add_ev_to_dmarginal.m: Initial revision
+
+2002-06-24 16:54  yozhik
+
+	* BNT/CPDs/@hhmmF_CPD/update_ess.m: Initial import of code base
+	  from Kevin Murphy.
+
+2002-06-24 16:54  yozhik
+
+	* BNT/CPDs/@hhmmF_CPD/update_ess.m: Initial revision
+
+2002-06-24 16:38  yozhik
+
+	* BNT/CPDs/@hhmmF_CPD/hhmmF_CPD.m: Initial import of code base from
+	  Kevin Murphy.
+
+2002-06-24 16:38  yozhik
+
+	* BNT/CPDs/@hhmmF_CPD/hhmmF_CPD.m: Initial revision
+
+2002-06-24 15:45  yozhik
+
+	* BNT/CPDs/@hhmmF_CPD/update_CPT.m: Initial import of code base
+	  from Kevin Murphy.
+
+2002-06-24 15:45  yozhik
+
+	* BNT/CPDs/@hhmmF_CPD/update_CPT.m: Initial revision
+
+2002-06-24 15:35  yozhik
+
+	* BNT/CPDs/@hhmmF_CPD/Old/: hhmmF_CPD.m, log_prior.m,
+	  maximize_params.m, reset_ess.m, update_CPT.m, update_ess.m:
+	  Initial import of code base from Kevin Murphy.
+
+2002-06-24 15:35  yozhik
+
+	* BNT/CPDs/@hhmmF_CPD/Old/: hhmmF_CPD.m, log_prior.m,
+	  maximize_params.m, reset_ess.m, update_CPT.m, update_ess.m:
+	  Initial revision
+
+2002-06-24 15:23  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/Old/update_ess4.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-06-24 15:23  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/Old/update_ess4.m: Initial revision
+
+2002-06-24 15:08  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/Old/update_ess3.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-06-24 15:08  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/Old/update_ess3.m: Initial revision
+
+2002-06-24 14:20  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/Old/update_ess2.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-06-24 14:20  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/Old/update_ess2.m: Initial revision
+
+2002-06-24 11:56  yozhik
+
+	* BNT/: general/mk_fgraph_given_ev.m,
+	  CPDs/mk_isolated_tabular_CPD.m: Initial import of code base from
+	  Kevin Murphy.
+
+2002-06-24 11:56  yozhik
+
+	* BNT/: general/mk_fgraph_given_ev.m,
+	  CPDs/mk_isolated_tabular_CPD.m: Initial revision
+
+2002-06-24 11:19  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/Old/: hhmmQ_CPD.m, log_prior.m,
+	  maximize_params.m, reset_ess.m, update_ess.m: Initial import of
+	  code base from Kevin Murphy.
+
+2002-06-24 11:19  yozhik
+
+	* BNT/CPDs/@hhmmQ_CPD/Old/: hhmmQ_CPD.m, log_prior.m,
+	  maximize_params.m, reset_ess.m, update_ess.m: Initial revision
+
+2002-06-20 13:30  yozhik
+
+	* BNT/examples/dynamic/mildew1.m: Initial import of code base from
+	  Kevin Murphy.
+
+2002-06-20 13:30  yozhik
+
+	* BNT/examples/dynamic/mildew1.m: Initial revision
+
+2002-06-19 17:18  yozhik
+
+	* BNT/: inference/dynamic/@hmm_inf_engine/find_mpe.m,
+	  examples/dynamic/HHMM/Square/learn_square_hhmm_cts.m: Initial
+	  import of code base from Kevin Murphy.
+
+2002-06-19 17:18  yozhik
+
+	* BNT/: inference/dynamic/@hmm_inf_engine/find_mpe.m,
+	  examples/dynamic/HHMM/Square/learn_square_hhmm_cts.m: Initial
+	  revision
+
+2002-06-19 17:03  yozhik
+
+	* BNT/examples/static/fgraph/fg1.m: Initial import of code base
+	  from Kevin Murphy.
+
+2002-06-19 17:03  yozhik
+
+	* BNT/examples/static/fgraph/fg1.m: Initial revision
+
+2002-06-19 16:59  yozhik
+
+	* BNT/: examples/static/softev1.m,
+	  inference/static/@belprop_fg_inf_engine/find_mpe.m: Initial
+	  import of code base from Kevin Murphy.
+
+2002-06-19 16:59  yozhik
+
+	* BNT/: examples/static/softev1.m,
+	  inference/static/@belprop_fg_inf_engine/find_mpe.m: Initial
+	  revision
+
+2002-06-19 15:11  yozhik
+
+	* BNT/inference/static/@var_elim_inf_engine/find_mpe.m: Initial
+	  import of code base from Kevin Murphy.
+
+2002-06-19 15:11  yozhik
+
+	* BNT/inference/static/@var_elim_inf_engine/find_mpe.m: Initial
+	  revision
+
+2002-06-19 15:08  yozhik
+
+	* BNT/: inference/static/@belprop_inf_engine/find_mpe.m,
+	  examples/static/mpe1.m, examples/static/mpe2.m: Initial import of
+	  code base from Kevin Murphy.
+
+2002-06-19 15:08  yozhik
+
+	* BNT/: inference/static/@belprop_inf_engine/find_mpe.m,
+	  examples/static/mpe1.m, examples/static/mpe2.m: Initial revision
+
+2002-06-19 15:04  yozhik
+
+	* BNT/inference/static/@var_elim_inf_engine/:
+	  var_elim_inf_engine.m, enter_evidence.m: Initial import of code
+	  base from Kevin Murphy.
+
+2002-06-19 15:04  yozhik
+
+	* BNT/inference/static/@var_elim_inf_engine/:
+	  var_elim_inf_engine.m, enter_evidence.m: Initial revision
+
+2002-06-19 14:56  yozhik
+
+	* BNT/inference/static/@global_joint_inf_engine/find_mpe.m: Initial
+	  import of code base from Kevin Murphy.
+
+2002-06-19 14:56  yozhik
+
+	* BNT/inference/static/@global_joint_inf_engine/find_mpe.m: Initial
+	  revision
+
+2002-06-17 16:49  yozhik
+
+	* BNT/inference/online/: @jtree_2TBN_inf_engine/back1_mpe.m,
+	  @smoother_engine/find_mpe.m: Initial import of code base from
+	  Kevin Murphy.
+
+2002-06-17 16:49  yozhik
+
+	* BNT/inference/online/: @jtree_2TBN_inf_engine/back1_mpe.m,
+	  @smoother_engine/find_mpe.m: Initial revision
+
+2002-06-17 16:46  yozhik
+
+	* BNT/inference/online/: @jtree_2TBN_inf_engine/fwd.m,
+	  @jtree_2TBN_inf_engine/fwd1.m, @smoother_engine/enter_evidence.m:
+	  Initial import of code base from Kevin Murphy.
+
+2002-06-17 16:46  yozhik
+
+	* BNT/inference/online/: @jtree_2TBN_inf_engine/fwd.m,
+	  @jtree_2TBN_inf_engine/fwd1.m, @smoother_engine/enter_evidence.m:
+	  Initial revision
+
+2002-06-17 16:38  yozhik
+
+	* BNT/inference/online/@jtree_2TBN_inf_engine/backT_mpe.m: Initial
+	  import of code base from Kevin Murphy.
+
+2002-06-17 16:38  yozhik
+
+	* BNT/inference/online/@jtree_2TBN_inf_engine/backT_mpe.m: Initial
+	  revision
+
+2002-06-17 16:34  yozhik
+
+	* BNT/inference/online/@jtree_2TBN_inf_engine/: back.m, backT.m,
+	  back1.m: Initial import of code base from Kevin Murphy.
+
+2002-06-17 16:34  yozhik
+
+	* BNT/inference/online/@jtree_2TBN_inf_engine/: back.m, backT.m,
+	  back1.m: Initial revision
+
+2002-06-17 16:14  yozhik
+
+	* BNT/inference/static/@jtree_inf_engine/: find_mpe.m,
+	  find_max_config.m: Initial import of code base from Kevin Murphy.
+
+2002-06-17 16:14  yozhik
+
+	* BNT/inference/static/@jtree_inf_engine/: find_mpe.m,
+	  find_max_config.m: Initial revision
+
+2002-06-17 14:58  yozhik
+
+	* BNT/general/Old/calc_mpe.m: Initial import of code base from
+	  Kevin Murphy.
+
+2002-06-17 14:58  yozhik
+
+	* BNT/general/Old/calc_mpe.m: Initial revision
+
+2002-06-17 13:59  yozhik
+
+	* BNT/inference/static/@jtree_inf_engine/: enter_evidence.m,
+	  distribute_evidence.m: Initial import of code base from Kevin
+	  Murphy.
+
+2002-06-17 13:59  yozhik
+
+	* BNT/inference/static/@jtree_inf_engine/: enter_evidence.m,
+	  distribute_evidence.m: Initial revision
+
+2002-06-17 13:29  yozhik
+
+	* BNT/inference/static/@jtree_mnet_inf_engine/: find_mpe.m,
+	  enter_evidence.m: Initial import of code base from Kevin Murphy.
+
+2002-06-17 13:29  yozhik
+
+	* BNT/inference/static/@jtree_mnet_inf_engine/: find_mpe.m,
+	  enter_evidence.m: Initial revision
+
+2002-06-16 13:01  yozhik
+
+	* BNT/general/is_mnet.m: Initial import of code base from Kevin
+	  Murphy.
+
+2002-06-16 13:01  yozhik
+
+	* BNT/general/is_mnet.m: Initial revision
+
+2002-06-16 12:52  yozhik
+
+	* BNT/general/mk_mnet.m: Initial import of code base from Kevin
+	  Murphy.
+
+2002-06-16 12:52  yozhik
+
+	* BNT/general/mk_mnet.m: Initial revision
+
+2002-06-16 12:34  yozhik
+
+	* BNT/inference/static/@jtree_inf_engine/init_pot.m: Initial import
+	  of code base from Kevin Murphy.
+
+2002-06-16 12:34  yozhik
+
+	* BNT/inference/static/@jtree_inf_engine/init_pot.m: Initial
+	  revision
+
+2002-06-16 12:06  yozhik
+
+	* BNT/potentials/@dpot/find_most_prob_entry.m: Initial import of
+	  code base from Kevin Murphy.
+
+2002-06-16 12:06  yozhik
+
+	* BNT/potentials/@dpot/find_most_prob_entry.m: Initial revision
+
+2002-05-31 03:25  yozhik
+
+	* BNT/general/unroll_higher_order_topology.m: Initial import of
+	  code base from Kevin Murphy.
+
+2002-05-31 03:25  yozhik
+
+	* BNT/general/unroll_higher_order_topology.m: Initial revision
+
+2002-05-29 08:59  yozhik
+
+	* BNT/@assocarray/assocarray.m,
+	  BNT/CPDs/@boolean_CPD/boolean_CPD.m,
+	  BNT/CPDs/@discrete_CPD/CPD_to_lambda_msg.m,
+	  BNT/CPDs/@discrete_CPD/CPD_to_pi.m,
+	  BNT/CPDs/@discrete_CPD/CPD_to_scgpot.m,
+	  BNT/CPDs/@discrete_CPD/README,
+	  BNT/CPDs/@discrete_CPD/convert_CPD_to_table_hidden_ps.m,
+	  BNT/CPDs/@discrete_CPD/convert_obs_CPD_to_table.m,
+	  BNT/CPDs/@discrete_CPD/convert_to_sparse_table.c,
+	  BNT/CPDs/@discrete_CPD/convert_to_table.m,
+	  BNT/CPDs/@discrete_CPD/discrete_CPD.m,
+	  BNT/CPDs/@discrete_CPD/dom_sizes.m,
+	  BNT/CPDs/@discrete_CPD/log_prob_node.m,
+	  BNT/CPDs/@discrete_CPD/prob_node.m,
+	  BNT/CPDs/@discrete_CPD/sample_node.m,
+	  BNT/CPDs/@discrete_CPD/Old/convert_to_pot.m,
+	  BNT/CPDs/@discrete_CPD/Old/convert_to_table.m,
+	  BNT/CPDs/@discrete_CPD/Old/prob_CPD.m,
+	  BNT/CPDs/@discrete_CPD/Old/prob_node.m,
+	  BNT/CPDs/@discrete_CPD/private/prod_CPT_and_pi_msgs.m,
+	  BNT/CPDs/@gaussian_CPD/CPD_to_lambda_msg.m,
+	  BNT/CPDs/@gaussian_CPD/CPD_to_pi.m,
+	  BNT/CPDs/@gaussian_CPD/CPD_to_scgpot.m,
+	  BNT/CPDs/@gaussian_CPD/adjustable_CPD.m,
+	  BNT/CPDs/@gaussian_CPD/convert_CPD_to_table_hidden_ps.m,
+	  BNT/CPDs/@gaussian_CPD/display.m,
+	  BNT/CPDs/@gaussian_CPD/get_field.m,
+	  BNT/CPDs/@gaussian_CPD/reset_ess.m,
+	  BNT/CPDs/@gaussian_CPD/sample_node.m,
+	  BNT/CPDs/@gaussian_CPD/set_fields.m,
+	  BNT/CPDs/@gaussian_CPD/Old/CPD_to_lambda_msg.m,
+	  BNT/CPDs/@gaussian_CPD/Old/gaussian_CPD.m,
+	  BNT/CPDs/@gaussian_CPD/Old/log_prob_node.m,
+	  BNT/CPDs/@gaussian_CPD/Old/update_ess.m,
+	  BNT/CPDs/@gaussian_CPD/Old/update_tied_ess.m,
+	  BNT/CPDs/@gaussian_CPD/private/CPD_to_linear_gaussian.m,
+	  BNT/CPDs/@generic_CPD/README,
+	  BNT/CPDs/@generic_CPD/adjustable_CPD.m,
+	  BNT/CPDs/@generic_CPD/display.m,
+	  BNT/CPDs/@generic_CPD/generic_CPD.m,
+	  BNT/CPDs/@generic_CPD/log_prior.m,
+	  BNT/CPDs/@generic_CPD/set_clamped.m,
+	  BNT/CPDs/@generic_CPD/Old/BIC_score_CPD.m,
+	  BNT/CPDs/@generic_CPD/Old/CPD_to_dpots.m,
+	  BNT/CPDs/@gmux_CPD/CPD_to_lambda_msg.m,
+	  BNT/CPDs/@gmux_CPD/convert_to_pot.m,
+	  BNT/CPDs/@gmux_CPD/CPD_to_pi.m, BNT/CPDs/@gmux_CPD/display.m,
+	  BNT/CPDs/@gmux_CPD/gmux_CPD.m, BNT/CPDs/@gmux_CPD/sample_node.m,
+	  BNT/CPDs/@gmux_CPD/Old/gmux_CPD.m,
+	  BNT/CPDs/@hhmmF_CPD/log_prior.m,
+	  BNT/CPDs/@hhmmF_CPD/maximize_params.m,
+	  BNT/CPDs/@hhmmF_CPD/reset_ess.m, BNT/CPDs/@hhmmQ_CPD/log_prior.m,
+	  BNT/CPDs/@hhmmQ_CPD/reset_ess.m,
+	  BNT/CPDs/@mlp_CPD/convert_to_table.m,
+	  BNT/CPDs/@mlp_CPD/maximize_params.m, BNT/CPDs/@mlp_CPD/mlp_CPD.m,
+	  BNT/CPDs/@mlp_CPD/reset_ess.m, BNT/CPDs/@mlp_CPD/update_ess.m,
+	  BNT/CPDs/@noisyor_CPD/CPD_to_lambda_msg.m,
+	  BNT/CPDs/@noisyor_CPD/CPD_to_pi.m,
+	  BNT/CPDs/@noisyor_CPD/noisyor_CPD.m,
+	  BNT/CPDs/@noisyor_CPD/private/sum_prod_CPD_and_pi_msgs.m,
+	  BNT/CPDs/@root_CPD/CPD_to_pi.m,
+	  BNT/CPDs/@root_CPD/convert_to_pot.m,
+	  BNT/CPDs/@root_CPD/log_marg_prob_node.m,
+	  BNT/CPDs/@root_CPD/log_prob_node.m,
+	  BNT/CPDs/@root_CPD/root_CPD.m, BNT/CPDs/@root_CPD/sample_node.m,
+	  BNT/CPDs/@root_CPD/Old/CPD_to_CPT.m,
+	  BNT/CPDs/@softmax_CPD/convert_to_pot.m,
+	  BNT/CPDs/@softmax_CPD/display.m,
+	  BNT/CPDs/@softmax_CPD/get_field.m,
+	  BNT/CPDs/@softmax_CPD/maximize_params.m,
+	  BNT/CPDs/@softmax_CPD/reset_ess.m,
+	  BNT/CPDs/@softmax_CPD/sample_node.m,
+	  BNT/CPDs/@softmax_CPD/set_fields.m,
+	  BNT/CPDs/@softmax_CPD/update_ess.m,
+	  BNT/CPDs/@softmax_CPD/private/extract_params.m,
+	  BNT/CPDs/@tabular_CPD/CPD_to_CPT.m,
+	  BNT/CPDs/@tabular_CPD/bayes_update_params.m,
+	  BNT/CPDs/@tabular_CPD/log_nextcase_prob_node.m,
+	  BNT/CPDs/@tabular_CPD/log_prior.m,
+	  BNT/CPDs/@tabular_CPD/reset_ess.m,
+	  BNT/CPDs/@tabular_CPD/update_ess.m,
+	  BNT/CPDs/@tabular_CPD/update_ess_simple.m,
+	  BNT/CPDs/@tabular_CPD/Old/BIC_score_CPD.m,
+	  BNT/CPDs/@tabular_CPD/Old/bayesian_score_CPD.m,
+	  BNT/CPDs/@tabular_CPD/Old/log_marg_prob_node_case.m,
+	  BNT/CPDs/@tabular_CPD/Old/mult_CPD_and_pi_msgs.m,
+	  BNT/CPDs/@tabular_CPD/Old/prob_CPT.m,
+	  BNT/CPDs/@tabular_CPD/Old/prob_node.m,
+	  BNT/CPDs/@tabular_CPD/Old/sample_node.m,
+	  BNT/CPDs/@tabular_CPD/Old/sample_node_single_case.m,
+	  BNT/CPDs/@tabular_CPD/Old/tabular_CPD.m,
+	  BNT/CPDs/@tabular_CPD/Old/update_params.m,
+	  BNT/CPDs/@tabular_decision_node/CPD_to_CPT.m,
+	  BNT/CPDs/@tabular_decision_node/display.m,
+	  BNT/CPDs/@tabular_decision_node/get_field.m,
+	  BNT/CPDs/@tabular_decision_node/set_fields.m,
+	  BNT/CPDs/@tabular_decision_node/tabular_decision_node.m,
+	  BNT/CPDs/@tabular_decision_node/Old/tabular_decision_node.m,
+	  BNT/CPDs/@tabular_kernel/convert_to_pot.m,
+	  BNT/CPDs/@tabular_kernel/convert_to_table.m,
+	  BNT/CPDs/@tabular_kernel/get_field.m,
+	  BNT/CPDs/@tabular_kernel/set_fields.m,
+	  BNT/CPDs/@tabular_kernel/tabular_kernel.m,
+	  BNT/CPDs/@tabular_kernel/Old/tabular_kernel.m,
+	  BNT/CPDs/@tabular_utility_node/convert_to_pot.m,
+	  BNT/CPDs/@tabular_utility_node/display.m,
+	  BNT/CPDs/@tabular_utility_node/tabular_utility_node.m,
+	  BNT/CPDs/@tree_CPD/display.m,
+	  BNT/CPDs/@tree_CPD/evaluate_tree_performance.m,
+	  BNT/CPDs/@tree_CPD/get_field.m,
+	  BNT/CPDs/@tree_CPD/learn_params.m, BNT/CPDs/@tree_CPD/readme.txt,
+	  BNT/CPDs/@tree_CPD/set_fields.m, BNT/CPDs/@tree_CPD/tree_CPD.m,
+	  BNT/CPDs/Old/@linear_gaussian_CPD/linear_gaussian_CPD.m,
+	  BNT/CPDs/Old/@linear_gaussian_CPD/log_marg_prob_node.m,
+	  BNT/CPDs/Old/@linear_gaussian_CPD/update_params_complete.m,
+	  BNT/CPDs/Old/@root_gaussian_CPD/log_marg_prob_node.m,
+	  BNT/CPDs/Old/@root_gaussian_CPD/root_gaussian_CPD.m,
+	  BNT/CPDs/Old/@root_gaussian_CPD/update_params_complete.m,
+	  BNT/CPDs/Old/@tabular_chance_node/CPD_to_upot.m,
+	  BNT/CPDs/Old/@tabular_chance_node/tabular_chance_node.m,
+	  BNT/examples/dynamic/bat1.m, BNT/examples/dynamic/bkff1.m,
+	  BNT/examples/dynamic/chmm1.m,
+	  BNT/examples/dynamic/cmp_inference_dbn.m,
+	  BNT/examples/dynamic/cmp_learning_dbn.m,
+	  BNT/examples/dynamic/cmp_online_inference.m,
+	  BNT/examples/dynamic/fhmm_infer.m,
+	  BNT/examples/dynamic/filter_test1.m,
+	  BNT/examples/dynamic/kalman1.m,
+	  BNT/examples/dynamic/kjaerulff1.m,
+	  BNT/examples/dynamic/loopy_dbn1.m,
+	  BNT/examples/dynamic/mk_collage_from_clqs.m,
+	  BNT/examples/dynamic/mk_fhmm.m, BNT/examples/dynamic/reveal1.m,
+	  BNT/examples/dynamic/scg_dbn.m,
+	  BNT/examples/dynamic/skf_data_assoc_gmux.m,
+	  BNT/examples/dynamic/HHMM/add_hhmm_end_state.m,
+	  BNT/examples/dynamic/HHMM/hhmm_jtree_clqs.m,
+	  BNT/examples/dynamic/HHMM/mk_hhmm_topo.m,
+	  BNT/examples/dynamic/HHMM/mk_hhmm_topo_F1.m,
+	  BNT/examples/dynamic/HHMM/pretty_print_hhmm_parse.m,
+	  BNT/examples/dynamic/HHMM/Motif/fixed_args_mk_motif_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Motif/mk_motif_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Motif/sample_motif_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Old/mk_abcd_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Old/mk_arrow_alpha_hhmm3.m,
+	  BNT/examples/dynamic/HHMM/Old/mk_hhmm2.m,
+	  BNT/examples/dynamic/HHMM/Old/mk_hhmm3.m,
+	  BNT/examples/dynamic/HHMM/Old/mk_hhmm3_args.m,
+	  BNT/examples/dynamic/HHMM/Old/motif_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Old/remove_hhmm_end_state.m,
+	  BNT/examples/dynamic/HHMM/Square/get_square_data.m,
+	  BNT/examples/dynamic/HHMM/Square/hhmm_inference.m,
+	  BNT/examples/dynamic/HHMM/Square/is_F2_true_D3.m,
+	  BNT/examples/dynamic/HHMM/Square/learn_square_hhmm_discrete.m,
+	  BNT/examples/dynamic/HHMM/Square/mk_square_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Square/plot_square_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Square/sample_square_hhmm_cts.m,
+	  BNT/examples/dynamic/HHMM/Square/sample_square_hhmm_discrete.m,
+	  BNT/examples/dynamic/HHMM/Square/square4.mat,
+	  BNT/examples/dynamic/HHMM/Square/square4_cases.mat,
+	  BNT/examples/dynamic/HHMM/Square/test_square_fig.m,
+	  BNT/examples/dynamic/HHMM/Square/test_square_fig.mat,
+	  BNT/examples/dynamic/HHMM/Square/Old/learn_square_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Square/Old/mk_square_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Square/Old/plot_square_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Square/Old/sample_square_hhmm.m,
+	  BNT/examples/dynamic/Old/chmm1.m,
+	  BNT/examples/dynamic/Old/cmp_inference.m,
+	  BNT/examples/dynamic/Old/kalman1.m,
+	  BNT/examples/dynamic/Old/old.water1.m,
+	  BNT/examples/dynamic/Old/online1.m,
+	  BNT/examples/dynamic/Old/online2.m,
+	  BNT/examples/dynamic/Old/scg_dbn.m,
+	  BNT/examples/dynamic/SLAM/mk_gmux_robot_dbn.m,
+	  BNT/examples/dynamic/SLAM/mk_linear_slam.m,
+	  BNT/examples/dynamic/SLAM/slam_kf.m,
+	  BNT/examples/dynamic/SLAM/slam_offline_loopy.m,
+	  BNT/examples/dynamic/SLAM/slam_partial_kf.m,
+	  BNT/examples/dynamic/SLAM/slam_stationary_loopy.m,
+	  BNT/examples/dynamic/SLAM/Old/offline_loopy_slam.m,
+	  BNT/examples/dynamic/SLAM/Old/paskin1.m,
+	  BNT/examples/dynamic/SLAM/Old/skf_data_assoc_gmux2.m,
+	  BNT/examples/dynamic/SLAM/Old/slam_kf.m,
+	  BNT/examples/limids/id1.m, BNT/examples/limids/pigs1.m,
+	  BNT/examples/static/cg1.m, BNT/examples/static/cg2.m,
+	  BNT/examples/static/discrete2.m, BNT/examples/static/discrete3.m,
+	  BNT/examples/static/fa1.m, BNT/examples/static/gaussian1.m,
+	  BNT/examples/static/gibbs_test1.m, BNT/examples/static/lw1.m,
+	  BNT/examples/static/mfa1.m, BNT/examples/static/mixexp1.m,
+	  BNT/examples/static/mixexp2.m, BNT/examples/static/mixexp3.m,
+	  BNT/examples/static/mog1.m, BNT/examples/static/qmr1.m,
+	  BNT/examples/static/sample1.m, BNT/examples/static/softmax1.m,
+	  BNT/examples/static/Belprop/belprop_loop1_discrete.m,
+	  BNT/examples/static/Belprop/belprop_loop1_gauss.m,
+	  BNT/examples/static/Belprop/belprop_loopy_cg.m,
+	  BNT/examples/static/Belprop/belprop_loopy_discrete.m,
+	  BNT/examples/static/Belprop/belprop_loopy_gauss.m,
+	  BNT/examples/static/Belprop/belprop_polytree_cg.m,
+	  BNT/examples/static/Belprop/belprop_polytree_gauss.m,
+	  BNT/examples/static/Belprop/bp1.m,
+	  BNT/examples/static/Belprop/gmux1.m,
+	  BNT/examples/static/Brutti/Belief_IOhmm.m,
+	  BNT/examples/static/Brutti/Belief_hmdt.m,
+	  BNT/examples/static/Brutti/Belief_hme.m,
+	  BNT/examples/static/Brutti/Sigmoid_Belief.m,
+	  BNT/examples/static/HME/HMEforMatlab.jpg,
+	  BNT/examples/static/HME/README, BNT/examples/static/HME/fhme.m,
+	  BNT/examples/static/HME/gen_data.m,
+	  BNT/examples/static/HME/hme_class_plot.m,
+	  BNT/examples/static/HME/hme_reg_plot.m,
+	  BNT/examples/static/HME/hme_topobuilder.m,
+	  BNT/examples/static/HME/test_data_class.mat,
+	  BNT/examples/static/HME/test_data_class2.mat,
+	  BNT/examples/static/HME/test_data_reg.mat,
+	  BNT/examples/static/HME/train_data_class.mat,
+	  BNT/examples/static/HME/train_data_reg.mat,
+	  BNT/examples/static/Misc/mixexp_data.txt,
+	  BNT/examples/static/Misc/mixexp_graddesc.m,
+	  BNT/examples/static/Misc/mixexp_plot.m,
+	  BNT/examples/static/Misc/sprinkler.bif,
+	  BNT/examples/static/Models/mk_cancer_bnet.m,
+	  BNT/examples/static/Models/mk_car_bnet.m,
+	  BNT/examples/static/Models/mk_ideker_bnet.m,
+	  BNT/examples/static/Models/mk_incinerator_bnet.m,
+	  BNT/examples/static/Models/mk_markov_chain_bnet.m,
+	  BNT/examples/static/Models/mk_minimal_qmr_bnet.m,
+	  BNT/examples/static/Models/mk_qmr_bnet.m,
+	  BNT/examples/static/Models/mk_vstruct_bnet.m,
+	  BNT/examples/static/Models/Old/mk_hmm_bnet.m,
+	  BNT/examples/static/SCG/scg1.m, BNT/examples/static/SCG/scg2.m,
+	  BNT/examples/static/SCG/scg3.m,
+	  BNT/examples/static/SCG/scg_3node.m,
+	  BNT/examples/static/SCG/scg_unstable.m,
+	  BNT/examples/static/StructLearn/bic1.m,
+	  BNT/examples/static/StructLearn/cooper_yoo.m,
+	  BNT/examples/static/StructLearn/k2demo1.m,
+	  BNT/examples/static/StructLearn/mcmc1.m,
+	  BNT/examples/static/StructLearn/pc1.m,
+	  BNT/examples/static/StructLearn/pc2.m,
+	  BNT/examples/static/Zoubin/README,
+	  BNT/examples/static/Zoubin/csum.m,
+	  BNT/examples/static/Zoubin/ffa.m,
+	  BNT/examples/static/Zoubin/mfa.m,
+	  BNT/examples/static/Zoubin/mfa_cl.m,
+	  BNT/examples/static/Zoubin/mfademo.m,
+	  BNT/examples/static/Zoubin/rdiv.m,
+	  BNT/examples/static/Zoubin/rprod.m,
+	  BNT/examples/static/Zoubin/rsum.m,
+	  BNT/examples/static/dtree/test_housing.m,
+	  BNT/examples/static/dtree/test_restaurants.m,
+	  BNT/examples/static/dtree/test_zoo1.m,
+	  BNT/examples/static/dtree/tmp.dot,
+	  BNT/examples/static/dtree/transform_data_into_bnt_format.m,
+	  BNT/examples/static/fgraph/fg2.m,
+	  BNT/examples/static/fgraph/fg3.m,
+	  BNT/examples/static/fgraph/fg_mrf1.m,
+	  BNT/examples/static/fgraph/fg_mrf2.m,
+	  BNT/general/bnet_to_fgraph.m,
+	  BNT/general/compute_fwd_interface.m,
+	  BNT/general/compute_interface_nodes.m,
+	  BNT/general/compute_minimal_interface.m,
+	  BNT/general/dbn_to_bnet.m,
+	  BNT/general/determine_elim_constraints.m,
+	  BNT/general/do_intervention.m, BNT/general/dsep.m,
+	  BNT/general/enumerate_scenarios.m, BNT/general/fgraph_to_bnet.m,
+	  BNT/general/log_lik_complete.m,
+	  BNT/general/log_marg_lik_complete.m, BNT/general/mk_bnet.m,
+	  BNT/general/mk_fgraph.m, BNT/general/mk_limid.m,
+	  BNT/general/mk_mutilated_samples.m,
+	  BNT/general/mk_slice_and_half_dbn.m,
+	  BNT/general/partition_dbn_nodes.m,
+	  BNT/general/sample_bnet_nocell.m, BNT/general/sample_dbn.m,
+	  BNT/general/score_bnet_complete.m,
+	  BNT/general/unroll_dbn_topology.m,
+	  BNT/general/Old/bnet_to_gdl_graph.m,
+	  BNT/general/Old/calc_mpe_bucket.m,
+	  BNT/general/Old/calc_mpe_dbn.m,
+	  BNT/general/Old/calc_mpe_given_inf_engine.m,
+	  BNT/general/Old/calc_mpe_global.m,
+	  BNT/general/Old/compute_interface_nodes.m,
+	  BNT/general/Old/mk_gdl_graph.m, GraphViz/draw_dbn.m,
+	  GraphViz/make_layout.m, BNT/license.gpl.txt,
+	  BNT/general/add_evidence_to_gmarginal.m,
+	  BNT/inference/@inf_engine/bnet_from_engine.m,
+	  BNT/inference/@inf_engine/get_field.m,
+	  BNT/inference/@inf_engine/inf_engine.m,
+	  BNT/inference/@inf_engine/marginal_family.m,
+	  BNT/inference/@inf_engine/set_fields.m,
+	  BNT/inference/@inf_engine/update_engine.m,
+	  BNT/inference/@inf_engine/Old/marginal_family_pot.m,
+	  BNT/inference/@inf_engine/Old/observed_nodes.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/bk_ff_hmm_inf_engine.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/dbn_init_bel.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/dbn_marginal_from_bel.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/dbn_predict_bel.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/dbn_update_bel.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/dbn_update_bel1.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/bk_ff_fb.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/combine_marginals_into_joint.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/dbn_to_hmm.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/mk_hmm_obs_lik_mat.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/mk_hmm_obs_lik_vec.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/mk_hmm_obs_lik_vec1.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/project_joint_onto_marginals.m,
+	  BNT/inference/dynamic/@bk_inf_engine/bk_inf_engine.m,
+	  BNT/inference/dynamic/@bk_inf_engine/dbn_init_bel.m,
+	  BNT/inference/dynamic/@bk_inf_engine/dbn_marginal_from_bel.m,
+	  BNT/inference/dynamic/@bk_inf_engine/dbn_update_bel.m,
+	  BNT/inference/dynamic/@bk_inf_engine/dbn_update_bel1.m,
+	  BNT/inference/dynamic/@bk_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@bk_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@bk_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@bk_inf_engine/update_engine.m,
+	  BNT/inference/dynamic/@ff_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@ff_inf_engine/enter_soft_evidence.m,
+	  BNT/inference/dynamic/@ff_inf_engine/ff_inf_engine.m,
+	  BNT/inference/dynamic/@ff_inf_engine/filter_evidence.m,
+	  BNT/inference/dynamic/@ff_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@ff_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@ff_inf_engine/smooth_evidence.m,
+	  BNT/inference/dynamic/@ff_inf_engine/Old/enter_soft_evidence.m,
+	  BNT/inference/dynamic/@ff_inf_engine/Old/enter_soft_evidence1.m,
+	  BNT/inference/dynamic/@ff_inf_engine/Old/marginal_family.m,
+	  BNT/inference/dynamic/@frontier_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@frontier_inf_engine/enter_soft_evidence.m,
+	  BNT/inference/dynamic/@frontier_inf_engine/frontier_inf_engine.m,
+	  BNT/inference/dynamic/@frontier_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@frontier_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@frontier_inf_engine/set_fwdback.m,
+	  BNT/inference/dynamic/@hmm_inf_engine/update_engine.m,
+	  BNT/inference/dynamic/@hmm_inf_engine/Old/dhmm_inf_engine.m,
+	  BNT/inference/dynamic/@hmm_inf_engine/Old/marginal_family.m,
+	  BNT/inference/dynamic/@hmm_inf_engine/Old/marginal_nodes.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Broken/enter_soft_evidence1.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Broken/enter_soft_evidence2.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Broken/enter_soft_evidence3.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Broken/enter_soft_evidence4.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Broken/marginal_nodes.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Old/enter_soft_evidence_nonint.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Old/enter_soft_evidence_trans.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Old/jtree_dbn_inf_engine.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Old/jtree_dbn_inf_engine1.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Old/jtree_dbn_inf_engine2.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/jtree_unrolled_dbn_inf_engine.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/update_engine.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/Old/marginal_family.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/Old/marginal_nodes.m,
+	  BNT/inference/dynamic/@kalman_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@kalman_inf_engine/kalman_inf_engine.m,
+	  BNT/inference/dynamic/@kalman_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@kalman_inf_engine/update_engine.m,
+	  BNT/inference/dynamic/@kalman_inf_engine/private/dbn_to_lds.m,
+	  BNT/inference/dynamic/@kalman_inf_engine/private/extract_params_from_gbn.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/enter_soft_ev.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/pearl_dbn_inf_engine.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/correct_smooth.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/enter_evidence.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/filter_evidence.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/filter_evidence_obj_oriented.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/smooth_evidence.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/smooth_evidence_fast.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/wrong_smooth.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/private/init_pearl_dbn_ev_msgs.m,
+	  BNT/inference/dynamic/@pearl_unrolled_dbn_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@pearl_unrolled_dbn_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@pearl_unrolled_dbn_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@pearl_unrolled_dbn_inf_engine/pearl_unrolled_dbn_inf_engine.m,
+	  BNT/inference/dynamic/@pearl_unrolled_dbn_inf_engine/update_engine.m,
+	  BNT/inference/online/@filter_engine/bnet_from_engine.m,
+	  BNT/inference/online/@filter_engine/enter_evidence.m,
+	  BNT/inference/online/@filter_engine/filter_engine.m,
+	  BNT/inference/online/@filter_engine/marginal_family.m,
+	  BNT/inference/online/@filter_engine/marginal_nodes.m,
+	  BNT/inference/online/@hmm_2TBN_inf_engine/back.m,
+	  BNT/inference/online/@hmm_2TBN_inf_engine/backT.m,
+	  BNT/inference/online/@hmm_2TBN_inf_engine/fwd.m,
+	  BNT/inference/online/@hmm_2TBN_inf_engine/fwd1.m,
+	  BNT/inference/online/@hmm_2TBN_inf_engine/update_engine.m,
+	  BNT/inference/online/@jtree_2TBN_inf_engine/marginal_family.m,
+	  BNT/inference/online/@jtree_2TBN_inf_engine/marginal_nodes.m,
+	  BNT/inference/online/@jtree_2TBN_inf_engine/Old/jtree_2TBN_inf_engine.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/back.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/back1.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/backT.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/enter_evidence.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/fwd.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/fwd1.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/jtree_sparse_2TBN_inf_engine.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/marginal_family.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/marginal_nodes.m,
+	  BNT/inference/online/@smoother_engine/bnet_from_engine.m,
+	  BNT/inference/online/@smoother_engine/marginal_family.m,
+	  BNT/inference/online/@smoother_engine/marginal_nodes.m,
+	  BNT/inference/online/@smoother_engine/smoother_engine.m,
+	  BNT/inference/online/@smoother_engine/update_engine.m,
+	  BNT/inference/static/@belprop_fg_inf_engine/belprop_fg_inf_engine.m,
+	  BNT/inference/static/@belprop_fg_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@belprop_fg_inf_engine/loopy_converged.m,
+	  BNT/inference/static/@belprop_fg_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@belprop_fg_inf_engine/set_params.m,
+	  BNT/inference/static/@belprop_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@belprop_inf_engine/loopy_converged.m,
+	  BNT/inference/static/@belprop_inf_engine/marginal_family.m,
+	  BNT/inference/static/@belprop_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@belprop_inf_engine/Old/belprop_gdl_inf_engine.m,
+	  BNT/inference/static/@belprop_inf_engine/Old/belprop_inf_engine_nostr.m,
+	  BNT/inference/static/@belprop_inf_engine/Old/enter_evidence.m,
+	  BNT/inference/static/@belprop_inf_engine/Old/enter_evidence1.m,
+	  BNT/inference/static/@belprop_inf_engine/Old/marginal_domain.m,
+	  BNT/inference/static/@belprop_inf_engine/private/junk,
+	  BNT/inference/static/@belprop_inf_engine/private/parallel_protocol.m,
+	  BNT/inference/static/@belprop_inf_engine/private/tree_protocol.m,
+	  BNT/inference/static/@cond_gauss_inf_engine/cond_gauss_inf_engine.m,
+	  BNT/inference/static/@cond_gauss_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@cond_gauss_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@enumerative_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@enumerative_inf_engine/enumerative_inf_engine.m,
+	  BNT/inference/static/@enumerative_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@gaussian_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@gaussian_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@gaussian_inf_engine/private/extract_params_from_gbn.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/gibbs_sampling_inf_engine.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/CPT.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/compute_children.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/compute_families.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/compute_families_dbn.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/compute_posterior.c,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/compute_posterior_dbn.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/compute_strides.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/get_cpts.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/get_slice_dbn.c,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/get_slice_dbn.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/my_sample_discrete.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/sample_single_discrete.c,
+	  BNT/inference/static/@global_joint_inf_engine/global_joint_inf_engine.m,
+	  BNT/inference/static/@global_joint_inf_engine/marginal_family.m,
+	  BNT/inference/static/@jtree_inf_engine/cliques_from_engine.m,
+	  BNT/inference/static/@jtree_inf_engine/clq_containing_nodes.m,
+	  BNT/inference/static/@jtree_inf_engine/collect_evidence.m,
+	  BNT/inference/static/@jtree_inf_engine/enter_soft_evidence.m,
+	  BNT/inference/static/@jtree_inf_engine/marginal_family.m,
+	  BNT/inference/static/@jtree_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@jtree_inf_engine/set_fields.m,
+	  BNT/inference/static/@jtree_inf_engine/Old/collect_evidence.m,
+	  BNT/inference/static/@jtree_inf_engine/Old/distribute_evidence.m,
+	  BNT/inference/static/@jtree_inf_engine/Old/enter_evidence.m,
+	  BNT/inference/static/@jtree_inf_engine/Old/enter_soft_evidence.m,
+	  BNT/inference/static/@jtree_limid_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@jtree_limid_inf_engine/jtree_limid_inf_engine.m,
+	  BNT/inference/static/@jtree_limid_inf_engine/marginal_family.m,
+	  BNT/inference/static/@jtree_limid_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@jtree_limid_inf_engine/Old/marginal_family.m,
+	  BNT/inference/static/@jtree_limid_inf_engine/Old/marginal_nodes_SS.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/cliques_from_engine.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/clq_containing_nodes.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/collect_evidence.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/distribute_evidence.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/enter_soft_evidence.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/init_pot.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/marginal_family.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/set_fields.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/old/collect_evidence.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/old/distribute_evidence.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/old/init_pot.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/old/init_pot1.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/old/init_pot1.m,
+	  BNT/inference/static/@likelihood_weighting_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@likelihood_weighting_inf_engine/likelihood_weighting_inf_engine.m,
+	  BNT/inference/static/@likelihood_weighting_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@pearl_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@pearl_inf_engine/loopy_converged.m,
+	  BNT/inference/static/@pearl_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@pearl_inf_engine/private/compute_bel.m,
+	  BNT/inference/static/@pearl_inf_engine/private/prod_lambda_msgs.m,
+	  BNT/inference/static/@pearl_inf_engine/private/tree_protocol.m,
+	  BNT/inference/static/@quickscore_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@quickscore_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@quickscore_inf_engine/quickscore_inf_engine.m,
+	  BNT/inference/static/@quickscore_inf_engine/private/C_quickscore.c,
+	  BNT/inference/static/@quickscore_inf_engine/private/nr.h,
+	  BNT/inference/static/@quickscore_inf_engine/private/nrutil.c,
+	  BNT/inference/static/@quickscore_inf_engine/private/nrutil.h,
+	  BNT/inference/static/@quickscore_inf_engine/private/quickscore.m,
+	  BNT/learning/bayes_update_params.m,
+	  BNT/learning/bic_score_family.m,
+	  BNT/learning/compute_cooling_schedule.m,
+	  BNT/learning/dirichlet_score_family.m,
+	  BNT/learning/kpm_learn_struct_mcmc.m,
+	  BNT/learning/learn_params_em.m,
+	  BNT/learning/learn_struct_dbn_reveal.m,
+	  BNT/learning/learn_struct_pdag_ic_star.m,
+	  BNT/learning/mcmc_sample_to_hist.m, BNT/learning/mk_schedule.m,
+	  BNT/learning/mk_tetrad_data_file.m,
+	  BNT/learning/score_dags_old.m, HMM/dhmm_logprob_brute_force.m,
+	  HMM/dhmm_logprob_path.m, HMM/mdp_sample.m, Kalman/AR_to_SS.m,
+	  Kalman/SS_to_AR.m, Kalman/convert_to_lagged_form.m,
+	  Kalman/ensure_AR.m, Kalman/eval_AR_perf.m,
+	  Kalman/kalman_filter.m, Kalman/kalman_smoother.m,
+	  Kalman/kalman_update.m, Kalman/learn_AR.m,
+	  Kalman/learn_AR_diagonal.m, Kalman/learn_kalman.m,
+	  Kalman/smooth_update.m,
+	  BNT/general/convert_dbn_CPDs_to_tables_slow.m,
+	  BNT/general/dispcpt.m, BNT/general/linear_gaussian_to_cpot.m,
+	  BNT/general/partition_matrix_vec_3.m,
+	  BNT/general/shrink_obs_dims_in_gaussian.m,
+	  BNT/general/shrink_obs_dims_in_table.m,
+	  BNT/potentials/CPD_to_pot.m, BNT/potentials/README,
+	  BNT/potentials/check_for_cd_arcs.m,
+	  BNT/potentials/determine_pot_type.m,
+	  BNT/potentials/mk_initial_pot.m,
+	  BNT/potentials/@cgpot/cg_can_to_mom.m,
+	  BNT/potentials/@cgpot/cg_mom_to_can.m,
+	  BNT/potentials/@cgpot/cgpot.m, BNT/potentials/@cgpot/display.m,
+	  BNT/potentials/@cgpot/divide_by_pot.m,
+	  BNT/potentials/@cgpot/domain_pot.m,
+	  BNT/potentials/@cgpot/enter_cts_evidence_pot.m,
+	  BNT/potentials/@cgpot/enter_discrete_evidence_pot.m,
+	  BNT/potentials/@cgpot/marginalize_pot.m,
+	  BNT/potentials/@cgpot/multiply_by_pot.m,
+	  BNT/potentials/@cgpot/multiply_pots.m,
+	  BNT/potentials/@cgpot/normalize_pot.m,
+	  BNT/potentials/@cgpot/pot_to_marginal.m,
+	  BNT/potentials/@cgpot/Old/normalize_pot.m,
+	  BNT/potentials/@cgpot/Old/simple_marginalize_pot.m,
+	  BNT/potentials/@cpot/cpot.m, BNT/potentials/@cpot/cpot_to_mpot.m,
+	  BNT/potentials/@cpot/display.m,
+	  BNT/potentials/@cpot/divide_by_pot.m,
+	  BNT/potentials/@cpot/domain_pot.m,
+	  BNT/potentials/@cpot/enter_cts_evidence_pot.m,
+	  BNT/potentials/@cpot/marginalize_pot.m,
+	  BNT/potentials/@cpot/multiply_by_pot.m,
+	  BNT/potentials/@cpot/multiply_pots.m,
+	  BNT/potentials/@cpot/normalize_pot.m,
+	  BNT/potentials/@cpot/pot_to_marginal.m,
+	  BNT/potentials/@cpot/rescale_pot.m,
+	  BNT/potentials/@cpot/set_domain_pot.m,
+	  BNT/potentials/@cpot/Old/cpot_to_mpot.m,
+	  BNT/potentials/@cpot/Old/normalize_pot.convert.m,
+	  BNT/potentials/@dpot/approxeq_pot.m,
+	  BNT/potentials/@dpot/display.m,
+	  BNT/potentials/@dpot/domain_pot.m,
+	  BNT/potentials/@dpot/dpot_to_table.m,
+	  BNT/potentials/@dpot/get_fields.m,
+	  BNT/potentials/@dpot/multiply_pots.m,
+	  BNT/potentials/@dpot/pot_to_marginal.m,
+	  BNT/potentials/@dpot/set_domain_pot.m,
+	  BNT/potentials/@mpot/display.m,
+	  BNT/potentials/@mpot/marginalize_pot.m,
+	  BNT/potentials/@mpot/mpot.m, BNT/potentials/@mpot/mpot_to_cpot.m,
+	  BNT/potentials/@mpot/normalize_pot.m,
+	  BNT/potentials/@mpot/pot_to_marginal.m,
+	  BNT/potentials/@mpot/rescale_pot.m,
+	  BNT/potentials/@upot/approxeq_pot.m,
+	  BNT/potentials/@upot/display.m,
+	  BNT/potentials/@upot/divide_by_pot.m,
+	  BNT/potentials/@upot/marginalize_pot.m,
+	  BNT/potentials/@upot/multiply_by_pot.m,
+	  BNT/potentials/@upot/normalize_pot.m,
+	  BNT/potentials/@upot/pot_to_marginal.m,
+	  BNT/potentials/@upot/upot.m,
+	  BNT/potentials/@upot/upot_to_opt_policy.m,
+	  BNT/potentials/Old/comp_eff_node_sizes.m,
+	  BNT/potentials/Tables/divide_by_sparse_table.c,
+	  BNT/potentials/Tables/divide_by_table.c,
+	  BNT/potentials/Tables/marg_sparse_table.c,
+	  BNT/potentials/Tables/marg_table.c,
+	  BNT/potentials/Tables/mult_by_sparse_table.c,
+	  BNT/potentials/Tables/rep_mult.c, HMM/mk_leftright_transmat.m:
+	  Initial import of code base from Kevin Murphy.
+
+2002-05-29 08:59  yozhik
+
+	* BNT/@assocarray/assocarray.m,
+	  BNT/CPDs/@boolean_CPD/boolean_CPD.m,
+	  BNT/CPDs/@discrete_CPD/CPD_to_lambda_msg.m,
+	  BNT/CPDs/@discrete_CPD/CPD_to_pi.m,
+	  BNT/CPDs/@discrete_CPD/CPD_to_scgpot.m,
+	  BNT/CPDs/@discrete_CPD/README,
+	  BNT/CPDs/@discrete_CPD/convert_CPD_to_table_hidden_ps.m,
+	  BNT/CPDs/@discrete_CPD/convert_obs_CPD_to_table.m,
+	  BNT/CPDs/@discrete_CPD/convert_to_sparse_table.c,
+	  BNT/CPDs/@discrete_CPD/convert_to_table.m,
+	  BNT/CPDs/@discrete_CPD/discrete_CPD.m,
+	  BNT/CPDs/@discrete_CPD/dom_sizes.m,
+	  BNT/CPDs/@discrete_CPD/log_prob_node.m,
+	  BNT/CPDs/@discrete_CPD/prob_node.m,
+	  BNT/CPDs/@discrete_CPD/sample_node.m,
+	  BNT/CPDs/@discrete_CPD/Old/convert_to_pot.m,
+	  BNT/CPDs/@discrete_CPD/Old/convert_to_table.m,
+	  BNT/CPDs/@discrete_CPD/Old/prob_CPD.m,
+	  BNT/CPDs/@discrete_CPD/Old/prob_node.m,
+	  BNT/CPDs/@discrete_CPD/private/prod_CPT_and_pi_msgs.m,
+	  BNT/CPDs/@gaussian_CPD/CPD_to_lambda_msg.m,
+	  BNT/CPDs/@gaussian_CPD/CPD_to_pi.m,
+	  BNT/CPDs/@gaussian_CPD/CPD_to_scgpot.m,
+	  BNT/CPDs/@gaussian_CPD/adjustable_CPD.m,
+	  BNT/CPDs/@gaussian_CPD/convert_CPD_to_table_hidden_ps.m,
+	  BNT/CPDs/@gaussian_CPD/display.m,
+	  BNT/CPDs/@gaussian_CPD/get_field.m,
+	  BNT/CPDs/@gaussian_CPD/reset_ess.m,
+	  BNT/CPDs/@gaussian_CPD/sample_node.m,
+	  BNT/CPDs/@gaussian_CPD/set_fields.m,
+	  BNT/CPDs/@gaussian_CPD/Old/CPD_to_lambda_msg.m,
+	  BNT/CPDs/@gaussian_CPD/Old/gaussian_CPD.m,
+	  BNT/CPDs/@gaussian_CPD/Old/log_prob_node.m,
+	  BNT/CPDs/@gaussian_CPD/Old/update_ess.m,
+	  BNT/CPDs/@gaussian_CPD/Old/update_tied_ess.m,
+	  BNT/CPDs/@gaussian_CPD/private/CPD_to_linear_gaussian.m,
+	  BNT/CPDs/@generic_CPD/README,
+	  BNT/CPDs/@generic_CPD/adjustable_CPD.m,
+	  BNT/CPDs/@generic_CPD/display.m,
+	  BNT/CPDs/@generic_CPD/generic_CPD.m,
+	  BNT/CPDs/@generic_CPD/log_prior.m,
+	  BNT/CPDs/@generic_CPD/set_clamped.m,
+	  BNT/CPDs/@generic_CPD/Old/BIC_score_CPD.m,
+	  BNT/CPDs/@generic_CPD/Old/CPD_to_dpots.m,
+	  BNT/CPDs/@gmux_CPD/CPD_to_lambda_msg.m,
+	  BNT/CPDs/@gmux_CPD/convert_to_pot.m,
+	  BNT/CPDs/@gmux_CPD/CPD_to_pi.m, BNT/CPDs/@gmux_CPD/display.m,
+	  BNT/CPDs/@gmux_CPD/gmux_CPD.m, BNT/CPDs/@gmux_CPD/sample_node.m,
+	  BNT/CPDs/@gmux_CPD/Old/gmux_CPD.m,
+	  BNT/CPDs/@hhmmF_CPD/log_prior.m,
+	  BNT/CPDs/@hhmmF_CPD/maximize_params.m,
+	  BNT/CPDs/@hhmmF_CPD/reset_ess.m, BNT/CPDs/@hhmmQ_CPD/log_prior.m,
+	  BNT/CPDs/@hhmmQ_CPD/reset_ess.m,
+	  BNT/CPDs/@mlp_CPD/convert_to_table.m,
+	  BNT/CPDs/@mlp_CPD/maximize_params.m, BNT/CPDs/@mlp_CPD/mlp_CPD.m,
+	  BNT/CPDs/@mlp_CPD/reset_ess.m, BNT/CPDs/@mlp_CPD/update_ess.m,
+	  BNT/CPDs/@noisyor_CPD/CPD_to_lambda_msg.m,
+	  BNT/CPDs/@noisyor_CPD/CPD_to_pi.m,
+	  BNT/CPDs/@noisyor_CPD/noisyor_CPD.m,
+	  BNT/CPDs/@noisyor_CPD/private/sum_prod_CPD_and_pi_msgs.m,
+	  BNT/CPDs/@root_CPD/CPD_to_pi.m,
+	  BNT/CPDs/@root_CPD/convert_to_pot.m,
+	  BNT/CPDs/@root_CPD/log_marg_prob_node.m,
+	  BNT/CPDs/@root_CPD/log_prob_node.m,
+	  BNT/CPDs/@root_CPD/root_CPD.m, BNT/CPDs/@root_CPD/sample_node.m,
+	  BNT/CPDs/@root_CPD/Old/CPD_to_CPT.m,
+	  BNT/CPDs/@softmax_CPD/convert_to_pot.m,
+	  BNT/CPDs/@softmax_CPD/display.m,
+	  BNT/CPDs/@softmax_CPD/get_field.m,
+	  BNT/CPDs/@softmax_CPD/maximize_params.m,
+	  BNT/CPDs/@softmax_CPD/reset_ess.m,
+	  BNT/CPDs/@softmax_CPD/sample_node.m,
+	  BNT/CPDs/@softmax_CPD/set_fields.m,
+	  BNT/CPDs/@softmax_CPD/update_ess.m,
+	  BNT/CPDs/@softmax_CPD/private/extract_params.m,
+	  BNT/CPDs/@tabular_CPD/CPD_to_CPT.m,
+	  BNT/CPDs/@tabular_CPD/bayes_update_params.m,
+	  BNT/CPDs/@tabular_CPD/log_nextcase_prob_node.m,
+	  BNT/CPDs/@tabular_CPD/log_prior.m,
+	  BNT/CPDs/@tabular_CPD/reset_ess.m,
+	  BNT/CPDs/@tabular_CPD/update_ess.m,
+	  BNT/CPDs/@tabular_CPD/update_ess_simple.m,
+	  BNT/CPDs/@tabular_CPD/Old/BIC_score_CPD.m,
+	  BNT/CPDs/@tabular_CPD/Old/bayesian_score_CPD.m,
+	  BNT/CPDs/@tabular_CPD/Old/log_marg_prob_node_case.m,
+	  BNT/CPDs/@tabular_CPD/Old/mult_CPD_and_pi_msgs.m,
+	  BNT/CPDs/@tabular_CPD/Old/prob_CPT.m,
+	  BNT/CPDs/@tabular_CPD/Old/prob_node.m,
+	  BNT/CPDs/@tabular_CPD/Old/sample_node.m,
+	  BNT/CPDs/@tabular_CPD/Old/sample_node_single_case.m,
+	  BNT/CPDs/@tabular_CPD/Old/tabular_CPD.m,
+	  BNT/CPDs/@tabular_CPD/Old/update_params.m,
+	  BNT/CPDs/@tabular_decision_node/CPD_to_CPT.m,
+	  BNT/CPDs/@tabular_decision_node/display.m,
+	  BNT/CPDs/@tabular_decision_node/get_field.m,
+	  BNT/CPDs/@tabular_decision_node/set_fields.m,
+	  BNT/CPDs/@tabular_decision_node/tabular_decision_node.m,
+	  BNT/CPDs/@tabular_decision_node/Old/tabular_decision_node.m,
+	  BNT/CPDs/@tabular_kernel/convert_to_pot.m,
+	  BNT/CPDs/@tabular_kernel/convert_to_table.m,
+	  BNT/CPDs/@tabular_kernel/get_field.m,
+	  BNT/CPDs/@tabular_kernel/set_fields.m,
+	  BNT/CPDs/@tabular_kernel/tabular_kernel.m,
+	  BNT/CPDs/@tabular_kernel/Old/tabular_kernel.m,
+	  BNT/CPDs/@tabular_utility_node/convert_to_pot.m,
+	  BNT/CPDs/@tabular_utility_node/display.m,
+	  BNT/CPDs/@tabular_utility_node/tabular_utility_node.m,
+	  BNT/CPDs/@tree_CPD/display.m,
+	  BNT/CPDs/@tree_CPD/evaluate_tree_performance.m,
+	  BNT/CPDs/@tree_CPD/get_field.m,
+	  BNT/CPDs/@tree_CPD/learn_params.m, BNT/CPDs/@tree_CPD/readme.txt,
+	  BNT/CPDs/@tree_CPD/set_fields.m, BNT/CPDs/@tree_CPD/tree_CPD.m,
+	  BNT/CPDs/Old/@linear_gaussian_CPD/linear_gaussian_CPD.m,
+	  BNT/CPDs/Old/@linear_gaussian_CPD/log_marg_prob_node.m,
+	  BNT/CPDs/Old/@linear_gaussian_CPD/update_params_complete.m,
+	  BNT/CPDs/Old/@root_gaussian_CPD/log_marg_prob_node.m,
+	  BNT/CPDs/Old/@root_gaussian_CPD/root_gaussian_CPD.m,
+	  BNT/CPDs/Old/@root_gaussian_CPD/update_params_complete.m,
+	  BNT/CPDs/Old/@tabular_chance_node/CPD_to_upot.m,
+	  BNT/CPDs/Old/@tabular_chance_node/tabular_chance_node.m,
+	  BNT/examples/dynamic/bat1.m, BNT/examples/dynamic/bkff1.m,
+	  BNT/examples/dynamic/chmm1.m,
+	  BNT/examples/dynamic/cmp_inference_dbn.m,
+	  BNT/examples/dynamic/cmp_learning_dbn.m,
+	  BNT/examples/dynamic/cmp_online_inference.m,
+	  BNT/examples/dynamic/fhmm_infer.m,
+	  BNT/examples/dynamic/filter_test1.m,
+	  BNT/examples/dynamic/kalman1.m,
+	  BNT/examples/dynamic/kjaerulff1.m,
+	  BNT/examples/dynamic/loopy_dbn1.m,
+	  BNT/examples/dynamic/mk_collage_from_clqs.m,
+	  BNT/examples/dynamic/mk_fhmm.m, BNT/examples/dynamic/reveal1.m,
+	  BNT/examples/dynamic/scg_dbn.m,
+	  BNT/examples/dynamic/skf_data_assoc_gmux.m,
+	  BNT/examples/dynamic/HHMM/add_hhmm_end_state.m,
+	  BNT/examples/dynamic/HHMM/hhmm_jtree_clqs.m,
+	  BNT/examples/dynamic/HHMM/mk_hhmm_topo.m,
+	  BNT/examples/dynamic/HHMM/mk_hhmm_topo_F1.m,
+	  BNT/examples/dynamic/HHMM/pretty_print_hhmm_parse.m,
+	  BNT/examples/dynamic/HHMM/Motif/fixed_args_mk_motif_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Motif/mk_motif_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Motif/sample_motif_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Old/mk_abcd_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Old/mk_arrow_alpha_hhmm3.m,
+	  BNT/examples/dynamic/HHMM/Old/mk_hhmm2.m,
+	  BNT/examples/dynamic/HHMM/Old/mk_hhmm3.m,
+	  BNT/examples/dynamic/HHMM/Old/mk_hhmm3_args.m,
+	  BNT/examples/dynamic/HHMM/Old/motif_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Old/remove_hhmm_end_state.m,
+	  BNT/examples/dynamic/HHMM/Square/get_square_data.m,
+	  BNT/examples/dynamic/HHMM/Square/hhmm_inference.m,
+	  BNT/examples/dynamic/HHMM/Square/is_F2_true_D3.m,
+	  BNT/examples/dynamic/HHMM/Square/learn_square_hhmm_discrete.m,
+	  BNT/examples/dynamic/HHMM/Square/mk_square_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Square/plot_square_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Square/sample_square_hhmm_cts.m,
+	  BNT/examples/dynamic/HHMM/Square/sample_square_hhmm_discrete.m,
+	  BNT/examples/dynamic/HHMM/Square/square4.mat,
+	  BNT/examples/dynamic/HHMM/Square/square4_cases.mat,
+	  BNT/examples/dynamic/HHMM/Square/test_square_fig.m,
+	  BNT/examples/dynamic/HHMM/Square/test_square_fig.mat,
+	  BNT/examples/dynamic/HHMM/Square/Old/learn_square_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Square/Old/mk_square_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Square/Old/plot_square_hhmm.m,
+	  BNT/examples/dynamic/HHMM/Square/Old/sample_square_hhmm.m,
+	  BNT/examples/dynamic/Old/chmm1.m,
+	  BNT/examples/dynamic/Old/cmp_inference.m,
+	  BNT/examples/dynamic/Old/kalman1.m,
+	  BNT/examples/dynamic/Old/old.water1.m,
+	  BNT/examples/dynamic/Old/online1.m,
+	  BNT/examples/dynamic/Old/online2.m,
+	  BNT/examples/dynamic/Old/scg_dbn.m,
+	  BNT/examples/dynamic/SLAM/mk_gmux_robot_dbn.m,
+	  BNT/examples/dynamic/SLAM/mk_linear_slam.m,
+	  BNT/examples/dynamic/SLAM/slam_kf.m,
+	  BNT/examples/dynamic/SLAM/slam_offline_loopy.m,
+	  BNT/examples/dynamic/SLAM/slam_partial_kf.m,
+	  BNT/examples/dynamic/SLAM/slam_stationary_loopy.m,
+	  BNT/examples/dynamic/SLAM/Old/offline_loopy_slam.m,
+	  BNT/examples/dynamic/SLAM/Old/paskin1.m,
+	  BNT/examples/dynamic/SLAM/Old/skf_data_assoc_gmux2.m,
+	  BNT/examples/dynamic/SLAM/Old/slam_kf.m,
+	  BNT/examples/limids/id1.m, BNT/examples/limids/pigs1.m,
+	  BNT/examples/static/cg1.m, BNT/examples/static/cg2.m,
+	  BNT/examples/static/discrete2.m, BNT/examples/static/discrete3.m,
+	  BNT/examples/static/fa1.m, BNT/examples/static/gaussian1.m,
+	  BNT/examples/static/gibbs_test1.m, BNT/examples/static/lw1.m,
+	  BNT/examples/static/mfa1.m, BNT/examples/static/mixexp1.m,
+	  BNT/examples/static/mixexp2.m, BNT/examples/static/mixexp3.m,
+	  BNT/examples/static/mog1.m, BNT/examples/static/qmr1.m,
+	  BNT/examples/static/sample1.m, BNT/examples/static/softmax1.m,
+	  BNT/examples/static/Belprop/belprop_loop1_discrete.m,
+	  BNT/examples/static/Belprop/belprop_loop1_gauss.m,
+	  BNT/examples/static/Belprop/belprop_loopy_cg.m,
+	  BNT/examples/static/Belprop/belprop_loopy_discrete.m,
+	  BNT/examples/static/Belprop/belprop_loopy_gauss.m,
+	  BNT/examples/static/Belprop/belprop_polytree_cg.m,
+	  BNT/examples/static/Belprop/belprop_polytree_gauss.m,
+	  BNT/examples/static/Belprop/bp1.m,
+	  BNT/examples/static/Belprop/gmux1.m,
+	  BNT/examples/static/Brutti/Belief_IOhmm.m,
+	  BNT/examples/static/Brutti/Belief_hmdt.m,
+	  BNT/examples/static/Brutti/Belief_hme.m,
+	  BNT/examples/static/Brutti/Sigmoid_Belief.m,
+	  BNT/examples/static/HME/HMEforMatlab.jpg,
+	  BNT/examples/static/HME/README, BNT/examples/static/HME/fhme.m,
+	  BNT/examples/static/HME/gen_data.m,
+	  BNT/examples/static/HME/hme_class_plot.m,
+	  BNT/examples/static/HME/hme_reg_plot.m,
+	  BNT/examples/static/HME/hme_topobuilder.m,
+	  BNT/examples/static/HME/test_data_class.mat,
+	  BNT/examples/static/HME/test_data_class2.mat,
+	  BNT/examples/static/HME/test_data_reg.mat,
+	  BNT/examples/static/HME/train_data_class.mat,
+	  BNT/examples/static/HME/train_data_reg.mat,
+	  BNT/examples/static/Misc/mixexp_data.txt,
+	  BNT/examples/static/Misc/mixexp_graddesc.m,
+	  BNT/examples/static/Misc/mixexp_plot.m,
+	  BNT/examples/static/Misc/sprinkler.bif,
+	  BNT/examples/static/Models/mk_cancer_bnet.m,
+	  BNT/examples/static/Models/mk_car_bnet.m,
+	  BNT/examples/static/Models/mk_ideker_bnet.m,
+	  BNT/examples/static/Models/mk_incinerator_bnet.m,
+	  BNT/examples/static/Models/mk_markov_chain_bnet.m,
+	  BNT/examples/static/Models/mk_minimal_qmr_bnet.m,
+	  BNT/examples/static/Models/mk_qmr_bnet.m,
+	  BNT/examples/static/Models/mk_vstruct_bnet.m,
+	  BNT/examples/static/Models/Old/mk_hmm_bnet.m,
+	  BNT/examples/static/SCG/scg1.m, BNT/examples/static/SCG/scg2.m,
+	  BNT/examples/static/SCG/scg3.m,
+	  BNT/examples/static/SCG/scg_3node.m,
+	  BNT/examples/static/SCG/scg_unstable.m,
+	  BNT/examples/static/StructLearn/bic1.m,
+	  BNT/examples/static/StructLearn/cooper_yoo.m,
+	  BNT/examples/static/StructLearn/k2demo1.m,
+	  BNT/examples/static/StructLearn/mcmc1.m,
+	  BNT/examples/static/StructLearn/pc1.m,
+	  BNT/examples/static/StructLearn/pc2.m,
+	  BNT/examples/static/Zoubin/README,
+	  BNT/examples/static/Zoubin/csum.m,
+	  BNT/examples/static/Zoubin/ffa.m,
+	  BNT/examples/static/Zoubin/mfa.m,
+	  BNT/examples/static/Zoubin/mfa_cl.m,
+	  BNT/examples/static/Zoubin/mfademo.m,
+	  BNT/examples/static/Zoubin/rdiv.m,
+	  BNT/examples/static/Zoubin/rprod.m,
+	  BNT/examples/static/Zoubin/rsum.m,
+	  BNT/examples/static/dtree/test_housing.m,
+	  BNT/examples/static/dtree/test_restaurants.m,
+	  BNT/examples/static/dtree/test_zoo1.m,
+	  BNT/examples/static/dtree/tmp.dot,
+	  BNT/examples/static/dtree/transform_data_into_bnt_format.m,
+	  BNT/examples/static/fgraph/fg2.m,
+	  BNT/examples/static/fgraph/fg3.m,
+	  BNT/examples/static/fgraph/fg_mrf1.m,
+	  BNT/examples/static/fgraph/fg_mrf2.m,
+	  BNT/general/bnet_to_fgraph.m,
+	  BNT/general/compute_fwd_interface.m,
+	  BNT/general/compute_interface_nodes.m,
+	  BNT/general/compute_minimal_interface.m,
+	  BNT/general/dbn_to_bnet.m,
+	  BNT/general/determine_elim_constraints.m,
+	  BNT/general/do_intervention.m, BNT/general/dsep.m,
+	  BNT/general/enumerate_scenarios.m, BNT/general/fgraph_to_bnet.m,
+	  BNT/general/log_lik_complete.m,
+	  BNT/general/log_marg_lik_complete.m, BNT/general/mk_bnet.m,
+	  BNT/general/mk_fgraph.m, BNT/general/mk_limid.m,
+	  BNT/general/mk_mutilated_samples.m,
+	  BNT/general/mk_slice_and_half_dbn.m,
+	  BNT/general/partition_dbn_nodes.m,
+	  BNT/general/sample_bnet_nocell.m, BNT/general/sample_dbn.m,
+	  BNT/general/score_bnet_complete.m,
+	  BNT/general/unroll_dbn_topology.m,
+	  BNT/general/Old/bnet_to_gdl_graph.m,
+	  BNT/general/Old/calc_mpe_bucket.m,
+	  BNT/general/Old/calc_mpe_dbn.m,
+	  BNT/general/Old/calc_mpe_given_inf_engine.m,
+	  BNT/general/Old/calc_mpe_global.m,
+	  BNT/general/Old/compute_interface_nodes.m,
+	  BNT/general/Old/mk_gdl_graph.m, GraphViz/draw_dbn.m,
+	  GraphViz/make_layout.m, BNT/license.gpl.txt,
+	  BNT/general/add_evidence_to_gmarginal.m,
+	  BNT/inference/@inf_engine/bnet_from_engine.m,
+	  BNT/inference/@inf_engine/get_field.m,
+	  BNT/inference/@inf_engine/inf_engine.m,
+	  BNT/inference/@inf_engine/marginal_family.m,
+	  BNT/inference/@inf_engine/set_fields.m,
+	  BNT/inference/@inf_engine/update_engine.m,
+	  BNT/inference/@inf_engine/Old/marginal_family_pot.m,
+	  BNT/inference/@inf_engine/Old/observed_nodes.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/bk_ff_hmm_inf_engine.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/dbn_init_bel.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/dbn_marginal_from_bel.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/dbn_predict_bel.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/dbn_update_bel.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/dbn_update_bel1.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/bk_ff_fb.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/combine_marginals_into_joint.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/dbn_to_hmm.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/mk_hmm_obs_lik_mat.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/mk_hmm_obs_lik_vec.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/mk_hmm_obs_lik_vec1.m,
+	  BNT/inference/dynamic/@bk_ff_hmm_inf_engine/private/project_joint_onto_marginals.m,
+	  BNT/inference/dynamic/@bk_inf_engine/bk_inf_engine.m,
+	  BNT/inference/dynamic/@bk_inf_engine/dbn_init_bel.m,
+	  BNT/inference/dynamic/@bk_inf_engine/dbn_marginal_from_bel.m,
+	  BNT/inference/dynamic/@bk_inf_engine/dbn_update_bel.m,
+	  BNT/inference/dynamic/@bk_inf_engine/dbn_update_bel1.m,
+	  BNT/inference/dynamic/@bk_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@bk_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@bk_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@bk_inf_engine/update_engine.m,
+	  BNT/inference/dynamic/@ff_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@ff_inf_engine/enter_soft_evidence.m,
+	  BNT/inference/dynamic/@ff_inf_engine/ff_inf_engine.m,
+	  BNT/inference/dynamic/@ff_inf_engine/filter_evidence.m,
+	  BNT/inference/dynamic/@ff_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@ff_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@ff_inf_engine/smooth_evidence.m,
+	  BNT/inference/dynamic/@ff_inf_engine/Old/enter_soft_evidence.m,
+	  BNT/inference/dynamic/@ff_inf_engine/Old/enter_soft_evidence1.m,
+	  BNT/inference/dynamic/@ff_inf_engine/Old/marginal_family.m,
+	  BNT/inference/dynamic/@frontier_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@frontier_inf_engine/enter_soft_evidence.m,
+	  BNT/inference/dynamic/@frontier_inf_engine/frontier_inf_engine.m,
+	  BNT/inference/dynamic/@frontier_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@frontier_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@frontier_inf_engine/set_fwdback.m,
+	  BNT/inference/dynamic/@hmm_inf_engine/update_engine.m,
+	  BNT/inference/dynamic/@hmm_inf_engine/Old/dhmm_inf_engine.m,
+	  BNT/inference/dynamic/@hmm_inf_engine/Old/marginal_family.m,
+	  BNT/inference/dynamic/@hmm_inf_engine/Old/marginal_nodes.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Broken/enter_soft_evidence1.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Broken/enter_soft_evidence2.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Broken/enter_soft_evidence3.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Broken/enter_soft_evidence4.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Broken/marginal_nodes.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Old/enter_soft_evidence_nonint.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Old/enter_soft_evidence_trans.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Old/jtree_dbn_inf_engine.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Old/jtree_dbn_inf_engine1.m,
+	  BNT/inference/dynamic/@jtree_dbn_inf_engine/Old/jtree_dbn_inf_engine2.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/jtree_unrolled_dbn_inf_engine.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/update_engine.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/Old/marginal_family.m,
+	  BNT/inference/dynamic/@jtree_unrolled_dbn_inf_engine/Old/marginal_nodes.m,
+	  BNT/inference/dynamic/@kalman_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@kalman_inf_engine/kalman_inf_engine.m,
+	  BNT/inference/dynamic/@kalman_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@kalman_inf_engine/update_engine.m,
+	  BNT/inference/dynamic/@kalman_inf_engine/private/dbn_to_lds.m,
+	  BNT/inference/dynamic/@kalman_inf_engine/private/extract_params_from_gbn.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/enter_soft_ev.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/pearl_dbn_inf_engine.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/correct_smooth.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/enter_evidence.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/filter_evidence.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/filter_evidence_obj_oriented.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/smooth_evidence.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/smooth_evidence_fast.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/Old/wrong_smooth.m,
+	  BNT/inference/dynamic/@pearl_dbn_inf_engine/private/init_pearl_dbn_ev_msgs.m,
+	  BNT/inference/dynamic/@pearl_unrolled_dbn_inf_engine/enter_evidence.m,
+	  BNT/inference/dynamic/@pearl_unrolled_dbn_inf_engine/marginal_family.m,
+	  BNT/inference/dynamic/@pearl_unrolled_dbn_inf_engine/marginal_nodes.m,
+	  BNT/inference/dynamic/@pearl_unrolled_dbn_inf_engine/pearl_unrolled_dbn_inf_engine.m,
+	  BNT/inference/dynamic/@pearl_unrolled_dbn_inf_engine/update_engine.m,
+	  BNT/inference/online/@filter_engine/bnet_from_engine.m,
+	  BNT/inference/online/@filter_engine/enter_evidence.m,
+	  BNT/inference/online/@filter_engine/filter_engine.m,
+	  BNT/inference/online/@filter_engine/marginal_family.m,
+	  BNT/inference/online/@filter_engine/marginal_nodes.m,
+	  BNT/inference/online/@hmm_2TBN_inf_engine/back.m,
+	  BNT/inference/online/@hmm_2TBN_inf_engine/backT.m,
+	  BNT/inference/online/@hmm_2TBN_inf_engine/fwd.m,
+	  BNT/inference/online/@hmm_2TBN_inf_engine/fwd1.m,
+	  BNT/inference/online/@hmm_2TBN_inf_engine/update_engine.m,
+	  BNT/inference/online/@jtree_2TBN_inf_engine/marginal_family.m,
+	  BNT/inference/online/@jtree_2TBN_inf_engine/marginal_nodes.m,
+	  BNT/inference/online/@jtree_2TBN_inf_engine/Old/jtree_2TBN_inf_engine.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/back.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/back1.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/backT.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/enter_evidence.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/fwd.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/fwd1.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/jtree_sparse_2TBN_inf_engine.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/marginal_family.m,
+	  BNT/inference/online/@jtree_sparse_2TBN_inf_engine/marginal_nodes.m,
+	  BNT/inference/online/@smoother_engine/bnet_from_engine.m,
+	  BNT/inference/online/@smoother_engine/marginal_family.m,
+	  BNT/inference/online/@smoother_engine/marginal_nodes.m,
+	  BNT/inference/online/@smoother_engine/smoother_engine.m,
+	  BNT/inference/online/@smoother_engine/update_engine.m,
+	  BNT/inference/static/@belprop_fg_inf_engine/belprop_fg_inf_engine.m,
+	  BNT/inference/static/@belprop_fg_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@belprop_fg_inf_engine/loopy_converged.m,
+	  BNT/inference/static/@belprop_fg_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@belprop_fg_inf_engine/set_params.m,
+	  BNT/inference/static/@belprop_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@belprop_inf_engine/loopy_converged.m,
+	  BNT/inference/static/@belprop_inf_engine/marginal_family.m,
+	  BNT/inference/static/@belprop_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@belprop_inf_engine/Old/belprop_gdl_inf_engine.m,
+	  BNT/inference/static/@belprop_inf_engine/Old/belprop_inf_engine_nostr.m,
+	  BNT/inference/static/@belprop_inf_engine/Old/enter_evidence.m,
+	  BNT/inference/static/@belprop_inf_engine/Old/enter_evidence1.m,
+	  BNT/inference/static/@belprop_inf_engine/Old/marginal_domain.m,
+	  BNT/inference/static/@belprop_inf_engine/private/junk,
+	  BNT/inference/static/@belprop_inf_engine/private/parallel_protocol.m,
+	  BNT/inference/static/@belprop_inf_engine/private/tree_protocol.m,
+	  BNT/inference/static/@cond_gauss_inf_engine/cond_gauss_inf_engine.m,
+	  BNT/inference/static/@cond_gauss_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@cond_gauss_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@enumerative_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@enumerative_inf_engine/enumerative_inf_engine.m,
+	  BNT/inference/static/@enumerative_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@gaussian_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@gaussian_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@gaussian_inf_engine/private/extract_params_from_gbn.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/gibbs_sampling_inf_engine.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/CPT.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/compute_children.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/compute_families.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/compute_families_dbn.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/compute_posterior.c,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/compute_posterior_dbn.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/compute_strides.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/get_cpts.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/get_slice_dbn.c,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/get_slice_dbn.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/my_sample_discrete.m,
+	  BNT/inference/static/@gibbs_sampling_inf_engine/private/sample_single_discrete.c,
+	  BNT/inference/static/@global_joint_inf_engine/global_joint_inf_engine.m,
+	  BNT/inference/static/@global_joint_inf_engine/marginal_family.m,
+	  BNT/inference/static/@jtree_inf_engine/cliques_from_engine.m,
+	  BNT/inference/static/@jtree_inf_engine/clq_containing_nodes.m,
+	  BNT/inference/static/@jtree_inf_engine/collect_evidence.m,
+	  BNT/inference/static/@jtree_inf_engine/enter_soft_evidence.m,
+	  BNT/inference/static/@jtree_inf_engine/marginal_family.m,
+	  BNT/inference/static/@jtree_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@jtree_inf_engine/set_fields.m,
+	  BNT/inference/static/@jtree_inf_engine/Old/collect_evidence.m,
+	  BNT/inference/static/@jtree_inf_engine/Old/distribute_evidence.m,
+	  BNT/inference/static/@jtree_inf_engine/Old/enter_evidence.m,
+	  BNT/inference/static/@jtree_inf_engine/Old/enter_soft_evidence.m,
+	  BNT/inference/static/@jtree_limid_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@jtree_limid_inf_engine/jtree_limid_inf_engine.m,
+	  BNT/inference/static/@jtree_limid_inf_engine/marginal_family.m,
+	  BNT/inference/static/@jtree_limid_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@jtree_limid_inf_engine/Old/marginal_family.m,
+	  BNT/inference/static/@jtree_limid_inf_engine/Old/marginal_nodes_SS.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/cliques_from_engine.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/clq_containing_nodes.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/collect_evidence.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/distribute_evidence.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/enter_soft_evidence.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/init_pot.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/marginal_family.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/set_fields.m,
+	  BNT/inference/static/@jtree_sparse_inf_engine/old/collect_evidence.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/old/distribute_evidence.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/old/init_pot.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/old/init_pot1.c,
+	  BNT/inference/static/@jtree_sparse_inf_engine/old/init_pot1.m,
+	  BNT/inference/static/@likelihood_weighting_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@likelihood_weighting_inf_engine/likelihood_weighting_inf_engine.m,
+	  BNT/inference/static/@likelihood_weighting_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@pearl_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@pearl_inf_engine/loopy_converged.m,
+	  BNT/inference/static/@pearl_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@pearl_inf_engine/private/compute_bel.m,
+	  BNT/inference/static/@pearl_inf_engine/private/prod_lambda_msgs.m,
+	  BNT/inference/static/@pearl_inf_engine/private/tree_protocol.m,
+	  BNT/inference/static/@quickscore_inf_engine/enter_evidence.m,
+	  BNT/inference/static/@quickscore_inf_engine/marginal_nodes.m,
+	  BNT/inference/static/@quickscore_inf_engine/quickscore_inf_engine.m,
+	  BNT/inference/static/@quickscore_inf_engine/private/C_quickscore.c,
+	  BNT/inference/static/@quickscore_inf_engine/private/nr.h,
+	  BNT/inference/static/@quickscore_inf_engine/private/nrutil.c,
+	  BNT/inference/static/@quickscore_inf_engine/private/nrutil.h,
+	  BNT/inference/static/@quickscore_inf_engine/private/quickscore.m,
+	  BNT/learning/bayes_update_params.m,
+	  BNT/learning/bic_score_family.m,
+	  BNT/learning/compute_cooling_schedule.m,
+	  BNT/learning/dirichlet_score_family.m,
+	  BNT/learning/kpm_learn_struct_mcmc.m,
+	  BNT/learning/learn_params_em.m,
+	  BNT/learning/learn_struct_dbn_reveal.m,
+	  BNT/learning/learn_struct_pdag_ic_star.m,
+	  BNT/learning/mcmc_sample_to_hist.m, BNT/learning/mk_schedule.m,
+	  BNT/learning/mk_tetrad_data_file.m,
+	  BNT/learning/score_dags_old.m, HMM/dhmm_logprob_brute_force.m,
+	  HMM/dhmm_logprob_path.m, HMM/mdp_sample.m, Kalman/AR_to_SS.m,
+	  Kalman/SS_to_AR.m, Kalman/convert_to_lagged_form.m,
+	  Kalman/ensure_AR.m, Kalman/eval_AR_perf.m,
+	  Kalman/kalman_filter.m, Kalman/kalman_smoother.m,
+	  Kalman/kalman_update.m, Kalman/learn_AR.m,
+	  Kalman/learn_AR_diagonal.m, Kalman/learn_kalman.m,
+	  Kalman/smooth_update.m,
+	  BNT/general/convert_dbn_CPDs_to_tables_slow.m,
+	  BNT/general/dispcpt.m, BNT/general/linear_gaussian_to_cpot.m,
+	  BNT/general/partition_matrix_vec_3.m,
+	  BNT/general/shrink_obs_dims_in_gaussian.m,
+	  BNT/general/shrink_obs_dims_in_table.m,
+	  BNT/potentials/CPD_to_pot.m, BNT/potentials/README,
+	  BNT/potentials/check_for_cd_arcs.m,
+	  BNT/potentials/determine_pot_type.m,
+	  BNT/potentials/mk_initial_pot.m,
+	  BNT/potentials/@cgpot/cg_can_to_mom.m,
+	  BNT/potentials/@cgpot/cg_mom_to_can.m,
+	  BNT/potentials/@cgpot/cgpot.m, BNT/potentials/@cgpot/display.m,
+	  BNT/potentials/@cgpot/divide_by_pot.m,
+	  BNT/potentials/@cgpot/domain_pot.m,
+	  BNT/potentials/@cgpot/enter_cts_evidence_pot.m,
+	  BNT/potentials/@cgpot/enter_discrete_evidence_pot.m,
+	  BNT/potentials/@cgpot/marginalize_pot.m,
+	  BNT/potentials/@cgpot/multiply_by_pot.m,
+	  BNT/potentials/@cgpot/multiply_pots.m,
+	  BNT/potentials/@cgpot/normalize_pot.m,
+	  BNT/potentials/@cgpot/pot_to_marginal.m,
+	  BNT/potentials/@cgpot/Old/normalize_pot.m,
+	  BNT/potentials/@cgpot/Old/simple_marginalize_pot.m,
+	  BNT/potentials/@cpot/cpot.m, BNT/potentials/@cpot/cpot_to_mpot.m,
+	  BNT/potentials/@cpot/display.m,
+	  BNT/potentials/@cpot/divide_by_pot.m,
+	  BNT/potentials/@cpot/domain_pot.m,
+	  BNT/potentials/@cpot/enter_cts_evidence_pot.m,
+	  BNT/potentials/@cpot/marginalize_pot.m,
+	  BNT/potentials/@cpot/multiply_by_pot.m,
+	  BNT/potentials/@cpot/multiply_pots.m,
+	  BNT/potentials/@cpot/normalize_pot.m,
+	  BNT/potentials/@cpot/pot_to_marginal.m,
+	  BNT/potentials/@cpot/rescale_pot.m,
+	  BNT/potentials/@cpot/set_domain_pot.m,
+	  BNT/potentials/@cpot/Old/cpot_to_mpot.m,
+	  BNT/potentials/@cpot/Old/normalize_pot.convert.m,
+	  BNT/potentials/@dpot/approxeq_pot.m,
+	  BNT/potentials/@dpot/display.m,
+	  BNT/potentials/@dpot/domain_pot.m,
+	  BNT/potentials/@dpot/dpot_to_table.m,
+	  BNT/potentials/@dpot/get_fields.m,
+	  BNT/potentials/@dpot/multiply_pots.m,
+	  BNT/potentials/@dpot/pot_to_marginal.m,
+	  BNT/potentials/@dpot/set_domain_pot.m,
+	  BNT/potentials/@mpot/display.m,
+	  BNT/potentials/@mpot/marginalize_pot.m,
+	  BNT/potentials/@mpot/mpot.m, BNT/potentials/@mpot/mpot_to_cpot.m,
+	  BNT/potentials/@mpot/normalize_pot.m,
+	  BNT/potentials/@mpot/pot_to_marginal.m,
+	  BNT/potentials/@mpot/rescale_pot.m,
+	  BNT/potentials/@upot/approxeq_pot.m,
+	  BNT/potentials/@upot/display.m,
+	  BNT/potentials/@upot/divide_by_pot.m,
+	  BNT/potentials/@upot/marginalize_pot.m,
+	  BNT/potentials/@upot/multiply_by_pot.m,
+	  BNT/potentials/@upot/normalize_pot.m,
+	  BNT/potentials/@upot/pot_to_marginal.m,
+	  BNT/potentials/@upot/upot.m,
+	  BNT/potentials/@upot/upot_to_opt_policy.m,
+	  BNT/potentials/Old/comp_eff_node_sizes.m,
+	  BNT/potentials/Tables/divide_by_sparse_table.c,
+	  BNT/potentials/Tables/divide_by_table.c,
+	  BNT/potentials/Tables/marg_sparse_table.c,
+	  BNT/potentials/Tables/marg_table.c,
+	  BNT/potentials/Tables/mult_by_sparse_table.c,
+	  BNT/potentials/Tables/rep_mult.c, HMM/mk_leftright_transmat.m:
+	  Initial revision
+
+2002-05-29 04:59  yozhik
+
+	* BNT/inference/static/@stab_cond_gauss_inf_engine/:
+	  clq_containing_nodes.m, problems.txt, push_pot_toclique.m,
+	  Old/initialize_engine.m: Initial import of code base from Kevin
+	  Murphy.
+
+2002-05-29 04:59  yozhik
+
+	* BNT/inference/static/@stab_cond_gauss_inf_engine/:
+	  clq_containing_nodes.m, problems.txt, push_pot_toclique.m,
+	  Old/initialize_engine.m: Initial revision
+
+2002-05-19 15:11  yozhik
+
+	* BNT/potentials/: @scgcpot/marginalize_pot.m,
+	  @scgcpot/normalize_pot.m, @scgcpot/rescale_pot.m,
+	  @scgcpot/scgcpot.m, @scgpot/direct_combine_pots.m,
+	  @scgpot/pot_to_marginal.m: Initial import of code base from Kevin
+	  Murphy.
+
+2002-05-19 15:11  yozhik
+
+	* BNT/potentials/: @scgcpot/marginalize_pot.m,
+	  @scgcpot/normalize_pot.m, @scgcpot/rescale_pot.m,
+	  @scgcpot/scgcpot.m, @scgpot/direct_combine_pots.m,
+	  @scgpot/pot_to_marginal.m: Initial revision
+
+2001-07-28 08:43  yozhik
+
+	* BNT/potentials/genops.c: Initial import of code base from Kevin
+	  Murphy.
+
+2001-07-28 08:43  yozhik
+
+	* BNT/potentials/genops.c: Initial revision
+

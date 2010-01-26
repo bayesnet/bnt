@@ -1,0 +1,2 @@
+Written by Kevin Murphy (murphyk@ai.mit.edu), 1997-2003
+Distributed under the GNU Library GPL - see license.gpl for details.

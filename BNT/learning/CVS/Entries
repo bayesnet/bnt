@@ -1,0 +1,23 @@
+/CovMat.m/1.1.1.1/Sun Jul 28 23:09:42 2002//
+/bayes_update_params.m/1.1.1.1/Wed May 29 15:59:56 2002//
+/bic_score_family.m/1.1.1.1/Wed May 29 15:59:56 2002//
+/compute_cooling_schedule.m/1.1.1.1/Wed May 29 15:59:56 2002//
+/dirichlet_score_family.m/1.1.1.1/Wed May 29 15:59:56 2002//
+/kpm_learn_struct_mcmc.m/1.1.1.1/Wed May 29 15:59:56 2002//
+/learn_params.m/1.1.1.1/Thu Jun 10 01:28:08 2004//
+/learn_params_dbn.m/1.1.1.1/Sun Feb  2 00:23:38 2003//
+/learn_params_dbn_em.m/1.1.1.1/Mon Aug 18 21:50:34 2003//
+/learn_params_em.m/1.1.1.1/Wed May 29 15:59:56 2002//
+/learn_struct_K2.m/1.1.1.1/Thu Sep 26 08:39:16 2002//
+/learn_struct_dbn_reveal.m/1.1.1.1/Wed May 29 15:59:56 2002//
+/learn_struct_mcmc.m/1.1.1.1/Fri Sep  5 14:06:40 2003//
+/learn_struct_pdag_ic_star.m/1.1.1.1/Wed May 29 15:59:56 2002//
+/learn_struct_pdag_pc.m/1.2/Mon Feb 12 01:15:13 2007//
+/learn_struct_pdag_pc_constrain.m/1.1.1.1/Sun Jul 28 23:09:38 2002//
+/mcmc_sample_to_hist.m/1.1.1.1/Wed May 29 15:59:56 2002//
+/mk_schedule.m/1.1.1.1/Wed May 29 15:59:56 2002//
+/mk_tetrad_data_file.m/1.1.1.1/Wed May 29 15:59:56 2002//
+/score_dags.m/1.1.1.1/Mon Apr  4 01:39:46 2005//
+/score_dags_old.m/1.1.1.1/Wed May 29 15:59:56 2002//
+/score_family.m/1.1.1.1/Thu Jun 10 01:33:14 2004//
+D
