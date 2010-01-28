@@ -1,0 +1,113 @@
+
+<h2><a name="features">Major features</h2> 
+<ul> 
+ 
+<li> BNT supports many types of
+<b>conditional probability distributions</b> (nodes),
+and it is easy to add more.
+<ul> 
+<li>Tabular (multinomial)
+<li>Gaussian
+<li>Softmax (logistic/ sigmoid)
+<li>Multi-layer perceptron (neural network)
+<li>Noisy-or
+<li>Deterministic
+</ul> 
+<p> 
+ 
+<li> BNT supports <b>decision and utility nodes</b>, as well as chance
+nodes,
+i.e., influence diagrams as well as Bayes nets.
+<p> 
+ 
+<li> BNT supports static and dynamic BNs (useful for modelling dynamical systems
+and sequence data).
+<p> 
+ 
+<li> BNT supports many different <b>inference algorithms</b>,
+and it is easy to add more.
+ 
+<ul> 
+<li> Exact inference for static BNs:
+<ul> 
+<li>junction tree
+<li>variable elimination
+<li>brute force enumeration (for discrete nets)
+<li>linear algebra (for Gaussian nets)
+<li>Pearl's algorithm (for polytrees)
+<li>quickscore (for QMR)
+</ul> 
+ 
+<p> 
+<li> Approximate inference for static BNs:
+<ul> 
+<li>likelihood weighting
+<li> Gibbs sampling
+<li>loopy belief propagation
+</ul> 
+ 
+<p> 
+<li> Exact inference for DBNs:
+<ul> 
+<li>junction tree
+<li>frontier algorithm
+<li>forwards-backwards (for HMMs)
+<li>Kalman-RTS (for LDSs)
+</ul> 
+ 
+<p> 
+<li> Approximate inference for DBNs:
+<ul> 
+<li>Boyen-Koller
+<li>factored-frontier/loopy belief propagation
+</ul> 
+ 
+</ul> 
+<p> 
+ 
+<li> 
+BNT supports several methods for <b>parameter learning</b>,
+and it is easy to add more.
+<ul> 
+ 
+<li> Batch MLE/MAP parameter learning using EM.
+(Each node type has its own M method, e.g. softmax nodes use IRLS,<br> 
+and each inference engine has its own E method, so the code is fully modular.)
+ 
+<li> Sequential/batch Bayesian parameter learning (for fully observed tabular nodes only).
+</ul> 
+ 
+ 
+<p> 
+<li> 
+BNT supports several methods for <b>regularization</b>,
+and it is easy to add more.
+<ul> 
+<li> Any node can have its parameters clamped (made non-adjustable).
+<li> Any set of compatible nodes can have their parameters tied (c.f.,
+weight sharing in a neural net).
+<li> Some node types (e.g., tabular) supports priors for MAP estimation.
+<li> Gaussian covariance matrices can be declared full or diagonal, and can
+be tied across states of their discrete parents (if any).
+</ul> 
+ 
+<p> 
+<li> 
+BNT supports several methods for <b>structure learning</b>,
+and it is easy to add more.
+<ul> 
+ 
+<li> Bayesian structure learning,
+using MCMC or local search (for fully observed tabular nodes only).
+ 
+<li> Constraint-based structure learning (IC/PC and IC*/FCI).
+</ul> 
+ 
+ 
+<p> 
+<li> The source code is extensively documented, object-oriented, and free, making it
+an excellent tool for teaching, research and rapid prototyping.
+ 
+</ul> 
+ 
+ 
