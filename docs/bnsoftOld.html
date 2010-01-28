@@ -1,0 +1,1078 @@
+<head>
+<TITLE>Software Packages for Graphical Models / Bayesian Networks</TITLE>
+</head>
+ 
+<body>
+
+<h1>
+Software Packages for Graphical Models / Bayesian Networks
+</h1>
+<p>
+Written by Kevin Murphy.
+<br>
+Last updated 31 October  2005.
+
+<h3>Remarks</h3>
+<ul>
+
+<li>
+A much more detailed comparison of some of these software packages is
+available from Appendix B of 
+<a href="http://www.csse.monash.edu.au/bai/">Bayesian AI</a>, by 
+Ann Nicholson and Kevin Korb.
+This appendix is
+available
+<a
+href="http://www.csse.monash.edu.au/bai/book/appendix_b.pdf">here</a>,
+and is based on the online comparison below.
+
+<li>
+An online <a
+href="http://servasi.insa-rouen.fr/enseignement/siteUV/rna/BNT/software.html">French
+version</a> of this page is also available (not necessarily up-to-date).
+
+<!--
+<li>
+Matt Turk has made a
+<a href="http://ilab.cs.ucsb.edu/BayesNets/Bayesia_Software.pdf">pdf
+version of this page</a> (not necessarily up-to-date) with some extra
+comments on the packages.
+-->
+<!--
+<br>
+(He also has a
+<a href="http://ilab.cs.ucsb.edu/BayesNets">cached copy</a> of several of
+the packages listed below, which you can look at if links are down.)
+-->
+
+</ul>
+
+<h3>What do the headers in the table mean?</h3>
+
+<ul>
+<li> Src = source code included? (N=no) If so, what language?
+
+<li> API = application program interface included?
+(N means the program cannot be integrated into your code, i.e., it
+must be run as a standalone executable.)
+
+<li> Exec = Executable runs on W = Windows (95/98/NT), U = Unix, M =
+Mac, or - = any machine with a compiler.
+
+<li> Cts = are continuous (latent) nodes supported?
+G = (conditionally) Gaussians nodes supported analytically,
+Cs = continuous nodes supported by sampling,
+Cd = continuous nodes supported by discretization,
+Cx = continuous nodes supported by some unspecified method,
+D = only discrete nodes supported.
+
+
+<li> GUI = Graphical User Interface included?
+
+<li> Learns parameters?
+
+<li> Learns structure? CI = means uses conditional independency tests
+
+<!--
+<li> Sample = sampling methods (e.g., likelihood weighting, MCMC) supported?
+-->
+
+<li> Utility = utility and decision nodes (i.e., influence diagrams)
+supported?
+
+<li> Free?
+0 = free (although possibly only for academic use).
+$ = commercial software (although most have free versions
+which are restricted in
+various ways, e.g., the model size is limited, or models cannot be
+saved, or there is no API.)
+
+
+<li> Undir?
+What kind of graphs are supported?
+U = only undirected graphs,
+D = only directed graphs,
+UD = both undirected and directed,
+CG = chain graphs (mixed directed/undirected).
+
+
+<li> Inference = which inference algorithm is used?
+jtree = junction tree,
+varelim = variable (bucket) elimination,
+MH = Metropols Hastings,
+G = Gibbs sampling,
+IS = importance sampling,
+sampling = some other Monte Carlo method,
+polytree = Pearl's algorithm restricted to a graph with no cycles, 
+none = no inference supported (hence the program is only designed for
+structure learning from completely observed data) 
+
+<li> Comments.
+If in "quotes", I am quoting the authors at their request.
+
+</ul>
+
+
+
+<!--
+The following table is automatically generated as follows
+bnsoft_to_html.pl < bnsoft.txt > ! soft.html  
+Then soft.html is inserted and the last line is tidied up.
+-->
+
+<table border>
+<tr>
+<td> Name
+<td> Authors
+<td> Src
+<td> API
+<td> Exec
+<td> Cts
+<td> GUI
+<td> Params
+<td> Struct
+<td> Utility
+<td> Free
+<td> Undir
+<td> Inference
+<td> Comments
+
+
+<tr>
+<td> <!--Name--> <a href=http://www.agenarisk.com > AgenaRisk</a>
+<td> <!--Authors-->Agena
+<td> <!--Src-->N
+<td> <!--API-->Y
+<td> <!--Exec-->W,U
+<td> <!--Cts-->Cx
+<td> <!--GUI-->Y
+<td> <!--Params-->Y
+<td> <!--Struct-->N
+<td> <!--Utility-->N
+<td> <!--Free-->$
+<td> <!--Undir-->D
+<td> <!--Inference-->JTree
+<td> <!--Comments-->Simulation by Dynamic discretisation
+
+<tr>
+<td> <!--Name--> <a href=http://www.lumina.com > Analytica</a>
+<td> <!--Authors-->Lumina
+<td> <!--Src-->N
+<td> <!--API-->Y
+<td> <!--Exec-->W,M
+<td> <!--Cts-->G
+<td> <!--GUI-->Y
+<td> <!--Params-->N
+<td> <!--Struct-->N
+<td> <!--Utility-->Y
+<td> <!--Free-->$
+<td> <!--Undir-->D
+<td> <!--Inference-->sampling
+<td> <!--Comments-->spread sheet compatible
+
+<tr>
+<td> <!--Name--> <a href=http://www.cs.duke.edu/~amink/software/banjo/> Banjo</a>
+<td> <!--Authors-->Hartemink
+<td> <!--Src-->Java
+<td> <!--API-->Y
+<td> <!--Exec-->W,U,M
+<td> <!--Cts-->Cd
+<td> <!--GUI-->N
+<td> <!--Params-->N
+<td> <!--Struct-->Y
+<td> <!--Utility-->N
+<td> <!--Free-->0
+<td> <!--Undir-->D
+<td> <!--Inference-->none
+<td> <!--Comments--> structure learning of
+static or dynamic networks of discrete variables
+
+
+<tr>
+<td><a href=http://www.cs.Helsinki.FI/research/fdk/bassist/> Bassist</a>
+<td>        U. Helsinki
+<td>            C++
+<td>            Y
+<td>           U
+<td>            G
+<td>            N
+<td>     Y
+<td>     N
+<td>        N
+<td>            0
+<td>      D
+<td>      MH
+<td>       Generates C++ for MCMC.
+
+<tr>
+<td><a href=http://www.cs.Helsinki.FI/research/cosco/Projects/NONE/SW/ > Bayda</a>
+<td>        U. Helsinki
+<td>            Java
+<td>            Y
+<td>           WUM
+<td>            G
+<td>            Y
+<td>     Y
+<td>     N
+<td>        N
+<td>            0
+<td>      D
+<td>      ?
+<td>       Bayesian Naive Bayes classifier.
+
+<tr>
+<td><a href=http://www.mbfys.kun.nl/snn/Research/bayesbuilder/  >  BayesBuilder</a>
+<td>        Nijman (U. Nijmegen)
+<td>            N
+<td>            N
+<td>           W
+<td>            D
+<td>            Y
+<td>     N
+<td>     N
+<td>        N
+<td>         0
+<td>      D
+<td>      ?
+<td>       -
+
+<tr>
+<td> <!--Name--> <a
+href="http://www.bayesia.com">BayesiaLab</a>
+<td> <!--Authors-->Bayesia Ltd
+<td> <!--Src-->N
+<td> <!--API-->N
+<td> <!--Exec-->-
+<td> <!--Cts-->Cd
+<td> <!--GUI-->Y
+<td> <!--Params-->Y
+<td> <!--Struct-->Y
+<td> <!--Utility-->N
+<td> <!--Free-->$
+<td> <!--Undir-->CG
+<td> <!--Inference-->jtree,G
+<td> <!--Comments-->
+<!--
+Structural learning (association discovery,
+classification), Bayesian clustering with analysis report generation,
+missing values 
+processing, essential graphs, analysis toolbox, adaptive
+questionnaires, dynamic models
+-->
+Structural learning, adaptive
+questionnaires, dynamic models
+
+
+
+
+<tr>
+
+<td><a href=http://www.bayesware.com>Bayesware Discoverer</a>
+<td>        Bayesware
+<td>            N
+<td>            N
+<td>           WUM
+<td>            Cd
+<td>            Y
+<td>     Y
+<td>     Y
+<td>        N
+<td>            $
+<td>      D
+<td>      ?
+<td>       Uses bound and collapse for learning with missing data.
+
+<tr>
+<td><a href=http://B-Course.hiit.fi/> B-course</a>
+<td>        U.  Helsinki
+<td>            N
+<td>            N
+<td>           WUM
+<td>            Cd
+<td>            Y
+<td>     Y
+<td>     Y
+<td>        N
+<td>            0
+<td>      D
+<td>      ?
+<td>       Runs on their server: view results using a web browser.
+
+<!--
+<tr>
+<td><a href="http://www.aist.go.jp/ETL/etl/suri/motomura/BN/bn-java.html">Bayonnet</a>
+<td>        Motomura (ETL)
+<td>            Java
+<td>            Y
+<td>           WUM
+<td>            NN
+<td>            Cx
+<td>     Y
+<td>     N
+<td>        N
+<td>            0
+<td>      D
+<td>      ?
+<td>       For learning, represents BN as a neural net.
+-->
+
+<tr>
+<td><a href=http://www.cs.ualberta.ca/~jcheng/bnpc.htm  >  Belief net power constructor</a>
+<td>        Cheng (U.Alberta)
+<td>            N
+<td>            W
+<td>           W
+<td>            D
+<td>            Y
+<td>     Y
+<td>     CI
+<td>        N
+<td>            0
+<td>      D
+<td>      ?
+<td>       -
+
+<tr>
+<td><a href=http://www.cs.berkeley.edu/~murphyk/Bayes/bnt.html  >  BNT</a>
+<td>        Murphy (U.C.Berkeley)
+<td>            Matlab/C
+<td>            Y
+<td>           WUM
+<td>            G
+<td>            N
+<td>     Y
+<td>     Y
+<td>        Y
+<td>            0
+<td>      D,U
+<td>      Many
+<td>       Also handles dynamic models, like HMMs and Kalman filters.
+
+
+<tr>
+<td> <!--Name--> <a href="http://bndev.sourceforge.net/">BNJ</a>
+<td> <!--Authors-->Hsu (Kansas)
+<td> <!--Src-->Java
+<td> <!--API-->-
+<td> <!--Exec-->-
+<td> <!--Cts-->D
+<td> <!--GUI-->Y
+<td> <!--Params-->N
+<td> <!--Struct-->Y
+<td> <!--Utility-->N
+<td> <!--Free-->0
+<td> <!--Undir-->D
+<td> <!--Inference-->jtree, IS
+<td> <!--Comments-->-
+
+<!--
+<tr>
+<td><a href=http://94.parkview-court.net/project/  >  BN Toolkit</a>
+<td>        Gowans (Imperial)
+<td>            Visual Basic
+<td>            Y
+<td>           W
+<td>            D
+<td>            Y
+<td>     N
+<td>     Y
+<td>        N
+<td>            0
+<td>      D
+<td>      Polytree
+<td>       Parser and GUI for the XML-BIF format.
+-->
+
+<tr>
+<td><a href=http://www.ics.uci.edu/~irinar  >  BucketElim</a>
+<td>        Rish (U.C.Irvine)
+<td>            C++
+<td>            Y
+<td>           WU
+<td>            D
+<td>            N
+<td>     N
+<td>     N
+<td>        N
+<td>            0
+<td>      D
+<td>      Varelim
+<td>       -
+
+<tr>
+<td><a href=http://www.mrc-bsu.cam.ac.uk/bugs  >  BUGS</a>
+<td>        MRC/Imperial College
+<td>            N
+<td>            N
+<td>           WU
+<td>            Cs
+<td>            W
+<td>     Y
+<td>     N
+<td>        N
+<td>            0
+<td>      D
+<td>      Gibbs
+<td>       -
+
+<tr>
+<td><a href=http://www.data-digest.com  >  Business Navigator 5</a>
+<td>        Data Digest Corp
+<td>            N
+<td>            N
+<td>           W
+<td>            Cd
+<td>            Y
+<td>     Y
+<td>     Y
+<td>        N
+<td>            $
+<td>      D
+<td>      Jtree
+<td>       -
+
+<tr>
+<td><a href=http://www-pcd.stanford.edu/cousins/caben-1.1.tar.gz  >  CABeN</a>
+<td>        Cousins et al. (Wash. U.)
+<td>            C
+<td>            Y
+<td>           WU
+<td>            D
+<td>            N
+<td>     N
+<td>     N
+<td>        N
+<td>            0
+<td>      D
+<td>      5 Sampling methods
+<td>       -
+
+<tr>
+<td> <!--Name--> <a href=
+http://discover1.mc.vanderbilt.edu/discover/public/>Causal discoverer</a>
+<td> <!--Authors-->Vanderbilt
+<td> <!--Src-->N
+<td> <!--API-->N
+<td> <!--Exec-->W
+<td> <!--Cts-->-
+<td> <!--GUI-->-
+<td> <!--Params-->N
+<td> <!--Struct-->Y
+<td> <!--Utility-->N
+<td> <!--Free-->0
+<td> <!--Undir-->D
+<td> <!--Inference-->-
+<td> <!--Comments-->structure learning only
+
+
+<tr>
+<td><a href=http://www.math.auc.dk/~jhb/CoCo/information.html  >  CoCo+Xlisp</a>
+<td>        Badsberg (U. Aalborg)
+<td>            C/lisp
+<td>            Y
+<td>           U
+<td>            D
+<td>            Y
+<td>     Y
+<td>     CI
+<td>        N
+<td>            0
+<td>      U
+<td>      Jtree
+<td>       Designed for contingency tables.
+
+<tr>
+<td><a href=http://www.cs.ubc.ca/labs/lci/CIspace/  >  CIspace</a>
+<td>        Poole et al. (UBC)
+<td>            Java
+<td>            N
+<td>           WU
+<td>            D
+<td>            Y
+<td>     N
+<td>     N
+<td>        N
+<td>            0
+<td>      D
+<td>      Varelim
+<td>       -
+
+<tr>
+<td> <!--Name--> <a href="http://www.robots.ox.ac.uk/~parg/software.html">DBNbox</a>
+<td> <!--Authors-->Roberts et al
+<td> <!--Src-->Matlab
+<td> <!--API-->-
+<td> <!--Exec-->-
+<td> <!--Cts-->Y
+<td> <!--GUI-->N
+<td> <!--Params-->Y
+<td> <!--Struct-->N
+<td> <!--Utility-->N
+
+<td> <!--Free-->Y
+<td> <!--Undir-->D
+<td> <!--Inference-->Various
+<td> <!--Comments-->DBNs
+
+<tr>
+<td> <!--Name--><a href=http://www.math.auc.dk/novo/deal>Deal</a>
+<td> <!--Authors-->Bottcher et al
+<td> <!--Src-->R
+<td> <!--API-->-
+<td> <!--Exec-->-
+<td> <!--Cts-->G
+<td> <!--GUI-->Y
+<td> <!--Params-->Y
+<td> <!--Struct-->Y
+<td> <!--Utility-->N
+<td> <!--Free-->0
+<td> <!--Undir-->D
+<td> <!--Inference-->None
+<td> <!--Comments-->
+Structure learning.
+
+<tr>
+<td><a href=http://www.deriveit.com >DeriveIt</a>
+<td> <!--Authors-->DeriveIt LLC
+<td> <!--Src-->N
+<td> <!--API-->-
+<td> <!--Exec-->-
+<td> <!--Cts-->?
+<td> <!--GUI-->?
+<td> <!--Params-->Y
+<td> <!--Struct-->Y
+<td> <!--Utility-->?
+<td> <!--Free-->$
+<td> <!--Undir-->D
+<td> <!--Inference-->Jtree
+<td> <!--Comments-->
+Exploits local structure in CPDs.
+
+
+<tr>
+<td><a href=http://www.noeticsystems.com>Ergo</>
+<td> <!--Authors-->Noetic systems
+<td> <!--Src-->N
+<td> <!--API-->Y
+<td> <!--Exec-->W,M
+<td> <!--Cts-->D
+<td> <!--GUI-->Y
+<td> <!--Params-->N
+<td> <!--Struct-->N
+<td> <!--Utility-->N
+<td> <!--Free-->$
+<td> <!--Undir-->D
+<td> <!--Inference-->jtree
+<td> <!--Comments-->-
+
+<!--
+<tr>
+<td><a href=http://www.ens-lyon.fr/~jnarboux/Floue/index.html>FLoUE/BIFtoN</a>
+<td>        ENS Lyon
+<td>            Java
+<td>            Y
+<td>           WUM
+<td>           D
+<td>            N
+<td>     N
+<td>     N
+<td>        N
+<td>            0
+<td>      D
+<td>      Jtree
+<td>       -
+-->
+
+<tr>
+<td><a href=http://www.staff.ncl.ac.uk/d.j.wilkinson/software/gdagsim/  >  GDAGsim</a>
+<td>        Wilkinson (U. Newcastle)
+<td>            C
+<td>            Y
+<td>           WUM
+<td>            G
+<td>            N
+<td>     N
+<td>     N
+<td>        N
+<td>            0
+<td>      D
+<td>      Exact
+<td>    Bayesian analysis of large linear Gaussian directed models.
+
+
+<tr>
+<td><a href=http://www2.sis.pitt.edu/~genie  >  Genie</a>
+<td>        U. Pittsburgh
+<td>            N
+<td>            WU
+<td>           WU
+<td>            D
+<td>            W
+<td>     N
+<td>     N
+<td>        Y
+<td>            0
+<td>      D
+<td>      Jtree
+<td>       -
+
+<tr>
+<td><a href=http://www.math.ntnu.no/~hrue/GMRFsim/  >  GMRFsim</a>
+<td>        Rue (U. Trondheim)
+<td>            C
+<td>            Y
+<td>           WUM
+<td>            G
+<td>            N
+<td>     N
+<td>     N
+<td>        N
+<td>            0
+<td>      U
+<td>      MCMC
+<td>       Bayesian analysis of large linear Gaussian undirected models.
+
+
+<tr>
+<td> <!--Name--> <a href=http://ssli.ee.washington.edu/~bilmes/gmtk/>GMTk</a>
+<td> <!--Authors-->Bilmes (UW), Zweig (IBM)
+<td> <!--Src-->N
+<td> <!--API-->Y
+<td> <!--Exec-->U
+<td> <!--Cts-->D
+<td> <!--GUI-->N
+<td> <!--Params-->Y
+<td> <!--Struct-->Y
+<td> <!--Utility-->N
+<td> <!--Free-->0
+<td> <!--Undir-->D
+<td> <!--Inference-->Jtree
+<td> <!--Comments-->
+Designed for speech recognition.
+
+<tr>
+<td> <!--Name--> <a href=http://www.r-project.org/gR>gR</a>
+<td> <!--Authors-->Lauritzen et al.
+<td> <!--Src-->R
+<td> <!--API-->-
+<td> <!--Exec-->-
+<td> <!--Cts-->-
+<td> <!--GUI-->-
+<td> <!--Params-->-
+<td> <!--Struct-->-
+<td> <!--Utility-->-
+<td> <!--Free-->0
+<td> <!--Undir-->-
+<td> <!--Inference-->-
+<td> <!--Comments-->Currently vaporware
+
+
+<tr>
+<td> <!--Name--> <a href=http://www.stats.bris.ac.uk/~peter/Grappa/>Grappa</a>
+<td> <!--Authors-->Green (Bristol)
+<td> <!--Src-->R
+<td> <!--API-->-
+<td> <!--Exec-->-
+<td> <!--Cts-->D
+<td> <!--GUI-->N
+<td> <!--Params-->N)
+<td> <!--Struct-->N
+<td> <!--Utility-->N
+<td> <!--Free-->0
+<td> <!--Undir-->D
+<td> <!--Inference-->Jtree
+<td> <!--Comments-->-
+
+
+<tr>
+<td><a href=http://www.hugin.com  >  Hugin Expert</a>
+<td>        Hugin
+<td>            N
+<td>            Y
+<td>           W
+<td>            G
+<td>            W
+<td>     Y
+<td>     CI
+<td>        Y
+<td>            $
+<td>      CG
+<td>      Jtree
+<td>       -
+
+
+<tr>
+<td> <!--Name--> <a href=http://www.warnes.net/GregsSoftwareLinks/index_html?Tab=MCMC>Hydra</a>
+<td> <!--Authors-->Warnes (U.Wash.)
+<td> <!--Src-->Java
+<td> <!--API-->-
+<td> <!--Exec-->-
+<td> <!--Cts-->Cs
+<td> <!--GUI-->Y
+<td> <!--Params-->Y
+<td> <!--Struct-->N
+<td> <!--Utility-->N
+<td> <!--Free-->0
+<td> <!--Undir-->U,D
+<td> <!--Inference-->MCMC
+<td> <!--Comments-->-
+
+
+<tr>
+<!-- http://www.rpal.rockwell.com/ideal.html  -->
+<td><a href=http://yoda.cis.temple.edu:8080/ideal>Ideal</a>
+<td>        Rockwell
+<td>            Lisp
+<td>            Y
+<td>           WUM
+<td>            D
+<td>            Y
+<td>     N
+<td>     N
+<td>        Y
+<td>            0
+<td>      D
+<td>      Jtree
+<td>       GUI requires Allegro Lisp.
+
+<tr>
+<td><a href=http://www.cs.cmu.edu/~javabayes/Home/  >  Java Bayes</a>
+<td>        Cozman (CMU)
+<td>            Java
+<td>            Y
+<td>           WUM
+<td>            D
+<td>            Y
+<td>     N
+<td>     N
+<td>        Y
+<td>            0
+<td>      D
+<td>      Varelim, jtree
+<td>       -
+
+
+<tr>
+<td> <!--Name--><a href="http://www.codeas.com/kbaseai.php" >KBaseAI</a>
+<td> <!--Authors-->Codeas
+<td> <!--Src-->N
+<td> <!--API-->Y
+<td> <!--Exec-->W,U
+<td> <!--Cts-->D
+<td> <!--GUI-->N
+<td> <!--Params-->N
+<td> <!--Struct-->N
+<td> <!--Utility-->N
+<td> <!--Free-->$
+<td> <!--Undir-->D
+<td> <!--Inference-->varelim
+<td> <!--Comments-->client/server architecture, multiple users, access
+control, query language
+
+
+<tr>
+<td> <!--Name--> <a href=http://www.cs.huji.ac.il/labs/compbio/LibB>LibB</a>
+<td> <!--Authors-->Friedman (Hebrew U)
+<td> <!--Src-->N
+<td> <!--API-->Y
+<td> <!--Exec-->W
+<td> <!--Cts-->D
+<td> <!--GUI-->N
+<td> <!--Params-->Y
+<td> <!--Struct-->Y
+<td> <!--Utility-->N
+<td> <!--Free-->0
+<td> <!--Undir-->D
+<td> <!--Inference-->none
+<td> <!--Comments-->
+Structure learning
+
+<tr>
+<td><a href=http://www.hypergraph.dk/  >  MIM</a>
+<td>        HyperGraph Software
+<td>            N
+<td>            N
+<td>           W
+<td>            G
+<td>            Y
+<td>     Y
+<td>     Y
+<td>        N
+<td>            $
+<td>      CG
+<td>      Jtree
+<td>       Up to 52 variables.
+
+<tr>
+<td><a href=http://research.microsoft.com/adapt/MSBNx/  >  MSBNx</a>
+<td>        Microsoft
+<td>            N
+<td>            Y
+<td>           W
+<td>            D
+<td>            W
+<td>     N
+<td>     N
+<td>        Y
+<td>            0
+<td>      D
+<td>      Jtree
+<td>       -
+
+<tr>
+<td><a href=http://www.norsys.com  >  Netica</a>
+<td>        Norsys
+<td>            N
+<td>            WUM
+<td>           W
+<td>            G
+<td>            W
+<td>     Y
+<td>     N
+<td>        Y
+<td>            $
+<td>      D
+<td>      jtree
+<td>       -
+
+<tr>
+<td> <!--Name--> <a href="http://www.autonlab.org/autonweb/showSoftware/149/">Optimal
+Reinsertion</a>
+<td> <!--Authors-->Moore, Wong (CMU)
+<td> <!--Src-->N
+<td> <!--API-->N
+<td> <!--Exec-->W,U
+<td> <!--Cts-->D
+<td> <!--GUI-->N
+<td> <!--Params-->Y
+<td> <!--Struct-->Y
+<td> <!--Utility-->N
+<td> <!--Free-->0
+<td> <!--Undir-->D
+<td> <!--Inference-->none
+<td> <!--Comments-->structure learning
+
+
+<tr>
+<td> <!--Name--> <a href="http://people.bu.edu/vladimir/pmt/index.html">PMT</a>
+<td> <!--Authors-->Pavlovic (BU)
+<td> <!--Src-->Matlab/C
+<td> <!--API-->-
+<td> <!--Exec-->-
+<td> <!--Cts-->D
+<td> <!--GUI-->N
+<td> <!--Params-->Y
+<td> <!--Struct-->N
+<td> <!--Utility-->N
+<td> <!--Free-->0
+<td> <!--Undir-->D
+<td> <!--Inference-->special purpose
+<td> <!--Comments-->-
+
+
+
+<tr>
+<td> <!--Name--> <a href=http://www.intel.com/research/mrl/pnl/>PNL</a>
+<td> <!--Authors-->Eruhimov (Intel)
+<td> <!--Src-->C++
+<td> <!--API-->-
+<td> <!--Exec-->-
+<td> <!--Cts-->D
+<td> <!--GUI-->N
+<td> <!--Params-->Y
+<td> <!--Struct-->Y
+<td> <!--Utility-->N
+<td> <!--Free-->0
+<td> <!--Undir-->U,D
+<td> <!--Inference-->Jtree
+<td> <!--Comments-->
+A C++ version of BNT; will be released 12/03.
+
+
+<tr>
+<td><a href=http://iridia.ulb.ac.be/pulcinella/Welcome.html  >  Pulcinella</a>
+<td>        IRIDIA
+<td>            Lisp
+<td>            Y
+<td>           WUM
+<td>            D
+<td>            Y
+<td>     N
+<td>     N
+<td>        N
+<td>            0
+<td>      D
+<td>      ?
+<td>       Uses valuation systems for non-probabilistic calculi.
+
+<tr>
+<!-- http://civil.colorado.edu/~dodier/sonero-mirror/index.html  -->
+<td><a href=http://sourceforge.net/projects/riso>RISO</a>
+<td>        Dodier (U.Colorado)
+<td>            Java
+<td>            Y
+<td>           WUM
+<td>            G
+<td>            Y
+<td>     N
+<td>     N
+<td>        N
+<td>            0
+<td>      D
+<td>      Polytree
+<td>       Distributed implementation.
+
+
+
+<tr>
+<td> <!--Name--> <a href=http://reasoning.cs.ucla.edu/samiam/> Sam Iam</a>
+<td> <!--Authors-->Darwiche (UCLA)
+<td> <!--Src-->N
+<td> <!--API-->N ?
+<td> <!--Exec-->WU ? (Java executable)
+<td> <!--Cts-->G ?
+<td> <!--GUI-->Y
+<td> <!--Params-->Y
+<td> <!--Struct-->N ?
+<td> <!--Utility-->Y
+<td> <!--Free-->0
+<td> <!--Undir-->D
+<td> <!--Inference-->Recursive conditioning
+<td> <!--Comments-->Also does sensitivity Analysis
+
+
+<tr>
+<td><a href=http://www.phil.cmu.edu/tetrad/>Tetrad</a>
+<td>        CMU
+<td>            N
+<td>            N
+<td>           WU
+<td>            G
+<td>            N
+<td>     Y
+<td>     CI
+<td>        N
+<td>            0
+<td>      U,D
+<td>      None
+<td>       -
+
+
+<tr>
+<td> <!--Name--> <a href="https://sourceforge.net/projects/unbbayes/">UnBBayes</a>
+<td> <!--Authors-->?
+<td> <!--Src-->Java
+<td> <!--API-->-
+<td> <!--Exec-->-
+<td> <!--Cts-->D
+<td> <!--GUI-->Y
+<td> <!--Params-->N
+<td> <!--Struct-->Y
+<td> <!--Utility-->N
+<td> <!--Free-->0
+<td> <!--Undir-->D
+<td> <!--Inference-->jtree
+<td> <!--Comments-->K2 for struct learning
+
+
+<tr>
+<td><a href=http://www.inference.phy.cam.ac.uk/jmw39/>Vibes</a>
+<td>        Winn & Bishop (U. Cambridge)
+<td>            Java
+<td>            Y
+<td>           WU
+<td>            Cx
+<td>            Y
+<td>     Y
+<td>     N
+<td>        N
+<td>            0
+<td>      D
+<td>      Variational
+<td>    
+Not yet available.
+
+
+<tr>
+<td><a href=http://snowhite.cis.uoguelph.ca/faculty_info/yxiang/ww3/>  Web Weaver</a>
+<td>        Xiang (U.Regina)
+<td>            Java
+<td>            Y
+<td>           WUM
+<td>            D
+<td>            Y
+<td>     N
+<td>     N
+<td>        Y
+<td>            0
+<td>      D
+<td>      ?
+<td>       -
+
+<tr>
+<td><a href=http://research.microsoft.com/~dmax/WinMine/tooldoc.htm  >  WinMine</a>
+<td>        Microsoft
+<td>            N
+<td>            N
+<td>           W
+<td>            Cx
+<td>            Y
+<td>     Y
+<td>     Y
+<td>        N
+<td>            0
+<td>      U,D
+<td>      None
+<td>       Learns BN or dependency net structure.
+
+<tr>
+<td><a href=http://www.staff.city.ac.uk/~rgc/webpages/xbpage.html >  XBAIES 2.0</a>
+<td>        Cowell (City U.)
+<td>            N
+<td>            N
+<td>           W
+<td>            G
+<td>            Y
+<td>     Y
+<td>     N
+<td>        Y
+<td>            0
+<td>      CG
+<td>      Jtree
+<td>       -
+
+<tr>
+
+</table>
+
+
+<p>
+<h2>Other sites related to (software for) graphical models</h2>
+<ul>
+
+
+<li>
+<a
+href="http://directory.google.com/Top/Computers/Artificial_Intelligence/Belief_Networks/Software/">
+Google's list</a> of Bayes net software.
+
+<!--
+<li> <a href="http://www.sis.pitt.edu/~dsl/da-software.html">
+Decision analysis programs</a>, list maintained by 
+Marek Druzdzel.
+-->
+
+<li> <a href="http://www.cs.cmu.edu/~lorens/papers/mscthesis.html">
+Comparison of decision analysis software packages</a> by
+Håkan L. Younes. The emphasis is on real-time decision making.
+
+<li> <a href="http://bayes.stat.washington.edu/almond/belief.html">
+Older belief net programs</a> (c 1996), a list created (but no longer maintained)
+by Russ Almond. 
+
+<li>
+<a
+href="http://www.cs.huji.ac.il/labs/compbio/Repository">
+Repository of Bayes nets</a>.
+
+</document>

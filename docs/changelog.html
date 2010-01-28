@@ -1,0 +1,1617 @@
+<title>History of changes to BNT</title>
+<h1>History of changes to BNT</h1>
+
+
+<h2>Changes since 4 Oct 2007</h2>
+
+<pre>
+- 19 Oct 07 murphyk
+
+* BNT\CPDs\@noisyor_CPD\CPD_to_CPT.m: 2nd half of the file is a repeat
+of the first half and was deleted (thanks to Karl Kuschner)
+
+* KPMtools\myismember.m should return logical for use in "assert" so add line at end
+                p=logical(p);  this prevents "assert" from failing on an integer input.
+(thanks to Karl Kuschner)
+
+
+
+- 17 Oct 07 murphyk
+
+* Updated subv2ind and ind2subv in KPMtools to Tom Minka's implementation.
+His ind2subv is faster (vectorized), but I had to modify it so it
+matched the behavior of my version when called with siz=[].
+His subv2inv is slightly simpler than mine because he does not treat
+the siz=[2 2 ... 2] case separately.
+Note: there is now no need to ever use the C versions of these
+functions (or any others, for that matter).
+
+* removed BNT/add_BNT_to_path since no longer needed.
+
+
+
+- 4 Oct 07 murphyk
+
+*  moved code from sourceforge to UBC website, made version 1.0.4
+
+* @pearl_inf_engine/pearl_inf_engine line 24, default
+argument for protocol changed from [] to 'parallel'.
+Also, changed private/parallel_protocol so it doesn't write to an
+empty file id (Matlab 7 issue)
+
+* added foptions (Matlab 7 issue)
+
+* changed genpathKPM to exclude svn. Put it in toplevel directory to
+massively simplify the installation process.
+
+</pre>
+
+
+<h2>Sourceforge changelog</h2>
+
+BNT was first ported to sourceforge on 28 July 2001 by yozhik.
+BNT was removed from sourceforge on 4 October 2007 by Kevin Murphy;
+that version is cached as <a
+href="FullBNT-1.0.3.zip">FullBNT-1.0.3.zip</a>. 
+See  <a href="ChangeLog.Sourceforge.txt">Changelog from
+sourceforge</a> for a history of that version of the code,
+which formed the basis of the branch currently on Murphy's web page.
+
+
+<h2> Changes from August 1998 -- July 2004</h2>
+
+Kevin Murphy made the following changes to his own private copy.
+(Other small changes were made between July 2004 and October 2007, but were
+not documented.)
+These may or may not be reflected in the sourceforge version of the
+code (which was independently maintained).
+
+
+<ul>
+<li> 9 June 2004
+<ul>
+<li> Changed tabular_CPD/learn_params back to old syntax, to make it
+compatible with gaussian_CPD/learn_params (and re-enabled
+generic_CPD/learn_params).
+Modified learning/learn_params.m and learning/score_family
+appropriately.
+(In particular, I undid the change Sonia Leach had to make to
+score_family to handle this asymmetry.)
+Added examples/static/gaussian2 to test this new functionality.
+
+<li> Added bp_mrf2 (for generic pairwise MRFs) to
+inference/static/@bp_belprop_mrf2_inf_engine. [MRFs are not
+"officially" supported in BNT, so this code is just for expert
+hackers.]
+
+<li> Added examples/static/nodeorderExample.m to illustrate importance
+of using topological ordering.
+
+<li> Ran dos2unix on all *.c files within BNT to eliminate compiler
+warnings.
+
+</ul>
+
+<li> 7 June 2004
+<ul>
+<li> Replaced normaliseC with normalise in HMM/fwdback, for maximum
+portability (and negligible loss in speed).
+<li> Ensured FullBNT versions of HMM, KPMstats etc were as up-to-date
+as stand-alone versions.
+<li> Changed add_BNT_to_path so it no longer uses addpath(genpath()),
+which caused Old versions of files to mask new ones.
+</ul>
+
+<li> 18 February 2004
+<ul>
+<li> A few small bug fixes to BNT, as posted to the Yahoo group.
+<li> Several new functions added to KPMtools, KPMstats and Graphviz
+(none needed by BNT).
+<li> Added CVS to some of my toolboxes.
+</ul>
+
+<li> 30 July 2003
+<ul>
+<li> qian.diao fixed @mpot/set_domain_pot and @cgpot/set_domain_pot
+<li> Marco Grzegorczyk found, and Sonia Leach fixed, a bug in
+do_removal inside learn_struct_mcmc
+</ul>
+
+
+<li> 28 July 2003
+<ul>
+<li> Sebastian Luehr provided 2 minor bug fixes, to HMM/fwdback (if any(scale==0))
+and FullBNT\HMM\CPDs\@hhmmQ_CPD\update_ess.m (wrong transpose).
+</ul>
+
+<li> 8 July 2003
+<ul>
+<li> Removed buggy  BNT/examples/static/MRF2/Old/mk_2D_lattice.m which was
+masking correct graph/mk_2D_lattice.
+<li> Fixed bug in graph/mk_2D_lattice_slow in the non-wrap-around case
+(line 78)
+</ul>
+
+
+<li> 2 July 2003
+<ul>
+<li> Sped up normalize(., 1) in KPMtools by avoiding general repmat
+<li> Added assign_cols and marginalize_table to KPMtools
+</ul>
+
+
+<li> 29 May 2003
+<ul>
+<li> Modified KPMstats/mixgauss_Mstep so it repmats Sigma in the tied
+covariance case (bug found by galt@media.mit.edu).
+
+<li> Bob Welch found bug in gaussian_CPDs/maximize_params in the way
+cpsz was computed.
+
+<li> Added KPMstats/mixgauss_em, because my code is easier to
+understand/modify than netlab's (at least for me!).
+
+<li> Modified BNT/examples/dynamic/viterbi1 to call multinomial_prob
+instead of mk_dhmm_obs_lik.
+
+<li> Moved parzen window and partitioned models code to KPMstats.
+
+<li> Rainer Deventer fixed some bugs in his scgpot code, as follows:
+1. complement_pot.m
+Problems occured for probabilities equal to zero. The result is an
+division by zero error.
+<br>
+2. normalize_pot.m
+This function is used during the calculation of the log-likelihood.
+For a probability of zero a warning "log of zero" occurs. I have not
+realy fixed the bug. As a workaround I suggest to calculate the 
+likelihhod based on realmin (the smallest real number) instead of
+zero.
+<br>
+3. recursive_combine_pots
+At the beginning of the function there was no test for the trivial case,
+which defines the combination of two potentials as equal to the direct
+combination. The result might be an infinite recursion which leads to
+a stack overflow in matlab.
+</ul>
+
+
+
+<li> 11 May 2003
+<ul> 
+<li> Fixed bug in gaussian_CPD/maximize_params so it is compatible
+with the new clg_Mstep routine
+<li> Modified KPMstats/cwr_em to handle single cluster case 
+separately.
+<li> Fixed bug in netlab/gmminit.
+<li> Added hash tables to KPMtools.
+</ul>
+
+
+<li> 4 May 2003
+<ul>
+<li>
+Renamed many functions in KPMstats so the name of the
+distribution/model type comes first, 
+Mstep_clg -> clg_Mstep,
+Mstep_cond_gauss -> mixgauss_Mstep.
+Also, renamed eval_pdf_xxx functions to xxx_prob, e.g.
+eval_pdf_cond_mixgauss -> mixgauss_prob.
+This is simpler and shorter.
+
+<li> 
+Renamed many functions in HMM toolbox so the name of the
+distribution/model type comes first, 
+log_lik_mhmm -> mhmm_logprob, etc.
+mk_arhmm_obs_lik has finally been re-implemented in terms of clg_prob
+and mixgauss_prob (for slice 1).
+Removed the Demos directory, and put them in the main directory.
+This code is not backwards compatible.
+
+<li> Removed some of the my_xxx functions from KPMstats (these were
+mostly copies of functions from the Mathworks stats toolbox).
+
+
+<li> Modified BNT to take into account changes to KPMstats and
+HMM toolboxes.
+
+<li> Fixed KPMstats/Mstep_clg (now called clg_Mstep) for spherical Gaussian case.
+(Trace was wrongly parenthesised, and I used YY instead of YTY.
+The spherical case now gives the same result as the full case
+for cwr_demo.)
+Also, mixgauss_Mstep now adds 0.01 to the ML estimate of Sigma,
+to act as a regularizer (it used to add 0.01 to  E[YY'], but this was
+ignored in the spherical case).
+
+<li> Added cluster weighted regression to KPMstats.
+
+<li> Added KPMtools/strmatch_substr.
+</ul>
+
+
+
+<li>  28 Mar 03 
+<ul>
+<li> Added mc_stat_distrib and eval_pdf_cond_prod_parzen to KPMstats
+<li> Fixed GraphViz/arrow.m incompatibility with matlab 6.5
+(replace all NaN's with 0).
+Modified GraphViz/graph_to_dot so it also works on windows.
+<li> I removed dag_to_jtree and added graph_to_jtree to the graph
+toolbox; the latter expects an undirected graph as input.
+<li> I added triangulate_2Dlattice_demo.m to graph.
+<li> Rainer Deventer fixed the stable conditional Gaussian potential
+classes (scgpot and scgcpot) and inference engine
+(stab_cond_gauss_inf_engine).
+<li> Rainer Deventer added (stable) higher-order Markov models (see
+inference/dynamic/@stable_ho_inf_engine).
+</ul>
+
+
+<li> 14 Feb 03
+<ul>
+<li> Simplified learning/learn_params so it no longer returns BIC
+score. Also, simplified @tabular_CPD/learn_params so it only takes
+local evidence.
+Added learn_params_dbn, which does ML estimation of fully observed
+DBNs.
+<li> Vectorized KPMstats/eval_pdf_cond_mixgauss for tied Sigma
+case (much faster!).
+Also, now works in log-domain to prevent underflow.
+eval_pdf_mixgauss now calls eval_pdf_cond_mixgauss and inherits these benefits.
+<li> add_BNT_to_path now calls genpath with 2 arguments if using
+matlab version 5.
+</ul>
+
+
+<li>  30 Jan 03
+<ul>
+<li> Vectorized KPMstats/eval_pdf_cond_mixgauss for scalar Sigma
+case (much faster!)
+<li> Renamed mk_dotfile_from_hmm to draw_hmm and moved it to the
+GraphViz library.
+<li> Rewrote @gaussian_CPD/maximize_params.m so it calls
+KPMstats/Mstep_clg.
+This fixes bug when using clamped means (found by Rainer Deventer
+and Victor Eruhimov)
+and a bug when using a Wishart prior (no gamma term in the denominator).
+It is also easier to read.
+I rewrote the technical report re-deriving all the equations in a
+clearer notation, making the solution to the bugs more obvious.
+(See www.ai.mit.edu/~murphyk/Papers/learncg.pdf)
+Modified Mstep_cond_gauss to handle priors.
+<li> Fixed bug reported by Ramgopal Mettu in which add_BNT_to_path
+calls genpath with only 1 argument, whereas version 5 requires 2.
+<li> Fixed installC and uninstallC to search in FullBNT/BNT.
+</ul>
+
+
+<li> 24 Jan 03
+<ul>
+<li> Major simplification of HMM code.
+The API is not backwards compatible.
+No new functionality has been added, however.
+There is now only one fwdback function, instead of 7;
+different behaviors are controlled through optional arguments. 
+I renamed 'evaluate observation likelihood' (local evidence)
+to 'evaluate conditional pdf', since this is more general.
+i.e., renamed
+mk_dhmm_obs_lik to eval_pdf_cond_multinomial,
+mk_ghmm_obs_lik to eval_pdf_cond_gauss,
+mk_mhmm_obs_lik to eval_pdf_cond_mog.
+These functions have been moved to KPMstats,
+so they can be used by other toolboxes.
+ghmm's have been eliminated, since they are just a special case of
+mhmm's with M=1 mixture component.
+mixgauss HMMs can now handle a different number of
+mixture components per state.
+init_mhmm has been eliminated, and replaced with init_cond_mixgauss
+(in KPMstats) and mk_leftright/rightleft_transmat.
+learn_dhmm can no longer handle inputs (although this is easy to add back).
+</ul>
+
+
+
+
+
+<li> 20 Jan 03
+<ul>
+<li> Added arrow.m to GraphViz directory, and commented out line 922,
+in response to a bug report.
+</ul>
+
+<li> 18 Jan 03
+<ul>
+<li> Major restructuring of BNT file structure:
+all code that is not specific to Bayes nets has been removed;
+these packages must be downloaded separately. (Or just download FullBNT.)
+This makes it easier to ensure different toolboxes are consistent.
+misc has been slimmed down and renamed KPMtools, so it can be shared by other toolboxes,
+such as HMM and Kalman; some of the code has been moved to BNT/general.
+The Graphics directory has been slimmed down and renamed GraphViz.
+The graph directory now has no dependence on BNT (dag_to_jtree has
+been renamed graph_to_jtree and has a new API).
+netlab2 no longer contains any netlab files, only netlab extensions.
+None of the functionality has changed.
+</ul>
+
+
+
+<li> 11 Jan 03
+<ul>
+<li> jtree_dbn_inf_engine can now support soft evidence.
+
+<li> Rewrote graph/dfs to make it clearer.
+Return arguments have changed, as has mk_rooted_tree.
+The acyclicity check for large undirected graphs can cause a stack overflow.
+It turns out that this was not a bug, but is because Matlab's stack depth
+bound is very low by default.
+
+<li> Renamed examples/dynamic/filter2 to filter_test1, so it does not
+conflict with the filter2 function in the image processing toolbox.
+
+<li> Ran test_BNT on various versions of matlab to check compatibility.
+On matlab 6.5 (r13), elapsed time = 211s, cpu time = 204s.
+On matlab 6.1 (r12), elapsed time = 173s, cpu time = 164s.
+On matlab 5.3 (r11), elapsed time = 116s, cpu time = 114s.
+So matlab is apparently getting slower with time!!
+(All results were with a linux PIII machine.)
+</ul>
+
+
+<li> 14 Nov 02
+<ul>
+<li> Removed all ndx inference routines, since they are only
+marginally faster on toy problems,
+and are slower on large problems due to having to store and lookup 
+the indices (causes cache misses).
+In particular, I removed jtree_ndx_inf_eng and jtree_ndx_dbn_inf_eng, all the *ndx*
+routines from potentials/Tables, and all the UID stuff from
+add_BNT_to_path,
+thus simplifying the code.
+This required fixing hmm_(2TBN)_inf_engine/marginal_nodes\family,
+and updating installC.
+
+
+<li> Removed jtree_C_inf_engine and jtree_C_dbn_inf_engine.
+The former is basically the same as using jtree_inf_engine with
+mutliply_by_table.c and marginalize_table.c.
+The latter benefited slightly by assuming potentials were tables
+(arrays not objects), but these negligible savings don't justify the
+complexity and code duplication.
+
+<li> Removed stab_cond_gauss_inf_engine and
+scg_unrolled_dbn_inf_engine,
+written by shan.huang@intel.com, since the code was buggy.
+
+<li> Removed potential_engine, which was only experimental anyway.
+
+</ul>
+
+
+
+<li> 13 Nov 02
+<ul>
+<li> <b>Released version 5</b>.
+The previous version, released on 7/28/02, is available
+<a href="BNT4.zip">here</a>.
+
+<li> Moved code and documentation to MIT.
+
+<li> Added repmat.c from Thomas Minka's lightspeed library.
+Modified it so it can return an empty matrix.
+
+<li> Tomas Kocka fixed bug in the BDeu option for tabular_CPD,
+and contributed graph/dag_to_eg, to convert to essential graphs.
+
+<!--<li> Wrote a <a href="../Papers/fastmult.pdf">paper</a> which explains
+the ndx methods and the ndx cache BNT uses for fast
+multiplication/ marginalization of multi-dimensional arrays.
+-->
+
+<li> Modified definition of hhmmQ_CPD, so that Qps can now accept
+parents in either the current or previous slice.
+
+<li> Added hhmm2Q_CPD class, which is simpler than hhmmQ (no embedded
+sub CPDs, etc), and which allows the conditioning parents, Qps, to
+be before (in the topological ordering) the F or Q(t-1) nodes.
+See BNT/examples/dynamic/HHMM/Map/mk_map_hhmm for an example.
+</ul>
+
+
+<li> 7/28/02
+<ul>
+<li> Changed graph/best_first_elim_order from min-fill to min-weight.
+<li> Ernest Chan fixed bug in Kalman/sample_lds (G{i} becomes G{m} in
+line 61).
+<li> Tal Blum <bloom@cs.huji.ac.il> fixed bug in HMM/init_ghmm (Q
+becomes K, the number of states).
+<li> Fixed jtree_2tbn_inf_engine/set_fields so it correctly sets the
+maximize flag to 1 even in subengines.
+<li> Gary Bradksi did a simple mod to the PC struct learn alg so you can pass it an
+adjacency matrix as a constraint. Also, CovMat.m reads a file and
+produces a covariance matrix.
+<li> KNOWN BUG in CPDs/@hhmmQ_CPD/update_ess.m at line 72 caused by 
+examples/dynamic/HHMM/Square/learn_square_hhmm_cts.m at line 57.
+<li>
+The old version is available from www.cs.berkeley.edu/~murphyk/BNT.24june02.zip
+</ul>
+
+
+<li> 6/24/02
+<ul>
+<li> Renamed dag_to_dot as graph_to_dot and added support for
+undirected graphs.
+<li> Changed syntax for HHMM CPD constructors: no need to specify d/D
+anymore,so they can be used for more complex models.
+<li> Removed redundant first argument to mk_isolated_tabular_CPD.
+</ul>
+
+
+<li> 6/19/02
+<ul>
+<li>
+Fixed most probable explanation code.
+Replaced calc_mpe with find_mpe, which is now a method of certain
+inference engines, e.g., jtree, belprop.
+calc_mpe_global has become the find_mpe method of global_joint.
+calc_mpe_bucket has become the find_mpe method of var_elim.
+calc_mpe_dbn has become the find_mpe method of smoother.
+These routines now correctly find the jointly most probable
+explanation, instead of the marginally most probable assignments.
+See examples/static/mpe1\mpe2 and examples/dynamic/viterbi1
+for examples.
+Removed maximize flag from constructor and enter_evidence
+methods, since this no longer needs to be specified by the user.
+
+<li> Rainer Deventer fixed in a bug in 
+CPDs/@gaussian_CPD/udpate_ess.m: 
+now, hidden_cps = any(hidden_bitv(cps)), whereas it used to be
+hidden_cps = all(hidden_bitv(cps)).
+
+</ul>
+
+
+<li> 5/29/02
+<ul>
+<li> CPDs/@gaussian_CPD/udpate_ess.m fixed WX,WXX,WXY (thanks to Rainer Deventer and
+Yohsuke Minowa for spotting the bug). Does the C version work??
+<li> potentials/@cpot/mpot_to_cpot fixed K==0 case (thanks to Rainer Deventer).
+<li> CPDs/@gaussian_CPD/log_prob_node now accepts non-cell array data
+on self (thanks to rishi <rishi@capsl.udel.edu> for catching this).
+</ul>
+
+
+<li> 5/19/02
+<ul>
+
+<!--
+<li> Finally added <a href="../Papers/wei_ndx.ps.gz">paper</a> by Wei Hu (written
+November 2001)
+describing ndxB, ndxD, and ndxSD.
+-->
+
+<li> Wei Hu made the following changes.
+<ul>
+<li>   Memory leak repair:
+     a.  distribute_evidence.c   in  static/@jtree_C directory
+     b.  distribute_evidence.c   in  static/@jtree_ndx directory
+     c.  marg_tablec.            in  Tables dir
+
+<li>   Add "@jtree_ndx_2TBN_inf_engine"  in inference/online dir
+
+<li>   Add "@jtree_sparse_inf_engine"    in inference/static dir
+
+<li>   Add "@jtree_sparse_2TBN_inf_engine"   in inference/online  dir
+
+<li>   Modify "tabular_CPD.m" in CPDs/@tabular_CPD dir , used for sparse
+
+<li>   In "@discrete_CPD" dir:
+     a.  modify "convert_to_pot.m", used for sparse
+     b.  add "convert_to_sparse_table.c"
+
+<li>   In "potentials/@dpot" dir:
+     a.  remove "divide_by_pot.c" and "multiply_by_pot.c"
+     b.  add "divide_by_pot.m" and "multiply_by_pot.m"
+     c.  modify "dpot.m", "marginalize_pot.m" and "normalize_pot.m"
+
+<li>   In "potentials/Tables" dir:
+     a.  modify mk_ndxB.c;(for speedup)
+     b.  add "mult_by_table.m", 
+             "divide_by_table.m",
+             "divide_by_table.c",
+             "marg_sparse_table.c",
+             "mult_by_sparse_table.c",
+             "divide_by_sparse_table.c".
+
+<li>   Modify "normalise.c" in misc dir, used for sparse.
+
+<li>And, add discrete2, discrete3, filter2 and filter3 as test applications in test_BNT.m
+Modify installC.m
+</ul>
+
+<li> Kevin made the following changes related to strong junction
+trees:
+<ul>
+<li> jtree_inf_engin line 75:
+engine.root_clq = length(engine.cliques);
+the last clq is guaranteed to be a strong root
+
+<li> dag_to_jtree line 38: [jtree, root, B, w] =
+cliques_to_jtree(cliques, ns);
+never call cliques_to_strong_jtree
+
+<li> strong_elim_order: use Ilya's code instead of topological sorting.
+</ul>
+
+<li> Kevin fixed CPDs/@generic_CPD/learn_params, so it always passes
+in the correct hidden_bitv field to update_params.
+
+</ul>.
+
+
+<li> 5/8/02
+<ul>
+
+<li> Jerod Weinman helped fix some bugs in HHMMQ_CPD/maximize_params.
+
+<li> Removed broken online inference from hmm_inf_engine.
+It has been replaced filter_inf_engine, which can take hmm_inf_engine
+as an argument.
+
+<li> Changed graph visualization function names.
+'draw_layout' is now 'draw_graph',
+'draw_layout_dbn' is now 'draw_dbn',
+'plotgraph' is now 'dag_to_dot',
+'plothmm' is now 'hmm_to_dot',
+added 'dbn_to_dot',
+'mkdot' no longer exists': its functioality has been subsumed by dag_to_dot.
+The dot functions now all take optional args in string/value format.
+</ul>
+
+
+<li> 4/1/02
+<ul>
+<li> Added online inference classes.
+See BNT/inference/online and BNT/examples/dynamic/filter1.
+This is work in progress.
+<li> Renamed cmp_inference to cmp_inference_dbn, and made its
+    interface and behavior more similar to cmp_inference_static.
+<li> Added field rep_of_eclass to bnet and dbn, to simplify
+parameter tying (see ~murphyk/Bayes/param_tieing.html).
+<li> Added gmux_CPD (Gaussian mulitplexers).
+See BNT/examples/dynamic/SLAM/skf_data_assoc_gmux for an example.
+<li> Modified the forwards sampling routines.
+general/sample_dbn and sample_bnet now take optional arguments as
+strings, and can sample with pre-specified evidence.
+sample_bnet can only generate a single sample, and it is always a cell
+array. 
+sample_node can only generate a single sample, and it is always a
+scalar or vector.
+This eliminates the false impression that the function was
+ever vectorized (which was only true for tabular_CPDs).
+(Calling sample_bnet inside a for-loop is unlikely to be a bottleneck.)
+<li> Updated usage.html's description of CPDs (gmux) and inference
+(added gibbs_sampling and modified the description of pearl).
+<li> Modified BNT/Kalman/kalman_filter\smoother so they now optionally
+take an observed input (control) sequence.
+Also, optional arguments are now passed as strings.
+<li> Removed BNT/examples/static/uci_data to save space.
+</ul>
+
+<li> 3/14/02
+<ul>
+<li> pearl_inf_engine now works for (vector) Gaussian nodes, as well
+as discrete. compute_pi has been renamed CPD_to_pi. compute_lambda_msg
+    has been renamed CPD_to_lambda_msg. These are now implemented for
+    the discrete_CPD class instead of tabular_CPD. noisyor and
+    Gaussian have their own private implemenations.
+Created examples/static/Belprop subdirectory.
+<li> Added examples/dynamic/HHMM/Motif.
+<li> Added Matt Brand's entropic prior code.
+<li> cmp_inference_static has changed. It no longer returns err. It
+    can check for convergence. It can accept 'observed'.
+</ul>
+
+
+<li> 3/4/02
+<ul>
+<li> Fixed HHMM code. Now BNT/examples/dynamic/HHMM/mk_abcd_hhmm
+implements the example in the NIPS paper. See also
+Square/sample_square_hhmm_discrete and other files.
+
+<li> Included Bhaskara Marthi's gibbs_sampling_inf_engine. Currently
+this only works if all CPDs are tabular and if you call installC.
+
+<li> Modified Kalman/tracking_demo  so it calls plotgauss2d instead of
+    gaussplot.
+
+<li> Included Sonia Leach's speedup of mk_rnd_dag.
+My version created all NchooseK subsets, and then picked among them. Sonia
+reorders the possible parents randomly and choose
+the first k. This saves on having to enumerate the large number of
+possible subsets before picking from one. 
+
+<li> Eliminated BNT/inference/static/Old, which contained some old
+.mexglx files which wasted space.
+</ul>
+
+
+
+<li> 2/15/02
+<ul>
+<li> Removed the netlab directory, since most of it was not being
+used, and it took up too much space (the goal is to have BNT.zip be
+less than 1.4MB, so if fits on a floppy).
+The required files have been copied into netlab2.
+</ul>
+
+<li> 2/14/02
+<ul>
+<li> Shan Huang fixed most (all?) of the bugs in his stable CG code.
+scg1-3 now work, but scg_3node and scg_unstable give different
+    behavior than that reported in the Cowell book.
+
+<li> I changed gaussplot so it plots an ellipse representing the
+    eigenvectors of the covariance matrix, rather than numerically
+    evaluating the density and using a contour plot; this
+    is much faster and gives better pictures. The new function is
+    called plotgauss2d in BNT/Graphics.
+
+<li> Joni Alon <jalon@cs.bu.edu> fixed some small bugs:
+    mk_dhmm_obs_lik called forwards with the wrong args, and
+    add_BNT_to_path should quote filenames with spaces.
+
+<li> I added BNT/stats2/myunidrnd which is called by learn_struct_mcmc.
+
+<li> I changed BNT/potentials/@dpot/multiply_by_dpot so it now says
+Tbig.T(:) = Tbig.T(:) .* Ts(:);
+</ul>
+
+
+<li> 2/6/02
+<ul>
+<li> Added hierarchical HMMs. See BNT/examples/dynamic/HHMM and
+CPDs/@hhmmQ_CPD and @hhmmF_CPD.
+<li> sample_dbn can now sample until a certain condition is true.
+<li> Sonia Leach fixed learn_struct_mcmc and changed mk_nbrs_of_digraph
+so it only returns DAGs.
+Click <a href="sonia_mcmc.txt">here</a> for details of her changes.
+</ul>
+
+
+<li> 2/4/02
+<ul>
+<li> Wei Hu fixed a bug in
+jtree_ndx_inf_engine/collect\distribute_evidence.c which failed when
+maximize=1.
+<li>
+I fixed various bugs to do with conditional Gaussians,
+so mixexp3 now works (thansk to Gerry Fung <gerry.fung@utoronto.ca>
+      for spotting the error). Specifically:
+Changed softmax_CPD/convert_to_pot so it now puts cts nodes in cdom, and no longer inherits 
+      this function from discrete_CPD.
+     Changed root_CPD/convert_to_put so it puts self in cdom.
+</ul>
+
+
+<li> 1/31/02
+<ul>
+<li> Fixed log_lik_mhmm (thanks to ling chen <real_lingchen@yahoo.com>
+for spotting the typo)
+<li> Now many scripts in examples/static  call cmp_inference_static.
+Also, SCG scripts have been simplified (but still don't work!).
+<li> belprop and belprop_fg enter_evidence now returns [engine, ll,
+      niter], with ll=0, so the order of the arguments is compatible with other engines.
+<li> Ensured that all enter_evidence methods support optional
+      arguments such as 'maximize', even if they ignore them.
+<li> Added Wei Hu's potentials/Tables/rep_mult.c, which is used to
+      totally eliminate all repmats from gaussian_CPD/update_ess.
+</ul>
+
+
+<li> 1/30/02
+<ul>
+<li> update_ess now takes hidden_bitv instead of hidden_self and
+hidden_ps. This allows gaussian_CPD to distinguish hidden discrete and 
+cts parents. Now learn_params_em, as well as learn_params_dbn_em,
+    passes in this info, for speed.
+
+<li> gaussian_CPD update_ess is now vectorized for any case where all
+    the continuous nodes are observed (eg., Gaussian HMMs,  AR-HMMs).
+
+<li> mk_dbn now automatically detects autoregressive nodes.
+
+<li> hmm_inf_engine now uses indexes in marginal_nodes/family for
+    speed. Marginal_ndoes can now only handle single nodes.
+   (SDndx is hard-coded, to avoid the overhead of using marg_ndx,
+    which is slow because of the case and global statements.)
+
+<li> add_ev_to_dmarginal now retains the domain field.
+
+<li> Wei Hu wrote potentials/Tables/repmat_and_mult.c, which is used to
+    avoid some of the repmat's in gaussian_CPD/update_ess.
+
+<li> installC now longer sets the global USEC, since USEC is set to 0
+    by add_BNT_to_path, even if the C files have already been compiled 
+    in a previous session. Instead, gaussian_CPD checks to
+    see if repmat_and_mult exists, and (bat1, chmm1, water1, water2)
+    check to see if jtree_C_inf_engine/collect_evidence exists.
+    Note that checking if a file exists is slow, so we do the check
+    inside the gaussian_CPD constructor, not inside update_ess.
+
+<li> uninstallC now deletes both .mex and .dll files, just in case I
+    accidently ship a .zip file with binaries.  It also deletes mex
+   files from jtree_C_inf_engine.
+   
+<li> Now marginal_family for both jtree_limid_inf_engine and
+	    global_joint_inf_engine returns a marginal structure and
+	    potential, as required by solve_limid.
+    Other engines (eg. jtree_ndx, hmm) are not required to return a potential.
+</ul>
+
+
+
+<li> 1/22/02
+<ul>
+<li> Added an optional argument to mk_bnet and mk_dbn which lets you
+add names to nodes. This uses the new assoc_array class.
+
+<li> Added Yimin Zhang's (unfinished) classification/regression tree
+code to CPDs/tree_CPD.
+
+</ul>
+
+
+
+<li> 1/14/02
+<ul> 
+<li> Incorporated some of Shan Huang's (still broken) stable CG code.
+</ul>
+
+
+<li> 1/9/02
+<ul>
+<li> Yimin Zhang vectorized @discrete_CPD/prob_node, which speeds up
+structure learning considerably. I fixed this to handle softmax CPDs.
+
+<li> Shan Huang changed the stable conditional Gaussian code to handle
+vector-valued nodes, but it is buggy.
+
+<li> I vectorized @gaussian_CPD/update_ess for a special case.
+
+<li> Removed denom=min(1, ... Z) from gaussian_CPD/maximize_params
+(added to cope with negative temperature for entropic prior), which
+gives wrong results on mhmm1.
+</ul>
+
+
+<li> 1/7/02
+
+<ul>
+<li> Removed the 'xo' typo from mk_qmr_bnet.
+
+<li> convert_dbn_CPDs_to_tables has been vectorized; it is now
+substantially faster to compute the conditional likelihood for long sequences.
+
+<li> Simplified constructors for tabular_CPD and gaussian_CPD, so they
+now both only take the form CPD(bnet, i, ...) for named arguments -
+the CPD('self', i, ...) format is gone. Modified mk_fgraph_given_ev
+to use mk_isolated_tabular_CPD instead.
+
+<li> Added entropic prior to tabular and Gaussian nodes.
+For tabular_CPD, changed name of arguments to the constructor to
+distinguish Dirichlet and entropic priors. In particular,
+tabular_CPD(bnet, i, 'prior', 2) is now
+tabular_CPD(bnet, i, 'prior_type', 'dirichlet', 'dirichlet_weight', 2).
+
+<li> Added deterministic annealing to learn_params_dbn_em for use with
+entropic priors. The old format learn(engine, cases, max_iter) has
+been replaced by learn(engine, cases, 'max_iter', max_iter).
+
+<li> Changed examples/dynamic/bat1 and kjaerulff1, since default
+equivalence classes have changed from untied to tied.
+</ul>
+
+<li> 12/30/01
+<ul>
+<li> DBN default equivalence classes for slice 2 has changed, so that
+now parameters are tied for nodes with 'equivalent' parents in slices
+1 and 2 (e.g., observed leaf nodes). This essentially makes passing in
+the eclass arguments redundant (hooray!).
+</ul>
+
+
+<li> 12/20/01
+<ul>
+<li> <b>Released version 4</b>.
+Version 4 is considered a major new release
+since it is not completely backwards compatible with V3.
+Observed nodes are now specified when the bnet/dbn is created,
+not when the engine is created. This changes the interface to many of
+the engines, making the code no longer backwards compatible.
+Hence support for non-named optional arguments (BNT2 style) has also
+been removed; hence mk_dbn etc. requires arguments to be passed by name.
+
+<li> Ilya Shpitser's C code for triangulation now compiles under
+Windows as well as Unix, thanks to Wei Hu.
+
+<li> All the ndx engines have been combined, and now take an optional
+argument specifying what kind of index to use.
+
+<li> learn_params_dbn_em is now more efficient:
+@tabular_CPD/update_ess for nodes whose families
+are hidden does not need need to call add_evidence_to_dmarginal, which
+is slow.
+
+<li> Wei Hu fixed bug in jtree_ndxD, so now the matlab and C versions
+both work.
+
+<li> dhmm_inf_engine replaces hmm_inf_engine, since the former can
+handle any kind of topology and is slightly more efficient. dhmm is
+extended to handle Gaussian, as well as discrete,
+observed nodes. The new hmm_inf_engine no longer supports online
+inference (which was broken anyway).
+
+<li> Added autoregressive HMM special case to hmm_inf_engine for
+speed.
+
+<li> jtree_ndxSD_dbn_inf_engine now computes likelihood of the
+evidence in a vectorized manner, where possible, just like
+hmm_inf_engine.
+
+<li> Added mk_limid, and hence simplified mk_bnet and mk_dbn.
+
+
+<li> Gaussian_CPD now uses 0.01*I prior on covariance matrix by
+default. To do ML estimation, set 'cov_prior_weight' to 0.
+
+<li> Gaussian_CPD and tabular_CPD
+optional binary arguments are now set using 0/1 rather no 'no'/'yes'.
+
+<li> Removed Shan Huang's PDAG and decomposable graph code, which will
+be put in a separate structure learning library.
+</ul>
+
+
+<li> 12/11/01
+<ul>
+<li> Wei Hu fixed jtree_ndx*_dbn_inf_engine and marg_table.c.
+
+<li> Shan Huang contributed his implementation of stable conditional
+Gaussian code (Lauritzen 1999), and methods to search through the
+space of PDAGs (Markov equivalent DAGs) and undirected decomposable
+graphs. The latter is still under development.
+</ul>
+
+
+<li> 12/10/01
+<ul>
+<li> Included Wei Hu's new versions of the ndx* routines, which use
+integers instead of doubles. The new versions are about 5 times faster
+in C. In general, ndxSD is the best choice.
+
+<li> Fixed misc/add_ev_to_dmarginal so it works with the ndx routines
+in bat1.
+
+<li> Added calc_mpe_dbn to do Viterbi parsing.
+
+<li> Updated dhmm_inf_engine so it computes marginals.
+</ul>
+
+
+
+<li> 11/23/01
+<ul>
+<li> learn_params now does MAP estimation (i.e., uses Dirichlet prior,
+if define). Thanks to Simon Keizer skeizer@cs.utwente.nl for spotting
+this.
+<li> Changed plotgraph so it calls ghostview with the output of dotty,
+instead of converting from .ps to .tif. The resulting image is much
+easier to read.
+<li> Fixed cgpot/multiply_by_pots.m.
+<li> Wei Hu fixed ind2subv.c.
+<li> Changed arguments to compute_joint_pot.
+</ul>
+
+
+<li> 11/1/01
+<ul>
+<li> Changed sparse to dense in @dpot/multiply_pots, because sparse
+arrays apparently cause a bug in the NT version of Matlab.
+
+<li> Fixed the bug in gaussian_CPD/log_prob_node.m which
+incorrectly called the vectorized gaussian_prob with different means
+when there were continuous parents and more than one case.
+(Thanks to Dave Andre for finding this.)
+
+<li> Fixed the bug in root_CPD/convert_to_pot which did not check for
+pot_type='g'. 
+(Thanks to Dave Andre for finding this.)
+
+<li> Changed calc_mpe and calc_mpe_global so they now return a cell array.
+
+<li> Combine pearl and loopy_pearl into a single inference engine
+called 'pearl_inf_engine', which now takes optional arguments passed
+in using the name/value pair syntax.
+marginal_nodes/family now takes the optional add_ev argument (same as
+jtree), which is the opposite of the previous shrink argument.
+
+<li> Created pearl_unrolled_dbn_inf_engine and "resurrected"
+pearl_dbn_inf_engine in a simplified (but still broken!) form.
+
+<li> Wei Hi fixed the bug in ind2subv.c, so now ndxSD works.
+He also made C versions of ndxSD and ndxB, and added (the unfinished) ndxD.
+
+</ul>
+
+
+<li> 10/20/01
+
+<ul>
+<li>  Removed the use_ndx option from jtree_inf,
+and created 2 new inference engines: jtree_ndxSD_inf_engine and
+jtree_ndxB_inf_engine.
+The former stores 2 sets of indices for the small and difference
+domains; the latter stores 1 set of indices for the big domain.
+In Matlab, the ndxB version is often significantly faster than ndxSD
+and regular jree, except when the clique size is large.
+When compiled to C, the difference between ndxB and ndxSD (in terms of
+speed) vanishes; again, both are faster than compiled jtree, except
+when the clique size is large.
+Note: ndxSD currently has a bug in it, so it gives the wrong results!
+(The DBN analogs are jtree_dbn_ndxSD_inf_engine and 
+jtree_dbn_ndxB_inf_engine.)
+
+<li> Removed duplicate files from the HMM and Kalman subdirectories.
+e.g., normalise is now only in BNT/misc, so when compiled to C, it
+masks the unique copy of the Matlab version.
+</ul>
+
+
+
+<li> 10/17/01
+<ul>
+<li> Fixed bugs introduced on 10/15:
+Renamed extract_gaussian_CPD_params_given_ev_on_dps.m to
+gaussian_CPD_params_given_dps.m since Matlab can't cope with such long
+names (this caused cg1 to fail). Fixed bug in
+gaussian_CPD/convert_to_pot, which now calls convert_to_table in the
+discrete case.
+
+<li> Fixed bug in bk_inf_engine/marginal_nodes.
+The test 'if nodes < ss' is now
+'if nodes <= ss' (bug fix due to Stephen seg_ma@hotmail.com)
+
+<li> Simplified uninstallC.
+</ul>
+
+
+<li> 10/15/01
+<ul>
+
+<li> Added use_ndx option to jtree_inf and jtree_dbn_inf.
+This pre-computes indices for multiplying, dividing and marginalizing
+discrete potentials.
+This is like the old jtree_fast_inf_engine, but we use an extra level
+of indirection to reduce the number of indices needed (see
+uid_generator object).
+Sometimes this is faster than the original way...
+This is work in progress.
+
+<li> The constructor for dpot no longer calls myreshape, which is very
+slow.
+But new dpots still must call myones.
+Hence discrete potentials are only sometimes 1D vectors (but should
+always be thought of as multi-D arrays). This is work in progress.
+</ul>
+
+
+<li> 10/6/01
+<ul>
+<li> Fixed jtree_dbn_inf_engine, and added kjaerulff1 to test this.
+<li> Added option to jtree_inf_engine/marginal_nodes to return "full
+sized" marginals, even on observed nodes.
+<li> Clustered BK in examples/dynamic/bat1 seems to be broken,
+so it has been commented out.
+BK will be re-implemented on top of jtree_dbn, which should much more
+efficient.
+</ul>
+
+<li> 9/25/01
+<ul>
+<li> jtree_dbn_inf_engine is now more efficient than calling BK with
+clusters = exact, since it only uses the interface nodes, instead of
+all of them, to maintain the belief state.
+<li> Uninstalled the broken C version of strong_elim_order.
+<li> Changed order of arguments to unroll_dbn_topology, so that intra1
+is no longer required.
+<li> Eliminated jtree_onepass, which can be simulated by calling
+collect_evidence on jtree.
+<li> online1 is no longer in the test_BNT suite, since there is some
+problem with online prediction with mixtures of Gaussians using BK.
+This functionality is no longer supported, since doing it properly is
+too much work.
+</ul>
+</li>
+
+<li> 9/7/01
+<ul>
+<li> Added Ilya Shpitser's C triangulation code (43x faster!).
+Currently this only compiles under linux; windows support is being added.
+</ul>
+
+
+<li> 9/5/01
+<ul>
+<li> Fixed typo in CPDs/@tabular_kernel/convert_to_table (thanks,
+Philippe!)
+<li> Fixed problems with clamping nodes in tabular_CPD, learn_params,
+learn_params_tabular, and bayes_update_params. See
+BNT/examples/static/learn1 for a demo.
+</ul>
+
+
+<li> 9/3/01
+<ul>
+<li> Fixed typo on line 87 of gaussian_CPD which caused error in cg1.m
+<li> Installed Wei Hu's latest version of jtree_C_inf_engine, which
+can now compute marginals on any clique/cluster.
+<li> Added Yair Weiss's code to compute the Bethe free energy
+approximation to the log likelihood in loopy_pearl (still need to add
+this to belprop). The return arguments are now: engine, loglik and
+niter, which is different than before.
+</ul>
+
+
+
+<li> 8/30/01
+<ul>
+<li> Fixed bug in BNT/examples/static/id1 which passed hard-coded
+directory name to belprop_inf_engine.
+
+<li> Changed tabular_CPD and gaussian_CPD so they can now be created
+without having to pass in a bnet.
+
+<li> Finished mk_fgraph_given_ev. See the fg* files in examples/static
+for demos of factor graphs (work in progress).
+</ul>
+
+
+
+<li> 8/22/01
+<ul>
+
+<li> Removed jtree_compiled_inf_engine,
+since the C code it generated was so big that it would barf on large
+models.
+
+<li> Tidied up the potentials/Tables directory.
+Removed mk_marg/mult_ndx.c,
+which have been superceded by the much faster mk_marg/mult_index.c
+(written by Wei Hu).
+Renamed the Matlab versions mk_marginalise/multiply_table_ndx.m
+to be mk_marg/mult_index.m to be compatible with the C versions.
+Note: nobody calls these routines anymore!
+(jtree_C_inf_engine/enter_softev.c has them built-in.)
+Removed mk_ndx.c, which was only used by jtree_compiled.
+Removed mk_cluster_clq_ndx.m, mk_CPD_clq_ndx, and marginalise_table.m
+which were not used.
+Moved shrink_obs_dims_in_table.m to misc.
+
+<li> In potentials/@dpot directory: removed multiply_by_pot_C_old.c.
+Now marginalize_pot.c can handle maximization,
+and divide_by_pot.c has been implmented.
+marginalize/multiply/divide_by_pot.m no longer have useC or genops options.
+(To get the C versions, use installC.m)
+
+<li> Removed useC and genops options from jtree_inf_engine.m
+To use the C versions, install the C code.
+
+<li> Updated BNT/installC.m.
+
+<li> Added fclose to @loopy_pearl_inf/enter_evidence.
+
+<li> Changes to MPE routines in BNT/general.
+The maximize parameter is now specified inside enter_evidence
+instead of when the engine is created.
+Renamed calc_mpe_given_inf_engine to just calc_mpe.
+Added Ron Zohar's optional fix to handle the case of ties.
+Now returns log-likelihood instead of likelihood.
+Added calc_mpe_global.
+Removed references to genops in calc_mpe_bucket.m
+Test file is now called mpe1.m
+
+<li> For DBN inference, filter argument is now passed by name,
+as is maximize. This is NOT BACKWARDS COMPATIBLE.
+
+<li> Removed @loopy_dbn_inf_engine, which will was too complicated.
+In the future, a new version, which applies static loopy to the
+unrolled DBN, will be provided.
+
+<li> discrete_CPD class now contains the family sizes and supports the
+method dom_sizes. This is because it could not access the child field
+CPD.sizes, and mysize(CPT) may give the wrong answer.
+
+<li> Removed all functions of the form CPD_to_xxx, where xxx = dpot, cpot,
+cgpot, table, tables.  These have been replaced by convert_to_pot,
+which takes a pot_type argument.
+@discrete_CPD calls convert_to_table to implement a default
+convert_to_pot.
+@discrete_CPD calls CPD_to_CPT to implement a default
+convert_to_table.
+The convert_to_xxx routines take fewer arguments (no need to pass in
+the globals node_sizes and cnodes!).
+Eventually, convert_to_xxx will be vectorized, so it will operate on
+all nodes in the same equivalence class "simultaneously", which should
+be significantly quicker, at least for Gaussians.
+
+<li> Changed discrete_CPD/sample_node and prob_node to use
+convert_to_table, instead of CPD_to_CPT, so mlp/softmax nodes can
+benefit.
+
+<li> Removed @tabular_CPD/compute_lambda_msg_fast and
+private/prod_CPD_and_pi_msgs_fast, since no one called them.
+
+<li> Renamed compute_MLE to learn_params,
+by analogy with bayes_update_params (also because it may compute an
+MAP estimate).
+
+<li> Renamed set_params to set_fields
+and get_params to get_field for CPD and dpot objects, to
+avoid confusion with the parameters of the CPD.
+
+<li> Removed inference/doc, which has been superceded
+by the web page.
+
+<li> Removed inference/static/@stab_cond_gauss_inf_engine, which is
+broken, and all references to stable CG.
+
+</ul>
+
+
+
+
+
+<li> 8/12/01
+<ul>
+<li> I removed potentials/@dpot/marginalize_pot_max.
+Now marginalize_pot for all potential classes take an optional third
+argument, specifying whether to sum out or max out.
+The dpot class also takes in optional arguments specifying whether to
+use C or genops (the global variable USE_GENOPS has been eliminated).
+
+<li> potentials/@dpot/marginalize_pot has been simplified by assuming
+that 'onto' is always in ascending order (i.e., we remove
+Maynard-Reid's patch). This is to keep the code identical to the C
+version and the other class implementations.
+
+<li> Added Ron Zohar's general/calc_mpe_bucket function,
+and my general/calc_mpe_given_inf_engine, for calculating the most
+probable explanation.
+
+
+<li> Added Wei Hu's jtree_C_inf_engine.
+enter_softev.c is about 2 times faster than enter_soft_evidence.m.
+
+<li> Added the latest version of jtree_compiled_inf_engine by Wei Hu.
+The 'C' ndx_method now calls potentials/Tables/mk_marg/mult_index,
+and the 'oldC' ndx_method calls potentials/Tables/mk_marg/mult_ndx.
+
+<li> Added potentials/@dpot/marginalize_pot_C.c and
+multiply_by_pot_C.c by Wei Hu.
+These can be called by setting the 'useC' argument in
+jtree_inf_engine. 
+
+<li> Added BNT/installC.m to compile all the mex files.
+
+<li> Renamed prob_fully_instantiated_bnet to log_lik_complete.
+
+<li> Added Shan Huang's unfinished stable conditional Gaussian
+inference routines.
+</ul>
+
+
+
+<li> 7/13/01
+<ul>
+<li> Added the latest version of jtree_compiled_inf_engine by Wei Hu.
+<li> Added the genops class by Doug Schwarz (see
+BNT/genopsfun/README). This provides a 1-2x speed-up of
+potentials/@dpot/multiply_by_pot and divide_by_pot.
+<li> The function BNT/examples/static/qmr_compiled compares the
+performance gains of these new functions.
+</ul>
+
+<li> 7/6/01
+<ul>
+<li> Made bk_inf_engine use the name/value argument syntax. This can
+now do max-product (Viterbi) as well as sum-product
+(forward-backward).
+<li> Changed examples/static/mfa1 to use the new name/value argument
+syntax.
+</ul>
+
+
+<li> 6/28/01
+
+<ul>
+
+<li> <b>Released version 3</b>.
+Version 3 is considered a major new release
+since it is not completely backwards compatible with V2.
+V3 supports decision and utility nodes, loopy belief propagation on
+general graphs (including undirected), structure learning for non-tabular nodes,
+a simplified way of handling optional
+arguments to functions,
+and many other features which are described below.
+In addition, the documentation has been substantially rewritten.
+
+<li> The following functions can now take optional arguments specified
+as name/value pairs, instead of passing arguments in a fixed order:
+mk_bnet, jtree_inf_engine, tabular_CPD, gaussian_CPD, softmax_CPD, mlp_CPD,
+enter_evidence.
+This is very helpful if you want to use default values for most parameters.
+The functions remain backwards compatible with BNT2.
+
+<li> dsoftmax_CPD has been renamed softmax_CPD, replacing the older
+version of softmax. The directory netlab2 has been updated, and
+contains weighted versions of some of the learning routines in netlab.
+(This code is still being developed by P. Brutti.)
+
+<li> The "fast" versions of the inference engines, which generated
+matlab code, have been removed.
+@jtree_compiled_inf_engine now generates C code.
+(This feature is currently being developed by Wei Hu of Intel (China), 
+and is not yet ready for public use.)
+
+<li> CPD_to_dpot, CPD_to_cpot, CPD_to_cgpot and CPD_to_upot 
+are in the process of being replaced by convert_to_pot.
+
+<li> determine_pot_type now takes as arguments (bnet, onodes)
+instead of (onodes, cnodes, dag),
+so it can detect the presence of utility nodes as well as continuous
+nodes.
+Hence this function is not backwards compatible with BNT2.
+
+<li> The structure learning code (K2, mcmc) now works with any node
+type, not just tabular.
+mk_bnets_tabular has been eliminated.
+bic_score_family and dirichlet_score_family will be replaced by score_family.
+Note: learn_struct_mcmc has a new interface that is not backwards
+compatible with BNT2.
+
+<li> update_params_complete has been renamed bayes_update_params.
+Also, learn_params_tabular has been replaced by learn_params, which
+works for any CPD type.
+
+<li> Added decision/utility nodes.
+</ul>
+
+
+<li> 6/6/01
+<ul>
+<li> Added soft evidence to jtree_inf_engine.
+<li> Changed the documentation slightly (added soft evidence and
+parameter tying, and separated parameter and structure learning).
+<li> Changed the parameters of determine_pot_type, so it no longer
+needs to be passed a DAG argument.
+<li> Fixed parameter tying in mk_bnet (num. CPDs now equals num. equiv
+classes).
+<li> Made learn_struct_mcmc work in matlab version 5.2 (thanks to
+Nimrod Megiddo for finding this bug).
+<li> Made 'acyclic.m' work for undirected graphs.
+</ul>
+
+
+<li> 5/23/01
+<ul>
+<li> Added Tamar Kushnir's code for the IC* algorithm
+(learn_struct_pdag_ic_star). This learns the
+structure of a PDAG, and can identify the presence of latent
+variables.
+
+<li> Added Yair Weiss's code for computing the MAP assignment using
+junction tree (i.e., a new method called @dpot/marginalize_pot_max
+instead of marginalize_pot.)
+
+<li> Added @discrete_CPD/prob_node in addition to log_prob_node to handle
+deterministic CPDs.
+</ul>
+
+
+<li> 5/12/01
+<ul>
+<li> Pierpaolo Brutti updated his mlp and dsoftmax CPD classes,
+and improved the HME code.
+
+<li> HME example now added to web page. (The previous example was non-hierarchical.)
+
+<li> Philippe Leray (author of the French documentation for BNT)
+pointed out that I was including netlab.tar unnecessarily.
+</ul>
+
+
+<li> 5/4/01
+<ul>
+<li> Added mlp_CPD which defines a CPD as a (conditional) multi-layer perceptron.
+This class was written by Pierpaolo Brutti.
+
+<li> Added hierarchical mixtures of experts demo (due to Pierpaolo Brutti).
+
+<li> Fixed some bugs in dsoftmax_CPD.
+
+<li> Now the BNT distribution includes the whole
+<a href="http://www.ncrg.aston.ac.uk/netlab/">Netlab</a> library in a
+subdirectory.
+It also includes my HMM and Kalman filter toolboxes, instead of just
+fragments of them.
+</ul>
+
+
+<li> 5/2/01
+<ul>
+<li> gaussian_inf_engine/enter_evidence now correctly returns the
+loglik, even if all nodes are instantiated (bug fix due to
+Michael Robert James).
+
+<li> Added dsoftmax_CPD which allows softmax nodes to have discrete
+and continuous parents; the discrete parents act as indices into the
+parameters for the continuous node, by analogy with conditional
+Gaussian nodes. This class was written by Pierpaolo Brutti.
+</ul>
+
+
+<li> 3/27/01
+<ul>
+<li> learn_struct_mcmc  no longer returns sampled_bitv.
+<li> Added mcmc_sample_to_hist to post-process the set of samples.
+</ul>
+
+<li> 3/21/01
+<ul>
+<li> Changed license from UC to GNU Library GPL.
+
+<li> Made all CPD constructors accept 0 arguments, so now bnets can be
+saved to and loaded from files.
+
+<li> Improved the implementation of sequential and batch Bayesian
+parameter learning for tabular CPDs with completely observed data (see
+log_marg_lik_complete and update_params_complete). This code also
+handles interventional data.
+
+<li> Added MCMC structure learning for completely observed, discrete,
+static BNs.
+
+<li> Started implementing Bayesian estimation of linear Gaussian
+nodes. See root_gaussian_CPD and
+linear_gaussian_CPD. The old gaussian_CPD class has not been changed.
+
+<li> Renamed evaluate_CPD to log_prob_node, and simplified its
+arguments.
+
+<li> Renamed sample_CPD to sample_node, simplified its
+arguments, and vectorized it.
+
+<li> Renamed "learn_params_tabular" to "update_params_complete".
+This does Bayesian updating, but no longer computes the BIC score.
+
+<li> Made routines for completely observed networks (sampling,
+complete data likelihood, etc.) handle cell arrays or regular arrays,
+which are faster.
+If some nodes are not scalars, or are hidden, you must use cell arrays.
+You must convert to a cell array before passing to an inference routine.
+
+<li> Fixed bug in gaussian_CPD constructor. When creating CPD with
+more than 1 discrete parent with random parameters, the matrices were
+the wrong shape (Bug fix due to Xuejing Sun).
+</ul>
+
+
+
+<li> 11/24/00
+<ul>
+<li> Renamed learn_params and learn_params_dbn to learn_params_em/
+learn_params_dbn_em. The return arguments are now [bnet, LLtrace,
+engine] instead of [engine, LLtrace].
+<li> Added structure learning code for static nets (K2, PC).
+<li> Renamed learn_struct_inter_full_obs as learn_struct_dbn_reveal,
+and reimplemented it to make it simpler and faster.
+<li> Added sequential Bayesian parameter learning (learn_params_tabular).
+<li> Major rewrite of the documentation.
+</ul>
+
+<!--
+<li> 6/1/00
+<ul>
+<li> Subtracted 1911 off the counter, so now it counts hits from
+5/22/00. (The initial value of 1911 was a conservative lower bound on the number of
+hits from the time the page was created.)
+</ul>
+-->
+
+<li> 5/22/00
+<ul>
+<li> Added online filtering and prediction.
+<li> Added the factored frontier and loopy_dbn algorithms.
+<li> Separated the online user manual into two, for static and dynamic
+networks.
+<!--
+<li> Added a counter to the BNT web page, and initialized it to 1911,
+which is the number of people who have downloaded my software (BNT and
+other toolboxes) since 8/24/98.
+-->
+<li> Added a counter to the BNT web page.
+<!--
+Up to this point, 1911 people had downloaded my software (BNT and
+other toolboxes) since 8/24/98.
+-->
+</ul>
+
+
+<li> 4/27/00
+<ul>
+<li> Fixed the typo in bat1.m
+<li> Added preliminary code for online inference in DBNs
+<li> Added coupled HMM example
+</ul>
+
+<li> 4/23/00
+<ul>
+<li> Fixed the bug in the fast inference routines where the indices
+are empty (arises in bat1.m).
+<li> Sped up marginal_family for the fast engines by precomputing indices.
+</ul>
+
+<li> 4/17/00
+<ul>
+<li> Simplified implementation of BK_inf_engine by using soft evidence.
+<li> Added jtree_onepass_inf_engine (which computes a single marginal)
+and modified jtree_dbn_fast to use it.
+</ul>
+
+<li> 4/14/00
+<ul>
+<li> Added fast versions of jtree and BK, which are
+designed for models where the division into hidden/observed is fixed,
+and all hidden variables are discrete. These routines are 2-3 times
+faster than their non-fast counterparts.
+
+<li> Added graph drawing code
+contributed by Ali Taylan Cemgil from the University of Nijmegen.
+</ul>
+
+<li> 4/10/00
+<ul>
+<li> Distinguished cnodes and cnodes_slice in DBNs so that kalman1
+works with BK.
+<li> Removed dependence on cellfun (which only exists in matlab 5.3)
+by adding isemptycell. Now the code works in 5.2.
+<li> Changed the UC copyright notice.
+</ul>
+
+
+ 
+<li> 3/29/00
+<ul>
+<li><b>Released BNT 2.0</b>, now with objects!
+Here are the major changes.
+
+<li> There are now 3 classes of objects in BNT:
+Conditional Probability Distributions, potentials (for junction tree),
+and inference engines. 
+Making an inference algorithm (junction tree, sampling, loopy belief
+propagation, etc.) an object might seem counter-intuitive, but in
+fact turns out to be a good idea, since the code and documentation
+can be made modular.
+(In Java, each algorithm would be a class that implements the
+inferenceEngine interface. Since Matlab doesn't support interfaces,
+inferenceEngine is an abstract (virtual) base class.)
+
+<p>
+<li>
+In version 1, instead of Matlab's built-in objects,
+I used structs and a
+  simulated dispatch mechanism based on the type-tag system in the
+  classic textbook by Abelson
+  and Sussman ("Structure and Interpretation of Computer Programs",
+  MIT Press, 1985). This required editing the dispatcher every time a
+  new object type was added. It also required unique (and hence long)
+  names for each method, and allowed the user unrestricted access to
+  the internal state of objects.
+
+<p>
+<li> The Bayes net itself is now a lightweight struct, and can be
+used to specify a model independently of the inference algorithm used
+to process it.
+In version 1, the inference engine was stored inside the Bayes net.
+              
+<!--
+See the list of <a href="differences2.html">changes from version
+1</a>.
+-->
+</ul>
+
+
+
+<li> 11/24/99
+<ul>
+<li> Added fixed lag smoothing, online EM and the ability to learn
+switching HMMs (POMDPs) to the HMM toolbox.
+<li> Renamed the HMM toolbox function 'mk_dhmm_obs_mat' to
+'mk_dhmm_obs_lik', and similarly for ghmm and mhmm. Updated references
+to these functions in BNT.
+<li> Changed the order of return params from kalman_filter to make it
+more natural. Updated references to this function in BNT.
+</ul>
+
+
+
+<li>10/27/99
+<ul>
+<li>Fixed line 42 of potential/cg/marginalize_cgpot and lines 32-39 of bnet/add_evidence_to_marginal
+(thanks to Rainer Deventer for spotting these bugs!)
+</ul>
+
+
+<li>10/21/99
+<ul>
+<li>Completely changed the blockmatrix class to make its semantics
+more sensible. The constructor is not backwards compatible!
+</ul>
+
+<li>10/6/99
+<ul>
+<li>Fixed all_vals = cat(1, vals{:}) in user/enter_evidence
+<li>Vectorized ind2subv and sub2indv and removed the C versions.
+<li>Made mk_CPT_from_mux_node much faster by having it call vectorized
+ind2subv
+<li>Added Sondhauss's bug fix to line 68 of bnet/add_evidence_to_marginal
+<li>In dbn/update_belief_state, instead of adding eps to likelihood if 0,
+we leave it at 0, and set the scale factor to 0 instead of dividing.
+</ul>
+
+<li>8/19/99
+<ul>
+<li>Added Ghahramani's mfa code to examples directory to compare with
+fa1, which uses BNT
+<li>Changed all references of assoc to stringmatch (e.g., in
+examples/mk_bat_topology)
+</ul>
+
+<li>June 1999
+<ul>
+<li><b>Released BNT 1.0</b> on the web.
+</ul>
+
+
+<li>August 1998
+<ul>
+<li><b>Released BNT 0.0</b> via email.
+</ul>
+
+
+<li>October 1997
+<ul>
+<li>First started working on Matlab version of BNT.
+</ul>
+
+<li>Summer 1997
+<ul>
+<li> First started working on C++ version of BNT while working at DEC (now Compaq) CRL.
+</ul>
+
+<!--
+<li>Fall 1996
+<ul>
+<li>Made a C++ program that generates DBN-specific C++ code
+for inference using the frontier algorithm.
+</ul>
+
+<li>Fall 1995
+<ul>
+<li>Arrive in Berkeley, and first learn about Bayes Nets. Start using
+Geoff Zweig's C++ code.
+</ul>
+-->
+
+</ul>

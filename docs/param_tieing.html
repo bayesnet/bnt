@@ -1,0 +1,47 @@
+
+<h2>Example of more complex parameter tieing</h2>
+
+We now give a more complex pattern of parameter tieing.
+(This example is due to Rainer Deventer.)
+The structure is as follows:
+<p>
+<img src="Figures/rainer_tied.gif" height="400">
+<!--<img src="rainer_dbn.jpg" height="600">-->
+<p>
+Since nodes 2 and 3 in slice 2 (N7 and N8)
+have different parents than their counterparts in slice 1 (N2 and N3),
+they must be put into different equivalence classes.
+Hence we define
+<pre>
+eclass1 = [1 2 3 4 5];
+eclass2 = [1 6 7 4 5];
+</pre>
+The dotted bubbles represent the equivalence classes.
+Node 7 is the representative node for equivalence class
+6, and node 8 is the rep. for class 7, so we need to write
+<pre>
+bnet.CPD{6} = xxx_CPD(bnet, 7, xxx);
+bnet.CPD{7} = xxx_CPD(bnet, 8, xxx);
+</pre>
+In general, you can use the following code fragment:
+<pre>
+eclass = bnet.equiv_class(:);
+for e=1:max(eclass)
+  i = bnet.rep_of_eclass(e);
+  bnet.CPD{e} = xxx_CPD(bnet,i);
+end
+</pre>
+<!--
+which is equivalent to
+<pre>
+E = max(eclass);
+rep = zeros(1,E);
+for e=1:E
+  mems = find(eclass==e);
+  rep(e) = mems(1);
+end
+for e=1:E
+  bnet.CPD{e} = xxx_CPD(bnet, rep(e));
+end
+</pre>
+-->

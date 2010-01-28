@@ -1,0 +1,32 @@
+To install, just unzip FullBNT.zip, start Matlab, and proceed as
+follows
+<pre>
+>> cd C:\kmurphy\FullBNT\FullBNT-1.0.4
+>> addpath(genpathKPM(pwd))
+
+Warning: Function C:\kmurphy\FullBNT\FullBNT-1.0.4\KPMtools\isvector.m has the same name as a MATLAB builtin. We suggest you rename the function to avoid a potential name conflict.
+> In path at 110
+  In addpath at 89
+Warning: Function C:\kmurphy\FullBNT\FullBNT-1.0.4\KPMtools\isscalar.m has the same name as a MATLAB builtin. We suggest you rename the function to avoid a potential name conflict.
+> In path at 110
+  In addpath at 89
+Warning: Function C:\kmurphy\FullBNT\FullBNT-1.0.4\KPMtools\assert.m has the same name as a MATLAB builtin. We suggest you rename the function to avoid a potential name conflict.
+> In path at 110
+  In addpath at 89
+
+>> test_BNT
+</pre>
+The genpathKPM function is like the builtin genpath function, but it
+does not add directories called 'Old' to the path, thus preventing old
+versions of functions accidently shadowing new ones.
+The warnings occur because Matlab 7 added functions with the same
+names as my functions. The BNT versions will shadow the built-in ones,
+but this should be harmless.
+<p>
+Note: the functions installC_BNT etc. are not needed anymore: all C
+code has either been removed or is unnecessary.
+<p> Note: as mentioned above, with new versions of matlab you
+will get lots of warning messages, but everything should still work.
+<p> Note: Cory Reith tells me that, as of
+15 Sep 2009,  octave 3.2.2 can run most of BNT.
+Please send email to crieth@ucsd.edu if you have questions.

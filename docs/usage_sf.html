@@ -1,0 +1,3242 @@
+<HEAD>
+<TITLE>How to use the Bayes Net Toolbox</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+<!-- white background is better for the pictures and equations -->
+
+<h1>How to use the Bayes Net Toolbox</h1>
+
+This documentation was last updated on 7 June 2004.
+<br>
+Click <a href="changelog.html">here</a> for a list of changes made to
+BNT.
+<br>
+Click 
+<a href="http://bnt.insa-rouen.fr/">here</a>
+for a French version of this documentation (which might not
+be up-to-date).
+<br>
+Update 23 May 2005:
+Philippe LeRay has written
+a
+<a href="http://banquiseasi.insa-rouen.fr/projects/bnt-editor/">
+BNT GUI</a>
+and
+<a href="http://banquiseasi.insa-rouen.fr/projects/bnt-slp/">
+BNT Structure Learning Package</a>.
+
+<p>
+
+<ul>
+<li> <a href="#install">Installation</a>
+<ul>
+<li> <a href="#install">Installing the Matlab code</a>
+<li> <a href="#installC">Installing the C code</a>
+<li> <a href="../matlab_tips.html">Useful Matlab tips</a>.
+</ul>
+
+<li> <a href="#basics">Creating your first Bayes net</a>
+  <ul>
+  <li> <a href="#basics">Creating a model by hand</a>
+  <li> <a href="#file">Loading a model from a file</a>
+  <li> <a href="http://bnt.insa-rouen.fr/ajouts.html">Creating a model using a GUI</a>
+  </ul>
+
+<li> <a href="#inference">Inference</a>
+  <ul>
+  <li> <a href="#marginal">Computing marginal distributions</a>
+  <li> <a href="#joint">Computing joint distributions</a>
+  <li> <a href="#soft">Soft/virtual evidence</a>
+  <li> <a href="#mpe">Most probable explanation</a>
+  </ul>
+
+<li> <a href="#cpd">Conditional Probability Distributions</a>
+  <ul>
+  <li> <a href="#tabular">Tabular (multinomial) nodes</a>
+  <li> <a href="#noisyor">Noisy-or nodes</a>
+  <li> <a href="#deterministic">Other (noisy) deterministic nodes</a>
+  <li> <a href="#softmax">Softmax (multinomial logit) nodes</a>
+  <li> <a href="#mlp">Neural network nodes</a>
+  <li> <a href="#root">Root nodes</a>
+  <li> <a href="#gaussian">Gaussian nodes</a>
+  <li> <a href="#glm">Generalized linear model nodes</a>
+  <li> <a href="#dtree">Classification/regression tree nodes</a>
+  <li> <a href="#nongauss">Other continuous distributions</a>
+  <li> <a href="#cpd_summary">Summary of CPD types</a>
+  </ul>
+
+<li> <a href="#examples">Example models</a>
+  <ul>
+  <li> <a
+  href="http://www.media.mit.edu/wearables/mithril/BNT/mixtureBNT.txt">
+Gaussian mixture models</a>
+  <li> <a href="#pca">PCA, ICA, and all that</a>
+  <li> <a href="#mixep">Mixtures of experts</a>
+  <li> <a href="#hme">Hierarchical mixtures of experts</a>
+  <li> <a href="#qmr">QMR</a>
+  <li> <a href="#cg_model">Conditional Gaussian models</a>
+  <li> <a href="#hybrid">Other hybrid models</a>
+  </ul>
+
+<li> <a href="#param_learning">Parameter learning</a>
+  <ul>
+  <li> <a href="#load_data">Loading data from a file</a>
+  <li> <a href="#mle_complete">Maximum likelihood parameter estimation from complete data</a>
+  <li> <a href="#prior">Parameter priors</a>
+  <li> <a href="#bayes_learn">(Sequential) Bayesian parameter updating from complete data</a>
+  <li> <a href="#em">Maximum likelihood parameter estimation with  missing values (EM)</a>
+  <li> <a href="#tying">Parameter tying</a>
+  </ul>
+
+<li> <a href="#structure_learning">Structure learning</a>
+  <ul>
+  <li> <a href="#enumerate">Exhaustive search</a>
+  <li> <a href="#K2">K2</a>
+  <li> <a href="#hill_climb">Hill-climbing</a>
+  <li> <a href="#mcmc">MCMC</a>
+  <li> <a href="#active">Active learning</a>
+  <li> <a href="#struct_em">Structural EM</a>
+  <li> <a href="#graphdraw">Visualizing the learned graph  structure</a>
+  <li> <a href="#constraint">Constraint-based methods</a>
+  </ul>
+
+
+<li> <a href="#engines">Inference engines</a>
+  <ul>
+  <li> <a href="#jtree">Junction tree</a>
+  <li> <a href="#varelim">Variable elimination</a>
+  <li> <a href="#global">Global inference methods</a>
+  <li> <a href="#quickscore">Quickscore</a>
+  <li> <a href="#belprop">Belief propagation</a>
+  <li> <a href="#sampling">Sampling (Monte Carlo)</a>
+  <li> <a href="#engine_summary">Summary of inference engines</a>
+  </ul>
+
+
+<li> <a href="#influence">Influence diagrams/ decision making</a>
+
+
+<li> <a href="usage_dbn.html">DBNs, HMMs, Kalman filters and all that</a>
+</ul>
+
+</ul>
+
+
+
+
+<h1><a name="install">Installation</h1>
+
+<h2><a name="installM">Installing the Matlab code</h2>
+
+<ul>
+<li> <a href="bnt_download.html">Download</a> the FullBNT.zip file.
+
+<p>
+<li> Unpack the file. In Unix, type
+<!--"tar xvf BNT.tar".-->
+"unzip FullBNT.zip".
+In Windows, use
+a program like <a href="http://www.winzip.com">Winzip</a>. This will
+create a directory called FullBNT, which contains BNT and other libraries.
+(Files ending in ~ or # are emacs backup files, and can be ignored.)
+
+<p>
+<li> Read the file <tt>BNT/README.txt</tt> to make sure the date
+matches the one on the top of <a href=bnt.html>the BNT home page</a>.
+If not, you may need to press 'refresh' on your browser, and download
+again, to get the most recent version.
+
+<p>
+<li> <b>Edit the file "FullBNT/BNT/add_BNT_to_path.m"</b> so it contains the correct
+pathname.
+For example, in Windows,
+I download FullBNT.zip into C:\kmurphy\matlab, and 
+then ensure the second lines reads
+<pre>
+BNT_HOME = 'C:\kmurphy\matlab\FullBNT';
+</pre>
+
+<p>
+<li> Start up Matlab.
+
+<p>
+<li> Type "ver" at the Matlab prompt (">>").
+<b>You need Matlab version 5.2 or newer to run BNT</b>.
+(Versions 5.0 and 5.1 have a memory leak which seems to sometimes
+crash BNT.)
+<b>BNT will not run on Octave</b>.
+
+<p>
+<li> Move to the BNT directory.
+For example, in Windows, I type
+<pre>
+>> cd C:\kpmurphy\matlab\FullBNT\BNT
+</pre>
+
+<p>
+<li> Type "add_BNT_to_path".
+This executes the command
+<tt>addpath(genpath(BNT_HOME))</tt>,
+which adds all directories below FullBNT to the matlab path.
+
+<p>
+<li> Type "test_BNT".
+
+If all goes well, this will produce a bunch of numbers and maybe some
+warning messages (which you can ignore), but no error messages.
+(The warnings should only be of the form
+"Warning: Maximum number of iterations has been exceeded", and are
+produced by Netlab.)
+
+<p>
+<li> Problems? Did you remember to
+<b>Edit the file "FullBNT/BNT/add_BNT_to_path.m"</b> so it contains
+the right path??
+
+<p>
+<li> <a href="http://groups.yahoo.com/group/BayesNetToolbox/join">
+Join the BNT email list</a>
+
+<p>
+<li>Read
+<a href="../matlab_tips.html">some useful Matlab tips</a>.
+<!--
+For instance, this explains how to create a startup file, which can be
+used to set your path variable automatically, so you can avoid having
+to type the above commands every time.
+-->
+
+</ul>
+
+
+
+<h2><a name="installC">Installing the C code</h2>
+
+Some BNT functions also have C implementations.
+<b>It is not necessary to install the C code</b>, but it can result in a speedup
+of a factor of 2-5.
+To install all the C code, 
+edit installC_BNT.m so it contains the right path,
+then type <tt>installC_BNT</tt>.
+(Ignore warnings of the form 'invalid white space character in directive'.)
+To uninstall all the C code,
+edit uninstallC_BNT.m so it contains the right path,
+then type <tt>uninstallC_BNT</tt>.
+For an up-to-date list of the files which have C implementations, see
+BNT/installC_BNT.m.
+
+<p>
+mex is a script that lets you call C code from Matlab - it does not compile matlab to
+C (see mcc below).
+If your C/C++ compiler  is set up correctly, mex should work out of
+the box.
+If not, you might need to type
+<p>
+<tt> mex -setup</tt>
+<p>
+before calling installC.
+<p>
+To make mex call gcc on Windows,
+you must install <a
+href="http://www.mrc-cbu.cam.ac.uk/Imaging/gnumex20.html">gnumex</a>.
+You can use the <a href="http://www.mingw.org/">minimalist GNU for
+Windows</a> version of gcc, or
+the <a href="http://sources.redhat.com/cygwin/">cygwin</a> version.
+<p>
+In general, typing 
+'mex foo.c' from inside Matlab creates a file called
+'foo.mexglx' or 'foo.dll' (the exact file
+extension is system dependent - on Linux it is 'mexglx', on Windows it is '.dll').
+The resulting file will hide the original 'foo.m' (if it existed), i.e., 
+typing 'foo' at the prompt will call the compiled C version.
+To reveal the original matlab version, just delete foo.mexglx (this is
+what uninstallC does).
+<p>
+Sometimes it takes time for Matlab to realize that the file has
+changed from matlab to C or vice versa; try typing 'clear all' or
+restarting Matlab to refresh it.
+To find out which version of a file you are running, type
+'which foo'.
+<p>
+<a href="http://www.mathworks.com/products/compiler">mcc</a>, the
+Matlab to C compiler, is a separate product, 
+and is quite different from mex. It does not yet support
+objects/classes, which is why we can't compile all of BNT to C automatically.
+Also, hand-written C code is usually much
+better than the C code generated by mcc.
+
+
+<p>
+Acknowledgements:
+Most of the C code (e.g., for jtree and dpot) was written by Wei Hu;
+the triangulation C code was written by Ilya Shpitser;
+the Gibbs sampling C code (for discrete nodes) was written by Bhaskara
+Marthi.
+
+
+
+<h1><a name="basics">Creating your first Bayes net</h1>
+
+To define a Bayes net, you must specify the graph structure and then
+the parameters. We look at each in turn, using a simple example
+(adapted from Russell and
+Norvig, "Artificial Intelligence: a Modern Approach", Prentice Hall,
+1995, p454).
+
+
+<h2>Graph structure</h2>
+
+
+Consider the following network.
+
+<p>
+<center>
+<IMG SRC="Figures/sprinkler.gif">
+</center>
+<p>
+
+<P>
+To specify this directed acyclic graph (dag), we create an adjacency matrix:
+<PRE>
+N = 4; 
+dag = zeros(N,N);
+C = 1; S = 2; R = 3; W = 4;
+dag(C,[R S]) = 1;
+dag(R,W) = 1;
+dag(S,W)=1;
+</PRE>
+<P>
+We have numbered the nodes as follows:
+Cloudy = 1, Sprinkler = 2, Rain = 3, WetGrass = 4.
+<b>The nodes must always be numbered in topological order, i.e.,
+ancestors before descendants.</b>
+For a more complicated graph, this is a little inconvenient: we will
+see how to get around this <a href="usage_dbn.html#bat">below</a>.
+<p>
+In Matlab 6, you can use logical arrays instead of double arrays,
+which are 4 times smaller:
+<pre>
+dag = false(N,N);
+dag(C,[R S]) = true;
+...
+</pre>
+However, <b>some graph functions (eg acyclic) do not work on
+logical arrays</b>!
+<p>
+A preliminary attempt to make a <b>GUI</b>
+has been writte by Philippe LeRay and can be downloaded
+from <a href="http://bnt.insa-rouen.fr/ajouts.html">here</a>.
+<p>
+You can visualize the resulting  graph structure using
+the methods discussed <a href="#graphdraw">below</a>.
+
+<h2>Creating the Bayes net shell</h2>
+
+In addition to specifying the graph structure,
+we must specify the size and type of each node.
+If a node is discrete, its size is the
+number of possible values
+each node can take on; if a node is continuous,
+it can be a vector, and its size is the length of this vector.
+In this case, we will assume all nodes are discrete and binary.
+<PRE>
+discrete_nodes = 1:N;
+node_sizes = 2*ones(1,N); 
+</pre>
+If the nodes were not binary, you could type e.g., 
+<pre>
+node_sizes = [4 2 3 5];
+</pre>
+meaning that Cloudy has 4 possible values, 
+Sprinkler has 2 possible values, etc.
+Note that these are cardinal values, not ordinal, i.e., 
+they are not ordered in any way, like 'low', 'medium', 'high'.
+<p>
+We are now ready to make the Bayes net:
+<pre>
+bnet = mk_bnet(dag, node_sizes, 'discrete', discrete_nodes);
+</PRE>
+By default, all nodes are assumed to be discrete, so we can also just
+write
+<pre>
+bnet = mk_bnet(dag, node_sizes);
+</PRE>
+You may also specify which nodes will be observed.
+If you don't know, or if this not fixed in advance,
+just use the empty list (the default).
+<pre>
+onodes = [];
+bnet = mk_bnet(dag, node_sizes, 'discrete', discrete_nodes, 'observed', onodes);
+</PRE>
+Note that optional arguments are specified using a name/value syntax.
+This is common for many BNT functions.
+In general, to find out more about a function (e.g., which optional
+arguments it takes), please see its
+documentation string by typing
+<pre>
+help mk_bnet
+</pre>
+See also other <a href="matlab_tips.html">useful Matlab tips</a>.
+<p>
+It is possible to associate names with nodes, as follows:
+<pre>
+bnet = mk_bnet(dag, node_sizes, 'names', {'cloudy','S','R','W'}, 'discrete', 1:4);
+</pre>
+You can then refer to a node by its name:
+<pre>
+C = bnet.names('cloudy'); % bnet.names is an associative array
+bnet.CPD{C} = tabular_CPD(bnet, C, [0.5 0.5]);
+</pre>
+This feature uses my own associative array class.
+
+
+<h2><a name="cpt">Parameters</h2>
+
+A model consists of the graph structure and the parameters.
+The parameters are represented by CPD objects (CPD = Conditional
+Probability Distribution), which define the probability distribution
+of a node given its parents.
+(We will use the terms "node" and "random variable" interchangeably.)
+The simplest kind of CPD is a table (multi-dimensional array), which
+is suitable when all the nodes are discrete-valued. Note that the discrete
+values are not assumed to be ordered in any way; that is, they
+represent categorical quantities, like male and female, rather than
+ordinal quantities, like low, medium and high.
+(We will discuss CPDs in more detail <a href="#cpd">below</a>.)
+<p>
+Tabular CPDs, also called CPTs (conditional probability tables),
+are stored as multidimensional arrays, where the dimensions
+are arranged in the same order as the nodes, e.g., the CPT for node 4
+(WetGrass) is indexed by Sprinkler (2), Rain (3) and then WetGrass (4) itself.
+Hence the child is always the last dimension.
+If a node has no parents, its CPT is a column vector representing its
+prior.
+Note that in Matlab (unlike C), arrays are indexed
+from 1, and are layed out in memory such that the first index toggles
+fastest, e.g., the CPT for node 4 (WetGrass) is as follows
+<P>
+<P><IMG ALIGN=BOTTOM SRC="Figures/CPTgrass.gif"><P>
+<P>
+where we have used the convention that false==1, true==2.
+We can create this CPT in Matlab as follows
+<PRE>
+CPT = zeros(2,2,2);
+CPT(1,1,1) = 1.0;
+CPT(2,1,1) = 0.1;
+...
+</PRE>
+Here is an easier way:
+<PRE>
+CPT = reshape([1 0.1 0.1 0.01 0 0.9 0.9 0.99], [2 2 2]);
+</PRE>
+In fact, we don't need to reshape the array, since the CPD constructor
+will do that for us. So we can just write
+<pre>
+bnet.CPD{W} = tabular_CPD(bnet, W, 'CPT', [1 0.1 0.1 0.01 0 0.9 0.9 0.99]);
+</pre>
+The other nodes are created similarly (using the old syntax for
+optional parameters)
+<PRE>
+bnet.CPD{C} = tabular_CPD(bnet, C, [0.5 0.5]);
+bnet.CPD{R} = tabular_CPD(bnet, R, [0.8 0.2 0.2 0.8]);
+bnet.CPD{S} = tabular_CPD(bnet, S, [0.5 0.9 0.5 0.1]);
+bnet.CPD{W} = tabular_CPD(bnet, W, [1 0.1 0.1 0.01 0 0.9 0.9 0.99]);
+</PRE>
+
+
+<h2><a name="rnd_cpt">Random Parameters</h2>
+
+If we do not specify the CPT, random parameters will be
+created, i.e., each "row" of the CPT will be drawn from the uniform distribution.
+To ensure repeatable results, use
+<pre>
+rand('state', seed);
+randn('state', seed);
+</pre>
+To control the degree of randomness (entropy),
+you can sample each row of the CPT from a Dirichlet(p,p,...) distribution.
+If p << 1, this encourages "deterministic" CPTs (one entry near 1, the rest near 0).
+If p = 1, each entry is drawn from U[0,1].
+If p >> 1, the entries will all be near 1/k, where k is the arity of
+this node, i.e., each row will be nearly uniform.
+You can do this as follows, assuming this node
+is number i, and ns is the node_sizes.
+<pre>
+k = ns(i);
+ps = parents(dag, i);
+psz = prod(ns(ps));
+CPT = sample_dirichlet(p*ones(1,k), psz);
+bnet.CPD{i} = tabular_CPD(bnet, i, 'CPT', CPT);
+</pre>
+
+
+<h2><a name="file">Loading a network from a file</h2>
+
+If you already have a Bayes net represented in the XML-based
+<a href="http://www.cs.cmu.edu/afs/cs/user/fgcozman/www/Research/InterchangeFormat/">
+Bayes Net Interchange Format (BNIF)</a> (e.g., downloaded from the 
+<a
+href="http://www.cs.huji.ac.il/labs/compbio/Repository">
+Bayes Net repository</a>),
+you can convert it to BNT format using
+the 
+<a href="http://www.digitas.harvard.edu/~ken/bif2bnt/">BIF-BNT Java
+program</a> written by Ken Shan.
+(This is not necessarily up-to-date.)
+<p>
+<b>It is currently not possible to save/load a BNT matlab object to
+file</b>, but this is easily fixed if you modify all the constructors
+for all the classes (see matlab documentation).
+
+<h2>Creating a model using a GUI</h2>
+
+Click <a href="http://bnt.insa-rouen.fr/ajouts.html">here</a>.
+
+
+
+<h1><a name="inference">Inference</h1>
+
+Having created the BN, we can now use it for inference.
+There are many different algorithms for doing inference in Bayes nets,
+that make different tradeoffs between speed, 
+complexity, generality, and accuracy.
+BNT therefore offers a variety of different inference
+"engines". We will discuss these
+in more detail <a href="#engines">below</a>.
+For now, we will use the junction tree
+engine, which is the mother of all exact inference algorithms.
+This can be created as follows.
+<pre>
+engine = jtree_inf_engine(bnet);
+</pre>
+The other engines have similar constructors, but might take
+additional, algorithm-specific parameters.
+All engines are used in the same way, once they have been created.
+We illustrate this in the following sections.
+
+
+<h2><a name="marginal">Computing marginal distributions</h2>
+
+Suppose we want to compute the probability that the sprinker was on
+given that the grass is wet.
+The evidence consists of the fact that W=2. All the other nodes
+are hidden (unobserved). We can specify this as follows.
+<pre>
+evidence = cell(1,N);
+evidence{W} = 2;
+</pre>
+We use a 1D cell array instead of a vector to
+cope with the fact that nodes can be vectors of different lengths.
+In addition, the value [] can be used
+to denote 'no evidence', instead of having to specify the observation
+pattern as a separate argument.
+(Click <a href="cellarray.html">here</a> for a quick tutorial on cell
+arrays in matlab.)
+<p>
+We are now ready to add the evidence to the engine.
+<pre>
+[engine, loglik] = enter_evidence(engine, evidence);
+</pre>
+The behavior of this function is algorithm-specific, and is discussed
+in more detail <a href="#engines">below</a>.
+In the case of the jtree engine,
+enter_evidence implements a two-pass message-passing scheme.
+The first return argument contains the modified engine, which
+incorporates the evidence. The second return argument contains the
+log-likelihood of the evidence. (Not all engines are capable of
+computing the log-likelihood.)
+<p>
+Finally, we can compute p=P(S=2|W=2) as follows.
+<PRE>
+marg = marginal_nodes(engine, S);
+marg.T
+ans =
+      0.57024
+      0.42976
+p = marg.T(2);
+</PRE>
+We see that p = 0.4298.
+<p>
+Now let us add the evidence that it was raining, and see what
+difference it makes.
+<PRE>
+evidence{R} = 2;
+[engine, loglik] = enter_evidence(engine, evidence);
+marg = marginal_nodes(engine, S);
+p = marg.T(2);
+</PRE>
+We find that p = P(S=2|W=2,R=2) = 0.1945,
+which is lower than
+before, because the rain can ``explain away'' the
+fact that the grass is wet.
+<p>
+You can plot a marginal distribution over a discrete variable
+as a barchart using the built 'bar' function:
+<pre>
+bar(marg.T)
+</pre>
+This is what it looks like
+
+<p>
+<center>
+<IMG SRC="Figures/sprinkler_bar.gif">
+</center>
+<p>
+
+<h2><a name="observed">Observed nodes</h2>
+
+What happens if we ask for the marginal on an observed node, e.g. P(W|W=2)?
+An observed discrete node effectively only has 1 value (the observed
+      one) --- all other values would result in 0 probability.
+For efficiency, BNT treats observed (discrete) nodes as if they were
+      set to 1, as we see below:
+<pre>
+evidence = cell(1,N);
+evidence{W} = 2;
+engine = enter_evidence(engine, evidence);
+m = marginal_nodes(engine, W);
+m.T
+ans =
+     1
+</pre>
+This can get a little confusing, since we assigned W=2.
+So we can ask BNT to add the evidence back in by passing in an optional argument:
+<pre>
+m = marginal_nodes(engine, W, 1);
+m.T
+ans =
+     0
+     1
+</pre>
+This shows that P(W=1|W=2) = 0 and P(W=2|W=2) = 1.
+
+
+
+<h2><a name="joint">Computing joint distributions</h2>
+
+We can compute the joint probability on a set of nodes as in the
+following example.
+<pre>
+evidence = cell(1,N);
+[engine, ll] = enter_evidence(engine, evidence);
+m = marginal_nodes(engine, [S R W]);
+</pre>
+m is a structure. The 'T' field is a multi-dimensional array (in
+this case, 3-dimensional) that contains the joint probability
+distribution on the specified nodes.
+<pre>
+>> m.T
+ans(:,:,1) =
+    0.2900    0.0410
+    0.0210    0.0009
+ans(:,:,2) =
+         0    0.3690
+    0.1890    0.0891
+</pre>
+We see that P(S=1,R=1,W=2) = 0, since it is impossible for the grass
+to be wet if both the rain and sprinkler are off.
+<p>
+Let us now add some evidence to R.
+<pre>
+evidence{R} = 2;
+[engine, ll] = enter_evidence(engine, evidence);
+m = marginal_nodes(engine, [S R W])
+m = 
+    domain: [2 3 4]
+         T: [2x1x2 double]
+>> m.T
+m.T
+ans(:,:,1) =
+    0.0820
+    0.0018
+ans(:,:,2) =
+    0.7380
+    0.1782
+</pre>
+The joint T(i,j,k) = P(S=i,R=j,W=k|evidence)
+should have T(i,1,k) = 0 for all i,k, since R=1 is incompatible
+with the evidence that R=2.
+Instead of creating large tables with many 0s, BNT sets the effective
+size of observed (discrete) nodes to 1, as explained above.
+This is why m.T has size 2x1x2.
+To get a 2x2x2 table, type
+<pre>
+m = marginal_nodes(engine, [S R W], 1)
+m = 
+    domain: [2 3 4]
+         T: [2x2x2 double]
+>> m.T
+m.T
+ans(:,:,1) =
+            0        0.082
+            0       0.0018
+ans(:,:,2) =
+            0        0.738
+            0       0.1782
+</pre>
+
+<p>
+Note: It is not always possible to compute the joint on arbitrary
+sets of nodes: it depends on which inference engine you use, as discussed 
+in more detail <a href="#engines">below</a>. 
+
+
+<h2><a name="soft">Soft/virtual evidence</h2>
+
+Sometimes a node is not observed, but we have some distribution over
+its possible values; this is often called "soft" or "virtual"
+evidence.
+One can use this as follows
+<pre>
+[engine, loglik] = enter_evidence(engine, evidence, 'soft', soft_evidence);
+</pre>
+where soft_evidence{i} is either [] (if node i has no soft evidence)
+or is a vector representing the probability distribution over i's
+possible values.
+For example, if we don't know i's exact value, but we know its
+likelihood ratio is 60/40, we can write evidence{i} = [] and
+soft_evidence{i} = [0.6 0.4].
+<p>
+Currently only jtree_inf_engine supports this option.
+It assumes that all hidden nodes, and all nodes for
+which we have soft evidence, are discrete.
+For a longer example, see BNT/examples/static/softev1.m. 
+
+
+<h2><a name="mpe">Most probable explanation</h2>
+
+To compute the most probable explanation (MPE) of the evidence (i.e.,
+the most probable assignment, or a mode of the joint), use
+<pre>
+[mpe, ll] = calc_mpe(engine, evidence);     
+</pre>
+mpe{i} is the most likely value of node i.
+This calls enter_evidence with the 'maximize' flag set to 1, which
+causes the engine to do max-product instead of sum-product.
+The resulting max-marginals are then thresholded.
+If there is more than one maximum probability assignment, we must take 
+    care to break ties in a consistent manner (thresholding the
+    max-marginals may give the wrong result). To force this behavior,
+    type
+<pre>
+[mpe, ll] = calc_mpe(engine, evidence, 1);     
+</pre>
+Note that computing the MPE is someties called abductive reasoning.
+    
+<p>
+You can also use <tt>calc_mpe_bucket</tt> written by Ron Zohar,
+that does a forwards max-product pass, and then a backwards traceback
+pass, which is how Viterbi is traditionally implemented.
+
+
+
+<h1><a name="cpd">Conditional Probability Distributions</h1>
+
+A Conditional Probability Distributions (CPD)
+defines P(X(i) | X(Pa(i))), where X(i) is the i'th node, and X(Pa(i))
+are the parents of node i. There are many ways to represent this
+distribution, which depend in part on whether X(i) and X(Pa(i)) are
+discrete, continuous, or a combination.
+We will discuss various representations below.
+
+
+<h2><a name="tabular">Tabular nodes</h2>
+
+If the CPD is represented as a table (i.e., if it is a multinomial
+distribution), it has a number of parameters that is exponential in
+the number of parents. See the example <a href="#cpt">above</a>.
+
+
+<h2><a name="noisyor">Noisy-or nodes</h2>
+
+A noisy-OR node is like a regular logical OR gate except that
+sometimes the effects of parents that are on get inhibited.
+Let the prob. that parent i gets inhibited be q(i).
+Then a node, C, with 2 parents, A and B, has the following CPD, where
+we use F and T to represent off and on (1 and 2 in BNT).
+<pre>
+A  B  P(C=off)      P(C=on)
+---------------------------
+F  F  1.0           0.0
+T  F  q(A)          1-q(A)
+F  T  q(B)          1-q(B)
+T  T  q(A)q(B)      q-q(A)q(B)
+</pre>
+Thus we see that the causes get inhibited independently.
+It is common to associate a "leak" node with a noisy-or CPD, which is
+like a parent that is always on. This can account for all other unmodelled
+causes which might turn the node on.
+<p>
+The noisy-or distribution is similar to the logistic distribution.
+To see this, let the nodes, S(i), have values in {0,1}, and let q(i,j)
+be the prob. that j inhibits i. Then
+<pre>
+Pr(S(i)=1 | parents(S(i))) = 1 - prod_{j} q(i,j)^S(j)
+</pre>
+Now define w(i,j) = -ln q(i,j) and rho(x) = 1-exp(-x). Then
+<pre>
+Pr(S(i)=1 | parents(S(i))) = rho(sum_j w(i,j) S(j))
+</pre>
+For a sigmoid node, we have
+<pre>
+Pr(S(i)=1 | parents(S(i))) = sigma(-sum_j w(i,j) S(j))
+</pre>
+where sigma(x) = 1/(1+exp(-x)). Hence they differ in the choice of
+the activation function (although both are monotonically increasing).
+In addition, in the case of a noisy-or, the weights are constrained to be
+positive, since they derive from probabilities q(i,j).
+In both cases, the number of parameters is <em>linear</em> in the
+number of parents, unlike the case of a multinomial distribution,
+where the number of parameters is exponential in the number of parents.
+We will see an example of noisy-OR nodes <a href="#qmr">below</a>.
+
+
+<h2><a name="deterministic">Other (noisy) deterministic nodes</h2>
+
+Deterministic CPDs for discrete random variables can be created using
+the deterministic_CPD class. It is also possible to 'flip' the output
+of the function with some probability, to simulate noise.
+The boolean_CPD class is just a special case of a
+deterministic CPD, where the parents and child are all binary.
+<p>
+Both of these classes are just "syntactic sugar" for the tabular_CPD
+class.
+
+
+
+<h2><a name="softmax">Softmax nodes</h2>
+
+If we have a discrete node with a continuous parent,
+we can define its CPD using a softmax function 
+(also known as the multinomial logit function).
+This acts like a soft thresholding operator, and is defined as follows:
+<pre>
+                    exp(w(:,i)'*x + b(i)) 
+Pr(Q=i | X=x)  =  -----------------------------
+                  sum_j   exp(w(:,j)'*x + b(j))
+
+</pre>
+The parameters of a softmax node, w(:,i) and b(i), i=1..|Q|, have the
+following interpretation: w(:,i)-w(:,j) is the normal vector to the
+decision boundary between classes i and j,
+and b(i)-b(j) is its offset (bias). For example, suppose
+X is a 2-vector, and Q is binary. Then
+<pre>
+w = [1 -1;
+     0 0];
+
+b = [0 0];
+</pre>
+means class 1 are points in the 2D plane with positive x coordinate,
+and class 2 are points in the 2D plane with negative x coordinate.
+If w has large magnitude, the decision boundary is sharp, otherwise it
+is soft.
+In the special case that Q is binary (0/1), the softmax function reduces to the logistic
+(sigmoid) function.
+<p>
+Fitting a softmax function can be done using the iteratively reweighted
+least squares (IRLS) algorithm.
+We use the implementation from
+<a href="http://www.ncrg.aston.ac.uk/netlab/">Netlab</a>.
+Note that since
+the softmax distribution is not in the exponential family, it does not
+have finite sufficient statistics, and hence we must store all the
+training data in uncompressed form.
+If this takes too much space, one should use online (stochastic) gradient
+descent (not implemented in BNT).
+<p>
+If a softmax node also has discrete parents,
+we use a different set of w/b parameters for each combination of
+parent values, as in the <a href="#gaussian">conditional linear
+Gaussian CPD</a>.
+This feature was implemented by Pierpaolo Brutti.
+He is currently extending it so that discrete parents can be treated
+as if they were continuous, by adding indicator variables to the X
+vector.
+<p>
+We will see an example of softmax nodes <a href="#mixexp">below</a>.
+
+
+<h2><a name="mlp">Neural network nodes</h2>
+
+Pierpaolo Brutti has implemented the mlp_CPD class, which uses a multi layer perceptron
+to implement a mapping from continuous parents to discrete children,
+similar to the softmax function.
+(If there are also discrete parents, it creates a mixture of MLPs.)
+It uses code from <a
+href="http://www.ncrg.aston.ac.uk/netlab/">Netlab</a>.
+This is work in progress.
+
+<h2><a name="root">Root nodes</h2>
+
+A root node has no parents and no parameters; it can be used to model
+an observed, exogeneous input variable, i.e., one which is "outside"
+the model. 
+This is useful for conditional density models.
+We will see an example of root nodes <a href="#mixexp">below</a>.
+
+
+<h2><a name="gaussian">Gaussian nodes</h2>
+
+We now consider a distribution suitable for the continuous-valued nodes.
+Suppose the node is called Y, its continuous parents (if any) are
+called X, and its discrete parents (if any) are called Q.
+The distribution on Y is defined as follows:
+<pre>
+- no parents: Y ~ N(mu, Sigma)
+- cts parents : Y|X=x ~ N(mu + W x, Sigma)
+- discrete parents: Y|Q=i ~ N(mu(:,i), Sigma(:,:,i))
+- cts and discrete parents: Y|X=x,Q=i ~ N(mu(:,i) + W(:,:,i) * x, Sigma(:,:,i))
+</pre>
+where N(mu, Sigma) denotes a Normal distribution with mean mu and
+covariance Sigma. Let |X|, |Y| and |Q| denote the sizes of X, Y and Q
+respectively.
+If there are no discrete parents, |Q|=1; if there is
+more than one, then |Q| = a vector of the sizes of each discrete parent.
+If there are no continuous parents, |X|=0; if there is more than one,
+then |X| = the sum of their sizes.
+Then mu is a |Y|*|Q| vector, Sigma is a |Y|*|Y|*|Q| positive
+semi-definite matrix, and W is a |Y|*|X|*|Q| regression (weight)
+matrix.
+<p>
+We can create a Gaussian node with random parameters as follows.
+<pre>
+bnet.CPD{i} = gaussian_CPD(bnet, i);
+</pre>
+We can specify the value of one or more of the parameters as in the
+following example, in which |Y|=2, and |Q|=1.
+<pre>
+bnet.CPD{i} = gaussian_CPD(bnet, i, 'mean', [0; 0], 'weights', randn(Y,X), 'cov', eye(Y));
+</pre>
+<p>
+We will see an example of conditional linear Gaussian nodes <a
+href="#cg_model">below</a>. 
+<p>
+<b>When learning Gaussians from data</b>, it is helpful to ensure the
+data has a small magnitde
+(see e.g., KPMstats/standardize) to prevent numerical problems.
+Unless you have a lot of data, it is also a very good idea to use
+diagonal instead of full covariance matrices.
+(BNT does not currently support spherical covariances, although it
+would be easy to add, since  KPMstats/clg_Mstep supports this option;
+you would just need to modify gaussian_CPD/update_ess to accumulate
+weighted inner products.)
+
+
+
+<h2><a name="nongauss">Other continuous distributions</h2>
+
+Currently BNT does not support any CPDs for continuous nodes other
+than the Gaussian.
+However, you can use a mixture of Gaussians to
+approximate other continuous distributions. We will see some an example
+of this with the IFA model <a href="#pca">below</a>.
+
+
+<h2><a name="glm">Generalized linear model nodes</h2>
+
+In the future, we may incorporate some of the functionality of
+<a href =
+"http://www.sci.usq.edu.au/staff/dunn/glmlab/glmlab.html">glmlab</a>
+into BNT.
+
+
+<h2><a name="dtree">Classification/regression tree nodes</h2>
+
+We plan to add classification and regression trees to define CPDs for
+discrete and continuous nodes, respectively.
+Trees have many advantages: they are easy to interpret, they can do
+feature selection, they can
+handle discrete and continuous inputs, they do not make strong
+assumptions about the form of the distribution, the number of
+parameters can grow in a data-dependent way (i.e., they are
+semi-parametric), they can handle missing data, etc.
+However, they are not yet implemented.
+<!--
+Yimin Zhang is currently (Feb '02) implementing this.
+-->
+
+
+<h2><a name="cpd_summary">Summary of CPD types</h2>
+
+We list all the different types of CPDs supported by BNT.
+For each CPD, we specify if the child and parents can be discrete (D) or
+continuous (C) (Binary (B) nodes are a special case).
+We also specify which methods each class supports.
+If a method is inherited, the name of the  parent class is mentioned.
+If a parent class calls a child method, this is mentioned.
+<p>
+The <tt>CPD_to_CPT</tt> method converts a CPD to a table; this
+requires that the child and all parents are discrete.
+The CPT might be exponentially big...
+<tt>convert_to_table</tt> evaluates a CPD with evidence, and
+represents the the resulting potential as an array.
+This requires that the child is discrete, and any continuous parents
+are observed.
+<tt>convert_to_pot</tt> evaluates a CPD with evidence, and
+represents the resulting potential as a dpot, gpot, cgpot or upot, as
+requested. (d=discrete, g=Gaussian, cg = conditional Gaussian, u =
+utility).
+
+<p>
+When we sample a node, all the parents are observed.
+When we compute the (log) probability of a node, all the parents and
+the child are observed.
+<p>
+We also specify if the parameters are learnable.
+For learning with EM, we require
+the methods <tt>reset_ess</tt>, <tt>update_ess</tt> and
+<tt>maximize_params</tt>. 
+For learning from fully observed data, we require
+the method <tt>learn_params</tt>.
+By default, all classes inherit this from generic_CPD, which simply
+calls <tt>update_ess</tt> N times, once for each data case, followed
+by <tt>maximize_params</tt>, i.e., it is like EM, without the E step.
+Some classes implement a batch formula, which is quicker.
+<p>
+Bayesian learning means computing a posterior over the parameters
+given fully observed data.
+<p>
+Pearl means we implement the methods <tt>compute_pi</tt> and
+<tt>compute_lambda_msg</tt>, used by
+<tt>pearl_inf_engine</tt>, which runs on directed graphs.
+<tt>belprop_inf_engine</tt> only needs <tt>convert_to_pot</tt>.H
+The pearl methods can exploit special properties of the CPDs for
+computing the messages efficiently, whereas belprop does not.
+<p>
+The only method implemented by generic_CPD is <tt>adjustable_CPD</tt>,
+which is not shown, since it is not very interesting.
+
+
+<p>
+
+
+<table>
+<table border units = pixels><tr>
+<td align=center>Name
+<td align=center>Child
+<td align=center>Parents
+<td align=center>Comments
+<td align=center>CPD_to_CPT
+<td align=center>conv_to_table
+<td align=center>conv_to_pot
+<td align=center>sample
+<td align=center>prob
+<td align=center>learn
+<td align=center>Bayes
+<td align=center>Pearl
+
+
+<tr>
+<!-- Name--><td>
+<!-- Child--><td>
+<!-- Parents--><td>
+<!-- Comments--><td>
+<!-- CPD_to_CPT--><td>
+<!-- conv_to_table--><td>
+<!-- conv_to_pot--><td>
+<!-- sample--><td>
+<!-- prob--><td>
+<!-- learn--><td>
+<!-- Bayes--><td>
+<!-- Pearl--><td>
+
+<tr>
+<!-- Name--><td>boolean
+<!-- Child--><td>B
+<!-- Parents--><td>B
+<!-- Comments--><td>Syntactic sugar for tabular
+<!-- CPD_to_CPT--><td>-
+<!-- conv_to_table--><td>-
+<!-- conv_to_pot--><td>-
+<!-- sample--><td>-
+<!-- prob--><td>-
+<!-- learn--><td>-
+<!-- Bayes--><td>-
+<!-- Pearl--><td>-
+
+<tr>
+<!-- Name--><td>deterministic
+<!-- Child--><td>D
+<!-- Parents--><td>D
+<!-- Comments--><td>Syntactic sugar for tabular
+<!-- CPD_to_CPT--><td>-
+<!-- conv_to_table--><td>-
+<!-- conv_to_pot--><td>-
+<!-- sample--><td>-
+<!-- prob--><td>-
+<!-- learn--><td>-
+<!-- Bayes--><td>-
+<!-- Pearl--><td>-
+
+<tr>
+<!-- Name--><td>Discrete
+<!-- Child--><td>D
+<!-- Parents--><td>C/D
+<!-- Comments--><td>Virtual class
+<!-- CPD_to_CPT--><td>N
+<!-- conv_to_table--><td>Calls CPD_to_CPT
+<!-- conv_to_pot--><td>Calls conv_to_table
+<!-- sample--><td>Calls conv_to_table
+<!-- prob--><td>Calls conv_to_table
+<!-- learn--><td>N
+<!-- Bayes--><td>N
+<!-- Pearl--><td>N
+
+<tr>
+<!-- Name--><td>Gaussian
+<!-- Child--><td>C
+<!-- Parents--><td>C/D
+<!-- Comments--><td>-
+<!-- CPD_to_CPT--><td>N
+<!-- conv_to_table--><td>N
+<!-- conv_to_pot--><td>Y
+<!-- sample--><td>Y
+<!-- prob--><td>Y
+<!-- learn--><td>Y
+<!-- Bayes--><td>N
+<!-- Pearl--><td>N
+
+<tr>
+<!-- Name--><td>gmux
+<!-- Child--><td>C
+<!-- Parents--><td>C/D
+<!-- Comments--><td>multiplexer
+<!-- CPD_to_CPT--><td>N
+<!-- conv_to_table--><td>N
+<!-- conv_to_pot--><td>Y
+<!-- sample--><td>N
+<!-- prob--><td>N
+<!-- learn--><td>N
+<!-- Bayes--><td>N
+<!-- Pearl--><td>Y
+
+
+<tr>
+<!-- Name--><td>MLP
+<!-- Child--><td>D
+<!-- Parents--><td>C/D
+<!-- Comments--><td>multi layer perceptron
+<!-- CPD_to_CPT--><td>N
+<!-- conv_to_table--><td>Y
+<!-- conv_to_pot--><td>Inherits from discrete
+<!-- sample--><td>Inherits from discrete
+<!-- prob--><td>Inherits from discrete
+<!-- learn--><td>Y
+<!-- Bayes--><td>N
+<!-- Pearl--><td>N
+
+
+<tr>
+<!-- Name--><td>noisy-or
+<!-- Child--><td>B
+<!-- Parents--><td>B
+<!-- Comments--><td>-
+<!-- CPD_to_CPT--><td>Y
+<!-- conv_to_table--><td>Inherits from discrete
+<!-- conv_to_pot--><td>Inherits from discrete
+<!-- sample--><td>Inherits from discrete
+<!-- prob--><td>Inherits from discrete
+<!-- learn--><td>N
+<!-- Bayes--><td>N
+<!-- Pearl--><td>Y
+
+
+<tr>
+<!-- Name--><td>root
+<!-- Child--><td>C/D
+<!-- Parents--><td>none
+<!-- Comments--><td>no params
+<!-- CPD_to_CPT--><td>N
+<!-- conv_to_table--><td>N
+<!-- conv_to_pot--><td>Y
+<!-- sample--><td>Y
+<!-- prob--><td>Y
+<!-- learn--><td>N
+<!-- Bayes--><td>N
+<!-- Pearl--><td>N
+
+
+<tr>
+<!-- Name--><td>softmax
+<!-- Child--><td>D
+<!-- Parents--><td>C/D
+<!-- Comments--><td>-
+<!-- CPD_to_CPT--><td>N
+<!-- conv_to_table--><td>Y
+<!-- conv_to_pot--><td>Inherits from discrete
+<!-- sample--><td>Inherits from discrete
+<!-- prob--><td>Inherits from discrete
+<!-- learn--><td>Y
+<!-- Bayes--><td>N
+<!-- Pearl--><td>N
+
+
+<tr>
+<!-- Name--><td>generic
+<!-- Child--><td>C/D
+<!-- Parents--><td>C/D
+<!-- Comments--><td>Virtual class
+<!-- CPD_to_CPT--><td>N
+<!-- conv_to_table--><td>N
+<!-- conv_to_pot--><td>N
+<!-- sample--><td>N
+<!-- prob--><td>N
+<!-- learn--><td>N
+<!-- Bayes--><td>N
+<!-- Pearl--><td>N
+
+
+<tr>
+<!-- Name--><td>Tabular
+<!-- Child--><td>D
+<!-- Parents--><td>D
+<!-- Comments--><td>-
+<!-- CPD_to_CPT--><td>Y
+<!-- conv_to_table--><td>Inherits from discrete
+<!-- conv_to_pot--><td>Inherits from discrete
+<!-- sample--><td>Inherits from discrete
+<!-- prob--><td>Inherits from discrete
+<!-- learn--><td>Y
+<!-- Bayes--><td>Y
+<!-- Pearl--><td>Y
+
+</table>
+
+
+
+<h1><a name="examples">Example models</h1>
+
+
+<h2>Gaussian mixture models</h2>
+
+Richard W. DeVaul has made a detailed tutorial on how to fit mixtures
+of Gaussians using BNT. Available
+<a href="http://www.media.mit.edu/wearables/mithril/BNT/mixtureBNT.txt">here</a>.
+
+
+<h2><a name="pca">PCA, ICA, and all that </h2>
+
+In Figure (a) below, we show how Factor Analysis can be thought of as a
+graphical model. Here, X has an N(0,I) prior, and
+Y|X=x ~ N(mu + Wx, Psi),
+where Psi is diagonal and W is called the "factor loading matrix".
+Since the noise on both X and Y is diagonal, the components of these
+vectors are uncorrelated, and hence can be represented as individual
+scalar nodes, as we show in (b).
+(This is useful if parts of the observations on the Y vector are occasionally missing.)
+We usually take k=|X| << |Y|=D, so the model tries to explain
+many observations using a low-dimensional subspace.
+
+
+<center>
+<table>
+<tr>
+<td><img src="Figures/fa.gif">
+<td><img src="Figures/fa_scalar.gif">
+<td><img src="Figures/mfa.gif">
+<td><img src="Figures/ifa.gif">
+<tr>
+<td align=center> (a)
+<td align=center> (b)
+<td align=center> (c)
+<td align=center> (d)
+</table>
+</center>
+
+<p>
+We can create this model in BNT as follows.
+<pre>
+ns = [k D];
+dag = zeros(2,2);
+dag(1,2) = 1;
+bnet = mk_bnet(dag, ns, 'discrete', []);
+bnet.CPD{1} = gaussian_CPD(bnet, 1, 'mean', zeros(k,1), 'cov', eye(k), ...
+   'cov_type', 'diag', 'clamp_mean', 1, 'clamp_cov', 1);
+bnet.CPD{2} = gaussian_CPD(bnet, 2, 'mean', zeros(D,1), 'cov', diag(Psi0), 'weights', W0, ...
+   'cov_type', 'diag', 'clamp_mean', 1);
+</pre>
+
+The root node is clamped to the N(0,I) distribution, so that we will
+not update these parameters during learning.
+The mean of the leaf node is clamped to 0,
+since we assume the data has been centered (had its mean subtracted
+off); this is just for simplicity.
+Finally, the covariance of the leaf node is constrained to be
+diagonal. W0 and Psi0 are the initial parameter guesses.
+
+<p>
+We can fit this model (i.e., estimate its parameters in a maximum
+likelihood (ML) sense) using EM, as we
+explain <a href="#em">below</a>.
+Not surprisingly, the ML estimates for mu and Psi turn out to be
+identical to the
+sample mean and variance, which can be computed directly as
+<pre>
+mu_ML = mean(data);
+Psi_ML = diag(cov(data));
+</pre>
+Note that W can only be identified up to a rotation matrix, because of
+the spherical symmetry of the source.
+
+<p>
+If we restrict Psi to be spherical, i.e., Psi = sigma*I,
+there is a closed-form solution for W as well,
+i.e., we do not need to use EM.
+In particular, W contains the first |X| eigenvectors of the sample covariance
+matrix, with scalings determined by the eigenvalues and sigma.
+Classical PCA can be obtained by taking the sigma->0 limit.
+For details, see
+
+<ul>
+<li> <a href="ftp://hope.caltech.edu/pub/roweis/Empca/empca.ps">
+"EM algorithms for PCA and SPCA"</a>, Sam Roweis, NIPS 97.
+(<a href="ftp://hope.caltech.edu/pub/roweis/Code/empca.tar.gz">
+Matlab software</a>)
+
+<p>
+<li>
+<a
+href=http://neural-server.aston.ac.uk/cgi-bin/tr_avail.pl?trnumber=NCRG/97/003>
+"Mixtures of probabilistic principal component analyzers"</a>,
+Tipping and Bishop, Neural Computation 11(2):443--482, 1999.
+</ul>
+
+<p>
+By adding a hidden discrete variable, we can create mixtures of FA
+models, as shown in (c).
+Now we can explain the data using a set of subspaces.
+We can create this model in BNT as follows.
+<pre>
+ns = [M k D];
+dag = zeros(3);
+dag(1,3) = 1;
+dag(2,3) = 1;
+bnet = mk_bnet(dag, ns, 'discrete', 1);
+bnet.CPD{1} = tabular_CPD(bnet, 1, Pi0);
+bnet.CPD{2} = gaussian_CPD(bnet, 2, 'mean', zeros(k, 1), 'cov', eye(k), 'cov_type', 'diag', ...
+			   'clamp_mean', 1, 'clamp_cov', 1);
+bnet.CPD{3} = gaussian_CPD(bnet, 3, 'mean', Mu0', 'cov', repmat(diag(Psi0), [1 1 M]), ...
+			   'weights', W0, 'cov_type', 'diag', 'tied_cov', 1);
+</pre>
+Notice how the covariance matrix for Y is the same for all values of
+Q; that is, the noise level in each sub-space is assumed the same.
+However, we allow the offset, mu, to vary.
+For details, see
+<ul>
+
+<LI> 
+<a HREF="ftp://ftp.cs.toronto.edu/pub/zoubin/tr-96-1.ps.gz"> The EM 
+Algorithm for Mixtures of Factor Analyzers </A>,
+Ghahramani, Z. and Hinton, G.E. (1996),
+University of Toronto
+Technical Report CRG-TR-96-1.
+(<A HREF="ftp://ftp.cs.toronto.edu/pub/zoubin/mfa.tar.gz">Matlab software</A>)
+
+<p>
+<li>
+<a
+href=http://neural-server.aston.ac.uk/cgi-bin/tr_avail.pl?trnumber=NCRG/97/003>
+"Mixtures of probabilistic principal component analyzers"</a>,
+Tipping and Bishop, Neural Computation 11(2):443--482, 1999.
+</ul>
+
+<p>
+I have included Zoubin's specialized MFA code (with his permission)
+with the toolbox, so you can check that BNT gives the same results:
+see 'BNT/examples/static/mfa1.m'. 
+
+<p>
+Independent Factor Analysis (IFA) generalizes FA by allowing a
+non-Gaussian prior on each component of X.
+(Note that we can approximate a non-Gaussian prior using a mixture of
+Gaussians.)
+This means that the likelihood function is no longer rotationally
+invariant, so we can uniquely identify W and the hidden
+sources X.
+IFA also allows a non-diagonal Psi (i.e. correlations between the components of Y).
+We recover classical Independent Components Analysis (ICA)
+in the Psi -> 0 limit, and by assuming that |X|=|Y|, so that the
+weight matrix W is square and invertible.
+For details, see
+<ul>
+<li>
+<a href="http://www.gatsby.ucl.ac.uk/~hagai/ifa.ps">Independent Factor
+Analysis</a>, H. Attias, Neural Computation 11: 803--851, 1998.
+</ul>
+
+
+
+<h2><a name="mixexp">Mixtures of experts</h2>
+
+As an example of the use of the softmax function,
+we introduce the Mixture of Experts model.
+<!--
+We also show
+the Hierarchical Mixture of Experts model, where the hierarchy has two
+levels.
+(This is essentially a probabilistic decision tree of height two.)
+-->
+As before,
+circles denote continuous-valued nodes,
+squares denote discrete nodes, clear
+means hidden, and shaded means observed.
+<p>
+<center>
+<table>
+<tr>
+<td><img src="Figures/mixexp.gif">
+<!--
+<td><img src="Figures/hme.gif">
+-->
+</table>
+</center>
+<p>
+X is the observed
+input, Y is the output, and
+the Q nodes are hidden "gating" nodes, which select the appropriate
+set of parameters for Y. During training, Y is assumed observed,
+but for testing, the goal is to predict Y given X.
+Note that this is a <em>conditional</em> density model, so we don't
+associate any parameters with X.
+Hence X's CPD will be a root CPD, which is a way of modelling
+exogenous nodes.
+If the output is a continuous-valued quantity,
+we assume the "experts" are linear-regression units,
+and set Y's CPD to linear-Gaussian.
+If the output is discrete, we set Y's CPD to a softmax function.
+The Q CPDs will always be softmax functions.
+
+<p>
+As a concrete example, consider the mixture of experts model where X and Y are
+scalars, and Q is binary.
+This is just piecewise linear regression, where
+we have two line segments, i.e.,
+<P>
+<IMG ALIGN=BOTTOM SRC="Eqns/lin_reg_eqn.gif">
+<P>
+We can create this model with random parameters as follows.
+(This code is bundled in BNT/examples/static/mixexp2.m.)
+<PRE>
+X = 1;
+Q = 2;
+Y = 3;
+dag = zeros(3,3);
+dag(X,[Q Y]) = 1
+dag(Q,Y) = 1;
+ns = [1 2 1]; % make X and Y scalars, and have 2 experts
+onodes = [1 3];
+bnet = mk_bnet(dag, ns, 'discrete', 2, 'observed', onodes);
+
+rand('state', 0);
+randn('state', 0);
+bnet.CPD{1} = root_CPD(bnet, 1);
+bnet.CPD{2} = softmax_CPD(bnet, 2);
+bnet.CPD{3} = gaussian_CPD(bnet, 3);
+</PRE>
+Now let us fit this model using <a href="#em">EM</a>.
+First we <a href="#load_data">load the data</a> (1000 training cases) and plot them.
+<P>
+<PRE>
+data = load('/examples/static/Misc/mixexp_data.txt', '-ascii');        
+plot(data(:,1), data(:,2), '.');
+</PRE>
+<p>
+<center>
+<IMG SRC="Figures/mixexp_data.gif">
+</center>
+<p>
+This is what the model looks like before training.
+(Thanks to Thomas Hofman for writing this plotting routine.)
+<p>
+<center>
+<IMG SRC="Figures/mixexp_before.gif">
+</center>
+<p>
+Now let's train the model, and plot the final performance.
+(We will discuss how to train models in more detail <a href="#param_learning">below</a>.)
+<P>
+<PRE>
+ncases = size(data, 1); % each row of data is a training case
+cases = cell(3, ncases);
+cases([1 3], :) = num2cell(data'); % each column of cases is a training case
+engine = jtree_inf_engine(bnet);
+max_iter = 20;
+[bnet2, LLtrace] = learn_params_em(engine, cases, max_iter);
+</PRE>
+(We specify which nodes will be observed when we create the engine.
+Hence BNT knows that the hidden nodes are all discrete.
+For complex models, this can lead to a significant speedup.)
+Below we show what the model looks like after 16 iterations of EM
+(with 100 IRLS iterations per M step), when it converged
+using the default convergence tolerance (that the
+fractional change in the log-likelihood be less than 1e-3).
+Before learning, the log-likelihood was
+-322.927442; afterwards, it was -13.728778.
+<p>
+<center>
+<IMG SRC="Figures/mixexp_after.gif">
+</center>
+(See BNT/examples/static/mixexp2.m for details of the code.)
+
+
+
+<h2><a name="hme">Hierarchical mixtures of experts</h2>
+
+A hierarchical mixture of experts (HME) extends the mixture of experts
+model by having more than one hidden node. A two-level example is shown below, along
+with its more traditional representation as a neural network.
+This is like a (balanced) probabilistic decision tree of height 2.
+<p>
+<center>
+<IMG SRC="Figures/HMEforMatlab.jpg">
+</center>
+<p>
+<a href="mailto:pbrutti@stat.cmu.edu">Pierpaolo Brutti</a>
+has written an extensive set of routines for HMEs,
+which are bundled with BNT: see the examples/static/HME directory.
+These routines allow you to choose the number of hidden (gating)
+layers, and the form of the experts (softmax or MLP).
+See the file hmemenu, which provides a demo.
+For example, the figure below shows the decision boundaries learned
+for a ternary classification problem, using a 2 level HME with softmax
+gates and softmax experts; the training set is on the left, the
+testing set on the right.
+<p>
+<center>
+<!--<IMG SRC="Figures/hme_dec_boundary.gif">-->
+<IMG SRC="Figures/hme_dec_boundary.png">
+</center>
+<p>
+
+
+<p>
+For more details, see the following:
+<ul>
+
+<li> <a href="http://www.cs.berkeley.edu/~jordan/papers/hierarchies.ps.Z">
+Hierarchical mixtures of experts and the EM algorithm</a>
+M. I. Jordan and R. A. Jacobs. Neural Computation, 6, 181-214, 1994.
+
+<li> <a href =
+"http://www.cs.berkeley.edu/~dmartin/software">David Martin's
+matlab code for HME</a>
+
+<li> <a
+href="http://www.cs.berkeley.edu/~jordan/papers/uai.ps.Z">Why the
+logistic function? A tutorial discussion on 
+probabilities and neural networks.</a> M. I. Jordan. MIT Computational
+Cognitive Science Report 9503, August 1995. 
+
+<li> "Generalized Linear Models", McCullagh and Nelder, Chapman and
+Halll, 1983.
+
+<li>
+"Improved learning algorithms for mixtures of experts in multiclass
+classification".
+K. Chen, L. Xu, H. Chi.
+Neural Networks (1999) 12: 1229-1252.
+
+<li> <a href="http://www.oigeeza.com/steve/">
+Classification Using Hierarchical Mixtures of Experts</a>
+S.R. Waterhouse and A.J. Robinson.
+In Proc. IEEE Workshop on Neural Network for Signal Processing IV (1994), pp. 177-186
+
+<li> <a href="http://www.idiap.ch/~perry/">
+Localized mixtures of experts</a>,
+P. Moerland, 1998.
+
+<li> "Nonlinear gated experts for time series",
+A.S. Weigend and M. Mangeas, 1995.
+
+</ul>
+
+
+<h2><a name="qmr">QMR</h2>
+
+Bayes nets originally arose out of an attempt to add probabilities to
+expert systems, and this is still the most common use for BNs.
+A famous example is
+QMR-DT, a decision-theoretic reformulation of the Quick Medical
+Reference (QMR) model.
+<p>
+<center>
+<IMG ALIGN=BOTTOM SRC="Figures/qmr.gif">
+</center>
+Here, the top layer represents hidden disease nodes, and the bottom
+layer represents observed symptom nodes.
+The goal is to infer the posterior probability of each disease given
+all the symptoms (which can be present, absent or unknown).
+Each node in the top layer has a Bernoulli prior (with a low prior
+probability that the disease is present).
+Since each node in the bottom layer has a high fan-in, we use a
+noisy-OR parameterization; each disease has an independent chance of
+causing each symptom.
+The real QMR-DT model is copyright, but
+we can create a random QMR-like model as follows.
+<pre>
+function bnet = mk_qmr_bnet(G, inhibit, leak, prior)
+% MK_QMR_BNET Make a QMR model
+% bnet = mk_qmr_bnet(G, inhibit, leak, prior)
+%
+% G(i,j) = 1 iff there is an arc from disease i to finding j
+% inhibit(i,j) = inhibition probability on i->j arc
+% leak(j) = inhibition prob. on leak->j arc
+% prior(i) = prob. disease i is on
+
+[Ndiseases Nfindings] = size(inhibit);
+N = Ndiseases + Nfindings;
+finding_node = Ndiseases+1:N;
+ns = 2*ones(1,N);
+dag = zeros(N,N);
+dag(1:Ndiseases, finding_node) = G;
+bnet = mk_bnet(dag, ns, 'observed', finding_node);
+
+for d=1:Ndiseases
+  CPT = [1-prior(d) prior(d)];
+  bnet.CPD{d} = tabular_CPD(bnet, d, CPT');
+end
+
+for i=1:Nfindings
+  fnode = finding_node(i);
+  ps = parents(G, i);
+  bnet.CPD{fnode} = noisyor_CPD(bnet, fnode, leak(i), inhibit(ps, i));
+end
+</pre>
+In the file BNT/examples/static/qmr1, we create a random bipartite
+graph G, with 5 diseases and 10 findings, and random parameters.
+(In general, to create a random dag, use 'mk_random_dag'.)
+We can visualize the resulting  graph structure using
+the methods discussed <a href="#graphdraw">below</a>, with the
+following results:
+<p>
+<img src="Figures/qmr.rnd.jpg">
+
+<p>
+Now let us put some random evidence on all the leaves except the very
+first and very last, and compute the disease posteriors.
+<pre>
+pos = 2:floor(Nfindings/2);
+neg = (pos(end)+1):(Nfindings-1);
+onodes = myunion(pos, neg);
+evidence = cell(1, N);
+evidence(findings(pos)) = num2cell(repmat(2, 1, length(pos)));
+evidence(findings(neg)) = num2cell(repmat(1, 1, length(neg)));
+
+engine = jtree_inf_engine(bnet);
+[engine, ll] = enter_evidence(engine, evidence);
+post = zeros(1, Ndiseases);
+for i=diseases(:)'
+  m = marginal_nodes(engine, i);
+  post(i) = m.T(2);
+end
+</pre>
+Junction tree can be quite slow on large QMR models.
+Fortunately, it is possible to exploit properties of the noisy-OR
+function to speed up exact inference using an algorithm called
+<a href="#quickscore">quickscore</a>, discussed below.
+
+
+
+
+
+<h2><a name="cg_model">Conditional Gaussian models</h2>
+
+A conditional Gaussian model is one in which, conditioned on all the discrete
+nodes, the distribution over the remaining (continuous) nodes is
+multivariate Gaussian. This means we can have arcs from discrete (D)
+to continuous (C) nodes, but not vice versa.
+(We <em>are</em> allowed C->D arcs if the continuous nodes are observed,
+as in the <a href="#mixexp">mixture of experts</a> model,
+since this distribution can be represented with a discrete potential.)
+<p>
+We now give an example of a CG model, from
+the paper "Propagation of Probabilities, Means amd
+Variances in Mixed Graphical Association Models", Steffen Lauritzen,
+JASA 87(420):1098--1108, 1992 (reprinted in the book "Probabilistic Networks and Expert
+Systems", R. G. Cowell, A. P. Dawid, S. L. Lauritzen and
+D. J. Spiegelhalter, Springer, 1999.)
+
+<h3>Specifying the graph</h3>
+
+Consider the model of waste emissions from an incinerator plant shown below.
+We follow the standard convention that shaded nodes are observed,
+clear nodes are hidden.
+We also use the non-standard convention that
+square nodes are discrete (tabular) and round nodes are
+Gaussian.
+
+<p>
+<center>
+<IMG SRC="Figures/cg1.gif">
+</center>
+<p>
+
+We can create this model as follows.
+<pre>
+F = 1; W = 2; E = 3; B = 4; C = 5; D = 6; Min = 7; Mout = 8; L = 9;
+n = 9;
+
+dag = zeros(n);
+dag(F,E)=1;
+dag(W,[E Min D]) = 1;
+dag(E,D)=1;
+dag(B,[C D])=1;
+dag(D,[L Mout])=1;
+dag(Min,Mout)=1;
+
+% node sizes - all cts nodes are scalar, all discrete nodes are binary
+ns = ones(1, n);
+dnodes = [F W B];
+cnodes = mysetdiff(1:n, dnodes);
+ns(dnodes) = 2;
+
+bnet = mk_bnet(dag, ns, 'discrete', dnodes);
+</pre>
+'dnodes' is a list of the discrete nodes; 'cnodes' is the continuous
+nodes. 'mysetdiff' is a faster version of the built-in 'setdiff'.
+<p>
+
+
+<h3>Specifying the parameters</h3>
+
+The parameters of the discrete nodes can be specified as follows.
+<pre>
+bnet.CPD{B} = tabular_CPD(bnet, B, 'CPT', [0.85 0.15]); % 1=stable, 2=unstable
+bnet.CPD{F} = tabular_CPD(bnet, F, 'CPT', [0.95 0.05]); % 1=intact, 2=defect
+bnet.CPD{W} = tabular_CPD(bnet, W, 'CPT', [2/7 5/7]); % 1=industrial, 2=household
+</pre>
+
+<p>
+The parameters of the continuous nodes can be specified as follows.
+<pre>
+bnet.CPD{E} = gaussian_CPD(bnet, E, 'mean', [-3.9 -0.4 -3.2 -0.5], ...
+			   'cov', [0.00002 0.0001 0.00002 0.0001]);
+bnet.CPD{D} = gaussian_CPD(bnet, D, 'mean', [6.5 6.0 7.5 7.0], ...
+			   'cov', [0.03 0.04 0.1 0.1], 'weights', [1 1 1 1]);
+bnet.CPD{C} = gaussian_CPD(bnet, C, 'mean', [-2 -1], 'cov', [0.1 0.3]);
+bnet.CPD{L} = gaussian_CPD(bnet, L, 'mean', 3, 'cov', 0.25, 'weights', -0.5);
+bnet.CPD{Min} = gaussian_CPD(bnet, Min, 'mean', [0.5 -0.5], 'cov', [0.01 0.005]);
+bnet.CPD{Mout} = gaussian_CPD(bnet, Mout, 'mean', 0, 'cov', 0.002, 'weights', [1 1]);
+</pre>
+
+
+<h3><a name="cg_infer">Inference</h3>
+
+<!--Let us perform inference in the <a href="#cg_model">waste incinerator example</a>.-->
+First we compute the unconditional marginals.
+<pre>
+engine = jtree_inf_engine(bnet);
+evidence = cell(1,n);
+[engine, ll] = enter_evidence(engine, evidence);
+marg = marginal_nodes(engine, E);
+</pre>
+<!--(Of course, we could use <tt>cond_gauss_inf_engine</tt> instead of jtree.)-->
+'marg' is a structure that contains the fields 'mu' and 'Sigma', which
+contain the mean and (co)variance of the marginal on E.
+In this case, they are both scalars.
+Let us check they match the published figures (to 2 decimal places).
+<!--(We can't expect
+more precision than this in general because I have implemented the algorithm of
+Lauritzen (1992), which can be numerically unstable.)-->
+<pre>
+tol = 1e-2;
+assert(approxeq(marg.mu, -3.25, tol));
+assert(approxeq(sqrt(marg.Sigma), 0.709, tol));
+</pre>
+We can compute the other posteriors similarly.
+Now let us add some evidence.
+<pre>
+evidence = cell(1,n);
+evidence{W} = 1; % industrial
+evidence{L} = 1.1;
+evidence{C} = -0.9;
+[engine, ll] = enter_evidence(engine, evidence);
+</pre>
+Now we find
+<pre>
+marg = marginal_nodes(engine, E);
+assert(approxeq(marg.mu, -3.8983, tol));
+assert(approxeq(sqrt(marg.Sigma), 0.0763, tol));
+</pre>
+
+
+We can also compute the joint probability on a set of nodes.
+For example, P(D, Mout | evidence) is a 2D Gaussian:
+<pre>
+marg = marginal_nodes(engine, [D Mout])
+marg = 
+    domain: [6 8]
+        mu: [2x1 double]
+     Sigma: [2x2 double]
+         T: 1.0000
+</pre>
+The mean is
+<pre>
+marg.mu
+ans =
+    3.6077
+    4.1077
+</pre>
+and the covariance matrix is
+<pre>
+marg.Sigma
+ans =
+    0.1062    0.1062
+    0.1062    0.1182
+</pre>
+It is easy to visualize this posterior using standard Matlab plotting
+functions, e.g.,
+<pre>
+gaussplot2d(marg.mu, marg.Sigma);
+</pre>
+produces the following picture.
+
+<p>
+<center>
+<IMG SRC="Figures/gaussplot.png">
+</center>
+<p>
+
+
+The T field indicates that the mixing weight of this Gaussian
+component is 1.0.
+If the joint contains discrete and continuous variables, the result
+will be a mixture of Gaussians, e.g.,
+<pre>
+marg = marginal_nodes(engine, [F E])
+    domain: [1 3]
+        mu: [-3.9000 -0.4003]
+     Sigma: [1x1x2 double]
+         T: [0.9995 4.7373e-04]
+</pre>
+The interpretation is
+Sigma(i,j,k) = Cov[ E(i) E(j) | F=k ].
+In this case, E is a scalar, so i=j=1; k specifies the mixture component.
+<p>
+We saw in the sprinkler network that BNT sets the effective size of
+observed discrete nodes to 1, since they only have one legal value.
+For continuous nodes, BNT sets their length to 0,
+since they have been reduced to a point.
+For example,
+<pre>
+marg = marginal_nodes(engine, [B C])
+    domain: [4 5]
+        mu: []
+     Sigma: []
+         T: [0.0123 0.9877]
+</pre>
+It is simple to post-process the output of marginal_nodes.
+For example, the file BNT/examples/static/cg1 sets the mu term of
+observed nodes to their observed value, and the Sigma term to 0 (since
+observed nodes have no variance).
+
+<p>
+Note that the implemented version of the junction tree is numerically
+unstable when using CG potentials
+(which is why, in the example above, we only required our answers to agree with
+the published ones to 2dp.)
+This is why you might want to use <tt>stab_cond_gauss_inf_engine</tt>,
+implemented by Shan Huang. This is described in
+
+<ul>
+<li> "Stable Local Computation with Conditional Gaussian Distributions",
+S. Lauritzen and F. Jensen, Tech Report R-99-2014,
+Dept. Math. Sciences, Allborg Univ., 1999.
+</ul>
+
+However, even the numerically stable version
+can be computationally intractable if there are many hidden discrete
+nodes, because the number of mixture components grows exponentially e.g., in a
+<a href="usage_dbn.html#lds">switching linear dynamical system</a>.
+In general, one must resort to approximate inference techniques: see
+the discussion on <a href="#engines">inference engines</a> below.
+
+
+<h2><a name="hybrid">Other hybrid models</h2>
+
+When we have C->D arcs, where C is hidden, we need to use
+approximate inference.
+One approach (not implemented in BNT) is described in
+<ul>
+<li> <a
+href="http://www.cs.berkeley.edu/~murphyk/Papers/hybrid_uai99.ps.gz">A
+Variational Approximation for Bayesian Networks with 
+Discrete and Continuous Latent Variables</a>,
+K. Murphy, UAI 99.
+</ul>
+Of course, one can always use <a href="#sampling">sampling</a> methods
+for approximate inference in such models.
+
+
+
+<h1><a name="param_learning">Parameter Learning</h1>
+
+The parameter estimation routines in BNT can be classified into 4
+types, depending on whether the goal is to compute
+a full (Bayesian) posterior over the parameters or just a point
+estimate (e.g., Maximum Likelihood or Maximum A Posteriori),
+and whether all the variables are fully observed or there is missing
+data/ hidden variables (partial observability).
+<p>
+
+<TABLE BORDER>
+<tr>
+ <TH></TH>
+ <th>Full obs</th>
+ <th>Partial obs</th>
+</tr>
+<tr>
+ <th>Point</th>
+ <td><tt>learn_params</tt></td>
+ <td><tt>learn_params_em</tt></td>
+</tr>
+<tr>
+ <th>Bayes</th>
+ <td><tt>bayes_update_params</tt></td>
+ <td>not yet supported</td>
+</tr>
+</table>
+
+
+<h2><a name="load_data">Loading data from a file</h2>
+
+To load numeric data from an ASCII text file called 'dat.txt', where each row is a
+case and columns are separated by white-space, such as
+<pre>
+011979 1626.5 0.0
+021979 1367.0 0.0
+...
+</pre>
+you can use
+<pre>
+data = load('dat.txt');
+</pre>
+or
+<pre>
+load dat.txt -ascii
+</pre>
+In the latter case, the data is stored in a variable called 'dat' (the
+filename minus the extension).
+Alternatively, suppose the data is stored in a .csv file (has commas
+separating the columns, and contains a header line), such as
+<pre>
+header info goes here
+ORD,011979,1626.5,0.0
+DSM,021979,1367.0,0.0
+...
+</pre>
+You can load this using
+<pre>
+[a,b,c,d] = textread('dat.txt', '%s %d %f %f', 'delimiter', ',', 'headerlines', 1);
+</pre>
+If your file is not in either of these formats, you can either use Perl to convert
+it to this format, or use the Matlab scanf command.
+Type
+<tt>
+help iofun
+</tt>
+for more information on Matlab's file functions.
+<!--
+<p>
+To load data directly from Excel,
+you should buy the 
+<a href="http://www.mathworks.com/products/excellink/">Excel Link</a>.
+To load data directly from a relational database,
+you should buy the 
+<a href="http://www.mathworks.com/products/database">Database
+toolbox</a>.
+-->
+<p>
+BNT learning routines require data to be stored in a cell array.
+data{i,m} is the value of node i in case (example) m, i.e., each
+<em>column</em> is a case.
+If node i is not observed in case m (missing value), set
+data{i,m} = [].
+(Not all the learning routines can cope with such missing values, however.)
+In the special case that all the nodes are observed and are
+scalar-valued (as opposed to vector-valued), the data can be
+stored in a matrix (as opposed to a cell-array).
+<p>
+Suppose, as in the <a href="#mixexp">mixture of experts example</a>,
+that we have 3 nodes in the graph: X(1) is the observed input, X(3) is
+the observed output, and X(2) is a hidden (gating) node. We can
+create the dataset as follows.
+<pre>
+data = load('dat.txt');
+ncases = size(data, 1);
+cases = cell(3, ncases);
+cases([1 3], :) = num2cell(data');
+</pre>
+Notice how we transposed the data, to convert rows into columns.
+Also, cases{2,m} = [] for all m, since X(2) is always hidden.
+
+
+<h2><a name="mle_complete">Maximum likelihood parameter estimation from complete data</h2>
+
+As an example, let's generate some data from the sprinkler network, randomize the parameters,
+and then try to recover the original model.
+First we create some training data using forwards sampling.
+<pre>
+samples = cell(N, nsamples);
+for i=1:nsamples
+  samples(:,i) = sample_bnet(bnet);
+end
+</pre>
+samples{j,i} contains the value of the j'th node in case i.
+sample_bnet returns a cell array because, in general, each node might
+be a vector of different length.
+In this case, all nodes are discrete (and hence scalars), so we
+could have used a regular array instead (which can be quicker):
+<pre>
+data = cell2num(samples);
+</pre
+So now data(j,i) = samples{j,i}.
+<p>
+Now we create a network with random parameters.
+(The initial values of bnet2 don't matter in this case, since we can find the
+globally optimal MLE independent of where we start.)
+<pre>
+% Make a tabula rasa
+bnet2 = mk_bnet(dag, node_sizes);
+seed = 0;
+rand('state', seed);
+bnet2.CPD{C} = tabular_CPD(bnet2, C);
+bnet2.CPD{R} = tabular_CPD(bnet2, R);
+bnet2.CPD{S} = tabular_CPD(bnet2, S);
+bnet2.CPD{W} = tabular_CPD(bnet2, W);
+</pre>
+Finally, we find the maximum likelihood estimates of the parameters.
+<pre>
+bnet3 = learn_params(bnet2, samples);
+</pre>
+To view the learned parameters, we use a little Matlab hackery.
+<pre>
+CPT3 = cell(1,N);
+for i=1:N
+  s=struct(bnet3.CPD{i});  % violate object privacy
+  CPT3{i}=s.CPT;
+end
+</pre>
+Here are the parameters learned for node 4.
+<pre>
+dispcpt(CPT3{4})
+1 1 : 1.0000 0.0000 
+2 1 : 0.2000 0.8000 
+1 2 : 0.2273 0.7727 
+2 2 : 0.0000 1.0000 
+</pre>
+So we see that the learned parameters are fairly close to the "true"
+ones, which we display below.
+<pre>
+dispcpt(CPT{4})
+1 1 : 1.0000 0.0000 
+2 1 : 0.1000 0.9000 
+1 2 : 0.1000 0.9000 
+2 2 : 0.0100 0.9900 
+</pre>
+We can get better results by using a larger training set, or using
+informative priors (see <a href="#prior">below</a>).
+
+
+
+<h2><a name="prior">Parameter priors</h2>
+
+Currently, only tabular CPDs can have priors on their parameters.
+The conjugate prior for a multinomial is the Dirichlet.
+(For binary random variables, the multinomial is the same as the
+Bernoulli, and the Dirichlet is the same as the Beta.)
+<p>
+The Dirichlet has a simple interpretation in terms of pseudo counts.
+If we let N_ijk = the num. times X_i=k and Pa_i=j occurs in the
+training set, where Pa_i are the parents of X_i,
+then the maximum likelihood (ML) estimate is
+T_ijk = N_ijk  / N_ij (where N_ij = sum_k' N_ijk'), which will be 0 if N_ijk=0.
+To prevent us from declaring that (X_i=k, Pa_i=j) is impossible just because this
+event was not seen in the training set,
+we can pretend we saw value k of X_i, for each value j of Pa_i some number (alpha_ijk)
+of times in the past.
+The MAP (maximum a posterior) estimate is then
+<pre>
+T_ijk = (N_ijk + alpha_ijk) / (N_ij + alpha_ij)
+</pre>
+and is never 0 if all alpha_ijk > 0.
+For example, consider the network A->B, where A is binary and B has 3
+values.
+A uniform prior for B has the form
+<pre>
+    B=1 B=2 B=3
+A=1 1   1   1
+A=2 1   1   1
+</pre>
+which can be created using
+<pre>
+tabular_CPD(bnet, i, 'prior_type', 'dirichlet', 'dirichlet_type', 'unif');
+</pre>
+This prior does not satisfy the likelihood equivalence principle,
+which says that <a href="#markov_equiv">Markov equivalent</a> models
+should have the same marginal likelihood.
+A prior that does satisfy this principle is shown below.
+Heckerman (1995) calls this the
+BDeu prior (likelihood equivalent uniform Bayesian Dirichlet).
+<pre>
+    B=1 B=2 B=3
+A=1 1/6 1/6 1/6
+A=2 1/6 1/6 1/6
+</pre>
+where we put N/(q*r) in each bin; N is the equivalent sample size,
+r=|A|, q = |B|.
+This can be created as follows
+<pre>
+tabular_CPD(bnet, i, 'prior_type', 'dirichlet', 'dirichlet_type', 'BDeu');
+</pre>
+Here, 1 is the equivalent sample size, and is the strength of the
+prior.
+You can change this using
+<pre>
+tabular_CPD(bnet, i, 'prior_type', 'dirichlet', 'dirichlet_type', ...
+   'BDeu', 'dirichlet_weight', 10);
+</pre>
+<!--where counts is an array of pseudo-counts of the same size as the
+CPT.-->
+<!--
+<p>
+When you specify a prior, you should set row i of the CPT to the
+normalized version of row i of the pseudo-count matrix, i.e., to the
+expected values of the parameters. This will ensure that computing the
+marginal likelihood sequentially (see <a
+href="#bayes_learn">below</a>) and in batch form gives the same
+results.
+To do this, proceed as follows.
+<pre>
+tabular_CPD(bnet, i, 'prior', counts, 'CPT', mk_stochastic(counts));
+</pre>
+For a non-informative prior, you can just write
+<pre>
+tabular_CPD(bnet, i, 'prior', 'unif', 'CPT', 'unif');
+</pre>
+-->
+
+
+<h2><a name="bayes_learn">(Sequential) Bayesian parameter updating from complete data</h2>
+
+If we use conjugate priors and have fully observed data, we can
+compute the posterior over the parameters in batch form as follows.
+<pre>
+cases = sample_bnet(bnet, nsamples);
+bnet = bayes_update_params(bnet, cases);  
+LL = log_marg_lik_complete(bnet, cases);   
+</pre>
+bnet.CPD{i}.prior contains the new Dirichlet pseudocounts,
+and bnet.CPD{i}.CPT is set to the mean of the posterior (the
+normalized counts).
+(Hence if the initial pseudo counts are 0,
+<tt>bayes_update_params</tt> and <tt>learn_params</tt> will give the
+same result.)
+
+
+
+
+<p>
+We can compute the same result sequentially (on-line) as follows.
+<pre>
+LL = 0;
+for m=1:nsamples
+  LL = LL + log_marg_lik_complete(bnet, cases(:,m));
+  bnet = bayes_update_params(bnet, cases(:,m));
+end
+</pre>
+
+The file <tt>BNT/examples/static/StructLearn/model_select1</tt> has an example of
+sequential model selection which uses the same idea.
+We generate data from the model A->B
+and compute the posterior prob of all 3 dags on 2 nodes:
+ (1) A B,  (2) A <- B , (3) A -> B
+Models 2 and 3 are <a href="#markov_equiv">Markov equivalent</a>, and therefore indistinguishable from 
+observational data alone, so we expect their posteriors to be the same
+(assuming a prior which satisfies likelihood equivalence).
+If we use random parameters, the "true" model only gets a higher posterior after 2000 trials!
+However, if we make B a noisy NOT gate, the true model "wins" after 12
+trials, as shown below (red = model 1, blue/green (superimposed)
+represents models 2/3).
+<p>
+<img src="Figures/model_select.png">
+<p>
+The use of marginal likelihood for model selection is discussed in
+greater detail in the 
+section on <a href="structure_learning">structure learning</a>.
+
+
+
+
+<h2><a name="em">Maximum likelihood parameter estimation with missing values</h2>
+
+Now we consider learning when some values are not observed.
+Let us randomly hide half the values generated from the water
+sprinkler example.
+<pre>
+samples2 = samples;
+hide = rand(N, nsamples) > 0.5;
+[I,J]=find(hide);
+for k=1:length(I)
+  samples2{I(k), J(k)} = [];
+end
+</pre>
+samples2{i,l} is the value of node i in training case l, or [] if unobserved.
+<p>
+Now we will compute the MLEs using the EM algorithm.
+We need to use an inference algorithm to compute the expected
+sufficient statistics in the E step; the M (maximization) step is as
+above.
+<pre>
+engine2 = jtree_inf_engine(bnet2);
+max_iter = 10;
+[bnet4, LLtrace] = learn_params_em(engine2, samples2, max_iter);
+</pre>
+LLtrace(i) is the log-likelihood at iteration i. We can plot this as
+follows:
+<pre>
+plot(LLtrace, 'x-')
+</pre>
+Let's display the results after 10 iterations of EM.
+<pre>
+celldisp(CPT4)
+CPT4{1} =
+    0.6616
+    0.3384
+CPT4{2} =
+    0.6510    0.3490
+    0.8751    0.1249
+CPT4{3} =
+    0.8366    0.1634
+    0.0197    0.9803
+CPT4{4} =
+(:,:,1) =
+    0.8276    0.0546
+    0.5452    0.1658
+(:,:,2) =
+    0.1724    0.9454
+    0.4548    0.8342
+</pre>
+We can get improved performance by using one or more of the following
+methods:
+<ul>
+<li> Increasing the size of the training set.
+<li> Decreasing the amount of hidden data.
+<li> Running EM for longer.
+<li> Using informative priors.
+<li> Initialising EM from multiple starting points.
+</ul>
+
+Click <a href="#gaussian">here</a> for a discussion of learning
+Gaussians, which can cause numerical problems.
+<p>
+For a more complete example of learning with EM,
+see the script BNT/examples/static/learn1.m.
+
+<h2><a name="tying">Parameter tying</h2>
+
+In networks with repeated structure (e.g., chains and grids), it is
+common to assume that the parameters are the same at every node. This
+is called parameter tying, and reduces the amount of data needed for
+learning.
+<p>
+When we have tied parameters, there is no longer a one-to-one
+correspondence between nodes and CPDs.
+Rather, each CPD species the parameters for a whole equivalence class
+of nodes.
+It is easiest to see this by example.
+Consider the following <a href="usage_dbn.html#hmm">hidden Markov
+model (HMM)</a>
+<p>
+<img src="Figures/hmm3.gif">
+<p>
+<!--
+We can create this graph structure, assuming we have T time-slices,
+as follows.
+(We number the nodes as shown in the figure, but we could equally well
+number the hidden nodes 1:T, and the observed nodes T+1:2T.)
+<pre>
+N = 2*T;
+dag = zeros(N);
+hnodes = 1:2:2*T;
+for i=1:T-1
+  dag(hnodes(i), hnodes(i+1))=1;
+end
+onodes = 2:2:2*T;
+for i=1:T
+  dag(hnodes(i), onodes(i)) = 1;
+end
+</pre>
+<p>
+The hidden nodes are always discrete, and have Q possible values each,
+but the observed nodes can be discrete or continuous, and have O possible values/length.
+<pre>
+if cts_obs
+  dnodes = hnodes;
+else
+  dnodes = 1:N;
+end
+ns = ones(1,N);
+ns(hnodes) = Q;
+ns(onodes) = O;
+</pre>
+-->
+When HMMs are used for semi-infinite processes like speech recognition,
+we assume the transition matrix
+P(H(t+1)|H(t)) is the same for all t; this is called a time-invariant
+or homogenous Markov chain.
+Hence hidden nodes 2, 3, ..., T
+are all in the same equivalence class, say class Hclass.
+Similarly, the observation matrix P(O(t)|H(t)) is assumed to be the
+same for all t, so the observed nodes are all in the same equivalence
+class, say class Oclass.
+Finally, the prior term P(H(1)) is in a class all by itself, say class
+H1class.
+This is illustrated below, where we explicitly represent the
+parameters as random variables (dotted nodes).
+<p>
+<img src="Figures/hmm4_params.gif">
+<p>
+In BNT, we cannot represent parameters as random variables (nodes).
+Instead, we "hide" the
+parameters inside one CPD for each equivalence class,
+and then specify that the other CPDs should share these parameters, as
+follows.
+<pre>
+hnodes = 1:2:2*T;
+onodes = 2:2:2*T;
+H1class = 1; Hclass = 2; Oclass = 3;
+eclass = ones(1,N);
+eclass(hnodes(2:end)) = Hclass;
+eclass(hnodes(1)) = H1class;
+eclass(onodes) = Oclass;
+% create dag and ns in the usual way
+bnet = mk_bnet(dag, ns, 'discrete', dnodes, 'equiv_class', eclass);
+</pre>
+Finally, we define the parameters for each equivalence class:
+<pre>
+bnet.CPD{H1class} = tabular_CPD(bnet, hnodes(1)); % prior
+bnet.CPD{Hclass} = tabular_CPD(bnet, hnodes(2)); % transition matrix
+if cts_obs
+  bnet.CPD{Oclass} = gaussian_CPD(bnet, onodes(1));
+else
+  bnet.CPD{Oclass} = tabular_CPD(bnet, onodes(1));
+end
+</pre>
+In general, if bnet.CPD{e} = xxx_CPD(bnet, j), then j should be a
+member of e's equivalence class; that is, it is not always the case
+that e == j. You can use bnet.rep_of_eclass(e) to return the
+representative of equivalence class e.
+BNT will look up the parents of j to determine the size
+of the CPT to use. It assumes that this is the same for all members of
+the equivalence class.
+Click <a href="param_tieing.html">here</a> for
+a more complex example of parameter tying.
+<p>
+Note:
+Normally one would define an HMM as a
+<a href = "usage_dbn.html">Dynamic Bayes Net</a>
+(see the function BNT/examples/dynamic/mk_chmm.m).
+However, one can define an HMM as a static BN using the function
+BNT/examples/static/Models/mk_hmm_bnet.m.
+
+
+
+<h1><a name="structure_learning">Structure learning</h1>
+
+Update (9/29/03):
+Phillipe LeRay is developing some additional structure learning code
+on top of BNT. Click <a
+href="http://bnt.insa-rouen.fr/ajouts.html">here</a>
+for details.
+
+<p>
+
+There are two very different approaches to structure learning:
+constraint-based and search-and-score.
+In the <a href="#constraint">constraint-based approach</a>,
+we start with a fully connected graph, and remove edges if certain
+conditional independencies are measured in the data.
+This has the disadvantage that repeated independence tests lose
+statistical power.
+<p>
+In the more popular search-and-score approach,
+we perform a search through the space of possible DAGs, and either
+return the best one found (a point estimate), or return a sample of the
+models found (an approximation to the Bayesian posterior).
+<p>
+Unfortunately, the number of DAGs as a function of the number of
+nodes, G(n), is super-exponential in n.
+A closed form formula for G(n) is not known, but the first few values
+are shown below (from Cooper, 1999).
+
+<table>
+<tr>  <th>n</th>    <th align=left>G(n)</th> </tr>
+<tr>  <td>1</td>    <td>1</td> </tr>
+<tr>  <td>2</td>    <td>3</td> </tr>
+<tr>  <td>3</td>    <td>25</td> </tr>
+<tr>   <td>4</td>    <td>543</td> </tr> 
+<tr>   <td>5</td>    <td>29,281</td> </tr>
+<tr>   <td>6</td>    <td>3,781,503</td> </tr>
+<tr>   <td>7</td>    <td>1.1 x 10^9</td> </tr>
+<tr>   <td>8</td>    <td>7.8 x 10^11</td> </tr>
+<tr>   <td>9</td>    <td>1.2 x 10^15</td> </tr>
+<tr>   <td>10</td>    <td>4.2 x 10^18</td> </tr>
+</table>
+
+Since the number of DAGs is super-exponential in the number of nodes,
+we cannot exhaustively search the space, so we either use a local
+search algorithm (e.g., greedy hill climbining, perhaps with multiple
+restarts) or a global search algorithm (e.g., Markov Chain Monte
+Carlo). 
+<p>
+If we know a total ordering on the nodes,
+finding the best structure amounts to picking the best set of parents
+for each node independently.
+This is what the K2 algorithm does.
+If the ordering is unknown, we can search over orderings,
+which is more efficient than searching over DAGs (Koller and Friedman, 2000).
+<p>
+In addition to the search procedure, we must specify the scoring
+function. There are two popular choices. The Bayesian score integrates
+out the parameters, i.e., it is the marginal likelihood of the model.
+The BIC (Bayesian Information Criterion) is defined as
+log P(D|theta_hat) - 0.5*d*log(N), where D is the data, theta_hat is
+the ML estimate of the parameters, d is the number of parameters, and
+N is the number of data cases.
+The BIC method has the advantage of not requiring a prior.
+<p>
+BIC can be derived as a large sample
+approximation to the marginal likelihood.
+(It is also equal to the Minimum Description Length of a model.)
+However, in practice, the sample size does not need to be very large
+for the approximation to be good.
+For example, in the figure below, we plot the ratio between the log marginal likelihood
+and the BIC score against data-set size; we see that the ratio rapidly
+approaches 1, especially for non-informative priors. 
+(This plot was generated by the file BNT/examples/static/bic1.m. It
+uses the water sprinkler BN with BDeu Dirichlet priors with different
+equivalent sample sizes.)
+
+<p>
+<center>
+<IMG SRC="Figures/bic.png">
+</center>
+<p>
+
+<p>
+As with parameter learning, handling missing data/ hidden variables is
+much harder than the fully observed case.
+The structure learning routines in BNT can therefore be classified into 4
+types, analogously to the parameter learning case.
+<p>
+
+<TABLE BORDER>
+<tr>
+ <TH></TH>
+ <th>Full obs</th>
+ <th>Partial obs</th>
+</tr>
+<tr>
+ <th>Point</th>
+ <td><tt>learn_struct_K2</tt>  <br>
+<!--     <tt>learn_struct_hill_climb</tt></td> -->
+ <td><tt>not yet supported</tt></td>
+</tr>
+<tr>
+ <th>Bayes</th>
+ <td><tt>learn_struct_mcmc</tt></td>
+ <td>not yet supported</td>
+</tr>
+</table>
+
+
+<h2><a name="markov_equiv">Markov equivalence</h2>
+
+If two DAGs encode the same conditional independencies, they are
+called Markov equivalent. The set of all DAGs can be paritioned into
+Markov equivalence classes. Graphs within the same class can 
+have
+the direction of some of their arcs reversed without changing any of
+the CI relationships.
+Each class can be represented by a PDAG
+(partially directed acyclic graph) called an essential graph or
+pattern. This specifies which edges must be oriented in a certain
+direction, and which may be reversed.
+
+<p>
+When learning graph structure from observational data,
+the best one can hope to do is to identify the model up to Markov
+equivalence. To distinguish amongst graphs within the same equivalence
+class, one needs interventional data: see the discussion on <a
+href="#active">active learning</a> below.
+
+
+
+<h2><a name="enumerate">Exhaustive search</h2>
+
+The brute-force approach to structure learning is to enumerate all
+possible DAGs, and score each one. This provides a "gold standard"
+with which to compare other algorithms. We can do this as follows.
+<pre>
+dags = mk_all_dags(N);
+score = score_dags(data, ns, dags);
+</pre>
+where data(i,m) is the value of node i in case m,
+and ns(i) is the size of node i.
+If the DAGs have a lot of families in common, we can cache the sufficient statistics,
+making this potentially more efficient than scoring the DAGs one at a time.
+(Caching is not currently implemented, however.)
+<p>
+By default, we use the Bayesian scoring metric, and assume CPDs are
+represented by tables with BDeu(1) priors.
+We can override these defaults as follows.
+If we want to use uniform priors, we can say
+<pre>
+params = cell(1,N);
+for i=1:N
+  params{i} = {'prior', 'unif'};
+end
+score = score_dags(data, ns, dags, 'params', params);
+</pre>
+params{i} is a cell-array, containing optional arguments that are
+passed to the constructor for CPD i.
+<p>
+Now suppose we want to use different node types, e.g., 
+Suppose nodes 1 and 2 are Gaussian, and nodes 3 and 4 softmax (both
+these CPDs can support discrete and continuous parents, which is
+necessary since all other nodes will be considered as parents).
+The Bayesian scoring metric currently only works for tabular CPDs, so
+we will use BIC:
+<pre>
+score = score_dags(data, ns, dags, 'discrete', [3 4], 'params', [], 
+    'type', {'gaussian', 'gaussian', 'softmax', softmax'}, 'scoring_fn', 'bic')
+</pre>
+In practice, one can't enumerate all possible DAGs for N > 5,
+but one can evaluate any reasonably-sized set of hypotheses in this
+way (e.g., nearest neighbors of your current best guess).
+Think of this as "computer assisted model refinement" as opposed to de
+novo learning.
+
+
+<h2><a name="K2">K2</h2>
+
+The K2 algorithm (Cooper and Herskovits, 1992) is a greedy search algorithm that works as follows.
+Initially each node has no parents. It then adds incrementally that parent whose addition most
+increases the score of the resulting structure. When the addition of no single
+parent can increase the score, it stops adding parents to the node.
+Since we are using a fixed ordering, we do not need to check for
+cycles, and can choose the parents for each node independently.
+<p>
+The original paper used the Bayesian scoring
+metric with tabular CPDs and Dirichlet priors.
+BNT generalizes this to allow any kind of CPD, and either the Bayesian
+scoring metric or BIC, as in the example <a href="#enumerate">above</a>.
+In addition, you can specify
+an optional upper bound on the number of parents for each node.
+The file BNT/examples/static/k2demo1.m gives an example of how to use K2.
+We use the water sprinkler network and sample 100 cases from it as before.
+Then we see how much data it takes to recover the generating structure:
+<pre>
+order = [C S R W];
+max_fan_in = 2;
+sz = 5:5:100;
+for i=1:length(sz)
+  dag2 = learn_struct_K2(data(:,1:sz(i)), node_sizes, order, 'max_fan_in', max_fan_in);
+  correct(i) = isequal(dag, dag2);
+end
+</pre>
+Here are the results.
+<pre>
+correct =
+  Columns 1 through 12 
+     0     0     0     0     0     0     0     1     0     1     1     1
+  Columns 13 through 20 
+     1     1     1     1     1     1     1     1
+</pre>
+So we see it takes about sz(10)=50 cases. (BIC behaves similarly,
+showing that the prior doesn't matter too much.)
+In general, we cannot hope to recover the "true" generating structure,
+only one that is in its <a href="#markov_equiv">Markov equivalence
+class</a>.
+
+
+<h2><a name="hill_climb">Hill-climbing</h2>
+
+Hill-climbing starts at a specific point in space,
+considers all nearest neighbors, and moves to the neighbor
+that has the highest score; if no neighbors have higher
+score than the current point (i.e., we have reached a local maximum),
+the algorithm stops. One can then restart in another part of the space.
+<p>
+A common definition of "neighbor" is all graphs that can be
+generated from the current graph by adding, deleting or reversing a
+single arc, subject to the acyclicity constraint.
+Other neighborhoods are possible: see
+<a href="http://research.microsoft.com/~dmax/publications/jmlr02.pdf">
+Optimal Structure Identification with Greedy Search</a>, Max
+Chickering, JMLR 2002.
+
+<!--
+Note: This algorithm is currently (Feb '02) being implemented by Qian
+Diao.
+-->
+
+
+<h2><a name="mcmc">MCMC</h2>
+
+We can use a Markov Chain Monte Carlo (MCMC) algorithm called
+Metropolis-Hastings (MH) to search the space of all 
+DAGs.
+The standard proposal distribution is to consider moving to all
+nearest neighbors in the sense defined <a href="#hill_climb">above</a>.
+<p>
+The function can be called
+as in the following example.
+<pre>
+[sampled_graphs, accept_ratio] = learn_struct_mcmc(data, ns, 'nsamples', 100, 'burnin', 10);
+</pre>
+We can convert our set of sampled graphs to a histogram
+(empirical posterior over all the DAGs) thus
+<pre>
+all_dags = mk_all_dags(N);
+mcmc_post = mcmc_sample_to_hist(sampled_graphs, all_dags);
+</pre>
+To see how well this performs, let us compute the exact posterior exhaustively.
+<p>
+<pre>
+score = score_dags(data, ns, all_dags);
+post = normalise(exp(score)); % assuming uniform structural prior
+</pre>
+We plot the results below.
+(The data set was 100 samples drawn from a random 4 node bnet; see the
+file BNT/examples/static/mcmc1.)
+<pre>
+subplot(2,1,1)
+bar(post)
+subplot(2,1,2)
+bar(mcmc_post)
+</pre>
+<img src="Figures/mcmc_post.jpg" width="800" height="500">
+<p>
+We can also plot the acceptance ratio versus number of MCMC steps,
+as a crude convergence diagnostic.
+<pre>
+clf
+plot(accept_ratio)
+</pre>
+<img src="Figures/mcmc_accept.jpg" width="800" height="300">
+<p>
+Even though the number of samples needed by MCMC is theoretically
+polynomial (not exponential) in the dimensionality of the search space, in practice it has been
+found that MCMC does not converge in reasonable time for graphs with
+more than about 10 nodes.
+
+
+
+
+<h2><a name="active">Active structure learning</h2>
+
+As was mentioned <a href="#markov_equiv">above</a>,
+one can only learn a DAG up to Markov equivalence, even given infinite data.
+If one is interested in learning the structure of a causal network,
+one needs interventional data.
+(By "intervention" we mean forcing a node to take on a specific value,
+thereby effectively severing its incoming arcs.)
+<p>
+Most of the scoring functions accept an optional argument
+that specifies whether a node was observed to have a certain value, or
+was forced to have that value: we set clamped(i,m)=1 if node i was
+forced in training case m. e.g., see the file
+BNT/examples/static/cooper_yoo.
+<p>
+An interesting question is to decide which interventions to perform
+(c.f., design of experiments). For details, see the following tech
+report
+<ul>
+<li> <a href = "../../Papers/alearn.ps.gz">
+Active learning of causal Bayes net structure</a>, Kevin Murphy, March
+2001.
+</ul>
+
+
+<h2><a name="struct_em">Structural EM</h2>
+
+Computing the Bayesian score when there is partial observability is
+computationally challenging, because the parameter posterior becomes
+multimodal (the hidden nodes induce a mixture distribution).
+One therefore needs to use approximations such as BIC.
+Unfortunately, search algorithms are still expensive, because we need
+to run EM at each step to compute the MLE, which is needed to compute
+the score of each model. An alternative approach is
+to do the local search steps inside of the M step of EM, which is more
+efficient since the data has been "filled in" - this is
+called the structural EM algorithm (Friedman 1997), and provably
+converges to a local maximum of the BIC score.
+<p> 
+Wei Hu has implemented SEM for discrete nodes.
+You can download his package from
+<a href="../SEM.zip">here</a>.
+Please address all questions about this code to
+wei.hu@intel.com.
+See also <a href="#phl">Phl's implementation of SEM</a>.
+
+<!--
+<h2><a name="reveal">REVEAL algorithm</h2>
+
+A simple way to learn the structure of a fully observed, discrete,
+factored DBN from a time series is described <a
+href="usage_dbn.html#struct_learn">here</a>.
+-->
+
+
+<h2><a name="graphdraw">Visualizing the graph</h2>
+
+You can visualize an arbitrary graph (such as one learned using the
+structure learning routines) with Matlab code contributed by
+<a href="http://www.mbfys.kun.nl/~cemgil/matlab/layout.html">Ali
+Taylan Cemgil</a>
+from the University of Nijmegen.
+For static BNs, call it as follows:
+<pre>
+draw_graph(bnet.dag);
+</pre>
+For example, this is the output produced on a
+<a href="#qmr">random QMR-like model</a>:
+<p>
+<img src="Figures/qmr.rnd.jpg">
+<p>
+If you install the excellent <a
+href="http://www.research.att.com/sw/tools/graphviz">graphhviz</a>, an
+open-source graph visualization package from AT&T,
+you can create a much better visualization as follows
+<pre>
+graph_to_dot(bnet.dag)
+</pre>
+This works by converting the adjacency matrix to a file suitable
+for input to graphviz (using the dot format),
+then converting the output of graphviz to postscript, and displaying the results using
+ghostview.
+You can do each of these steps separately for more control, as shown
+below.
+<pre>
+graph_to_dot(bnet.dag, 'filename', 'foo.dot');
+dot -Tps foo.dot -o foo.ps
+ghostview foo.ps &
+</pre>
+
+<h2><a name = "constraint">Constraint-based methods</h2>
+
+The IC algorithm (Pearl and Verma, 1991),
+and the faster, but otherwise equivalent, PC algorithm (Spirtes, Glymour, and Scheines 1993),
+computes many conditional independence tests,
+and combines these constraints into a
+PDAG to represent the whole
+<a href="#markov_equiv">Markov equivalence class</a>.
+<p>
+IC*/FCI extend IC/PC to handle latent variables: see <a href="#ic_star">below</a>.
+(IC stands for inductive causation; PC stands for Peter and Clark,
+the first names of Spirtes and Glymour; FCI stands for fast causal
+inference.
+What we, following Pearl (2000), call IC* was called
+IC in the original Pearl and Verma paper.)
+For details, see
+<ul>
+<li>
+<a href="http://hss.cmu.edu/html/departments/philosophy/TETRAD/tetrad.html">Causation,
+Prediction, and Search</a>, Spirtes, Glymour and 
+Scheines (SGS), 2001 (2nd edition), MIT Press.
+<li> 
+<a href="http://bayes.cs.ucla.edu/BOOK-2K/index.html">Causality: Models, Reasoning and Inference</a>, J. Pearl, 
+2000, Cambridge University Press.
+</ul>
+
+<p>
+
+The PC algorithm takes as arguments a function f, the number of nodes N,
+the maximum fan in K, and additional arguments A which are passed to f.
+The function f(X,Y,S,A) returns 1 if X is conditionally independent of Y given S, and 0
+otherwise.
+For example, suppose we cheat by
+passing in a CI "oracle" which has access to the true DAG; the oracle
+tests for d-separation in this DAG, i.e.,
+f(X,Y,S) calls dsep(X,Y,S,dag). We can to this as follows.
+<pre>
+pdag = learn_struct_pdag_pc('dsep', N, max_fan_in, dag);
+</pre>
+pdag(i,j) = -1 if there is definitely an i->j arc,
+and pdag(i,j) = 1 if there is either an i->j or and i<-j arc.
+<p>
+Applied to the sprinkler network, this returns
+<pre>
+pdag =
+     0     1     1     0
+     1     0     0    -1
+     1     0     0    -1
+     0     0     0     0
+</pre>
+So as expected, we see that the V-structure at the W node is uniquely identified,
+but the other arcs have ambiguous orientation.
+<p>
+We now give an example from p141 (1st edn) / p103 (2nd end) of the SGS
+book.
+This example concerns the female orgasm.
+We are given a correlation matrix C between 7 measured factors (such
+as subjective experiences of coital and masturbatory experiences),
+derived from 281 samples, and want to learn a causal model of the
+data. We will not discuss the merits of this type of work here, but
+merely show how to reproduce the results in the SGS book.
+Their program,
+<a href="http://hss.cmu.edu/html/departments/philosophy/TETRAD/tetrad.html">Tetrad</a>,
+makes use of the Fisher Z-test for conditional
+independence, so we do the same:
+<pre>
+max_fan_in = 4;
+nsamples = 281;
+alpha = 0.05;
+pdag = learn_struct_pdag_pc('cond_indep_fisher_z', n, max_fan_in, C, nsamples, alpha);
+</pre>
+In this case, the CI test is
+<pre>
+f(X,Y,S) = cond_indep_fisher_z(X,Y,S,  C,nsamples,alpha)
+</pre>
+The results match those of Fig 12a of SGS apart from two edge
+differences; presumably this is due to rounding error (although it
+could be a bug, either in BNT or in Tetrad).
+This example can be found in the file BNT/examples/static/pc2.m.
+
+<p>
+
+The IC* algorithm (Pearl and Verma, 1991),
+and the faster FCI algorithm (Spirtes, Glymour, and Scheines 1993),
+are like the IC/PC algorithm, except that they can detect the presence
+of latent variables.
+See the file <tt>learn_struct_pdag_ic_star</tt> written by Tamar
+Kushnir. The output is a matrix P, defined as follows
+(see Pearl (2000), p52 for details):
+<pre>
+% P(i,j) = -1 if there is either a latent variable L such that i <-L->j OR there is a directed edge from i->j.
+% P(i,j) = -2 if there is a marked directed i-*>j edge.
+% P(i,j) = P(j,i) = 1 if there is and undirected edge i--j
+% P(i,j) = P(j,i) = 2 if there is a latent variable L such that i<-L->j.
+</pre>
+
+
+<h2><a name="phl">Philippe Leray's structure learning package</h2>
+
+Philippe Leray has written a 
+<a href="http://bnt.insa-rouen.fr/ajouts.html">
+structure learning package</a> that uses BNT.
+
+It currently (Juen 2003) has the following features:
+<ul>
+<li>PC with Chi2 statistical test 
+<li>             MWST : Maximum weighted Spanning Tree 
+<li>             Hill Climbing 
+<li>             Greedy Search 
+<li>             Structural EM 
+<li>             hist_ic : optimal Histogram based on IC information criterion 
+<li>             cpdag_to_dag 
+<li>             dag_to_cpdag 
+<li>             ... 
+</ul>
+
+
+</a>
+
+
+<!--
+<h2><a name="read_learning">Further reading on learning</h2>
+
+I recommend the following tutorials for more details on learning.
+<ul>
+<li> <a
+href="http://www.cs.berkeley.edu/~murphyk/Papers/intel.ps.gz">My short
+tutorial</a> on graphical models, which contains an overview of learning.
+
+<li> 
+<A HREF="ftp://ftp.research.microsoft.com/pub/tr/TR-95-06.PS">
+A tutorial on learning with Bayesian networks</a>, D. Heckerman,
+Microsoft Research Tech Report, 1995.
+
+<li> <A HREF="http://www-cad.eecs.berkeley.edu/~wray/Mirror/lwgmja">
+Operations for Learning with Graphical Models</a>,
+W. L. Buntine, JAIR'94, 159--225.
+</ul>
+<p>
+-->
+
+
+
+
+
+<h1><a name="engines">Inference engines</h1>
+
+Up until now, we have used the junction tree algorithm for inference.
+However, sometimes this is too slow, or not even applicable.
+In general, there are many inference algorithms each of which make
+different tradeoffs between speed, accuracy, complexity and
+generality. Furthermore, there might be many implementations of the
+same algorithm; for instance, a general purpose, readable version,
+and a highly-optimized, specialized one.
+To cope with this variety, we treat each inference algorithm as an
+object, which we call an inference engine.
+
+<p>
+An inference engine is an object that contains a bnet and supports the
+'enter_evidence' and 'marginal_nodes' methods.  The engine constructor
+takes the bnet as argument and may do some model-specific processing.
+When 'enter_evidence' is called, the engine may do some
+evidence-specific processing.  Finally, when 'marginal_nodes' is
+called, the engine may do some query-specific processing.
+
+<p>
+The amount of work done when each stage is specified -- structure,
+parameters, evidence, and query -- depends on the engine.  The cost of
+work done early in this sequence can be amortized.  On the other hand,
+one can make better optimizations if one waits until later in the
+sequence.
+For example, the parameters might imply
+conditional indpendencies that are not evident in the graph structure,
+but can nevertheless be exploited; the evidence indicates which nodes
+are observed and hence can effectively be disconnected from the
+graph; and the query might indicate that large parts of the network
+are d-separated from the query nodes.  (Since it is not the actual
+<em>values</em> of the evidence that matters, just which nodes are observed,
+many engines allow you to specify which nodes will be observed when they are constructed,
+i.e., before calling 'enter_evidence'. Some engines can still cope if
+the actual pattern of evidence is different, e.g., if there is missing
+data.)
+<p>
+
+Although being maximally lazy (i.e., only doing work when a query is
+issued) may seem desirable,
+this is not always the most efficient.
+For example,
+when learning using EM, we need to call marginal_nodes N times, where N is the
+number of nodes. <a href="varelim">Variable elimination</a> would end
+up repeating a lot of work
+each time marginal_nodes is called, making it inefficient for
+learning. The junction tree algorithm, by contrast, uses dynamic
+programming to avoid this redundant computation --- it calculates all
+marginals in two passes during 'enter_evidence', so calling
+'marginal_nodes' takes constant time.
+<p>
+We will discuss some of the inference algorithms implemented in BNT
+below, and finish with a <a href="#engine_summary">summary</a> of all
+of them.
+
+
+
+
+
+
+
+<h2><a name="varelim">Variable elimination</h2>
+
+The variable elimination algorithm, also known as bucket elimination
+or peeling, is one of the simplest inference algorithms.
+The basic idea is to "push sums inside of products"; this is explained
+in more detail
+<a
+href="http://HTTP.CS.Berkeley.EDU/~murphyk/Bayes/bayes.html#infer">here</a>. 
+<p>
+The principle of distributing sums over products can be generalized
+greatly to apply to any commutative semiring.
+This forms the basis of many common algorithms, such as Viterbi
+decoding and the Fast Fourier Transform. For details, see
+
+<ul>
+<li> R. McEliece and S. M. Aji, 2000.
+<!--<a href="http://www.systems.caltech.edu/EE/Faculty/rjm/papers/GDL.ps">-->
+<a href="GDL.pdf">
+The Generalized Distributive Law</a>,
+IEEE Trans. Inform. Theory, vol. 46, no. 2 (March 2000),
+pp. 325--343. 
+
+
+<li>
+F. R. Kschischang, B. J. Frey and H.-A. Loeliger, 2001.
+<a href="http://www.cs.toronto.edu/~frey/papers/fgspa.abs.html">
+Factor graphs and the sum-product algorithm</a>
+IEEE Transactions on Information Theory, February, 2001.
+
+</ul>
+
+<p>
+Choosing an order in which to sum out the variables so as to minimize
+computational cost is known to be NP-hard.
+The implementation of this algorithm in
+<tt>var_elim_inf_engine</tt> makes no attempt to optimize this
+ordering (in contrast, say, to <tt>jtree_inf_engine</tt>, which uses a
+greedy search procedure to find a good ordering).
+<p>
+Note: unlike most algorithms, var_elim does all its computational work
+inside of <tt>marginal_nodes</tt>, not inside of
+<tt>enter_evidence</tt>.
+
+
+
+
+<h2><a name="global">Global inference methods</h2>
+
+The simplest inference algorithm of all is to explicitely construct
+the joint distribution over all the nodes, and then to marginalize it.
+This is implemented in <tt>global_joint_inf_engine</tt>.
+Since the size of the joint is exponential in the
+number of discrete (hidden) nodes, this is not a very practical algorithm.
+It is included merely for pedagogical and debugging purposes.
+<p>
+Three specialized versions of this algorithm have also been implemented,
+corresponding to the cases where all the nodes are discrete (D), all
+are Gaussian (G), and some are discrete and some Gaussian (CG).
+They are called <tt>enumerative_inf_engine</tt>,
+<tt>gaussian_inf_engine</tt>,
+and <tt>cond_gauss_inf_engine</tt> respectively.
+<p>
+Note: unlike most algorithms, these global inference algorithms do all their computational work
+inside of <tt>marginal_nodes</tt>, not inside of
+<tt>enter_evidence</tt>.
+
+
+<h2><a name="quickscore">Quickscore</h2>
+
+The junction tree algorithm is quite slow on the <a href="#qmr">QMR</a> network,
+since the cliques are so big.
+One simple trick we can use is to notice that hidden leaves do not
+affect the posteriors on the roots, and hence do not need to be
+included in the network.
+A second trick is to notice that the negative findings can be
+"absorbed" into the prior:
+see the file
+BNT/examples/static/mk_minimal_qmr_bnet for details.
+<p>
+
+A much more significant speedup is obtained by exploiting special
+properties of the noisy-or node, as done by the quickscore
+algorithm. For details, see
+<ul>
+<li> Heckerman, "A tractable inference algorithm for diagnosing multiple diseases", UAI 89.
+<li> Rish and Dechter, "On the impact of causal independence", UCI
+tech report, 1998.
+</ul>
+
+This has been implemented in BNT as a special-purpose inference
+engine, which can be created and used as follows:
+<pre>
+engine = quickscore_inf_engine(inhibit, leak, prior);
+engine = enter_evidence(engine, pos, neg);
+m = marginal_nodes(engine, i);
+</pre>
+
+
+<h2><a name="belprop">Belief propagation</h2>
+
+Even using quickscore, exact inference takes time that is exponential
+in the number of positive findings.
+Hence for large networks we need to resort to approximate inference techniques.
+See for example
+<ul>
+<li> T. Jaakkola and M. Jordan, "Variational probabilistic inference and the
+QMR-DT network", JAIR 10, 1999.
+
+<li> K. Murphy, Y. Weiss and M. Jordan, "Loopy belief propagation for approximate inference: an empirical study",
+   UAI 99.
+</ul>
+The latter approximation
+entails applying Pearl's belief propagation algorithm to a model even
+if it has loops (hence the name loopy belief propagation).
+Pearl's algorithm, implemented as <tt>pearl_inf_engine</tt>, gives
+exact results when applied to singly-connected graphs
+(a.k.a. polytrees, since
+the underlying undirected topology is a tree, but a node may have
+multiple parents).
+To apply this algorithm to a graph with loops, 
+use <tt>pearl_inf_engine</tt>.
+This can use a centralized or distributed message passing protocol.
+You can use it as in the following example.
+<pre>
+engine = pearl_inf_engine(bnet, 'max_iter', 30);
+engine = enter_evidence(engine, evidence);
+m = marginal_nodes(engine, i);
+</pre>
+We found that this algorithm often converges, and when it does, often
+is very accurate, but it depends on the precise setting of the
+parameter values of the network.
+(See the file BNT/examples/static/qmr1 to repeat the experiment for yourself.)
+Understanding when and why belief propagation converges/ works
+is a topic of ongoing research.
+<p>
+<tt>pearl_inf_engine</tt> can exploit special structure in noisy-or
+and gmux nodes to compute messages efficiently.
+<p>
+<tt>belprop_inf_engine</tt> is like pearl, but uses potentials to
+represent messages. Hence this is slower.
+<p>
+<tt>belprop_fg_inf_engine</tt> is like belprop,
+but is designed for factor graphs.
+
+
+
+<h2><a name="sampling">Sampling</h2>
+
+BNT now (Mar '02) has two sampling (Monte Carlo) inference algorithms:
+<ul>
+<li> <tt>likelihood_weighting_inf_engine</tt> which does importance
+sampling and can handle any node type.
+<li> <tt>gibbs_sampling_inf_engine</tt>, written by Bhaskara Marthi.
+Currently this can only handle tabular CPDs.
+For a much faster and more powerful Gibbs sampling program, see
+<a href="http://www.mrc-bsu.cam.ac.uk/bugs">BUGS</a>.
+</ul>
+Note: To generate samples from a network (which is not the same as inference!),
+use <tt>sample_bnet</tt>.
+
+
+
+<h2><a name="engine_summary">Summary of inference engines</h2>
+
+
+The inference engines differ in many ways. Here are
+some of the major "axes":
+<ul>
+<li> Works for all topologies or makes restrictions? 
+<li> Works for all node types or makes restrictions?
+<li> Exact or approximate inference?
+</ul>
+
+<p>
+In terms of topology, most engines handle any kind of DAG.
+<tt>belprop_fg</tt> does approximate inference on factor graphs (FG), which
+can be used to represent directed, undirected, and mixed (chain)
+graphs.
+(In the future, we plan to support exact inference on chain graphs.)
+<tt>quickscore</tt> only works on QMR-like models.
+<p>
+In terms of node types: algorithms that use potentials can handle
+discrete (D), Gaussian (G) or conditional Gaussian (CG) models.
+Sampling algorithms can essentially handle any kind of node (distribution).
+Other algorithms make more restrictive assumptions in exchange for
+speed.
+<p>
+Finally, most algorithms are designed to give the exact answer.
+The belief propagation algorithms are exact if applied to trees, and
+in some other cases.
+Sampling is considered approximate, even though, in the limit of an
+infinite number of samples, it gives the exact answer.
+
+<p>
+
+Here is a summary of the properties 
+of all the engines in BNT which work on static networks.
+<p>
+<table>
+<table border units = pixels><tr>
+<td align=left width=0>Name
+<td align=left width=0>Exact?
+<td align=left width=0>Node type?
+<td align=left width=0>topology
+<tr>
+<tr>
+<td align=left> belprop
+<td align=left> approx
+<td align=left> D
+<td align=left> DAG
+<tr>
+<td align=left> belprop_fg
+<td align=left> approx
+<td align=left> D
+<td align=left> factor graph
+<tr>
+<td align=left> cond_gauss
+<td align=left> exact
+<td align=left> CG
+<td align=left> DAG
+<tr>
+<td align=left> enumerative
+<td align=left> exact
+<td align=left> D
+<td align=left> DAG
+<tr>
+<td align=left> gaussian
+<td align=left> exact
+<td align=left> G
+<td align=left> DAG
+<tr>
+<td align=left> gibbs
+<td align=left> approx
+<td align=left> D
+<td align=left> DAG
+<tr>
+<td align=left> global_joint
+<td align=left> exact
+<td align=left> D,G,CG
+<td align=left> DAG
+<tr>
+<td align=left> jtree
+<td align=left> exact
+<td align=left> D,G,CG
+<td align=left> DAG
+b<tr>
+<td align=left> likelihood_weighting
+<td align=left> approx
+<td align=left> any
+<td align=left> DAG
+<tr>
+<td align=left> pearl
+<td align=left> approx
+<td align=left> D,G
+<td align=left> DAG
+<tr>
+<td align=left> pearl
+<td align=left> exact
+<td align=left> D,G
+<td align=left> polytree
+<tr>
+<td align=left> quickscore
+<td align=left> exact
+<td align=left> noisy-or
+<td align=left> QMR
+<tr>
+<td align=left> stab_cond_gauss
+<td align=left> exact
+<td align=left> CG
+<td align=left> DAG
+<tr>
+<td align=left> var_elim
+<td align=left> exact
+<td align=left> D,G,CG
+<td align=left> DAG
+</table>
+
+
+
+<h1><a name="influence">Influence diagrams/ decision making</h1>
+
+BNT implements an exact algorithm for solving LIMIDs (limited memory
+influence diagrams), described in
+<ul>
+<li> S. L. Lauritzen and D. Nilsson.
+<a href="http://www.math.auc.dk/~steffen/papers/limids.pdf">
+Representing and solving decision problems with limited
+information</a>
+Management Science, 47, 1238 - 1251. September 2001.
+</ul>
+LIMIDs explicitely show all information arcs, rather than implicitely
+assuming no forgetting. This allows them to model forgetful
+controllers.
+<p>
+See the examples in <tt>BNT/examples/limids</tt> for details.
+
+
+
+
+<h1>DBNs, HMMs, Kalman filters and all that</h1>
+
+Click <a href="usage_dbn.html">here</a> for documentation about how to
+use BNT for dynamical systems and sequence data.
+
+
+</BODY>

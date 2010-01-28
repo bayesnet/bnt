@@ -1,0 +1,51 @@
+%Latex
+\documentstyle[fleqn,psfig,12pt,pstricks,pst-node,pst-tree]{article}
+
+%\documentclass[fleqn,12pt]{article}
+%\usepackage{pstricks,pst-node,pst-tree}
+ 
+%latex2e
+%\documentclass{article}
+%\usepackage{epsfig,alltt,fancybox}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textheight}{8.5in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{-0.5in}
+\setlength{\parindent}{0in} % block style
+\setlength{\parskip}{0.3cm}
+
+\newcommand{\mytitle}[1]{\newpage \huge \begin{center}#1\vspace{0.8cm}\end{center} \LARGE}
+
+
+\begin{document}
+
+\mytitle{Hello world}
+
+Hello world
+
+\centering
+$
+\pstree[treemode=R]{\Tcircle{b}}{%
+  \pstree{\TC*^{a_1}}{%
+     \Tr{b_{11}}^{x_1}
+     \Tr{b_{12}}_{x_2}
+   }
+  \pstree{\TC*_{a_2}}{%
+     \Tr{b_{21}}^{x_1}
+     \Tr{b_{22}}_{x_2}
+   }
+}
+$
+
+
+
+\mytitle{Hello world 2}
+
+\psline[linewidth=0.5cm](0,0)(2,0)
+\psline[linewidth=0.05cm](2,-1)(6,-1)
+
+
+
+\end{document}

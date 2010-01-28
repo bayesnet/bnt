@@ -1,0 +1,350 @@
+<html> <head>
+<title>Bayes Net Toolbox for Matlab</title>
+</head>
+
+<body>
+<!--<body  bgcolor="#FFFFFF"> -->
+
+<h1>Bayes Net Toolbox for Matlab</h1>
+Written by Kevin Murphy.
+<br>
+<b>BNT is now  available from <a href="http://bnt.sourceforge.net/">sourceforge</a>!</b>
+<!--
+Last updated on 9 June 2004 (<a href="changelog.html">Detailed
+changelog</a>)
+-->
+<p>
+
+<P><P>
+<table>
+<tr>
+<td>
+<img align=left src="Figures/mathbymatlab.gif" alt="Matlab logo">
+<!-- <img align=left src="toolbox.gif" alt="Toolbox logo">-->
+<td>
+<!--<center>-->
+<a href="http://groups.yahoo.com/group/BayesNetToolbox/join">
+<img src="http://groups.yahoo.com/img/ui/join.gif" border=0><br>
+Click to subscribe to the BNT email list</a>
+<br>
+(<a href="http://groups.yahoo.com/group/BayesNetToolbox">
+http://groups.yahoo.com/group/BayesNetToolbox</a>)
+<!--</center>-->
+</table>
+
+
+<p>
+<ul>
+<!--<li> <a href="bnt_download.html">Download toolbox</a>-->
+<li> Download BNT from <a href="http://bnt.sourceforge.net/">BNT sourceforge site</a>
+
+<li> <a href="license.gpl">Terms and conditions of use (GNU Library GPL)</a>
+
+<li> <a href="usage.html">How to use the toolbox</a>
+
+
+<li> <a href="Talks/BNT_mathworks.ppt">Powerpoint slides on graphical models
+and BNT</a>, presented to the Mathworks, June 2003
+
+<!--
+<li> <a href="Talks/gR03.ppt">Powerpoint slides on BNT and object
+recognition</a>, presented at the <a
+href="http://www.math.auc.dk/gr/gr2003.html">gR</a> workshop,
+September 2003. 
+-->
+
+<li> <a href="gR03.pdf">Proposed design for gR, a graphical models
+toolkit in R</a>, September 2003.
+<!--
+(For more information on the gR project,
+click <a href="http://www.r-project.org/gR/">here</a>.)
+-->
+
+<li>
+<!--
+<img src = "../new.gif" alt="new">
+-->
+<a href="../../Papers/bnt.pdf">Invited paper on BNT</a>,
+published in
+Computing Science and Statistics, 2001.
+
+<li> <a href="bnsoft.html">Other Bayes net software</a>
+
+<!--<li> <a href="software.html">Other Matlab software</a>-->
+
+<li> <a href="../../Bayes/bnintro.html">A brief introduction to
+Bayesian Networks</a>
+
+<li> <a href="#features">Major features</a>
+<li> <a href="#models">Supported models</a>
+<!--<li> <a href="#future">Future work</a>-->
+<li> <a href="#give_away">Why do I give the code away?</a>
+<li> <a href="#why_matlab">Why Matlab?</a>
+<li> <a href="#ack">Acknowledgments</a>
+</ul>
+<p>
+
+
+
+<h2><a name="features">Major features</h2>
+<ul>
+
+<li> BNT supports many types of
+<b>conditional probability distributions</b> (nodes),
+and it is easy to add more.
+<ul>
+<li>Tabular (multinomial)
+<li>Gaussian
+<li>Softmax (logistic/ sigmoid)
+<li>Multi-layer perceptron (neural network)
+<li>Noisy-or
+<li>Deterministic
+</ul>
+<p>
+
+<li> BNT supports <b>decision and utility nodes</b>, as well as chance
+nodes,
+i.e., influence diagrams as well as Bayes nets.
+<p>
+
+<li> BNT supports static and dynamic BNs (useful for modelling dynamical systems
+and sequence data).
+<p>
+
+<li> BNT supports many different <b>inference algorithms</b>,
+and it is easy to add more.
+
+<ul>
+<li> Exact inference for static BNs:
+<ul>
+<li>junction tree
+<li>variable elimination
+<li>brute force enumeration (for discrete nets)
+<li>linear algebra (for Gaussian nets)
+<li>Pearl's algorithm (for polytrees)
+<li>quickscore (for QMR)
+</ul>
+
+<p>
+<li> Approximate inference for static BNs:
+<ul>
+<li>likelihood weighting
+<li> Gibbs sampling
+<li>loopy belief propagation
+</ul>
+
+<p>
+<li> Exact inference for DBNs:
+<ul>
+<li>junction tree
+<li>frontier algorithm
+<li>forwards-backwards (for HMMs)
+<li>Kalman-RTS (for LDSs)
+</ul>
+
+<p>
+<li> Approximate inference for DBNs:
+<ul>
+<li>Boyen-Koller
+<li>factored-frontier/loopy belief propagation
+</ul>
+
+</ul>
+<p>
+
+<li>
+BNT supports several methods for <b>parameter learning</b>,
+and it is easy to add more.
+<ul>
+
+<li> Batch MLE/MAP parameter learning using EM.
+(Each node type has its own M method, e.g. softmax nodes use IRLS,<br>
+and each inference engine has its own E method, so the code is fully modular.)
+
+<li> Sequential/batch Bayesian parameter learning (for fully observed tabular nodes only).
+</ul>
+
+
+<p>
+<li>
+BNT supports several methods for <b>regularization</b>,
+and it is easy to add more.
+<ul>
+<li> Any node can have its parameters clamped (made non-adjustable).
+<li> Any set of compatible nodes can have their parameters tied (c.f.,
+weight sharing in a neural net).
+<li> Some node types (e.g., tabular) supports priors for MAP estimation.
+<li> Gaussian covariance matrices can be declared full or diagonal, and can
+be tied across states of their discrete parents (if any).
+</ul>
+
+<p>
+<li>
+BNT supports several methods for <b>structure learning</b>,
+and it is easy to add more.
+<ul>
+
+<li> Bayesian structure learning,
+using MCMC or local search (for fully observed tabular nodes only).
+
+<li> Constraint-based structure learning (IC/PC and IC*/FCI).
+</ul>
+
+
+<p>
+<li> The source code is extensively documented, object-oriented, and free, making it
+an excellent tool for teaching, research and rapid prototyping.
+
+</ul>
+
+
+
+<h2><a name="models">Supported probabilistic models</h2>
+<p>
+It is trivial to implement all of
+the following probabilistic models using the toolbox.
+<ul>
+<li>Static
+<ul>
+<li> Linear regression, logistic regression, hierarchical mixtures of experts
+
+<li> Naive Bayes classifiers, mixtures of Gaussians,
+sigmoid belief nets
+
+<li> Factor analysis, probabilistic
+PCA, probabilistic ICA, mixtures of these models
+
+</ul>
+
+<li>Dynamic
+<ul>
+
+<li> HMMs, Factorial HMMs, coupled HMMs, input-output HMMs, DBNs
+
+<li> Kalman filters, ARMAX models, switching Kalman filters,
+tree-structured Kalman filters, multiscale AR models
+
+</ul>
+
+<li> Many other combinations, for which there are (as yet) no names!
+
+</ul>
+
+
+<!--
+<h2><a name="future">Future work</h2>
+
+I have a long <a href="wish.txt">wish list</a>
+of features I would like to add to BNT
+at some point in the future.
+Please email me (<a
+href="mailto:murphyk@cs.berkeley.edu">murphyk@cs.berkeley.edu</a>)
+if you are interested in contributing!
+-->
+
+
+
+<h2><a name="give_away">Why do I give the code away?</h2>
+
+<ul>
+
+<li>
+I was hoping for a Linux-style effect, whereby people would contribute
+their own Matlab code so that the package would grow. With a few
+exceptions, this has not happened, 
+although several people have provided bug-fixes (see the <a
+href="#ack">acknowledgements</a>). 
+Perhaps the <a
+href="http://www.cs.berkeley.edu/~murphyk/OpenBayes/index.html">Open
+Bayes Project</a> will be more 
+succesful in this regard, although the evidence to date is not promising.
+
+<p>
+<li>
+Knowing that someone else might read your code forces one to
+document it properly, a good practice in any case, as anyone knows who
+has revisited old code.
+In addition, by having many "eye balls", it is easier to spot bugs.
+
+
+<p>
+<li>
+I believe in the concept of
+<a href="http://www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf">
+reproducible research</a>.
+Good science requires that other people be able 
+to replicate your experiments.
+Often a paper does not give enough details about how exactly an
+algorithm was implemented (e.g., how were the parameters chosen? what
+initial conditions were used?), and these can make a big difference in
+practice.
+Hence one should release the code that
+was actually used to generate the results in one's paper.
+This also prevents re-inventing the wheel.
+
+<p>
+<li>
+I was fed up with reading papers where all people do is figure out how 
+to do exact inference and/or learning
+in a model which is just a trivial special case of a general Bayes net, e.g.,
+input-output HMMs, coupled-HMMs, auto-regressive HMMs.
+My hope is that, by releasing general purpose software, the field can
+move on to more interesting questions.
+As Alfred North Whitehead said in 1911,
+"Civilization advances by extending the number of important operations
+that we can do without thinking about them."
+
+</ul>
+
+
+
+
+
+<h2><a name="why_matlab">Why Matlab?</h2>
+
+Matlab is an interactive, matrix-oriented programming language that
+enables one to express one's (mathematical) ideas very concisely and directly,
+without having to worry about annoying details like memory allocation
+or type checking. This considerably reduces development time and
+keeps code short, readable and fully portable.
+Matlab has excellent built-in support for many data analysis and
+visualization routines. In addition, there are many useful toolboxes, e.g., for
+neural networks, signal and image processing.
+The main disadvantages of Matlab are that it can be slow (which is why
+we are currently rewriting parts of BNT in C), and that the commercial
+license is expensive (although the student version is only $100 in the US).
+<p>
+Many people ask me why I did not use
+<a href="http://www.octave.org/">Octave</a>,
+an open-source Matlab clone.
+The reason is that
+Octave does not support multi-dimensional arrays,
+cell arrays, objects, etc.
+<p>
+Click <a href="../which_language.html">here</a> for a more detailed
+comparison of matlab and other languages.
+
+
+
+<h2><a name="ack">Acknowledgments</h2>
+
+I would like to thank numerous people for bug fixes, including:
+Rainer Deventer, Michael Robert James, Philippe Leray, Pedrito Maynard-Reid II, Andrew Ng,
+Ron Parr, Ilya Shpitser, Xuejing Sun, Ursula Sondhauss.
+<p>
+I would like to thank the following people for contributing code:
+Pierpaolo Brutti, Ali Taylan Cemgil, Tamar Kushnir, Ken Shan,
+<a href="http://www.cs.berkeley.edu/~yweiss">Yair Weiss</a>,
+Ron Zohar.
+<p>
+The following Intel employees have also contributed code:
+Qian Diao, Shan Huang, Yimin Zhang and especially Wei Hu.
+
+<p>
+I would like to thank Stuart Russell for funding me over the years as
+I developed BNT, and Gary Bradksi for hiring me as an intern at Intel,
+which has supported much of the recent developments of BNT.
+
+       
+</body>
+

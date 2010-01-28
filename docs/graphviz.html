@@ -1,0 +1,66 @@
+<h1>Visualizing graph structures in matlab</h1>
+
+We discuss some methods for visualizing graphs/ networks, including automatic
+layout of the nodes.
+We assume the graph is represented as an adjacency matrix.
+If using BNT, you can access the DAG using
+<pre>
+G = bnet.dag;
+</pre>
+
+<h2>Matlab's biograph function</h2>
+
+The Mathworks computational biology toolbox
+has many useful graph related functions, including visualization.
+<br>
+Click 
+<a href="http://www.mathworks.com/products/bioinfo/demos.html?file=/products/demos/shipping/bioinfo/graphtheorydemo.html#4">
+here</a>
+for a demo.
+
+
+
+<h2>Cemgil's draw_graph</h2>
+
+You can visualize an arbitrary graph (such as one learned using the
+structure learning routines) with Matlab code written by
+<a href="http://www-sigproc.eng.cam.ac.uk/~atc27/matlab/layout.html">
+Ali Taylan Cemgil</a>
+from the University of Cambridge.
+A modified version of this code
+is <a href="GraphViz.zip">here</a>
+(this is already bundled with BNT).
+Just type
+<pre>
+draw_graph(G);
+</pre>
+For example, this is the output produced on a
+<a href="http://www.cs.ubc.ca/~murphyk/Software/BNT/usage.html#qmr">random QMR-like model</a>:
+<p>
+<img src="Figures/qmr.rnd.jpg">
+<p>
+
+<h2>Pajek</h2>
+
+<a href="http://vlado.fmf.uni-lj.si/pub/networks/pajek">Pajek</a>
+is an excellent, free Windows program for graph layout.
+Use <a href="adj2pajek2.m">adj2pajek2.m</a> to convert a graph to the
+Pajek file format.
+<br>
+Then Choose File->Network->Read from the menu.
+
+<h2>AT&T Graphviz</h2>
+
+<a href="http://www.research.att.com/sw/tools/graphviz">graphhviz</a>
+is an 
+open-source graph visualization package from AT&T.
+Use
+<a href="graph_to_dot.m">graph_to_dot</a>
+to convert an adjacency matrix to 
+the AT&T file format (the "dot" format).
+You then use dot to convert it to postscript:
+<pre>
+graph_to_dot(G, 'filename', 'foo.dot');
+dot -Tps foo.dot -o foo.ps
+ghostview foo.ps &
+</pre>
