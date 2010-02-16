@@ -7,7 +7,7 @@ m.T = exp(pot.logp);
 m.mu = pot.mu;
 m.Sigma = pot.Sigma;
 
-if isvector(m.T)
+if isvectorBNT(m.T)
   m.T = m.T(:)';
 end
 

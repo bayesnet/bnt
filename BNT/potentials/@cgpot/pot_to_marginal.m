@@ -22,6 +22,6 @@ for i=1:pot.dsize
   end
   m.T(i) = exp(s.logp);
 end     
-if isvector(m.T)
+if isvectorBNT(m.T)
   m.T = m.T(:)';
 end

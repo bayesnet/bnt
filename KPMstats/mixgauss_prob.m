@@ -37,7 +37,7 @@ function [B, B2] = mixgauss_prob(data, mu, Sigma, mixmat, unit_norm)
 
 
 
-if isvector(mu) & size(mu,2)==1
+if isvectorBNT(mu) & size(mu,2)==1
   d = length(mu);
   Q = 1; M = 1;
 elseif ndims(mu)==2
@@ -54,7 +54,7 @@ if nargin < 5, unit_norm = 0; end
 %B2 = zeros(Q,M,T); % ATB: not needed allways
 %B = zeros(Q,T);
 
-if isscalar(Sigma)
+if isscalarBNT(Sigma)
   mu = reshape(mu, [d Q*M]);
   if unit_norm % (p-q)'(p-q) = p'p + q'q - 2p'q = n+m -2p'q since p(:,i)'p(:,i)=1
     %avoid an expensive repmat

@@ -1,4 +1,4 @@
-function p = isvector(v)
+function p = isvectorBNT(v)
 % ISVECTOR Returns 1 if all but one dimension have size 1.
 % p = isvector(v)
 %

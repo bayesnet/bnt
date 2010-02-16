@@ -65,7 +65,7 @@ for e=exact(:)'
   assert(approxeq(MEU(e), 22.5))
   % U(T=yes)  U(T=no)
   % 1         0
-  assert(argmax(strategy{e}{T} == 1)); % test = yes
+  assert(argmax(strategy{e}{T}) == 1); % test = yes
   t = 1; % test = yes
   % strategy{D} T       R      U(D=yes=1)  U(D=no=2)
   %             1=yes   1=noS  0           1         Don't drill

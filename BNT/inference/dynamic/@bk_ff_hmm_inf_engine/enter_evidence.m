@@ -36,7 +36,7 @@ ss = length(bnet.intra);
 onodes = bnet.observed;
 hnodes = mysetdiff(1:ss, onodes);
 T = size(evidence, 2);
-assert(~any(isemptycell(evidence(onodes,:))));
+assertBNT(~any(isemptycell(evidence(onodes,:))));
 
 obslik = mk_hmm_obs_lik_mat(bnet, onodes, evidence);
 

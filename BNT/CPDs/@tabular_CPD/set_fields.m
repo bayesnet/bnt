@@ -19,7 +19,7 @@ for i=1:2:nargs
        case 'rnd',  CPD.CPT = mk_stochastic(myrand(CPD.sizes));
        otherwise,   error(['invalid type ' args{i+1}]);       
       end
-    elseif isscalar(args{i+1})
+    elseif isscalarBNT(args{i+1})
       p = args{i+1};
       k = CPD.sizes(end);
       % Bug fix by Hervé Boutrouille 10/1/01
@@ -32,7 +32,7 @@ for i=1:2:nargs
    case 'prior',       
     if ischar(args{i+1}) & strcmp(args{i+1}, 'unif')
       CPD.prior = myones(CPD.sizes);
-    elseif isscalar(args{i+1})
+    elseif isscalarBNT(args{i+1})
       CPD.prior = args{i+1} * normalise(myones(CPD.sizes));
     else
       CPD.prior = myreshape(args{i+1}, CPD.sizes);

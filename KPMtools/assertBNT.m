@@ -1,4 +1,4 @@
-function assert(pred, str)
+function assertBNT(pred, str)
 % ASSERT Raise an error if the predicate is not true.
 % assert(pred, string)
 

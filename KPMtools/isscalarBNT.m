@@ -1,4 +1,4 @@
-function p = isscalar(v)
+function p = isscalarBNT(v)
 % ISSCALAR Returns 1 if all dimensions have size 1.
 % p = isscalar(v)
 

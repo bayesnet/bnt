@@ -9,7 +9,7 @@ function sz = mysize(M)
 % - M = rand(2,2,1), mysize(M) = [2 2],  size(M) = [2 2]
 % - M = rand(1,2,1), mysize(M) = 2,      size(M) = [1 2]
 
-if isvector(M)
+if isvectorBNT(M)
   sz = length(M);
 else
   sz = size(M);

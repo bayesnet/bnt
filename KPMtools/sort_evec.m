@@ -1,6 +1,6 @@
 function [evec, evals] = sort_evec(temp_evec, temp_evals, N)
 
-if ~isvector(temp_evals)
+if ~isvectorBNT(temp_evals)
   temp_evals = diag(temp_evals);
 end
 
