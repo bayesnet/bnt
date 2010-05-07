@@ -95,7 +95,7 @@ if strong
   % strong root, instead, a clique called interface clique, that contains
   % all discrete parents and at least one continuous node from a connected
   % continuous component in a CLG, is guaranteed to be a strong root.
-  engine.root_clq = findroot(engine.cliques) ;
+  engine.root_clq = findroot(bnet, engine.cliques) ;
 else
   % jtree_dbn_inf_engine requires the root to contain the interface.
   % This may conflict with the strong root requirement! *********** BUG *************
