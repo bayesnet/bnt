@@ -88,7 +88,14 @@ end
 % Make the jtree rooted, so there is a fixed message passing order.
 if strong
   % the last clique is guaranteed to be a strong root
-  engine.root_clq = length(engine.cliques);
+  % engine.root_clq = length(engine.cliques);
+  
+  % --- 4/17/2010, by Wei Sun (George Mason University):
+  % It has been proved that the last clique is not necessary to be the  
+  % strong root, instead, a clique called interface clique, that contains
+  % all discrete parents and at least one continuous node from a connected
+  % continuous component in a CLG, is guaranteed to be a strong root.
+  engine.root_clq = findroot(engine.cliques) ;
 else
   % jtree_dbn_inf_engine requires the root to contain the interface.
   % This may conflict with the strong root requirement! *********** BUG *************
