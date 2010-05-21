@@ -1,0 +1,91 @@
+Objet:  	Re: [BayesNetToolbox] cache size in structure learning package (SLP)	
+De:  	"Darima Lamazhapova" <darrimma@yahoo.com>	
+Date:  	Mar 3 janvier 2006 14:13	
+to:  	BayesNetToolbox@yahoogroups.com	
+
+Hi, 
+I have not done extensive tests with different dataset and cache sizes.
+Mostly because I was interested in the case of small dataset,
+say dataset size 100. Even in this case seems that using cache 
+drasticly improves the performance of greedy search. Here are some
+numbers (alarm network, dataset 100, greedy search):
+    no cache     - ~11000 sec
+    cache  100  -  1395 sec
+    cache  200  -  1386 sec
+    cache  300  -  1428 sec
+    cache  500  -  1567 sec
+    cache 1000 -  1680 sec
+    cache 3000 -  2196 sec
+The reason why greedy search takes so much time without using
+cache, i think is that it does not make use of score 
+decomposibility.
+When I have modified the code so that it used decomposibility,
+ time required for the search decreased from 11000 to 1362 sec
+without using cache. Reimplemening score_family in C decreased this
+time to 552 sec; after reimplementing score_dag in C and
+removing outcount cycle from the learn_struct_gs code (I did not
+understand why it is necessary, can anyone explain what is
+the use of it, please?) the time required for GS dropped up to  69 sec.
+Implementation in C was done only for tabular nodes, Bayesian scoring
+function with default priors. If anyone interested I can submit the codes,
+although they are not very well tested.
+Darima
+
+Olivier Francois <olivier.francois@insa-rouen.fr> wrote:
+
+> Hello,
+> Can anyone give recommendations on choosing cache size?
+> When I used 500, calculations using learn_struct_gs2 for
+> ALARM network took about 20 min (dataset size was 100).
+> I thought it is a bit slow for 3 GHz computer with 1 Gb memory,
+> or am I wrong here?
+> I thought that increasing cache size might increase performance,
+> however the calculations took even longer.
+> I am kinda lost right now.
+> Any comments would be highly appreciated.
+> Darima
+>
+
+Hi,
+
+I have seen this phenomenon.
+In fact, for all the tests I have done, I advise you to use a cache of size between 200
+and 500.
+
+When the size is bigger the time spent to search if an entry already exists is quite
+similar to the time spend to recalculate the score, specialy if you have a small dataset
+(under 1500-2000 samples).
+Nevertheless, if you've got a huge dataset (5000 or more), it will be very advantageous
+to use the cache option.
+
+Moreover, I have seen that when you use a big cache (1000 or more), it do not speed up
+the computationnal time but you not spent a lot of extented time in using it.
+I think it is better to have a too big cache than a too small.
+
+If the cache is too small you often erase entries that will be recalculate later,
+specially if you have a lot of attributes, and the time spent will be equivalent or
+higher than if you have not used it.
+
+But suprisigly, even if you have a lot of nodes and a lot of samples (I have tested to
+25x10000 if I remember well), upgrading the size of the cache (1000 and more) do not
+seem to improve the computation time.
+
+- More tests are needed to be sure of that -
+
+I have not done a lot of tests, and this is only what I believed to see.
+Maybe it is better to take a cache of size 2500 or 5000 for a dataset of size 40*50000
+or 60*5000...?
+
+I also have remarked that, if you use a 'sparse matrix' for the cache inst ead of a
+stardart one, that causes a waste of time even if the cache matrix is, in fact, sparse.
+
+
+In your case, with 100 samples, you don't need too use the cache option.
+
+If you make (or have made for some others ?) more tests with different sample sizes and
+different numbers of attributes, I am interrested in getting some comments on your use
+of this function.
+
+
+Bonne fetes - Happy Hollidays - Felice Fiestas
+    Olivier F.
