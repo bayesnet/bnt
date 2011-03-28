@@ -31,6 +31,7 @@ while ~done
     x = X(i); y = Y(i);
     %nbrs = mysetdiff(myunion(neighbors(G, x), neighbors(G,y)), [x y]);
     nbrs = mysetdiff(neighbors(G, y), x);  % bug fix by Raanan Yehezkel <raanany@ee.bgu.ac.il> 6/27/04
+    nbrs = unique(nbrs); % bug fix Immer Ebert ebert@tree.com 3/278/11
     if length(nbrs) >= ord & G(x,y) ~= 0
       done = 0;
       %SS = subsets(nbrs, ord, ord); % all subsets of size ord
