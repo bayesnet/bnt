@@ -1,13 +1,12 @@
- Bayes Net Toolbox for Matlab
- ============================
- 
+=Bayes Net Toolbox for Matlab=
+
 Written by Kevin Murphy, 1997--2002. Last updated: 19 October 2007.
 As of January 2014, this is maintained on Github at https://github.com/bayesnet/bnt
 
-![](http://bnt.googlecode.com/svn/trunk/docs/mathbymatlab.gif) 
+![](http://bayesnet.github.io/bnt/docs/mathbymatlab.gif) 
 
 - [Major Features](http://bayesnet.github.io/bnt/docs/majorFeatures.html)
-- [Examples of supported Models](http://bnt.googlecode.com/svn/trunk/docs/supportedModels.html)
+- [Examples of supported Models](http://bayesnet.github.io/bnt/docs/supportedModels.html)
 - [Installation](https://github.com/bayesnet/bnt/wiki/HowToInstall)
 - [How to use the toolbox](http://bayesnet.github.io/bnt/docs/usage.html)
 - [Subscribe to the BNT mailing list](http://groups.yahoo.com/group/BayesNetToolbox)
