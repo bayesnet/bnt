@@ -20,9 +20,6 @@ function [correct,miss,addation,reverse,error] = different2standard(standard,dag
 %    网络。
 %    该函数由王欣编写，如果发现BUG请联系作者。
 
-% standard = [0,1,1;0,0,1;0,0,0];
-% dag = [0,0,1;0,0,0;0,0,0];
-
 if(isempty(standard))
     fprintf('standard network is empty');
     return
