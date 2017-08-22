@@ -14,9 +14,10 @@ function bnet = learn_params_dbn(bnet, data)
 
 % slice 1
 for j=1:ss
-  if adjustable_CPD(bnet.CPD{j})
-    fam = family(bnet.dag,j);
-    bnet.CPD{j} = learn_params(bnet.CPD{j}, data(fam,1));
+  e = bnet.equiv_class(j);
+  if adjustable_CPD(bnet.CPD{e})
+    fam = family(bnet.dag,e);
+    bnet.CPD{j} = learn_params(bnet.CPD{e}, fam, data, bnet.node_sizes, bnet.cnodes); % F.Denk 01.07.2017 - learn_params input parameters in previous script did not match the required ones
   end
 end
 
@@ -28,9 +29,10 @@ data2 = [data(:,1:T-1);
 	 data(:,2:T)];
 for j=1:ss
   j2 = j+ss;
-  if adjustable_CPD(bnet.CPD{j2})
-    fam = family(bnet.dag,j2);
-    bnet.CPD{j2} = learn_params(bnet.CPD{j2}, data2(fam,:));
+  e = bnet.equiv_class(j2);
+  if adjustable_CPD(bnet.CPD{e})
+    fam = family(bnet.dag,j2); %% F.Denk 01.07.2017 family of nodes in slice 2 are same as for nodes in slice 1 except j2 = j + ss -- equivalence class ensures correct use of parameters
+    bnet.CPD{e} = learn_params(bnet.CPD{e}, fam, data2, bnet.node_sizes, bnet.cnodes); % F.Denk 01.07.2017 - learn_params input parameters in previous script did not match the required ones
   end
 end
 
