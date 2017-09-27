@@ -54,6 +54,14 @@ CPD.cps_block_ndx = cell(1, length(cps));
 for i=1:length(cps)
   CPD.cps_block_ndx{i} = block(i, cpsizes);
 end
+
+%learning - ESS Statistics
+CPD.Wsum = zeros(dpsz,1);
+CPD.WYsum = zeros(ss, dpsz);
+CPD.WXsum = zeros(cpsz, dpsz);
+CPD.WYYsum = zeros(ss, ss, dpsz);
+CPD.WXXsum = zeros(cpsz, cpsz, dpsz);
+CPD.WXYsum = zeros(cpsz, ss, dpsz);
 end
 
 function CPD = init_fields()
