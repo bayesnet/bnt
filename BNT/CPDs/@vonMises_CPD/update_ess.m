@@ -16,7 +16,7 @@ CPD.nsamples = CPD.nsamples + 1;
 [ss dpsz] = size(CPD.mean);
 
 % general (non-vectorized) case
-fullm = add_evidence_to_gmarginal(fmarginal, evidence, ns, cnodes); % slow!
+fullm = add_evidence_to_vmarginal(fmarginal, evidence, ns, cnodes); % slow!
 
 if dpsz == 1 % no discrete parents
   w = 1;
