@@ -55,8 +55,11 @@ else
   % eqn 6
   %mu = Y ./ repmat(w(:)', [Ysz 1]);% Y may have a funny size
   mu = zeros(Ysz, Q);
+  z = zeros(Ysz, Q);
   for i=1:Q
-    mu(:,i) = Y(:,i) / w(i); %change this. I think I have to calculate z somewhere use the ESS to calculate mu
+    % z = (1/n)(sum_i exp(ix))= (1/n)sum_i cos(x) + sum_i isin(x)
+    z(:,i) = Y(:,i)+i*YY(:,:,i); % should I divide by n? 
+    mu(:,i) = angle(z(:,i)); %mu = arg(Z) where z is the complex mean of the data 
   end
 end
 
@@ -76,7 +79,7 @@ if ~tied_cov
       % eqn 12
       SS = YY(:,:,i)/w(i)  - mu(:,i)*mu(:,i)'; %calculate k here somehow use the ESS to calculate k
       if cov_type(1)=='d'
-	SS = diag(diag(SS));
+        SS = diag(diag(SS));
       end
       con(:,:,i) = SS;
     end
