@@ -58,8 +58,9 @@ else
   z = zeros(Ysz, Q);
   for i=1:Q
     % z = (1/n)(sum_i exp(ix))= (1/n)sum_i cos(x) + sum_i isin(x)
-    z(:,i) = Y(:,i)+i*YY(:,:,i); % should I divide by n? 
-    mu(:,i) = angle(z(:,i)); %mu = arg(Z) where z is the complex mean of the data 
+    z(:,i) = Y(:,i)+i*YY(:,:,i); % should I divide by n?
+    mu(:,i) = angle(z(:,i))/w(i); %mu = arg(Z) now the question is should I weight here or when I calculate Z?
+    rg(Z) where z is the complex mean of the data 
   end
 end
 
