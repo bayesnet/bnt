@@ -56,7 +56,7 @@ else
   %mu = Y ./ repmat(w(:)', [Ysz 1]);% Y may have a funny size
   mu = zeros(Ysz, Q);
   for i=1:Q
-    mu(:,i) = Y(:,i) / w(i);
+    mu(:,i) = Y(:,i) / w(i); %change this. I think I have to calculate z somewhere use the ESS to calculate mu
   end
 end
 
@@ -74,7 +74,7 @@ if ~tied_cov
       con(:,:,i) = s2 * eye(Ysz);
     else
       % eqn 12
-      SS = YY(:,:,i)/w(i)  - mu(:,i)*mu(:,i)';
+      SS = YY(:,:,i)/w(i)  - mu(:,i)*mu(:,i)'; %calculate k here somehow use the ESS to calculate k
       if cov_type(1)=='d'
 	SS = diag(diag(SS));
       end
