@@ -74,7 +74,7 @@ if ~tied_cov
       Sigma(:,:,i) = s2 * eye(Ysz);
     else
       % eqn 12
-      SS = YY(:,:,i)/w(i)  - mu(:,i)*mu(:,i)';
+      SS = YY(:,:,i)/w(i)  - mu(:,i)*mu(:,i)'; %shouldn't this be (YY-mu*mu)/w
       if cov_type(1)=='d'
 	SS = diag(diag(SS));
       end
