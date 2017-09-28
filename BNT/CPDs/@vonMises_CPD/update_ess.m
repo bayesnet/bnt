@@ -28,8 +28,8 @@ CPD.Wsum = CPD.Wsum + w;
 yi = (cpsz+1):(cpsz+ss);
 for i=1:dpsz
   muY = fullm.mu(yi, i);
-  SYY = fullm.con(yi, yi, i);
-  CPD.WYsum(:,i) = CPD.WYsum(:,i) + w(i)*cos(muY); % is this correct for Von Mises. I don't think so this is supposed to be ESS so its Y = sum_t x_t, and below is Y= sum_t x_t^2
-  CPD.WYYsum(:,:,i) = CPD.WYYsum(:,:,i) + w(i)*(SYY + sin(x)); % E[X Y] = Cov[X,Y] + E[X] E[Y] replace here with cos(x) and sin(x) for the ESS
+  SYY = fullm.con(yi, yi, i); % what does SYY do?
+  CPD.WYsum(:,i) = CPD.WYsum(:,i) + w(i)*cos(muY); 
+  CPD.WYYsum(:,:,i) = CPD.WYYsum(:,:,i) + w(i)*(SYY + sin(x)); 
 end                
 
