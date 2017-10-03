@@ -57,10 +57,12 @@ else
   mu = zeros(Ysz, Q);
   z = zeros(Ysz, Q);
   for i=1:Q
-    % z = (1/n)(sum_i exp(ix))= (1/n)sum_i cos(x) + sum_i isin(x)
-    z(:,i) = Y(:,i)+i*YY(:,:,i); % should I divide by n?
-    mu(:,i) = angle(z(:,i))/w(i); %mu = arg(Z) now the question is should I weight here or when I calculate Z?
-    rg(Z) where z is the complex mean of the data 
+     %take the derivative of sum_t sum_i gamma_t_i(ln w_t+ln
+     %2piI_0(k_t)+k_tcos(x_i-mu_0)) with respect to mu which results in the
+     %following: arctan(sum_i gamma_t_i sin(x_i)/sum_i gamma_t_i sin(x_i)).
+     %Since we already calculated the weighted data previously we can
+     %subsitute it in. 
+     mu(:,i) = atan(YY(:,:,i)/Y(:,i)); 
   end
 end
 
@@ -77,8 +79,11 @@ if ~tied_cov
       s2 = (1/Ysz)*( (YTY(i)/w(i)) - mu(:,i)'*mu(:,i) );
       con(:,:,i) = s2 * eye(Ysz);
     else
-      % eqn 12
-      SS = YY(:,:,i)/w(i)  - mu(:,i)*mu(:,i)'; %calculate k here somehow use the ESS to calculate k
+      % take the derivative of sum_t sum_i gamma_t_i(ln w_t+ln
+      %2piI_0(k_t)+k_tcos(x_i-mu_0)) with respect to k. Use the ESS to fill
+      %in the blanks and then, find the zeros of the function.
+      SS = fzero(@(num) (besseli(1,num)/-(besseli(0,num))*w(i)+Y(:,i)*cos(mu(:,i))+YY(:,:,i)*sin(mu(:,i))),[0,100]);
+      
       if cov_type(1)=='d'
         SS = diag(diag(SS));
       end
