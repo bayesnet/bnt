@@ -82,7 +82,8 @@ if ~tied_cov
       % take the derivative of sum_t sum_i gamma_t_i(ln w_t+ln
       %2piI_0(k_t)+k_tcos(x_i-mu_0)) with respect to k. Use the ESS to fill
       %in the blanks and then, find the zeros of the function.
-      SS = fzero(@(num) (besseli(1,num)/-(besseli(0,num))*w(i)+Y(:,i)*cos(mu(:,i))+YY(:,:,i)*sin(mu(:,i))),[0,100]);
+      A = (Y(:,i)*cos(mu(:,i))+YY(:,:,i)*sin(mu(:,i)))/w(i);
+      SS = fzero(@(num) (besseli(1,num)/besseli(0,num))-A,[0,100]);
       
       if cov_type(1)=='d'
         SS = diag(diag(SS));
