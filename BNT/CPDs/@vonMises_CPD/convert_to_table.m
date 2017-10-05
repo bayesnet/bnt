@@ -9,7 +9,7 @@ odom = domain(~isemptycell(evidence(domain)));
 ps = domain(1:end-1);
 dps = ps(CPD.dps);
 
-[m, k] = vonMises_CPD_params_given_dps(CPD, domain, evidence);
+[m, k, ~] = vonMises_CPD_params_given_dps(CPD, domain, evidence);
 
 ns(odom) = 1;
 dpsize = prod(ns(dps));
@@ -18,7 +18,7 @@ assert(myismember(self, odom));
 self_val = evidence{self};
 T = zeros(dpsize, 1);
 for i=1:dpsize
-    T(i) = vonMises_prob(self_val, m(:,i), k(:,i));
+    T(i) = vonMises_prob(self_val, m(:,i), k(:,:,i));
 end
 
 end

@@ -1,4 +1,4 @@
-function [m,k] = vonMises_CPD_params_given_dps(CPD,domain,evidence)
+function [m,k,w] = vonMises_CPD_params_given_dps(CPD,domain,evidence)
 %VONMISES_ Summary of this function goes here
 %   Detailed explanation goes here
     ps = domain(1:end-1);
@@ -19,7 +19,8 @@ else
     map = find_equiv_posns(dops, dps);
     index = mk_multi_index(length(dps), map, dpvals);
     m = CPD.mean(:, index{:});
-    k = CPD.con(:, index{:});
+    k = CPD.con(:,:,index{:});
+    w = CPD.weights(:,:,index{:});
   end
 end
 
