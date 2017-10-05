@@ -83,6 +83,7 @@ if ~tied_cov
       %2piI_0(k_t)+k_tcos(x_i-mu_0)) with respect to k. Use the ESS to fill
       %in the blanks and then, find the zeros of the function.
       A = (Y(:,i)*cos(mu(:,i))+YY(:,:,i)*sin(mu(:,i)))/w(i);
+      %check that A is within 0 and 1. 
       if (A>=0 && A<1-0.0001)
         SS = fzero(@(num) (besseli(1,num)/besseli(0,num))-A,[0,100]);
       else
