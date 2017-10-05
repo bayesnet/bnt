@@ -30,6 +30,6 @@ for i=1:dpsz
   muY = fullm.mu(yi, i);
   SYY = fullm.con(yi, yi, i); % what does SYY do?
   CPD.WYsum(:,i) = CPD.WYsum(:,i) + w(i)*cos(muY); 
-  CPD.WYYsum(:,:,i) = CPD.WYYsum(:,:,i) + w(i)*(SYY + sin(x)); 
+  CPD.WYYsum(:,:,i) = CPD.WYYsum(:,:,i) + w(i)*(SYY + sin(muY)); 
 end                
 
