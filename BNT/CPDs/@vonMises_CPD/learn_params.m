@@ -32,7 +32,7 @@ for dpnode=1:length(dpnodes)
 
         % syms m
         % k = vpasolve(besseli(1,m)==besseli(0,m)*ReSqr,m);
-        if mean(evidence)~=evidence(1) && (ReSqr>=0 && ReSqr<1-0.0001)
+        if mean(evidence)~=evidence(1) && (ReSqr>=0 && ReSqr<1-0.001)
             CPD.con(count) = fzero(@(l) (besseli(1,l)/(besseli(0,l))-ReSqr),[0,100]);
         else
             CPD.con(count) = 1;

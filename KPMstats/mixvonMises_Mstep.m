@@ -84,7 +84,7 @@ if ~tied_cov
       %in the blanks and then, find the zeros of the function.
       A = (Y(:,i)*cos(mu(:,i))+YY(:,:,i)*sin(mu(:,i)))/w(i);
       %check that A is within 0 and 1. 
-      if (A>=0 && A<1-0.0001)
+      if (A>=0 && A<1-0.001)
         SS = fzero(@(num) (besseli(1,num)/besseli(0,num))-A,[0,100]);
       else
         SS = 1;
