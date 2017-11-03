@@ -56,12 +56,14 @@ for mixture=1:length(combinations)
 
         % syms m
         % k = vpasolve(besseli(1,m)==besseli(0,m)*ReSqr,m);
-        if mean(evidence)~=evidence(1) && (ReSqr>=0 && ReSqr<1-0.001)
-            CPD.con(mixture) = fzero(@(l) (besseli(1,l)/(besseli(0,l))-ReSqr),[0,100]);
-        else
-            %make it gaussian if not able to solve for k
-            CPD.con(mixture) = 100;
-        end
+%         if mean(evidence)~=evidence(1) && (ReSqr>=0 && ReSqr<1-0.001)
+%             CPD.con(mixture) = fzero(@(l) (besseli(1,l)/(besseli(0,l))-ReSqr),[0,100]);
+%         else
+%             make it gaussian if not able to solve for k
+%             CPD.con(mixture) = 100;
+%         end
+        %approximation Bannerjee et al.
+        CPD.con(mixture) = ReSqr*(2-ReSqr^2)/(1-ReSqr^2);
 
     end
 end
