@@ -87,7 +87,7 @@ if ~tied_cov
       if (A>=0 && A<1-0.001)
         %SS = fzero(@(num) (besseli(1,num)/besseli(0,num))-A,[0,100]);
         %approximation Bannerjee et al.
-        SS = ReSqr*(2-ReSqr^2)/(1-ReSqr^2);
+        SS = A*(2-A^2)/(1-A^2);
       else
         SS = 1;
       end
