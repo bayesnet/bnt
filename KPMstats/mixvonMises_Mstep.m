@@ -48,6 +48,8 @@ YY = reshape(YY, [Ysz Ysz Q]);
 % Set any zero weights to one before dividing
 % This is valid because w(i)=0 => Y(:,i)=0, etc
 w = w + (w==0);
+% This is valid because Y(:,i)=0 => Y(:,:,i)=0, etc
+Y = Y + (Y==0);
 		    
 if ~isempty(clamped_mean)
   mu = clamped_mean;
