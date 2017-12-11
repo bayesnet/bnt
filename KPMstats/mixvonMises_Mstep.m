@@ -64,7 +64,7 @@ else
      %following: arctan(sum_i gamma_t_i sin(x_i)/sum_i gamma_t_i sin(x_i)).
      %Since we already calculated the weighted data previously we can
      %subsitute it in. 
-     mu(:,i) = atan(YY(:,:,i)/Y(:,i)); 
+     mu(:,i) = atan2(YY(:,:,i),Y(:,i)); 
   end
 end
 
