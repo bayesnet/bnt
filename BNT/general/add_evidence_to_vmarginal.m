@@ -46,7 +46,7 @@ fullm.T = myreshape(fullm.T, ns(ddom));
 
 if isempty(cdom)
   fullm.mu = [];
-  fullm.k = [];
+  fullm.Sigma = [];
   return;
 end
 
@@ -57,7 +57,7 @@ chid = myintersect(cdom, hdom);
 cvals = cat(1, evidence{cobs});
 n = sum(ns(cdom));
 fullm.mu = zeros(n,Qarity);
-fullm.con = zeros(n,n,Qarity);
+fullm.Sigma = zeros(n,n,Qarity);
 
 if ~isempty(chid)
   chid_blocks = block(find_equiv_posns(chid, cdom), ns(cdom));
@@ -70,7 +70,7 @@ for i=1:length(supportedQs)
   Q = supportedQs(i);
   if ~isempty(chid)
     fullm.mu(chid_blocks, Q) = fmarginal.mu(:, i);
-    fullm.con(chid_blocks, chid_blocks, Q) = fmarginal.con(:,:,i);
+    fullm.Sigma(chid_blocks, chid_blocks, Q) = fmarginal.Sigma(:,:,i);
   end
   if ~isempty(cobs)
     fullm.mu(cobs_blocks, Q) = cvals(:);
