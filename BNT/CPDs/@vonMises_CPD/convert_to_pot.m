@@ -26,7 +26,8 @@ switch pot_type
   pot = dpot(domain, ns(domain), T);          
 
  case {'c','g'}
-  error('pot type not yet supported');
+ [m,k,w] = vonMises_CPD_params_given_dps(CPD, domain, evidence);
+  pot = linear_vonMises_to_cpot(m, k, w, domain, ns, cnodes, evidence);
  case 'cg'
   error('pot type not yet supported');
 
