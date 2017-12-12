@@ -29,7 +29,23 @@ switch pot_type
  [m,k,w] = vonMises_CPD_params_given_dps(CPD, domain, evidence);
   pot = linear_vonMises_to_cpot(m, k, w, domain, ns, cnodes, evidence);
  case 'cg'
-  error('pot type not yet supported');
+  [m, k, W] = vonMises_CPD_params_given_dps(CPD, domain, evidence);
+  % Convert each conditional Gaussian to a canonical potential
+  cobs = myintersect(cdom, odom);
+  dobs = myintersect(ddom, odom);
+  ens = ns; % effective node size
+  ens(cobs) = 0;
+  ens(dobs) = 1;
+  dpsize = prod(ens(dps));
+  can = cell(1, dpsize);
+  for i=1:dpsize
+    if isempty(W)
+      can{i} = linear_vonMises_to_cpot(m(:,i), k(:,:,i), [], cdom, ns, cnodes, evidence);
+    else
+      can{i} = linear_vonMises_to_cpot(m(:,i), k(:,:,i), W(:,:,i), cdom, ns, cnodes, evidence);
+    end
+  end
+  pot = cgpot(ddom, cdom, ens, can);
 
  case 'scg'
   error('pot type not yet supported');
