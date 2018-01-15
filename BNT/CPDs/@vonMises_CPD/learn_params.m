@@ -1,6 +1,8 @@
 function CPD = learn_params(CPD,fam,data,ns,cnodes)
-%LEARN_PARAMS Summary of this function goes here
-%   Detailed explanation goes here
+%LEARN_PARAMS Learn the parameters of the Von Mises Distribution using
+%Maximum likelihood estimation given complete data.
+%There is an assumption that there is a maximize_params() method.
+%   CPD = learn_params(CPD,fam,data,ns,cnodes)
 
 ncases = size(data, 2);
 CPD = reset_ess(CPD);

@@ -1,7 +1,8 @@
 function pot = convert_to_pot( CPD, pot_type, domain, evidence )
-%CONVERT_TO_POT Summary of this function goes here
-%   Detailed explanation goes here
-
+%CONVERT_TO_POT Convert a Von Mises CPD to one or more potentials depending
+%on the pot_type.
+%   Currently the case 'd' and case 'c','g' are functioning correctly and
+%   have been tested. However, case 'cg' is in the midst of being tested.
 
 sz = CPD.sizes;
 ns = zeros(1, max(domain));
@@ -29,8 +30,9 @@ switch pot_type
  [m,k,w] = vonMises_CPD_params_given_dps(CPD, domain, evidence);
   pot = linear_vonMises_to_cpot(m, k, w, domain, ns, cnodes, evidence);
  case 'cg'
+   error('vonMises cg section still testing...');
   [m, k, W] = vonMises_CPD_params_given_dps(CPD, domain, evidence);
-  % Convert each conditional Gaussian to a canonical potential
+  % Convert each conditional Von Mises to a canonical potential
   cobs = myintersect(cdom, odom);
   dobs = myintersect(ddom, odom);
   ens = ns; % effective node size

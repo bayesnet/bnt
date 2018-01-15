@@ -21,15 +21,15 @@ fullm = add_evidence_to_vmarginal(fmarginal, evidence, ns, cnodes); % slow!
 if dpsz == 1 % no discrete parents
   w = 1;
 else
-  w = fullm.T(:); % what is T?
+  w = fullm.T(:); 
 end
 
 CPD.Wsum = CPD.Wsum + w;
 yi = (cpsz+1):(cpsz+ss);
 for i=1:dpsz
   muY = fullm.mu(yi, i);
-  SYY = fullm.Sigma(yi, yi, i); % what does SYY do?
-  CPD.WYsum(:,i) = CPD.WYsum(:,i) + w(i)*cos(muY); 
-  CPD.WYYsum(:,:,i) = CPD.WYYsum(:,:,i) + w(i)*(SYY + sin(muY)); 
+  SYY = fullm.Sigma(yi, yi, i); 
+  CPD.WYsum(:,i) = CPD.WYsum(:,i) + w(i)*cos(muY); %SS for Von Mises
+  CPD.WYYsum(:,:,i) = CPD.WYYsum(:,:,i) + w(i)*(SYY + sin(muY)); %SS for Von Mises
 end                
 

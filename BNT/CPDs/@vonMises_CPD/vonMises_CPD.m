@@ -1,6 +1,7 @@
 function CPD = vonMises_CPD( bnet,self,varargin)
-%VONMISES_CPD Summary of this function goes here
-%   Detailed explanation goes here
+%VONMISES_CPD Makes a conditional linear Von Mises Distribution
+%   CPD = vonMises_CPD(bnet, node, ...) will create a CPD with random parameters,
+% where node is the number of a node in this equivalence class.
 
 CPD = init_fields;
  

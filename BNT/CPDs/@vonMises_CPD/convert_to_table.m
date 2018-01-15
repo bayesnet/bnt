@@ -1,6 +1,6 @@
 function T = convert_to_table(CPD, domain, evidence)
-%CONVERT_TO_TABLE Summary of this function goes here
-%   Detailed explanation goes here
+%CONVERT_TO_TABLE Convert a Von Mises CPD to a table
+%    T = convert_to_table(CPD, domain, evidence)
 sz = CPD.sizes;
 ns = zeros(1, max(domain));
 ns(domain) = sz;
