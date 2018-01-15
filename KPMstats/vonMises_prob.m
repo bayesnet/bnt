@@ -1,6 +1,7 @@
 function p = vonMises_prob( x, m, k, use_log )
-%VONMIS_PROB Summary of this function goes here
-%   Detailed explanation goes here
+%VONMIS_PROB Calculates the probability of x coming from a Von Mises
+%distribution with mean mu and concentration parameter k. 
+%   p = vonMises_prob( x, m, k, use_log )
 
 if nargin < 4, use_log = 0; end
 [d N] = size(x);
