@@ -39,7 +39,7 @@ else
   for i=1:Q
      %take the derivative of sum_t sum_i gamma_t_i(ln w_t+ln
      %2piI_0(k_t)+k_tcos(x_i-mu_0)) with respect to mu which results in the
-     %following: arctan(sum_i gamma_t_i sin(x_i)/sum_i gamma_t_i sin(x_i)).
+     %following: arctan(sum_i gamma_t_i sin(x_i)/sum_i gamma_t_i cos(x_i)).
      %Since we already calculated the weighted data previously we can
      %subsitute it in. 
      mu(:,i) = atan2(YY(:,:,i),Y(:,i)); 
@@ -66,9 +66,9 @@ if ~tied_cov
       A = (Y(:,i)*cos(mu(:,i))+YY(:,:,i)*sin(mu(:,i)))/w(i);
       %check that A is within 0 and 1. 
       if (A>=0 && A<1-0.001)
-        %SS = fzero(@(num) (besseli(1,num)/besseli(0,num))-A,[0,100]);
+        SS = fzero(@(num) (besseli(1,num)/besseli(0,num))-A,[0,100]);
         %approximation Bannerjee et al.
-        SS = A*(2-A^2)/(1-A^2);
+        %SS = A*(2-A^2)/(1-A^2);
       else
         SS = 1;
       end
