@@ -28,8 +28,7 @@ CPD.Wsum = CPD.Wsum + w;
 yi = (cpsz+1):(cpsz+ss);
 for i=1:dpsz
   muY = fullm.mu(yi, i);
-  SYY = fullm.Sigma(yi, yi, i); 
   CPD.WYsum(:,i) = CPD.WYsum(:,i) + w(i)*cos(muY); %SS for Von Mises
-  CPD.WYYsum(:,:,i) = CPD.WYYsum(:,:,i) + w(i)*(SYY + sin(muY)); %SS for Von Mises
+  CPD.WYYsum(:,:,i) = CPD.WYYsum(:,:,i) + w(i)*(sin(muY)); %SS for Von Mises
 end                
 
