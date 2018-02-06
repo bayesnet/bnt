@@ -66,9 +66,6 @@ engine = enter_evidence(engine, evidence);
 %calculate marginal on a specific node
 marg = marginal_nodes(engine, 1);
 prob = marg.T;
-fprintf('Inference: --------------------------------- \n');
-fprintf('P(X=1|Y=0.9pi) = %.2f \n',prob(1));
-fprintf('P(X=2|Y=0.9pi) = %.2f \n',prob(2));
 
 %Check probability - calculated by hand using bayes rule.
 %P(X=1,Y=0.9pi) = P(Y=0.9pi,X=1)P(X=1)/P(Y=0.9pi)
