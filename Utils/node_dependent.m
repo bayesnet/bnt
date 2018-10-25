@@ -11,9 +11,8 @@ function node2node = node_dependent(dag,label,varargin)
 % Output：
 %     printf
 %
-% Written by WANGXin(394315185@qq.com)
+% Written by WANGXin(growlithe1205@gmail.com)
 % 如果发现BUG请联系作者本人。
-%该函数暂时不会发布，仅供内部使用，不要在论文中出现该函数。
 
 [r,c] = size(dag);
 

@@ -13,7 +13,7 @@ function [correct,miss,addation,reverse,error] = different_to_standard(standard,
 %      addation
 %      reverse
 %      error
-% Written by WANGXin(394315185@qq.com)
+% Written by WANGXin(growlithe1205@gmail.com)
 %    我英文不太好，这是我为BNT开发的第一个代码，不知道有没有跟现有代码重复。
 %    该函数比较基准网络和生成网络结构上的差异，返回正确的边数、缺失的边数、增加的边
 %    数、反向的边数、以及错误的边数，其中第一个参数为基准网络，第二次参数我们建立的
