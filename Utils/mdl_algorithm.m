@@ -6,8 +6,9 @@ function mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,varargi
 %    data: a matrix data，just support num
 %    class_index: class attribute index
 %    data_need_convert_map: a map show data whether need convert int
-%    varargin: just support 'id_index',representative id index. The mdl
-%              algorithm will delete unrelated attribute at the end.
+%    varargin: support 'id_index' ,representative id index,'clear_index', .
+%              representative clear attribute index ,The mdl algorithm will
+%              delete unrelated attribute at the end.
 % output:
 %    mdl_data: the result of mdl algorithm process data
 %
@@ -21,7 +22,8 @@ function mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,varargi
 %    data: 一个矩阵数据,只支持数字类型
 %    class_index: 类属性的索引位置
 %    data_need_convert_map: 数据是否需要转换为int类型的map
-%    varargin: 只支持'id_index'，代表id的索引位置。mdl算法会在最后删除无关的属性。
+%    varargin: 只支持'id_index'，代表id的索引位置,'clear_index',需要清楚变量的索引
+%              位置。mdl算法会在最后删除无关的属性。
 % 输出:
 %    mdl_data: mdl 算法处理数据的结果
 %
