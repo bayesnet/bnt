@@ -34,6 +34,7 @@ function mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,varargi
 
 id_index = [];
 clear_index = [];
+fix_data = 'no';
 args = varargin;
 nargs = length(args);
 if ~isempty(args)
@@ -44,6 +45,8 @@ if ~isempty(args)
                     id_index = args{i+1};
                 case 'clear_index'
                     clear_index = args{i+1};
+                case 'fix_data'
+                    fix_data = args{i+1};
             end
         end
     end
@@ -51,14 +54,18 @@ end
 
 [row,col] = size(data);
 
-if length(id_index) ~= 1
-   error('id_index must one length')
+if ~isempty(id_index)
+    if length(id_index) ~= 1
+        error('id_index must one length')
+    end
+    if id_index > col
+        error('id_index must small than data col size')
+    end
 end
-if id_index > col
-    error('id_index must small than data col size')
-end
-if clear_index > col
-    error('clear_index must small than data col size')
+if ~isempty(clear_index)
+    if clear_index > col
+        error('clear_index must small than data col size')
+    end
 end
 if class_index > col
     error('class_index must small than data col size')
@@ -97,5 +104,13 @@ if ~isempty(clear_index)
     mdl_data(:,clear_index) = [];
 end
 
+if isequal('yes',fix_data)
+   for i = 1:col
+       flag = ~isempty(find(mdl_data(:,i) == 0, 1));
+       if isequal(flag,1)
+           mdl_data(:,i) = mdl_data(:,i) + 1;
+       end
+   end
 end
 
+end

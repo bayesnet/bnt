@@ -29,6 +29,9 @@ function [mdl_data,cut_point] = single_mdl_algorithm(row_data,class)
 
 mdl_data = row_data;
 cut_point = mdl_core(row_data,class);
+if isempty(cut_point)
+    return
+end
 for i = 1: length(cut_point)+1
     switch i
         case 1
@@ -60,6 +63,9 @@ function cut_point = mdl_core(data,class)
 
 cut_point = [];
 [~,min_cut_point,~] = get_min_cut_point(data,class);
+if isempty(min_cut_point)
+    return
+end
 
 [left_data,left_class,right_data,right_class] = split_data(data,class,min_cut_point);
 
@@ -72,9 +78,15 @@ if cost_nt >= cost_ht
     cut_point = [cut_point,min_cut_point];
    
     left_min_cut_point = mdl_core(left_data,left_class);
+    if isempty(left_min_cut_point)
+        return
+    end
     cut_point = [cut_point,left_min_cut_point];
     
     right_min_cut_point = mdl_core(right_data,right_class);
+    if isempty(right_min_cut_point)
+        return
+    end
     cut_point = [cut_point,right_min_cut_point];
 
     cut_point = unique(cut_point);
@@ -175,7 +187,9 @@ function [min_cut_entropy,min_cut_point,min_cut_point_index] = get_min_cut_point
 
 point = unique(data);
 point_length = length(point);
+min_cut_point = [];
 min_cut_entropy = [];
+min_cut_point_index = [];
 for i = 1:point_length-1
     cut_point = (point(i) + point(i+1))/2;
     [~,left_class,~,right_class] = split_data(data,class,cut_point);
