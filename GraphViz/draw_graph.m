@@ -90,7 +90,7 @@ end;
 
 color.box = 'black';
 color.text = color.box;
-color.edge = [1 1 1]*3/4;
+%color.edge = [1 1 1]*3/4;
 %color.edge = 'green';
 if ~isempty(idx1)
   set(h1(:,1),'Color',color.text)
@@ -100,7 +100,7 @@ if ~isempty(idx2)
   set(h2(:,1),'Color',color.text)
   set(h2(:,2),'EdgeColor',color.box)
 end
-set(h_edge,'Color',color.edge)
+%set(h_edge,'Color',color.edge)
 
 if nargout>2,
   h = zeros(length(wd),2);
