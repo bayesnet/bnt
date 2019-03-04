@@ -32,6 +32,7 @@ cut_point = mdl_core(row_data,class);
 if isempty(cut_point)
     return
 end
+cut_point = sort(cut_point);
 for i = 1: length(cut_point)+1
     switch i
         case 1
@@ -41,7 +42,6 @@ for i = 1: length(cut_point)+1
         otherwise
             [~,col,~] = find(row_data > cut_point(i-1) & row_data <= cut_point(i));
     end
-    
     
     mdl_data(col) = i;
 end

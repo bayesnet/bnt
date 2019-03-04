@@ -3,20 +3,20 @@ function [dag,dag_score,confusion_matrix,correct_rate] ...
     classify_algorithm,varargin)
 % Input:
 %     data : data(r,c) = value of node r in case c (can be a cell array);
-% 
+%
 %     classify_node_num : classify node's num;
-% 
+%
 %     struct_algorithm  : which struct algorithm you use to learn struct,we
 %                         support total 15 struct algorithm,like PC, IC,
 %                         BNPC, MWST, NAVIE, TAN, FAN, K2, MCMC, GS2, GES,
 %                         MWST-K2, HC, GS+T, MWST_EM, TAN_EM struct
 %                         algorithm;
-% 
+%
 %     classify_algorithm : which classify algorithm you use to classified,
 %                          we support 3 classify algorithm,like HOLD_OUT,
 %                          CV-5, CV-10;
-%                         
-%     varargin : 
+%
+%     varargin :
 %         node_flag  :  default 'A';
 %         label      : default {},every node significance;
 %         score      : in some struct algorithm, we need score ,like 'bic',
@@ -28,17 +28,17 @@ function [dag,dag_score,confusion_matrix,correct_rate] ...
 %       max_fan_in   : in some struct algorithm, we need set max_fan_in, like
 %                    'K2',it means the largest number of parents we allow
 %                     per node [N];
-%       order        : in 'K2' algorithm, we need a order. order(i) is the 
-%                     i'th node in the topological ordering, if not 
+%       order        : in 'K2' algorithm, we need a order. order(i) is the
+%                     i'th node in the topological ordering, if not
 %                     specified order. we use random order in 'K2' algorithm;
 %       scoring_mwst : in 'MWST-K2' algorithm, score in mwst,default 'bic';
 %       scoring_K2   : in 'MWST-K2' algorithm, score in K2, default 'bic';
 %       mwst_k2_order: in 'MWST-K2' algorithm, order has two type "+" or
 %                      '-',default "+";
 %       nsamples     : in 'MCMC' algorithm, we set nsamples, it means number
-%                      of samples to draw from the chain after burn-in. 
+%                      of samples to draw from the chain after burn-in.
 %                      default round(length(data)/5);
-%       prior        : in some 'XX_EM' algorithm, we set prior.when it 
+%       prior        : in some 'XX_EM' algorithm, we set prior.when it
 %                       equals 1 to use uniform Dirichlet prior ,default 0;
 %       nbloopmax    : in some 'XX_EM' algorithm, max loop number,
 %                       default ceil(log(N*log(N)));
@@ -50,7 +50,7 @@ function [dag,dag_score,confusion_matrix,correct_rate] ...
 %     dag_score         : dag 's score,default 'bic' score;
 %     confusion_matrix  : confusion matrix
 %     correct_rate      : correct rate
-% 
+%
 % For example
 %    pass in this moment
 %
@@ -58,31 +58,34 @@ function [dag,dag_score,confusion_matrix,correct_rate] ...
 %      I love math,I love Miaomiao and Candy too.My dog who named Candy went
 %      to heaven when I programming, I miss Candy so much.
 % Written By WANGXin(growlithe1205@gmail.com)
-% 
+%
 
 % set default parameters
 node_flag = 'A';
 label = {};
 score = 'bic';
 % get variable parameters
-args = varargin;
-nargs = length(args);
-if length(args) > 0
-    if ischar(args{1})
-        for i=1:2:nargs
-            switch args{i}
-                case 'node_flag'
-                    node_flag = args{i+1};
-                case 'label'
-                    label = args{i+1};
-                case 'score'
-                    score = args{i+1};
-                case 'params'
-                    if isempty(args{i+1})
-                        params = cell(1,n);
-                    else
-                        params = args{i+1};
-                    end
+if ~isempty(varargin)
+    args = varargin;
+    nargs = length(args);
+    
+    if length(args) > 0
+        if ischar(args{1})
+            for i=1:2:nargs
+                switch args{i}
+                    case 'node_flag'
+                        node_flag = args{i+1};
+                    case 'label'
+                        label = args{i+1};
+                    case 'score'
+                        score = args{i+1};
+                    case 'params'
+                        if isempty(args{i+1})
+                            params = cell(1,n);
+                        else
+                            params = args{i+1};
+                        end
+                end
             end
         end
     end
@@ -207,42 +210,44 @@ thresh = 1e-4;
 tr_method = 'auto';
 
 % get parameters
-args = varargin{1,1}(1,:);
-nargs = length(args);
-if length(args) > 0
-    if ischar(args{1})
-        for i=1:2:nargs
-            switch args{i}
-                case 'score'
-                    score = args{i+1};
-                case 'root'
-                    root = args{i+1};
-                case 'max_fan_in'
-                    max_fan_in = args{i+1};
-                case 'order'
-                    order = args{i+1};
-                case 'nsamples'
-                    nsamples = args{i+1};
-                case 'scoring_mwst'
-                    scoring_mwst = args{i+1};
-                case 'scoring_K2'
-                    scoring_K2 = args{i+1};
-                case 'mwst_k2_order'
-                    mwst_k2_order = args{i+1};
-                case 'prior'
-                    prior = args{i+1};
-                case 'nbloopmax'
-                    nbloopmax = args{i+1};
-                case 'thresh'
-                    thresh = args{i+1};
-                case 'tr_method'
-                    tr_method = args{i+1};
-                case 'params'
-                    if isempty(args{i+1})
-                        params = cell(1,n);
-                    else
-                        params = args{i+1};
-                    end
+if ~isempty(varargin{1,1})
+    args = varargin{1,1}(1,:);
+    nargs = length(args);
+    if length(args) > 0
+        if ischar(args{1})
+            for i=1:2:nargs
+                switch args{i}
+                    case 'score'
+                        score = args{i+1};
+                    case 'root'
+                        root = args{i+1};
+                    case 'max_fan_in'
+                        max_fan_in = args{i+1};
+                    case 'order'
+                        order = args{i+1};
+                    case 'nsamples'
+                        nsamples = args{i+1};
+                    case 'scoring_mwst'
+                        scoring_mwst = args{i+1};
+                    case 'scoring_K2'
+                        scoring_K2 = args{i+1};
+                    case 'mwst_k2_order'
+                        mwst_k2_order = args{i+1};
+                    case 'prior'
+                        prior = args{i+1};
+                    case 'nbloopmax'
+                        nbloopmax = args{i+1};
+                    case 'thresh'
+                        thresh = args{i+1};
+                    case 'tr_method'
+                        tr_method = args{i+1};
+                    case 'params'
+                        if isempty(args{i+1})
+                            params = cell(1,n);
+                        else
+                            params = args{i+1};
+                        end
+                end
             end
         end
     end
@@ -348,6 +353,7 @@ function [confusion_matrix,correct_rate] = classified_test(dag, classify_node_nu
 node_flag = 'A';
 classify_times = 10;
 
+if ~isempty(varargin{1,1})
 args = varargin{1,1}(1,:);
 nargs = length(args);
 if length(args) > 0
@@ -365,6 +371,7 @@ if length(args) > 0
             end
         end
     end
+end
 end
 
 % set a

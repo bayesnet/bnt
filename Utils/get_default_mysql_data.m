@@ -146,12 +146,12 @@ end
 
 function mdl_data = list_all_abalone(datasource,username,password,url)
 
-select_var1 = 'sex,length,diameter,height,whole_weight,shucked_weight,';
-select_var2 = 'viscera_weight,shell_weight,rings';
+select_var1 = 'rings,sex,length,diameter,height,whole_weight,shucked_weight,';
+select_var2 = 'viscera_weight,shell_weight';
 select_var = [select_var1,select_var2];
 sql = ['SELECT ', select_var ,' FROM uci_database.abalone where status = 1'];
 
-class_index = 9;
+class_index = 1;
 
 % get data from mysql
 data = get_data_from_mysql(sql,datasource,username,password,url);
@@ -367,11 +367,11 @@ end
 
 function mdl_data = list_all_breast_cancer_coimbra(datasource,username,password,url)
 
-select_var = 'age,bmi,glucose,Insulin,homa,leptin,adiponectin,resistin,mcp,classification';
+select_var = 'classification,age,bmi,glucose,Insulin,homa,leptin,adiponectin,resistin,mcp';
 sql = ['SELECT ', select_var ,...
     ' FROM uci_database.breast_cancer_coimbra where status = 1'];
 
-class_index = 10;
+class_index = 1;
 
 % get data from mysql
 data = get_data_from_mysql(sql,datasource,username,password,url);
@@ -1140,7 +1140,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -1456,7 +1456,7 @@ end
 
 function mdl_data  = list_all_zoo(datasource,username,password,url)
 
-select_var1 = 'type,animal_name,hair,feathers,eggs,milk,airborne,aquatic,';
+select_var1 = 'type,hair,feathers,eggs,milk,airborne,aquatic,';
 select_var2 = 'predator,toothed,backbone,breathes,venomous,fins,legs,tail,';
 select_var3 = 'domestic,catsize';
 select_var = [select_var1,select_var2,select_var3];
