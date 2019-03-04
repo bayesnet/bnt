@@ -28,9 +28,9 @@ end
 node2node = cell(0,0);
 node_flag = 'A';
 
-args = varargin;
-nargs = length(args);
-if length(args) > 0
+if ~isempty(varargin)
+    args = varargin;
+    nargs = length(args);
     if ischar(args{1})
         for i=1:2:nargs
             switch args{i}
