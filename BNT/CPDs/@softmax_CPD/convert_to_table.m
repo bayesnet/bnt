@@ -10,7 +10,7 @@ dps        = domain(CPD.dpndx);
 dps_as_cps = domain(CPD.dps_as_cps.ndx);
 all_dps    = union(dps,dps_as_cps);
 odom       = domain(~isemptycell(evidence(domain))); 
-if ~isempty(cps), assert(myismember(cps, odom)); end % all cts parents must be observed
+if ~isempty(cps), assert(all(myismember(cps, odom))); end % all cts parents must be observed
 
 ns         = zeros(1, max(domain));
 ns(domain) = CPD.sizes;
