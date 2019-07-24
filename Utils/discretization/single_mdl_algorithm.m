@@ -78,17 +78,15 @@ if cost_nt >= cost_ht
     cut_point = [cut_point,min_cut_point];
    
     left_min_cut_point = mdl_core(left_data,left_class);
-    if isempty(left_min_cut_point)
-        return
+    if ~isempty(left_min_cut_point)
+        cut_point = [cut_point,left_min_cut_point];
     end
-    cut_point = [cut_point,left_min_cut_point];
     
     right_min_cut_point = mdl_core(right_data,right_class);
-    if isempty(right_min_cut_point)
-        return
+    if ~isempty(right_min_cut_point)
+       cut_point = [cut_point,right_min_cut_point];
     end
-    cut_point = [cut_point,right_min_cut_point];
-
+   
     cut_point = unique(cut_point);
 end
 

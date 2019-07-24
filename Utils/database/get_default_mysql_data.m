@@ -1,6 +1,6 @@
 function mdl_data = get_default_mysql_data(data_source_name)
 
-% mysql default configure
+% mysql default configure,default class index is 1
 datasource = 'growlithe';
 username ='growlithe';
 password = 'growlithe';
@@ -167,16 +167,16 @@ end
 
 function mdl_data = list_all_absenteeism_at_work(datasource,username,password,url)
 % this data need preprocess class var
-select_var1 = 'reason_for_absence,month_of_absence,day_of_week,seasons,';
-select_var2 = 'transportation_expense,distance_from_residence_to_work,service_time,';
-select_var3 = 'age,work_load_average_of_day,hit_target,disciplinary_failure,';
+select_var1 = 'absenteeism_time_in_hours,reason_for_absence,month_of_absence,';
+select_var2 = 'day_of_week,seasons,transportation_expense,distance_from_residence_to_work,';
+select_var3 = 'service_time,age,work_load_average_of_day,hit_target,disciplinary_failure,';
 select_var4 = 'education,son,social_drinker,social_smoker,pet,weight,height,';
-select_var5 = 'body_mass_index,absenteeism_time_in_hours';
+select_var5 = 'body_mass_index';
 select_var = [select_var1,select_var2,select_var3,select_var4,select_var5];
 sql = ['SELECT ', select_var , ...
     ' FROM uci_database.absenteeism_at_work where status = 1'];
 
-class_index = 20;
+class_index = 1;
 
 % get data from mysql
 data = get_data_from_mysql(sql,datasource,username,password,url);
@@ -193,13 +193,13 @@ end
 function mdl_data = list_all_adult(datasource,username,password,url)
 
 
-select_var1 = 'age,workclass,fnlwgt,education_num,marital_status,occupation,';
-select_var2 = 'relationship,race,sex,capital_gain,capital_loss,hours_per_week,';
-select_var3 = 'native_country,income_attributes,data_type';
+select_var1 = 'data_type,age,workclass,fnlwgt,education_num,marital_status,';
+select_var2 = 'occupation,relationship,race,sex,capital_gain,capital_loss,';
+select_var3 = 'hours_per_week,native_country,income_attributes';
 select_var = [select_var1,select_var2,select_var3];
 sql = ['SELECT ', select_var ,' FROM uci_database.adult where status = 1'];
 
-class_index = 15;
+class_index = 1;
 
 % get data from mysql
 data = get_data_from_mysql(sql,datasource,username,password,url);
@@ -215,14 +215,14 @@ end
 
 function mdl_data = list_all_anuran_calls(datasource,username,password,url)
 
-select_var1 = 'mfccs_a,mfccs_b,mfccs_c,mfccs_d,mfccs_e,mfccs_f,mfccs_g,';
-select_var2 = 'mfccs_h,mfccs_i,mfccs_j,mfccs_k,mfccs_l,mfccs_m,mfccs_n,';
-select_var3 = 'mfccs_o,mfccs_p,mfccs_q,mfccs_r,mfccs_s,mfccs_t,mfccs_u,';
-select_var4 = 'mfccs_v,family,genus,species';
+select_var1 = 'species,mfccs_a,mfccs_b,mfccs_c,mfccs_d,mfccs_e,mfccs_f,';
+select_var2 = 'mfccs_g,mfccs_h,mfccs_i,mfccs_j,mfccs_k,mfccs_l,mfccs_m,';
+select_var3 = 'mfccs_n,mfccs_o,mfccs_p,mfccs_q,mfccs_r,mfccs_s,mfccs_t,';
+select_var4 = 'mfccs_u,mfccs_v,family,genus';
 select_var = [select_var1,select_var2,select_var3,select_var4];
 sql = ['SELECT ', select_var ,' FROM uci_database.anuran_calls where status = 1'];
 
-class_index = 25;
+class_index = 1;
 
 % get data from mysql
 data = get_data_from_mysql(sql,datasource,username,password,url);
@@ -238,14 +238,13 @@ end
 
 function mdl_data = list_all_avila(datasource,username,password,url)
 
-select_var1 = 'intercolumnar_distance,upper_margin,lower_margin,';
+select_var1 = 'data_class,intercolumnar_distance,upper_margin,lower_margin,';
 select_var2 = 'exploitation,row_no,modular_ratio,interlinear_spacing,';
-select_var3 = 'weight,peak_number,modular_ratio_and_interlinear_spacing_rate,';
-select_var4 = 'data_class';
-select_var = [select_var1,select_var2,select_var3,select_var4];
+select_var3 = 'weight,peak_number,modular_ratio_and_interlinear_spacing_rate';
+select_var = [select_var1,select_var2,select_var3];
 sql = ['SELECT ', select_var ,' FROM uci_database.avila where status = 1'];
 
-class_index = 11;
+class_index = 1;
 
 % get data from mysql
 data = get_data_from_mysql(sql,datasource,username,password,url);
@@ -280,15 +279,15 @@ end
 
 function mdl_data = list_all_bank_marketing(datasource,username,password,url)
 
-select_var1 = 'age,job,marital,education,default_credit,housing,loan,';
-select_var2 = 'contact,month,day_of_week,duration,campaign,p_days,';
+select_var1 = 'class_name,age,job,marital,education,default_credit,housing,';
+select_var2 = 'loan,contact,month,day_of_week,duration,campaign,p_days,';
 select_var3 = 'previous,pout_come,emp_var_rate,cons_price_idx,cons_conf_idx,';
-select_var4 = 'euribor_m,nr_employed,class_name';
+select_var4 = 'euribor_m,nr_employed';
 select_var = [select_var1,select_var2,select_var3,select_var4];
 sql = ['SELECT ', select_var ,...
     ' FROM uci_database.bank_marketing where status = 1 and data_type = 1'];
 
-class_index = 21;
+class_index = 1;
 
 % get data from mysql
 data = get_data_from_mysql(sql,datasource,username,password,url);
@@ -304,11 +303,11 @@ end
 
 function mdl_data = list_all_banknote_authentication(datasource,username,password,url)
 
-select_var = 'variance,skewness,curtosis,entropy,class_name';
+select_var = 'class_name,variance,skewness,curtosis,entropy';
 sql = ['SELECT ', select_var ,...
     ' FROM uci_database.banknote_authentication where status = 1'];
 
-class_index = 5;
+class_index = 1;
 
 % get data from mysql
 data = get_data_from_mysql(sql,datasource,username,password,url);
@@ -325,11 +324,11 @@ end
 function mdl_data ...
     = list_all_blood_transfusion_service_center(datasource,username,password,url)
 
-select_var = 'recency,frequency,monetary,time,class_name';
+select_var = 'class_name,recency,frequency,monetary,time';
 sql = ['SELECT ', select_var ,...
     ' FROM uci_database.blood_transfusion_service_center where status = 1'];
 
-class_index = 5;
+class_index = 1;
 
 % get data from mysql
 data = get_data_from_mysql(sql,datasource,username,password,url);
@@ -409,13 +408,11 @@ end
 
 function mdl_data = list_all_car_evaluation(datasource,username,password,url)
 
-select_var1 = 'buying,maint,doors,persons,lug_boot,safety,';
-select_var2 = 'class_name';
-select_var = [select_var1,select_var2];
+select_var = 'class_name,buying,maint,doors,persons,lug_boot,safety';
 sql = ['SELECT ', select_var ,...
     ' FROM uci_database.car_evaluation where status = 1'];
 
-class_index = 7;
+class_index = 1;
 
 % get data from mysql
 data = get_data_from_mysql(sql,datasource,username,password,url);
@@ -431,7 +428,7 @@ end
 
 function mdl_data = list_all_census_income_kdd(datasource,username,password,url)
 
-select_var1 = 'age,class_of_worker,class_of_worker,occupation_code,';
+select_var1 = 'class_name,age,class_of_worker,class_of_worker,occupation_code,';
 select_var2 = 'education,wage_per_hour,enrolled,marital_status,major_industry_code,';
 select_var3 = 'major_occupation_code,mace,hispanic_origin,sex,member_of_labor_union,';
 select_var4 = 'reason_for_unemployment,employment_stat,capital_gains,capital_losses,';
@@ -441,13 +438,13 @@ select_var7 = 'detailed_household_summary,migration_code_change_msa,';
 select_var8 = 'migration_code_change_reg,migration_code_move,live_in,migration,';
 select_var9 = 'num_persons_worked,family_members,country_of_birth_father,';
 select_var10 = 'country_of_birth_mother,country_of_birth_self,citizenship,own_business,';
-select_var11 = 'fill_inc_questionnaire,veterans_benefits,weeks_worked,year,class_name';
+select_var11 = 'fill_inc_questionnaire,veterans_benefits,weeks_worked,year';
 select_var = [select_var1,select_var2,select_var3,select_var4,select_var5, ...
     select_var6,select_var7,select_var8,select_var9,select_var10,select_var11];
 sql = ['SELECT ', select_var ,...
     ' FROM uci_database.census_income_kdd where status = 1 and data_type =1'];
 
-class_index = 7;
+class_index = 1;
 
 % get data from mysql
 data = get_data_from_mysql(sql,datasource,username,password,url);
@@ -463,13 +460,13 @@ end
 
 function mdl_data = list_all_chess_rook_vs_king(datasource,username,password,url)
 
-select_var1 = 'white_king_file,white_king_rank,white_rook_file,white_rook_rank,';
-select_var2 = 'black_king_file,black_king_rank,class_name';
+select_var1 = 'class_name,white_king_file,white_king_rank,white_rook_file,';
+select_var2 = 'white_rook_rank,black_king_file,black_king_rank';
 select_var = [select_var1,select_var2];
 sql = ['SELECT ', select_var ,...
     ' FROM uci_database.chess_rook_vs_king where status = 1'];
 
-class_index = 7;
+class_index = 1;
 
 % get data from mysql
 data = get_data_from_mysql(sql,datasource,username,password,url);
@@ -485,18 +482,18 @@ end
 
 function mdl_data = list_all_chess_rook_vs_pawn(datasource,username,password,url)
 
-select_var1 = 'step_aa,step_ab,step_ac,step_ad,step_ae,step_af,step_ag,';
-select_var2 = 'step_ah,step_ai,step_aj,step_ak,step_al,step_am,step_an,';
-select_var3 = 'step_ao,step_ap,step_aq,step_ar,step_as,step_at,step_au,';
-select_var4 = 'step_av,step_aw,step_ax,step_ay,step_az,step_ba,step_bb,';
-select_var5 = 'step_bc,step_bd,step_be,step_bf,step_bg,step_bh,step_bi,';
-select_var6 = 'step_bj,class_name';
+select_var1 = 'class_name,step_aa,step_ab,step_ac,step_ad,step_ae,step_af,';
+select_var2 = 'step_ag,step_ah,step_ai,step_aj,step_ak,step_al,step_am,';
+select_var3 = 'step_an,step_ao,step_ap,step_aq,step_ar,step_as,step_at,';
+select_var4 = 'step_au,step_av,step_aw,step_ax,step_ay,step_az,step_ba,';
+select_var5 = 'step_bb,step_bc,step_bd,step_be,step_bf,step_bg,step_bh,';
+select_var6 = 'step_bi,step_bj';
 select_var = [select_var1,select_var2,select_var3,select_var4,...
     select_var5,select_var6];
 sql = ['SELECT ', select_var ,...
     ' FROM uci_database.chess_rook_vs_pawn where status = 1'];
 
-class_index = 37;
+class_index = 1;
 
 % get data from mysql
 data = get_data_from_mysql(sql,datasource,username,password,url);
@@ -667,9 +664,7 @@ end
 
 function mdl_data = list_all_ecoli(datasource,username,password,url)
 
-select_var1 = 'class_name,sequence_name,mcg,gvh,lip,chg,aac,';
-select_var2 = 'alm_a,alm_b';
-select_var = [select_var1,select_var2];
+select_var = 'class_name,sequence_name,mcg,gvh,lip,chg,aac,alm_a,alm_b';
 sql = ['SELECT ', select_var ,...
     ' FROM uci_database.ecoli where status = 1'];
 
