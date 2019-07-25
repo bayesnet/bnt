@@ -55,7 +55,7 @@ function [dag,dag_score,confusion_matrix,correct_rate] ...
 %    pass in this moment
 %
 % other
-%      I love math,I love Miaomiao and Candy too.My dog who named Candy went
+%      I love math,I love Candy too.My dog who named Candy went
 %      to heaven when I programming, I miss Candy so much.
 % Written By WANGXin(growlithe1205@gmail.com)
 %
