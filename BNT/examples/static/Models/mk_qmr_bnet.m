@@ -21,18 +21,18 @@ if nargin < 6, onodes = finding_node; end
 bnet = mk_bnet(dag, ns, 'observed', onodes);
 
 for d=1:Ndiseases
-  CPT = [1-prior(d) prior(d)];
-  bnet.CPD{d} = tabular_CPD(bnet, d, CPT');
+    CPT = [1-prior(d) prior(d)];
+    bnet.CPD{d} = tabular_CPD(bnet, d, CPT');
 end
 
 for i=1:Nfindings
-  fnode = finding_node(i);
-  ps = parents(G, i);
-  if tabular_findings
-    bnet.CPD{fnode} = tabular_CPD(bnet, fnode); 
-  else
-    bnet.CPD{fnode} = noisyor_CPD(bnet, fnode, leak(i), inhibit(ps, i));
-  end
+    fnode = finding_node(i);
+    ps = parents(G, i);
+    if tabular_findings
+        bnet.CPD{fnode} = tabular_CPD(bnet, fnode);
+    else
+        bnet.CPD{fnode} = noisyor_CPD(bnet, fnode, leak(i), inhibit(ps, i));
+    end
 end
 
 
