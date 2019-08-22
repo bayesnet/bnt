@@ -105,12 +105,32 @@ if ~isempty(clear_index)
 end
 
 if isequal('yes',fix_data)
-   for i = 1:col
-       flag = ~isempty(find(mdl_data(:,i) == 0, 1));
-       if isequal(flag,1)
-           mdl_data(:,i) = mdl_data(:,i) + 1;
-       end
-   end
+    
+    need_clear_row = [];
+    for i=1:row
+        if isequal(any(isnan(mdl_data(i,:))),1)
+            need_clear_row = [need_clear_row,i];
+        end
+    end
+    if ~isempty(need_clear_row)
+        mdl_data(need_clear_row,:) = [];
+    end
+    
+    for i = 1:col
+        flag = ~isempty(find(mdl_data(:,i) == 0, 1));
+        if isequal(flag,1)
+            mdl_data(:,i) = mdl_data(:,i) + 1;
+        end
+        
+        unqiue_i_num = sort(unique(mdl_data(:,i)));
+        if length(unqiue_i_num)<max(mdl_data(:,i))
+            for j= 1:length(unqiue_i_num)
+                [index,~] = find(mdl_data(:,i)==unqiue_i_num(j,:));
+                mdl_data(index,i) = j;
+            end
+        end
+    end
+    
 end
 
 end

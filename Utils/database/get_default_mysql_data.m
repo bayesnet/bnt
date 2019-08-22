@@ -12,6 +12,8 @@ switch data_source_name
         mdl_data = list_all_abalone(datasource,username,password,url);
     case 'absenteeism_at_work'
         mdl_data = list_all_absenteeism_at_work(datasource,username,password,url);
+    case 'fix_adult'
+        mdl_data = list_fix_adult(datasource,username,password,url);
     case 'adult'
         mdl_data = list_all_adult(datasource,username,password,url);
     case 'anuran_calls'
@@ -24,6 +26,8 @@ switch data_source_name
         mdl_data = list_all_bank_marketing(datasource,username,password,url);
     case 'banknote_authentication'
         mdl_data = list_all_banknote_authentication(datasource,username,password,url);
+    case 'fix_banknote_authentication'
+        mdl_data = list_fix_banknote_authentication(datasource,username,password,url);
     case 'blood_transfusion_service_center'
         mdl_data = list_all_blood_transfusion_service_center(datasource,...
             username,password,url);
@@ -55,10 +59,14 @@ switch data_source_name
     case 'default_of_credit_card_clients'
         mdl_data = list_all_default_of_credit_card_clients(datasource,...
             username,password,url);
+    case 'fix_ecoli'
+        mdl_data = list_fix_ecoli(datasource,username,password,url);
     case 'ecoli'
         mdl_data = list_all_ecoli(datasource,username,password,url);
     case 'fertility'
         mdl_data = list_all_fertility(datasource,username,password,url);
+    case 'fix_glass_identification'
+        mdl_data = list_fix_glass_identification(datasource,username,password,url);
     case 'glass_identification'
         mdl_data = list_all_glass_identification(datasource,username,password,url);
     case 'haberman_survival'
@@ -67,6 +75,8 @@ switch data_source_name
         mdl_data = list_all_hayes_roth(datasource,username,password,url);
     case 'hepatitis'
         mdl_data = list_all_hepatitis(datasource,username,password,url);
+    case 'fix_hepatitis'
+        mdl_data = list_fix_hepatitis(datasource,username,password,url);
     case 'htru'
         mdl_data = list_all_htru(datasource,username,password,url);
     case 'iris'
@@ -86,6 +96,8 @@ switch data_source_name
         mdl_data = list_all_nursery(datasource,username,password,url);
     case 'occupancy'
         mdl_data = list_all_occupancy(datasource,username,password,url);
+    case 'fix_occupancy'
+        mdl_data = list_fix_occupancy(datasource,username,password,url);
     case 'page_blocks'
         mdl_data = list_all_page_blocks(datasource,username,password,url);
     case 'record_linkage_comparison_patterns'
@@ -94,17 +106,23 @@ switch data_source_name
     case 'post_operative_patient'
         mdl_data = list_all_post_operative_patient(datasource,username,...
             password,url);
+    case 'fix_primary_tumor'
+        mdl_data = list_fix_primary_tumor(datasource,username,password,url);
     case 'primary_tumor'
         mdl_data = list_all_primary_tumor(datasource,username,password,url);
     case 'seeds'
         mdl_data = list_all_seeds(datasource,username,password,url);
     case 'skin_segmentation'
         mdl_data = list_all_skin_segmentation(datasource,username,password,url);
-    case 'statlog_australian_credit_approval'
-        mdl_data = list_all_statlog_australian_credit_approval(datasource,...
+    case 'statlog_australian_credit'
+        mdl_data = list_all_statlog_australian_credit(datasource,...
             username,password,url);
+    case 'fix_statlog_german_credit'
+        mdl_data = list_fix_statlog_german_credit(datasource,username,password,url);
     case 'statlog_german_credit'
         mdl_data = list_all_statlog_german_credit(datasource,username,password,url);
+    case 'fix_statlog_heart'
+        mdl_data = list_fix_statlog_heart(datasource,username,password,url);
     case 'statlog_heart'
         mdl_data = list_all_statlog_heart(datasource,username,password,url);
     case 'statlog_landsat_satellite'
@@ -122,6 +140,9 @@ switch data_source_name
             username,password,url);
     case 'tic_tac_toe_endgame'
         mdl_data = list_all_tic_tac_toe_endgame(datasource,username,password,url);
+    case 'fix_user_knowledge_modeling'
+        mdl_data = list_fix_user_knowledge_modeling(datasource,username,...
+            password,url);
     case 'user_knowledge_modeling'
         mdl_data = list_all_user_knowledge_modeling(datasource,username,...
             password,url);
@@ -130,6 +151,8 @@ switch data_source_name
             password,url);
     case 'wine'
         mdl_data = list_all_wine(datasource,username,password,url);
+    case 'fix_wine_quality_white'
+        mdl_data = list_fix_wine_quality_white(datasource,username,password,url);
     case 'wine_quality_white'
         mdl_data = list_all_wine_quality_white(datasource,username,password,url);
     case 'wireless_indoor_localization'
@@ -142,7 +165,6 @@ switch data_source_name
 end
 
 end
-
 
 function mdl_data = list_all_abalone(datasource,username,password,url)
 
@@ -190,6 +212,29 @@ mdl_data = mdl_data';
 
 end
 
+function mdl_data = list_fix_adult(datasource,username,password,url)
+
+
+select_var1 = 'data_type,age,workclass,education_num,marital_status,';
+select_var2 = 'occupation,relationship,race,sex,capital_gain,capital_loss,';
+select_var3 = 'hours_per_week,native_country,income_attributes';
+select_var = [select_var1,select_var2,select_var3];
+sql = ['SELECT ', select_var ,' FROM uci_database.adult where status = 1'];
+
+class_index = 1;
+
+% get data from mysql
+data = get_data_from_mysql(sql,datasource,username,password,url);
+
+% convert data to num matrix
+[data, data_need_convert_map] = convert_to_num_matrix(data);
+
+% use mdl algorithm get data which bnt can used
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
+mdl_data = mdl_data';
+
+end
+
 function mdl_data = list_all_adult(datasource,username,password,url)
 
 
@@ -208,7 +253,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -253,7 +298,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -301,6 +346,26 @@ mdl_data = mdl_data';
 
 end
 
+function mdl_data = list_fix_banknote_authentication(datasource,username,password,url)
+
+select_var = 'class_name,variance,skewness,curtosis';
+sql = ['SELECT ', select_var ,...
+    ' FROM uci_database.banknote_authentication where status = 1'];
+
+class_index = 1;
+
+% get data from mysql
+data = get_data_from_mysql(sql,datasource,username,password,url);
+
+% convert data to num matrix
+[data, data_need_convert_map] = convert_to_num_matrix(data);
+
+% use mdl algorithm get data which bnt can used
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
+mdl_data = mdl_data';
+
+end
+
 function mdl_data = list_all_banknote_authentication(datasource,username,password,url)
 
 select_var = 'class_name,variance,skewness,curtosis,entropy';
@@ -337,7 +402,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -575,7 +640,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -632,7 +697,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -657,7 +722,27 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
+mdl_data = mdl_data';
+
+end
+
+function mdl_data = list_fix_ecoli(datasource,username,password,url)
+
+select_var = 'class_name,mcg,gvh,lip,aac,alm_a,alm_b';
+sql = ['SELECT ', select_var ,...
+    ' FROM uci_database.ecoli where status = 1'];
+
+class_index = 1;
+
+% get data from mysql
+data = get_data_from_mysql(sql,datasource,username,password,url);
+
+% convert data to num matrix
+[data, data_need_convert_map] = convert_to_num_matrix(data);
+
+% use mdl algorithm get data which bnt can used
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -684,8 +769,8 @@ end
 
 function mdl_data = list_all_fertility(datasource,username,password,url)
 
-select_var1 = 'class_name,season,childish_diseases,accident,surgical,';
-select_var2 = 'alm_a,alm_b';
+select_var1 = 'class_name,season,age,childish_diseases,accident,surgical,';
+select_var2 = 'high_fevers,alchol_frequency,smoking_habit,siting_number';
 select_var = [select_var1,select_var2];
 sql = ['SELECT ', select_var ,...
     ' FROM uci_database.fertility where status = 1'];
@@ -699,7 +784,29 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
+mdl_data = mdl_data';
+
+end
+
+function mdl_data = list_fix_glass_identification(datasource,username,password,url)
+
+select_var1 = 'class_name,refractive_index,sodium,magnesium,aluminum,';
+select_var2 = 'potassium,calcium,barium';
+select_var = [select_var1,select_var2];
+sql = ['SELECT ', select_var ,...
+    ' FROM uci_database.glass_identification where status = 1'];
+
+class_index = 1;
+
+% get data from mysql
+data = get_data_from_mysql(sql,datasource,username,password,url);
+
+% convert data to num matrix
+[data, data_need_convert_map] = convert_to_num_matrix(data);
+
+% use mdl algorithm get data which bnt can used
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -728,9 +835,7 @@ end
 
 function mdl_data = list_all_haberman_survival(datasource,username,password,url)
 
-select_var1 = 'class_name,age,operation_year,positive_axillary_nodes_number,';
-select_var2 = 'silicon,potassium,calcium,barium,iron';
-select_var = [select_var1,select_var2];
+select_var = 'class_name,age,operation_year,positive_axillary_nodes_number';
 sql = ['SELECT ', select_var ,...
     ' FROM uci_database.haberman_survival where status = 1'];
 
@@ -743,7 +848,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -768,6 +873,29 @@ mdl_data = mdl_data';
 
 end
 
+function mdl_data = list_fix_hepatitis(datasource,username,password,url)
+
+select_var1 = 'class_name,sex,steroid,antuvirals,fatigue,malaise,anorexia,';
+select_var2 = 'liver_big,liver_firm,spleen_palpable,spiders,ascites,varices,';
+select_var3 = 'bilirubin,alk_phoshphate,albumin,protime,histology';
+select_var = [select_var1,select_var2,select_var3];
+sql = ['SELECT ', select_var ,...
+    ' FROM uci_database.hepatitis where status = 1'];
+
+class_index = 1;
+
+% get data from mysql
+data = get_data_from_mysql(sql,datasource,username,password,url);
+
+% convert data to num matrix
+[data, data_need_convert_map] = convert_to_num_matrix(data);
+
+% use mdl algorithm get data which bnt can used
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
+mdl_data = mdl_data';
+
+end
+
 function mdl_data = list_all_hepatitis(datasource,username,password,url)
 
 select_var1 = 'class_name,age,sex,steroid,antuvirals,fatigue,malaise,anorexia,';
@@ -786,7 +914,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -810,7 +938,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -852,7 +980,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -897,7 +1025,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -917,7 +1045,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -927,7 +1055,7 @@ function mdl_data = list_all_mushroom(datasource,username,password,url)
 select_var1 = 'class_name,cap_shape,cap_surface,cap_color,bruises,odor,';
 select_var2 = 'gill_attachment,gill_spacing,gill_size,gill_color,';
 select_var3 = 'stalk_shape,stalk_root,stalk_surface_above_ring,stalk_surface_below_ring,';
-select_var4 = 'stalk_color_above_ring,stalk_color_below_ring,veil_type,veil_color,';
+select_var4 = 'stalk_color_above_ring,stalk_color_below_ring,veil_color,';
 select_var5 = 'ring_number,ring_type,spore_print_color,population,habitat';
 select_var = [select_var1,select_var2,select_var3,select_var4,select_var5];
 sql = ['SELECT ', select_var ,...
@@ -964,7 +1092,27 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
+mdl_data = mdl_data';
+
+end
+
+function mdl_data = list_fix_occupancy(datasource,username,password,url)
+
+select_var = 'occupancy,temperature,humidity,light,carbon_dioxide,humidity_ratio';
+sql = ['SELECT ', select_var ,...
+    ' FROM uci_database.occupancy where status = 1'];
+
+class_index = 1;
+
+% get data from mysql
+data = get_data_from_mysql(sql,datasource,username,password,url);
+
+% convert data to num matrix
+[data, data_need_convert_map] = convert_to_num_matrix(data);
+
+% use mdl algorithm get data which bnt can used
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -984,7 +1132,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -1026,7 +1174,31 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
+mdl_data = mdl_data';
+
+end
+
+
+function mdl_data = list_fix_primary_tumor(datasource,username,password,url)
+
+select_var1 = 'class_name,age,sex,bone,';
+select_var2 = 'bone_marrow,lung,pleura,peritoneum,liver,brain,skin,';
+select_var3 = 'neck,supraclavicular,axillar,mediastinum,abdominal';
+select_var = [select_var1,select_var2,select_var3];
+sql = ['SELECT ', select_var ,...
+    ' FROM uci_database.primary_tumor where status = 1'];
+
+class_index = 1;
+
+% get data from mysql
+data = get_data_from_mysql(sql,datasource,username,password,url);
+
+% convert data to num matrix
+[data, data_need_convert_map] = convert_to_num_matrix(data);
+
+% use mdl algorithm get data which bnt can used
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -1120,11 +1292,31 @@ mdl_data = mdl_data';
 end
 
 function mdl_data ...
-    = list_all_statlog_australian_credit_approval(datasource,username,password,url)
+    = list_all_statlog_australian_credit(datasource,username,password,url)
 
 select_var = 'class_name,aa,ab,ac,ad,ae,af,ag,ah,ai,aj,ak,al,am,an';
 sql = ['SELECT ', select_var ,...
-    ' FROM uci_database.statlog_australian_credit_approval where status = 1'];
+    ' FROM uci_database.statlog_australian_credit where status = 1'];
+
+class_index = 1;
+
+% get data from mysql
+data = get_data_from_mysql(sql,datasource,username,password,url);
+
+% convert data to num matrix
+[data, data_need_convert_map] = convert_to_num_matrix(data);
+
+% use mdl algorithm get data which bnt can used
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
+mdl_data = mdl_data';
+
+end
+
+function mdl_data = list_fix_statlog_german_credit(datasource,username,password,url)
+
+select_var = 'class_name,a,b,c,d,e,f,g,h,i,k,l,m,n,o,p,q,r,s,t,u,v,w,x';
+sql = ['SELECT ', select_var ,...
+    ' FROM uci_database.statlog_german_credit where status = 1'];
 
 class_index = 1;
 
@@ -1155,7 +1347,30 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
+mdl_data = mdl_data';
+
+end
+
+function mdl_data = list_fix_statlog_heart(datasource,username,password,url)
+
+select_var1 = 'class_name,age,sex,chest_pain_type,';
+select_var2 = 'fasting_blood_sugar,resting_electrocardiographic,maximum_heart_rate,';
+select_var3 = 'exercise,oldpeak,peak_exercise,major_vessels,thal';
+select_var = [select_var1,select_var2,select_var3];
+sql = ['SELECT ', select_var ,...
+    ' FROM uci_database.statlog_heart where status = 1'];
+
+class_index = 1;
+
+% get data from mysql
+data = get_data_from_mysql(sql,datasource,username,password,url);
+
+% convert data to num matrix
+[data, data_need_convert_map] = convert_to_num_matrix(data);
+
+% use mdl algorithm get data which bnt can used
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -1178,7 +1393,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -1200,7 +1415,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -1292,7 +1507,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -1313,6 +1528,26 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 
 % use mdl algorithm get data which bnt can used
 mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_data';
+
+end
+
+function mdl_data = list_fix_user_knowledge_modeling(datasource,username,password,url)
+
+select_var = 'uns,stg,scg,lpr,peg';
+sql = ['SELECT ', select_var ,...
+    ' FROM uci_database.user_knowledge_modeling where status = 1'];
+
+class_index = 1;
+
+% get data from mysql
+data = get_data_from_mysql(sql,datasource,username,password,url);
+
+% convert data to num matrix
+[data, data_need_convert_map] = convert_to_num_matrix(data);
+
+% use mdl algorithm get data which bnt can used
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -1355,7 +1590,7 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 [data, data_need_convert_map] = convert_to_num_matrix(data);
 
 % use mdl algorithm get data which bnt can used
-mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
@@ -1379,6 +1614,29 @@ data = get_data_from_mysql(sql,datasource,username,password,url);
 
 % use mdl algorithm get data which bnt can used
 mdl_data = mdl_algorithm(data,class_index,data_need_convert_map);
+mdl_data = mdl_data';
+
+end
+
+function mdl_data = list_fix_wine_quality_white(datasource,username,password,url)
+
+select_var1 = 'quality,fixed_acidity,volatile_acidity,citric_acid,residual_sugar,';
+select_var2 = 'chlorides,free_sulfur_dioxide,total_sulfur_dioxide,density,';
+select_var3 = 'ph,alcohol';
+select_var = [select_var1,select_var2,select_var3];
+sql = ['SELECT ', select_var ,...
+    ' FROM uci_database.wine_quality_white where status = 1'];
+
+class_index = 1;
+
+% get data from mysql
+data = get_data_from_mysql(sql,datasource,username,password,url);
+
+% convert data to num matrix
+[data, data_need_convert_map] = convert_to_num_matrix(data);
+
+% use mdl algorithm get data which bnt can used
+mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,'fix_data','yes');
 mdl_data = mdl_data';
 
 end
