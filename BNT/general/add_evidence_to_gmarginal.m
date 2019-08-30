@@ -12,7 +12,7 @@ fullm.domain = fmarginal.domain;
 
 % Find out which values of the discrete parents (if any) are compatible with 
 % the discrete evidence (if any).
-dnodes = mysetdiff(1:length(ns), cnodes);
+dnodes = mysetdiff(1:numel(ns), cnodes); % F.Denk 10.08.2017 - numel instead of length - had problems when having a discrete input in a DBN on the state node: the discrete nodes were not found correctly
 ddom = myintersect(dom, dnodes);
 cdom = myintersect(dom, cnodes);
 odom = dom(~isemptycell(evidence(dom)));
