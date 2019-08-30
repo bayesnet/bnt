@@ -1,7 +1,7 @@
-#Bayes Net Toolbox for Matlab
+Bayes Net Toolbox for Matlab
 
-Written by Kevin Murphy, 1997--2002. Last updated: 19 October 2007.
-As of January 2014, this is maintained on Github at https://github.com/bayesnet/bnt
+Written by Kevin Murphy, 1997--2014. Last updated: 28 June 2014.
+As of June 2014, this is maintained on Github at https://github.com/bayesnet/bnt
 
 ![](http://bayesnet.github.io/bnt/docs/mathbymatlab.gif) 
 

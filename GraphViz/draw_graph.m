@@ -63,6 +63,20 @@ wd = zeros(size(wd1,1)+size(wd2,1),2);
 if ~isempty(idx1), wd(idx1, :) = wd1;  end;
 if ~isempty(idx2), wd(idx2, :) = wd2; end;
 
+% coloring
+color.box = 'black';
+color.text = color.box;
+color.edge = [1 1 1]*3/4;
+%color.edge = 'green';
+if ~isempty(idx1)
+  set(h1(:,1),'Color',color.text)
+  set(h1(:,2),'EdgeColor',color.box)
+end
+if ~isempty(idx2)
+  set(h2(:,1),'Color',color.text)
+  set(h2(:,2),'EdgeColor',color.box)
+end
+
 % bug: this code assumes [x y] is the center of each box and oval, which 
 % isn't exactly true.
 h_edge = [];
@@ -80,27 +94,16 @@ for i=1:N,
     dy2 = sign.*wd(k,2).*sin(alpha);   dx2 = sign.*wd(k,1).*cos(alpha);    
     if adj(k,i)==0, % if directed edge
       h = arrow([x(i)+dx1 y(i)+dy1],[x(k)-dx2 y(k)-dy2],'BaseAngle',30);
+      set(h, 'FaceColor', color.edge)
+      set(h, 'EdgeColor', color.edge)
     else	   
       h = line([x(i)+dx1 x(k)-dx2],[y(i)+dy1 y(k)-dy2]);
+      set(h, 'Color', color.edge)  
       adj(k,i)=-1; % Prevent drawing lines twice
     end;
     h_edge = [h_edge h];
   end;
 end;
-
-color.box = 'black';
-color.text = color.box;
-%color.edge = [1 1 1]*3/4;
-%color.edge = 'green';
-if ~isempty(idx1)
-  set(h1(:,1),'Color',color.text)
-  set(h1(:,2),'EdgeColor',color.box)
-end
-if ~isempty(idx2)
-  set(h2(:,1),'Color',color.text)
-  set(h2(:,2),'EdgeColor',color.box)
-end
-%set(h_edge,'Color',color.edge)
 
 if nargout>2,
   h = zeros(length(wd),2);

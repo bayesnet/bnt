@@ -1,10 +1,10 @@
-function fullm = add_evidence_to_gmarginal(fmarginal, evidence, ns, cnodes)
-% ADD_EVIDENCE_TO_GMARGINAL 'pump up' observed nodes back to their original size.
-% function fullm = add_evidence_to_gmarginal(fmarginal, evidence, ns, cnodes)
+function fullm = add_evidence_to_vmarginal(fmarginal, evidence, ns, cnodes)
+% ADD_EVIDENCE_TO_VMARGINAL 'pump up' observed nodes back to their original size.
+% function fullm = add_evidence_to_vmarginal(fmarginal, evidence, ns, cnodes)
 %
 % We introduce 0s into the array in positions which are incompatible with the evidence.
 % for both discrete and continuous nodes.
-%
+% Used for the Von Mises Distribution
 % See also add_ev_to_dmarginal
 
 dom = fmarginal.domain;
@@ -12,7 +12,7 @@ fullm.domain = fmarginal.domain;
 
 % Find out which values of the discrete parents (if any) are compatible with 
 % the discrete evidence (if any).
-dnodes = mysetdiff(1:numel(ns), cnodes); % F.Denk 10.08.2017 - numel instead of length - had problems when having a discrete input in a DBN on the state node: the discrete nodes were not found correctly
+dnodes = mysetdiff(1:length(ns), cnodes);
 ddom = myintersect(dom, dnodes);
 cdom = myintersect(dom, cnodes);
 odom = dom(~isemptycell(evidence(dom)));
@@ -46,7 +46,7 @@ fullm.T = myreshape(fullm.T, ns(ddom));
 
 if isempty(cdom)
   fullm.mu = [];
-  fullm.sigma = [];
+  fullm.Sigma = [];
   return;
 end
 
