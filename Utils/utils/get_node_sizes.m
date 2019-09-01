@@ -1,6 +1,9 @@
 function node_sizes = get_node_sizes(data)
 
 % this function can get node_sizes from data.
+%
+% node_sizes = get_node_sizes(data)
+%
 % input:
 %    data: a matrix data£¬just support num.
 % output:

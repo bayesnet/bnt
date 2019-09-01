@@ -2,6 +2,8 @@ function bnet = get_bnet(data,dag,cpd_name)
 
 % this function can get a bnet from data and dag
 %
+% bnet = get_bnet(data,dag,cpd_name)
+%
 % input:
 %     data: a matrix data£¬just support num
 %     dag: a dag
