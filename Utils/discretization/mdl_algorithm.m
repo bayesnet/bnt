@@ -2,6 +2,9 @@ function mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,varargi
 
 % this function achieve Fayyad & Irani's MDL method and support data list
 % from database.
+%
+% mdl_data = mdl_algorithm(data,class_index,data_need_convert_map,varargin)
+%
 % input:
 %    data: a matrix data£¬just support num
 %    class_index: class attribute index

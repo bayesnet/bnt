@@ -2,6 +2,8 @@ function [mdl_data,cut_point] = single_mdl_algorithm(row_data,class)
 
 % this function achieve Fayyad & Irani's MDL method.
 %
+% [mdl_data,cut_point] = single_mdl_algorithm(row_data,class)
+%
 % input:
 %     row_data : a row data, just support one row and num data
 %     class: class data, of course one row and num data

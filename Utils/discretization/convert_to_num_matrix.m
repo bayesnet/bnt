@@ -2,6 +2,8 @@ function [data, data_need_convert_map] = convert_to_num_matrix(data)
 
 % this function can make cell data convert to num matrix
 %
+% [data, data_need_convert_map] = convert_to_num_matrix(data)
+%
 % input:
 %      data: cell data,from database.
 % output:
