@@ -16,9 +16,9 @@ function bnet = mk_cancer_bnet(CPD_type, p)
 % In all cases, the root is set to a uniform distribution.
 
 if nargin == 0
-  rnd = 0;
+    rnd = 0;
 else
-  rnd = 1;
+    rnd = 1;
 end
 
 n = 5;
@@ -30,32 +30,32 @@ dag(4,5) = 1;
 
 ns = 2*ones(1,n);
 bnet = mk_bnet(dag, ns);
-    
+
 if ~rnd
-  bnet.CPD{1} = tabular_CPD(bnet, 1, [0.5 0.5]);
-  bnet.CPD{2} = noisyor_CPD(bnet, 2, 1.0, 1-0.9);
-  bnet.CPD{3} = noisyor_CPD(bnet, 3, 1.0, 1-0.2);
-  bnet.CPD{4} = noisyor_CPD(bnet, 4, 1.0, 1-[0.7 0.6]);
-  bnet.CPD{5} = noisyor_CPD(bnet, 5, 1.0, 1-0.5);
+    bnet.CPD{1} = tabular_CPD(bnet, 1, [0.5 0.5]);
+    bnet.CPD{2} = noisyor_CPD(bnet, 2, 1.0, 1-0.9);
+    bnet.CPD{3} = noisyor_CPD(bnet, 3, 1.0, 1-0.2);
+    bnet.CPD{4} = noisyor_CPD(bnet, 4, 1.0, 1-[0.7 0.6]);
+    bnet.CPD{5} = noisyor_CPD(bnet, 5, 1.0, 1-0.5);
 else
-  switch CPD_type
-   case 'noisyor',
-    for i=1:n
-      ps = parents(dag, i);
-      bnet.CPD{i} = noisyor_CPD(bnet, i, 1.0, p*ones(1,length(ps)));
+    switch CPD_type
+        case 'noisyor'
+            for i=1:n
+                ps = parents(dag, i);
+                bnet.CPD{i} = noisyor_CPD(bnet, i, 1.0, p*ones(1,length(ps)));
+            end
+        case 'bool'
+            for i=1:n
+                bnet.CPD{i} = boolean_CPD(bnet, i, 'rnd');
+            end
+        case 'cpt'
+            for i=1:n
+                bnet.CPD{i} = tabular_CPD(bnet, i, p);
+            end
+        otherwise
+            error(['bad CPD type ' CPD_type]);
     end
-   case 'bool',
-    for i=1:n
-      bnet.CPD{i} = boolean_CPD(bnet, i, 'rnd');
-    end
-   case 'cpt',
-    for i=1:n
-      bnet.CPD{i} = tabular_CPD(bnet, i, p);
-    end
-   otherwise
-    error(['bad CPD type ' CPD_type]);
-  end
 end
-  
-  
-  
+
+
+

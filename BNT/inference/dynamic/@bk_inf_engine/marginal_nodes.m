@@ -51,7 +51,7 @@ else
   end
 end
   
-if engine.filter & t==1
+if engine.filter && t==1
   c = clq_containing_nodes(engine.sub_engine1, nodes2, fam);
 else
   c = clq_containing_nodes(engine.sub_engine, nodes2, fam);

@@ -33,7 +33,7 @@ arity = 2;
 ns = arity*ones(1,n);
 bnet = mk_bnet(dag, ns);
 for i=1:n
-  bnet.CPD{i} = tabular_CPD(bnet, i);
+    bnet.CPD{i} = tabular_CPD(bnet, i);
 end
 
-  
+

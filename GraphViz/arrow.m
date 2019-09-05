@@ -107,7 +107,7 @@ function [h,yy,zz] = arrow(varargin)
 %   10/06/95  EAJ  Corrected occasional conflict with SUBPLOT
 %    4/24/95  EAJ  A major rewrite.
 %    Fall 94  EAJ  Original code.
-
+ 
 % Things to be done:
 %  - in the arrow_clicks section, prompt by printing to the screen so that
 %    the user knows what's going on; also make sure the figure is brought
@@ -139,12 +139,12 @@ function [h,yy,zz] = arrow(varargin)
 persistent ARROW_PERSP_WARN ARROW_STRETCH_WARN ARROW_AXLIMITS ARROW_AX
 if isempty(ARROW_PERSP_WARN  ), ARROW_PERSP_WARN  =1; end;
 if isempty(ARROW_STRETCH_WARN), ARROW_STRETCH_WARN=1; end;
-
+ 
 % Handle callbacks
 if (nargin>0 & isstr(varargin{1}) & strcmp(lower(varargin{1}),'callback')),
-	arrow_callback(varargin{2:end}); return;
+    arrow_callback(varargin{2:end}); return;
 end;
-
+ 
 % Are we doing the demo?
 c = sprintf('\n');
 if (nargin==1 & isstr(varargin{1})),
@@ -169,34 +169,34 @@ if (nargin==1 & isstr(varargin{1})),
 	end;
 	return;
 end;
-
+ 
 % Check # of arguments
 if (nargout>3), error([upper(mfilename) ' produces at most 3 output arguments.']); end;
-
+ 
 % find first property number
 firstprop = nargin+1;
 for k=1:length(varargin), if ~isnumeric(varargin{k}) && ~all(ishandle(varargin{k})), firstprop=k; break; end; end; %eaj 5/24/16   for k=1:length(varargin), if ~isnumeric(varargin{k}), firstprop=k; break; end; end;
 lastnumeric = firstprop-1;
-
+ 
 % check property list
 if (firstprop<=nargin),
-	for k=firstprop:2:nargin,
-		curarg = varargin{k};
-		if ~isstr(curarg) | sum(size(curarg)>1)>1,
-			error([upper(mfilename) ' requires that a property name be a single string.']);
-		end;
-	end;
-	if (rem(nargin-firstprop,2)~=1),
-		error([upper(mfilename) ' requires that the property ''' ...
-		       varargin{nargin} ''' be paired with a property value.']);
-	end;
+    for k=firstprop:2:nargin,
+        curarg = varargin{k};
+        if ~isstr(curarg) | sum(size(curarg)>1)>1,
+            error([upper(mfilename) ' requires that a property name be a single string.']);
+        end;
+    end;
+    if (rem(nargin-firstprop,2)~=1),
+        error([upper(mfilename) ' requires that the property ''' ...
+               varargin{nargin} ''' be paired with a property value.']);
+    end;
 end;
-
+ 
 % default output
 if (nargout>0), h=[]; end;
 if (nargout>1), yy=[]; end;
 if (nargout>2), zz=[]; end;
-
+ 
 % set values to empty matrices
 start      = [];
 stop       = [];
@@ -223,23 +223,23 @@ defends       = 1;
 defshorten    = 0;
 defoldh       = [];
 defispatch    = 1;
-
+ 
 % The 'Tag' we'll put on our arrows
 ArrowTag = 'Arrow';
-
+ 
 % check for oldstyle arguments
 if (firstprop==2),
-	% assume arg1 is a set of handles
-	oldh = varargin{1}(:);
-	if isempty(oldh), return; end;
+    % assume arg1 is a set of handles
+    oldh = varargin{1}(:);
+    if isempty(oldh), return; end;
 elseif (firstprop>9),
-	error([upper(mfilename) ' takes at most 8 non-property arguments.']);
+    error([upper(mfilename) ' takes at most 8 non-property arguments.']);
 elseif (firstprop>2),
 	{start,stop,len,baseangle,tipangle,wid,page,crossdir};
 	args = [varargin(1:firstprop-1) cell(1,length(ans)-(firstprop-1))];
 	[start,stop,len,baseangle,tipangle,wid,page,crossdir] = deal(args{:});
 end;
-
+ 
 % parse property pairs
 extraprops={};
 for k=firstprop:2:nargin,
@@ -277,7 +277,7 @@ for k=firstprop:2:nargin,
 		extraprops={extraprops{:},varargin{k},val};
 	end;
 end;
-
+ 
 % Check if we got 'default' values
 start     = arrow_defcheck(start    ,defstart    ,'Start'        );
 stop      = arrow_defcheck(stop     ,defstop     ,'Stop'         );
@@ -291,12 +291,12 @@ ends      = arrow_defcheck(ends     ,defends     ,''             );
 shorten   = arrow_defcheck(shorten  ,defshorten  ,''             );
 oldh      = arrow_defcheck(oldh     ,[]          ,'ObjectHandles');
 ispatch   = arrow_defcheck(ispatch  ,defispatch  ,''             );
-
+ 
 % check transpose on arguments
 [m,n]=size(start   );   if any(m==[2 3])&(n==1|n>3),   start    = start';      end;
 [m,n]=size(stop    );   if any(m==[2 3])&(n==1|n>3),   stop     = stop';       end;
 [m,n]=size(crossdir);   if any(m==[2 3])&(n==1|n>3),   crossdir = crossdir';   end;
-
+ 
 % convert strings to numbers
 if ~isempty(ends) & isstr(ends),
 	endsorig = ends;
@@ -327,24 +327,24 @@ else,
 	ispatch = ispatch(:);
 end;
 oldh = oldh(:);
-
+ 
 % check object handles
 if ~all(ishandle(oldh)), error([upper(mfilename) ' got invalid object handles.']); end;
-
+ 
 % expand root, figure, and axes handles
 if ~isempty(oldh),
-	ohtype = get(oldh,'Type');
-	mask = strcmp(ohtype,'root') | strcmp(ohtype,'figure') | strcmp(ohtype,'axes');
-	if any(mask),
-		oldh = num2cell(oldh);
-		for ii=find(mask)',
-			oldh(ii) = {findobj(oldh{ii},'Tag',ArrowTag)};
-		end;
-		oldh = cat(1,oldh{:});
-		if isempty(oldh), return; end; % no arrows to modify, so just leave
-	end;
+    ohtype = get(oldh,'Type');
+    mask = strcmp(ohtype,'root') | strcmp(ohtype,'figure') | strcmp(ohtype,'axes');
+    if any(mask),
+        oldh = num2cell(oldh);
+        for ii=find(mask)',
+            oldh(ii) = {findobj(oldh{ii},'Tag',ArrowTag)};
+        end;
+        oldh = cat(1,oldh{:});
+        if isempty(oldh), return; end; % no arrows to modify, so just leave
+    end;
 end;
-
+ 
 % largest argument length
 [mstart,junk]=size(start); [mstop,junk]=size(stop); [mcrossdir,junk]=size(crossdir);
 argsizes = [length(oldh) mstart mstop                              ...
@@ -362,60 +362,60 @@ args=['length(ObjectHandle)  '; ...
       '#rows(Ends)           '; ...
       'length(ShortenLength) '];
 if (any(imag(crossdir(:))~=0)),
-	args(9,:) = '#rows(NormalDir)      ';
+    args(9,:) = '#rows(NormalDir)      ';
 end;
 if isempty(oldh),
-	narrows = max(argsizes);
+    narrows = max(argsizes);
 else,
-	narrows = length(oldh);
+    narrows = length(oldh);
 end;
 if (narrows<=0), narrows=1; end;
-
+ 
 % Check size of arguments
 ii = find((argsizes~=0)&(argsizes~=1)&(argsizes~=narrows));
 if ~isempty(ii),
-	s = args(ii',:);
-	while ((size(s,2)>1)&((abs(s(:,size(s,2)))==0)|(abs(s(:,size(s,2)))==abs(' ')))),
-		s = s(:,1:size(s,2)-1);
-	end;
-	s = [ones(length(ii),1)*[upper(mfilename) ' requires that  '] s ...
-	     ones(length(ii),1)*['  equal the # of arrows (' num2str(narrows) ').' c]];
-	s = s';
-	s = s(:)';
-	s = s(1:length(s)-1);
-	error(setstr(s));
+    s = args(ii',:);
+    while ((size(s,2)>1)&((abs(s(:,size(s,2)))==0)|(abs(s(:,size(s,2)))==abs(' ')))),
+        s = s(:,1:size(s,2)-1);
+    end;
+    s = [ones(length(ii),1)*[upper(mfilename) ' requires that  '] s ...
+         ones(length(ii),1)*['  equal the # of arrows (' num2str(narrows) ').' c]];
+    s = s';
+    s = s(:)';
+    s = s(1:length(s)-1);
+    error(setstr(s));
 end;
-
+ 
 % check element length in Start, Stop, and CrossDir
 if ~isempty(start),
-	[m,n] = size(start);
-	if (n==2),
-		start = [start NaN*ones(m,1)];
-	elseif (n~=3),
-		error([upper(mfilename) ' requires 2- or 3-element Start points.']);
-	end;
+    [m,n] = size(start);
+    if (n==2),
+        start = [start NaN*ones(m,1)];
+    elseif (n~=3),
+        error([upper(mfilename) ' requires 2- or 3-element Start points.']);
+    end;
 end;
 if ~isempty(stop),
-	[m,n] = size(stop);
-	if (n==2),
-		stop = [stop NaN*ones(m,1)];
-	elseif (n~=3),
-		error([upper(mfilename) ' requires 2- or 3-element Stop points.']);
-	end;
+    [m,n] = size(stop);
+    if (n==2),
+        stop = [stop NaN*ones(m,1)];
+    elseif (n~=3),
+        error([upper(mfilename) ' requires 2- or 3-element Stop points.']);
+    end;
 end;
 if ~isempty(crossdir),
-	[m,n] = size(crossdir);
-	if (n<3),
-		crossdir = [crossdir NaN*ones(m,3-n)];
-	elseif (n~=3),
-		if (all(imag(crossdir(:))==0)),
-			error([upper(mfilename) ' requires 2- or 3-element CrossDir vectors.']);
-		else,
-			error([upper(mfilename) ' requires 2- or 3-element NormalDir vectors.']);
-		end;
-	end;
+    [m,n] = size(crossdir);
+    if (n<3),
+        crossdir = [crossdir NaN*ones(m,3-n)];
+    elseif (n~=3),
+        if (all(imag(crossdir(:))==0)),
+            error([upper(mfilename) ' requires 2- or 3-element CrossDir vectors.']);
+        else,
+            error([upper(mfilename) ' requires 2- or 3-element NormalDir vectors.']);
+        end;
+    end;
 end;
-
+ 
 % fill empty arguments
 if isempty(start     ),   start      = [Inf Inf Inf];      end;
 if isempty(stop      ),   stop       = [Inf Inf Inf];      end;
@@ -428,7 +428,7 @@ if isempty(crossdir  ),   crossdir   = [Inf Inf Inf];      end;
 if isempty(ends      ),   ends       = Inf;                end;
 if isempty(shorten   ),   shorten    = Inf;                end;
 if isempty(ispatch   ),   ispatch    = Inf;                end;
-
+ 
 % expand single-column arguments
 o = ones(narrows,1);
 if (size(start     ,1)==1),   start      = o * start     ;   end;
@@ -481,7 +481,7 @@ if ~isempty(oldh),
 		ii=find(isinf(stop( k,:)));  if ~isempty(ii),  stop( k,ii)=stop0( ii);  end;
 	end;
 end;
-
+ 
 % convert Inf's to NaN's
 start(     isinf(start    )) = NaN;
 stop(      isinf(stop     )) = NaN;
@@ -494,7 +494,7 @@ crossdir(  isinf(crossdir )) = NaN;
 ends(      isinf(ends     )) = NaN;
 shorten(   isinf(shorten  )) = NaN;
 ispatch(   isinf(ispatch  )) = NaN;
-
+ 
 % set up the UserData data (here so not corrupted by log10's and such)
 ud = [start stop len baseangle tipangle wid page crossdir ends shorten];
 
@@ -512,11 +512,11 @@ limrange  = zeros(2,narrows);
 oldaxlims = zeros(6,narrows);
 oneax = all(ax==ax(1));
 if (oneax),
-	T    = zeros(4,4);
-	invT = zeros(4,4);
+    T    = zeros(4,4);
+    invT = zeros(4,4);
 else,
-	T    = zeros(16,narrows);
-	invT = zeros(16,narrows);
+    T    = zeros(16,narrows);
+    invT = zeros(16,narrows);
 end;
 axnotdone = true(size(ax));
 while (any(axnotdone)),
@@ -643,25 +643,25 @@ end;
 curxyzlog = xyzlog.';
 ii = find(curxyzlog(:));
 if ~isempty(ii),
-	start(   ii) = real(log10(start(   ii)));
-	stop(    ii) = real(log10(stop(    ii)));
-	if (all(imag(crossdir)==0)), % pulled (ii) subscript on crossdir, 12/5/96 eaj
-		crossdir(ii) = real(log10(crossdir(ii)));
-	end;
+    start(   ii) = real(log10(start(   ii)));
+    stop(    ii) = real(log10(stop(    ii)));
+    if (all(imag(crossdir)==0)), % pulled (ii) subscript on crossdir, 12/5/96 eaj
+        crossdir(ii) = real(log10(crossdir(ii)));
+    end;
 end;
-
+ 
 % correct for reverse directions
 ii = find(axrev.');
 if ~isempty(ii),
-	start(   ii) = -start(   ii);
-	stop(    ii) = -stop(    ii);
-	crossdir(ii) = -crossdir(ii);
+    start(   ii) = -start(   ii);
+    stop(    ii) = -stop(    ii);
+    crossdir(ii) = -crossdir(ii);
 end;
-
+ 
 % transpose start/stop values
 start     = start.';
 stop      = stop.';
-
+ 
 % take care of defaults, page was done above
 ii=find(isnan(start(:)       ));  if ~isempty(ii),  start(ii)       = axm(ii)+axr(ii)/2;                end;
 ii=find(isnan(stop(:)        ));  if ~isempty(ii),  stop(ii)        = axm(ii)+axr(ii)/2;                end;
@@ -683,7 +683,7 @@ crossdir  = crossdir.';
 ends      = ends.';
 shorten   = shorten.';
 ax        = ax.';
-
+ 
 % given x, a 3xN matrix of points in 3-space;
 % want to convert to X, the corresponding 4xN 2-space matrix
 %
@@ -693,28 +693,28 @@ ax        = ax.';
 %         tmp2=zeros(4,4*N); tmp2(:)=tmp1(:);
 %         X=zeros(4,N); X(:)=sum(tmp2)'; end;
 %   X = X ./ (ones(4,1)*X(4,:));
-
+ 
 % for all points with start==stop, start=stop-(verysmallvalue)*(up-direction);
 ii = find(all(start==stop));
 if ~isempty(ii),
-	% find an arrowdir vertical on screen and perpendicular to viewer
-	%	transform to 2-D
-		tmp1 = [(stop(:,ii)-axm(:,ii))./axr(:,ii);ones(1,length(ii))];
-		if (oneax), twoD=T*tmp1;
-		else, tmp1=[tmp1;tmp1;tmp1;tmp1]; tmp1=T(:,ii).*tmp1;
-		      tmp2=zeros(4,4*length(ii)); tmp2(:)=tmp1(:);
-		      twoD=zeros(4,length(ii)); twoD(:)=sum(tmp2)'; end;
-		twoD=twoD./(ones(4,1)*twoD(4,:));
-	%	move the start point down just slightly
-		tmp1 = twoD + [0;-1/1000;0;0]*(limrange(2,ii)./ap(2,ii));
-	%	transform back to 3-D
-		if (oneax), threeD=invT*tmp1;
-		else, tmp1=[tmp1;tmp1;tmp1;tmp1]; tmp1=invT(:,ii).*tmp1;
-		      tmp2=zeros(4,4*length(ii)); tmp2(:)=tmp1(:);
-		      threeD=zeros(4,length(ii)); threeD(:)=sum(tmp2)'; end;
-		start(:,ii) = (threeD(1:3,:)./(ones(3,1)*threeD(4,:))).*axr(:,ii)+axm(:,ii);
+    % find an arrowdir vertical on screen and perpendicular to viewer
+    %   transform to 2-D
+        tmp1 = [(stop(:,ii)-axm(:,ii))./axr(:,ii);ones(1,length(ii))];
+        if (oneax), twoD=T*tmp1;
+        else, tmp1=[tmp1;tmp1;tmp1;tmp1]; tmp1=T(:,ii).*tmp1;
+              tmp2=zeros(4,4*length(ii)); tmp2(:)=tmp1(:);
+              twoD=zeros(4,length(ii)); twoD(:)=sum(tmp2)'; end;
+        twoD=twoD./(ones(4,1)*twoD(4,:));
+    %   move the start point down just slightly
+        tmp1 = twoD + [0;-1/1000;0;0]*(limrange(2,ii)./ap(2,ii));
+    %   transform back to 3-D
+        if (oneax), threeD=invT*tmp1;
+        else, tmp1=[tmp1;tmp1;tmp1;tmp1]; tmp1=invT(:,ii).*tmp1;
+              tmp2=zeros(4,4*length(ii)); tmp2(:)=tmp1(:);
+              threeD=zeros(4,length(ii)); threeD(:)=sum(tmp2)'; end;
+        start(:,ii) = (threeD(1:3,:)./(ones(3,1)*threeD(4,:))).*axr(:,ii)+axm(:,ii);
 end;
-
+ 
 % compute along-arrow points
 %	transform Start points
 	tmp1=[(start-axm)./axr;ones(1,narrows)];
@@ -810,11 +810,11 @@ end;
 
 % compute cross-arrow directions for arrows with NormalDir specified
 if (any(imag(crossdir(:))~=0)),
-	ii = find(any(imag(crossdir)~=0));
-	crossdir(:,ii) = cross((stop(:,ii)-start(:,ii))./axr(:,ii), ...
-	                       imag(crossdir(:,ii))).*axr(:,ii);
+    ii = find(any(imag(crossdir)~=0));
+    crossdir(:,ii) = cross((stop(:,ii)-start(:,ii))./axr(:,ii), ...
+                           imag(crossdir(:,ii))).*axr(:,ii);
 end;
-
+ 
 % compute cross-arrow directions
 basecross  = crossdir + basepoint;
 tipcross   = crossdir + tippoint;
@@ -863,61 +863,61 @@ if ~isempty(ii),
 		sbasecross(:,ii) = Xp(:,2*numii+(1:numii));
 		stipcross(:,ii)  = Xp(:,3*numii+(1:numii));
 end;
-
+ 
 % compute all points
-%	compute start points
-	axm11 = [axm axm axm axm axm axm axm axm axm axm axm];
-	axr11 = [axr axr axr axr axr axr axr axr axr axr axr];
-	st = [stoppoint tippoint basepoint sbasepoint stippoint startpoint stippoint sbasepoint basepoint tippoint stoppoint];
-	tmp1 = (st - axm11) ./ axr11;
-	tmp1 = [tmp1; ones(1,size(tmp1,2))];
-	if (oneax), X0=T*tmp1;
-	else, tmp1=[tmp1;tmp1;tmp1;tmp1]; tmp1=[T T T T T T T T T T T].*tmp1;
-	      tmp2=zeros(4,44*narrows); tmp2(:)=tmp1(:);
-	      X0=zeros(4,11*narrows); X0(:)=sum(tmp2)'; end;
-	X0=X0./(ones(4,1)*X0(4,:));
-%	compute stop points
-	tmp1 = ([start tipcross basecross sbasecross stipcross stop stipcross sbasecross basecross tipcross start] ...
-	     - axm11) ./ axr11;
-	tmp1 = [tmp1; ones(1,size(tmp1,2))];
-	if (oneax), Xf=T*tmp1;
-	else, tmp1=[tmp1;tmp1;tmp1;tmp1]; tmp1=[T T T T T T T T T T T].*tmp1;
-	      tmp2=zeros(4,44*narrows); tmp2(:)=tmp1(:);
-	      Xf=zeros(4,11*narrows); Xf(:)=sum(tmp2)'; end;
-	Xf=Xf./(ones(4,1)*Xf(4,:));
-%	compute lengths
-	len0  = len.*((ends==1)|(ends==3)).*tan(tipangle/180*pi);
-	slen0 = len.*((ends==2)|(ends==3)).*tan(tipangle/180*pi);
-	le = [zeros(1,narrows) len0 wid/2 wid/2 slen0 zeros(1,narrows) -slen0 -wid/2 -wid/2 -len0 zeros(1,narrows)];
-	aprange = ap./limrange;
-	aprange = [aprange aprange aprange aprange aprange aprange aprange aprange aprange aprange aprange];
-	D = sqrt(sum(((Xf(1:2,:)-X0(1:2,:)).*aprange).^2));
-	Dii=find(D==0); if ~isempty(Dii), D=D+(D==0); le(Dii)=zeros(1,length(Dii)); end; %should fix DivideByZero warnings
-	tmp1 = X0.*(ones(4,1)*(1-le./D)) + Xf.*(ones(4,1)*(le./D));
-%	inverse transform
-	if (oneax), tmp3=invT*tmp1;
-	else, tmp1=[tmp1;tmp1;tmp1;tmp1]; tmp1=[invT invT invT invT invT invT invT invT invT invT invT].*tmp1;
-	      tmp2=zeros(4,44*narrows); tmp2(:)=tmp1(:);
-	      tmp3=zeros(4,11*narrows); tmp3(:)=sum(tmp2)'; end;
-	pts = tmp3(1:3,:)./(ones(3,1)*tmp3(4,:)) .* axr11 + axm11;
-
+%   compute start points
+    axm11 = [axm axm axm axm axm axm axm axm axm axm axm];
+    axr11 = [axr axr axr axr axr axr axr axr axr axr axr];
+    st = [stoppoint tippoint basepoint sbasepoint stippoint startpoint stippoint sbasepoint basepoint tippoint stoppoint];
+    tmp1 = (st - axm11) ./ axr11;
+    tmp1 = [tmp1; ones(1,size(tmp1,2))];
+    if (oneax), X0=T*tmp1;
+    else, tmp1=[tmp1;tmp1;tmp1;tmp1]; tmp1=[T T T T T T T T T T T].*tmp1;
+          tmp2=zeros(4,44*narrows); tmp2(:)=tmp1(:);
+          X0=zeros(4,11*narrows); X0(:)=sum(tmp2)'; end;
+    X0=X0./(ones(4,1)*X0(4,:));
+%   compute stop points
+    tmp1 = ([start tipcross basecross sbasecross stipcross stop stipcross sbasecross basecross tipcross start] ...
+         - axm11) ./ axr11;
+    tmp1 = [tmp1; ones(1,size(tmp1,2))];
+    if (oneax), Xf=T*tmp1;
+    else, tmp1=[tmp1;tmp1;tmp1;tmp1]; tmp1=[T T T T T T T T T T T].*tmp1;
+          tmp2=zeros(4,44*narrows); tmp2(:)=tmp1(:);
+          Xf=zeros(4,11*narrows); Xf(:)=sum(tmp2)'; end;
+    Xf=Xf./(ones(4,1)*Xf(4,:));
+%   compute lengths
+    len0  = len.*((ends==1)|(ends==3)).*tan(tipangle/180*pi);
+    slen0 = len.*((ends==2)|(ends==3)).*tan(tipangle/180*pi);
+    le = [zeros(1,narrows) len0 wid/2 wid/2 slen0 zeros(1,narrows) -slen0 -wid/2 -wid/2 -len0 zeros(1,narrows)];
+    aprange = ap./limrange;
+    aprange = [aprange aprange aprange aprange aprange aprange aprange aprange aprange aprange aprange];
+    D = sqrt(sum(((Xf(1:2,:)-X0(1:2,:)).*aprange).^2));
+    Dii=find(D==0); if ~isempty(Dii), D=D+(D==0); le(Dii)=zeros(1,length(Dii)); end; %should fix DivideByZero warnings
+    tmp1 = X0.*(ones(4,1)*(1-le./D)) + Xf.*(ones(4,1)*(le./D));
+%   inverse transform
+    if (oneax), tmp3=invT*tmp1;
+    else, tmp1=[tmp1;tmp1;tmp1;tmp1]; tmp1=[invT invT invT invT invT invT invT invT invT invT invT].*tmp1;
+          tmp2=zeros(4,44*narrows); tmp2(:)=tmp1(:);
+          tmp3=zeros(4,11*narrows); tmp3(:)=sum(tmp2)'; end;
+    pts = tmp3(1:3,:)./(ones(3,1)*tmp3(4,:)) .* axr11 + axm11;
+ 
 % correct for ones where the crossdir was specified
 ii = find(~(all(crossdir==0)|any(isnan(crossdir))));
 if ~isempty(ii),
-	D1 = [pts(:,1*narrows+ii)-pts(:,9*narrows+ii) ...
-	      pts(:,2*narrows+ii)-pts(:,8*narrows+ii) ...
-	      pts(:,3*narrows+ii)-pts(:,7*narrows+ii) ...
-	      pts(:,4*narrows+ii)-pts(:,6*narrows+ii) ...
-	      pts(:,6*narrows+ii)-pts(:,4*narrows+ii) ...
-	      pts(:,7*narrows+ii)-pts(:,3*narrows+ii) ...
-	      pts(:,8*narrows+ii)-pts(:,2*narrows+ii) ...
-	      pts(:,9*narrows+ii)-pts(:,1*narrows+ii)]/2;
-	ii = ii'*ones(1,8) + ones(length(ii),1)*[1:4 6:9]*narrows;
-	ii = ii(:)';
-	pts(:,ii) = st(:,ii) + D1;
+    D1 = [pts(:,1*narrows+ii)-pts(:,9*narrows+ii) ...
+          pts(:,2*narrows+ii)-pts(:,8*narrows+ii) ...
+          pts(:,3*narrows+ii)-pts(:,7*narrows+ii) ...
+          pts(:,4*narrows+ii)-pts(:,6*narrows+ii) ...
+          pts(:,6*narrows+ii)-pts(:,4*narrows+ii) ...
+          pts(:,7*narrows+ii)-pts(:,3*narrows+ii) ...
+          pts(:,8*narrows+ii)-pts(:,2*narrows+ii) ...
+          pts(:,9*narrows+ii)-pts(:,1*narrows+ii)]/2;
+    ii = ii'*ones(1,8) + ones(length(ii),1)*[1:4 6:9]*narrows;
+    ii = ii(:)';
+    pts(:,ii) = st(:,ii) + D1;
 end;
-
-
+ 
+ 
 % readjust for reverse directions
 iicols=(1:narrows)'; iicols=iicols(:,ones(1,11)); iicols=iicols(:).';
 tmp1=axrev(:,iicols);
@@ -930,7 +930,7 @@ pts = [ans pts(:,[3*narrows+1:end narrows+1:3*narrows]) ans];               %eaj
 % readjust for log scale on axes
 tmp1=xyzlog(:,iicols);
 ii = find(tmp1(:)); if ~isempty(ii), pts(ii)=10.^pts(ii); end;
-
+ 
 % compute the x,y,z coordinates of the patches;
 ii = narrows*(0:size(pts,2)/narrows-1)'*ones(1,narrows) + ones(size(pts,2)/narrows,1)*(1:narrows);
 ii = ii(:)';
@@ -940,7 +940,7 @@ z = zeros(size(pts,2)/narrows,narrows);
 x(:) = pts(1,ii)';
 y(:) = pts(2,ii)';
 z(:) = pts(3,ii)';
-
+ 
 % do the output
 if (nargout<=1),
 %	% create or modify the patches
@@ -1029,63 +1029,63 @@ if (nargout<=1),
 		end;
 	end;
 else,
-	% don't create the patch, just return the data
-	h=x;
-	yy=y;
-	zz=z;
+    % don't create the patch, just return the data
+    h=x;
+    yy=y;
+    zz=z;
 end;
-
-
-
+ 
+ 
+ 
 function out = arrow_defcheck(in,def,prop)
 % check if we got 'default' values
-	out = in;
-	if ~isstr(in), return; end;
-	if size(in,1)==1 & strncmp(lower(in),'def',3),
-		out = def;
-	elseif ~isempty(prop),
-		error([upper(mfilename) ' does not recognize ''' in(:)' ''' as a valid ''' prop ''' string.']);
-	end;
-
-
-
+    out = in;
+    if ~isstr(in), return; end;
+    if size(in,1)==1 & strncmp(lower(in),'def',3),
+        out = def;
+    elseif ~isempty(prop),
+        error([upper(mfilename) ' does not recognize ''' in(:)' ''' as a valid ''' prop ''' string.']);
+    end;
+ 
+ 
+ 
 function [H,oldaxlims,errstr] = arrow_clicks(H,ud,x,y,z,ax,oldaxlims)
 % handle choosing arrow Start and/or Stop locations if necessary
-	errstr = '';
-	if isempty(H)|isempty(ud)|isempty(x), return; end;
-	% determine which (if any) need Start and/or Stop
-	needStart = all(isnan(ud(:,1:3)'))';
-	needStop  = all(isnan(ud(:,4:6)'))';
-	mask = any(needStart|needStop);
-	if ~any(mask), return; end;
-	ud(~mask,:)=[]; ax(:,~mask)=[];
-	x(:,~mask)=[]; y(:,~mask)=[]; z(:,~mask)=[];
-	% make them invisible for the time being
-	set(H,'Visible','off');
-	% save the current axes and limits modes; set to manual for the time being
-	oldAx  = gca;
-	limModes=get(ax(:),{'XLimMode','YLimMode','ZLimMode'});
-	set(ax(:),{'XLimMode','YLimMode','ZLimMode'},{'manual','manual','manual'});
-	% loop over each arrow that requires attention
-	jj = find(mask);
-	for ii=1:length(jj),
-		h = H(jj(ii));
-		axes(ax(ii));
-		% figure out correct call
-		if needStart(ii), prop='Start'; else, prop='Stop'; end;
-		[wasInterrupted,errstr] = arrow_click(needStart(ii)&needStop(ii),h,prop,ax(ii));
-		% handle errors and control-C
-		if wasInterrupted,
-			delete(H(jj(ii:end)));
-			H(jj(ii:end))=[];
-			oldaxlims(jj(ii:end),:)=[];
-			break;
-		end;
-	end;
-	% restore the axes and limit modes
-	axes(oldAx);
-	set(ax(:),{'XLimMode','YLimMode','ZLimMode'},limModes);
-
+    errstr = '';
+    if isempty(H)|isempty(ud)|isempty(x), return; end;
+    % determine which (if any) need Start and/or Stop
+    needStart = all(isnan(ud(:,1:3)'))';
+    needStop  = all(isnan(ud(:,4:6)'))';
+    mask = any(needStart|needStop);
+    if ~any(mask), return; end;
+    ud(~mask,:)=[]; ax(:,~mask)=[];
+    x(:,~mask)=[]; y(:,~mask)=[]; z(:,~mask)=[];
+    % make them invisible for the time being
+    set(H,'Visible','off');
+    % save the current axes and limits modes; set to manual for the time being
+    oldAx  = gca;
+    limModes=get(ax(:),{'XLimMode','YLimMode','ZLimMode'});
+    set(ax(:),{'XLimMode','YLimMode','ZLimMode'},{'manual','manual','manual'});
+    % loop over each arrow that requires attention
+    jj = find(mask);
+    for ii=1:length(jj),
+        h = H(jj(ii));
+        axes(ax(ii));
+        % figure out correct call
+        if needStart(ii), prop='Start'; else, prop='Stop'; end;
+        [wasInterrupted,errstr] = arrow_click(needStart(ii)&needStop(ii),h,prop,ax(ii));
+        % handle errors and control-C
+        if wasInterrupted,
+            delete(H(jj(ii:end)));
+            H(jj(ii:end))=[];
+            oldaxlims(jj(ii:end),:)=[];
+            break;
+        end;
+    end;
+    % restore the axes and limit modes
+    axes(oldAx);
+    set(ax(:),{'XLimMode','YLimMode','ZLimMode'},limModes);
+ 
 function [wasInterrupted,errstr] = arrow_click(lockStart,H,prop,ax)
 % handle the clicks for one arrow
 	fig = get(ax,'Parent');
@@ -1133,27 +1133,27 @@ function [wasInterrupted,errstr] = arrow_click(lockStart,H,prop,ax)
 
 function arrow_callback(varargin)
 % handle redrawing callbacks
-	if nargin==0, return; end;
-	str = varargin{1};
-	if ~isstr(str), error([upper(mfilename) ' got an invalid Callback command.']); end;
-	s = lower(str);
-	if strcmp(s,'motion'),
-		% motion callback
-		global ARROW_CLICK_H ARROW_CLICK_PROP ARROW_CLICK_AX ARROW_CLICK_USE_Z
-		feval(mfilename,ARROW_CLICK_H,ARROW_CLICK_PROP,arrow_point(ARROW_CLICK_AX,ARROW_CLICK_USE_Z));
-		drawnow;
-	else,
-		error([upper(mfilename) ' does not recognize ''' str(:).' ''' as a valid Callback option.']);
-	end;
-
+    if nargin==0, return; end;
+    str = varargin{1};
+    if ~isstr(str), error([upper(mfilename) ' got an invalid Callback command.']); end;
+    s = lower(str);
+    if strcmp(s,'motion'),
+        % motion callback
+        global ARROW_CLICK_H ARROW_CLICK_PROP ARROW_CLICK_AX ARROW_CLICK_USE_Z
+        feval(mfilename,ARROW_CLICK_H,ARROW_CLICK_PROP,arrow_point(ARROW_CLICK_AX,ARROW_CLICK_USE_Z));
+        drawnow;
+    else,
+        error([upper(mfilename) ' does not recognize ''' str(:).' ''' as a valid Callback option.']);
+    end;
+ 
 function out = arrow_point(ax,use_z)
 % return the point on the given axes
-	if nargin==0, ax=gca; end;
-	if nargin<2, use_z=~arrow_is2DXY(ax)|~arrow_planarkids(ax); end;
-	out = get(ax,'CurrentPoint');
-	out = out(1,:);
-	if ~use_z, out=out(1:2); end;
-
+    if nargin==0, ax=gca; end;
+    if nargin<2, use_z=~arrow_is2DXY(ax)|~arrow_planarkids(ax); end;
+    out = get(ax,'CurrentPoint');
+    out = out(1,:);
+    if ~use_z, out=out(1:2); end;
+ 
 function [wasKeyPress,wasInterrupted,errstr] = arrow_wfbdown(fig)
 % wait for button down ignoring object ButtonDownFcn's
 	if nargin==0, fig=gcf; end;
@@ -1314,27 +1314,25 @@ function arrow_props
 	'                  the ''Color'' property to the given value.' c ...
 	]);
 
-
-
 function out = arrow_demo
- 	% demo
-	% create the data
-	[x,y,z] = peaks;
-	[ddd,out.iii]=max(z(:));
-	out.axlim = [min(x(:)) max(x(:)) min(y(:)) max(y(:)) min(z(:)) max(z(:))];
-	
-	% modify it by inserting some NaN's
-	[m,n] = size(z);
-	m = floor(m/2);
-	n = floor(n/2);
-	z(1:m,1:n) = NaN*ones(m,n);
-	
-	% graph it
-	clf('reset');
-	out.hs=surf(x,y,z);
-	out.x=x; out.y=y; out.z=z;
-	xlabel('x'); ylabel('y');
-			
+    % demo
+    % create the data
+    [x,y,z] = peaks;
+    [ddd,out.iii]=max(z(:));
+    out.axlim = [min(x(:)) max(x(:)) min(y(:)) max(y(:)) min(z(:)) max(z(:))];
+     
+    % modify it by inserting some NaN's
+    [m,n] = size(z);
+    m = floor(m/2);
+    n = floor(n/2);
+    z(1:m,1:n) = NaN*ones(m,n);
+     
+    % graph it
+    clf('reset');
+    out.hs=surf(x,y,z);
+    out.x=x; out.y=y; out.z=z;
+    xlabel('x'); ylabel('y');
+             
 function h = arrow_demo3(in)
 	% set the view
 	axlim = in.axlim;

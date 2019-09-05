@@ -17,9 +17,9 @@ function [bnet, vals] = mk_minimal_qmr_bnet(G, inhibit, leak, prior, pos, neg, p
 % vals is their value
 
 if pos_only
-  obs = pos;
+    obs = pos;
 else
-  obs = myunion(pos, neg);
+    obs = myunion(pos, neg);
 end
 Nfindings = length(obs);
 [Ndiseases maxNfindings] = size(inhibit);
@@ -39,35 +39,35 @@ bnet = mk_bnet(dag, ns, 'observed', finding_node);
 
 CPT = cell(1, Ndiseases);
 for d=1:Ndiseases
-  CPT{d} = [1-prior(d) prior(d)];
+    CPT{d} = [1-prior(d) prior(d)];
 end
 
 if pos_only
-  % Fold in the negative evidence into the prior
-  for i=1:length(neg)
-    n = neg(i);
-    ps = parents(G,n);
-    for pi=1:length(ps)
-      p = ps(pi);
-      q = inhibit(p,n);
-      CPT{p} = CPT{p} .* [1 q];
+    % Fold in the negative evidence into the prior
+    for i=1:length(neg)
+        n = neg(i);
+        ps = parents(G,n);
+        for pi=1:length(ps)
+            p = ps(pi);
+            q = inhibit(p,n);
+            CPT{p} = CPT{p} .* [1 q];
+        end
+        % Arbitrarily attach the leak term to the first parent
+        p = ps(1);
+        q = leak(n);
+        CPT{p} = CPT{p} .* [q q];
     end
-    % Arbitrarily attach the leak term to the first parent
-    p = ps(1);
-    q = leak(n);
-    CPT{p} = CPT{p} .* [q q];
-  end
 end
 
 for d=1:Ndiseases
-  bnet.CPD{d} = tabular_CPD(bnet, d, CPT{d}');
+    bnet.CPD{d} = tabular_CPD(bnet, d, CPT{d}');
 end
 
 for i=1:Nfindings
-  fnode = finding_node(i);
-  fid = obs(i);
-  ps = parents(G, fid);
-  bnet.CPD{fnode} = noisyor_CPD(bnet, fnode, leak(fid), inhibit(ps, fid));
+    fnode = finding_node(i);
+    fid = obs(i);
+    ps = parents(G, fid);
+    bnet.CPD{fnode} = noisyor_CPD(bnet, fnode, leak(fid), inhibit(ps, fid));
 end
 
 obs_nodes = finding_node;

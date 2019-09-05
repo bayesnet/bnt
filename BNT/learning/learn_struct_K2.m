@@ -75,7 +75,7 @@ for i=1:n
   score = score_family(j, ps, type{j}, scoring_fn, ns, discrete, data(:,u), params{j});
   if verbose, fprintf('\nnode %d, empty score %6.4f\n', j, score); end
   done = 0;
-  while ~done & (length(ps) <= max_fan_in)
+  while ~done && (length(ps) <= max_fan_in)
     pps = mysetdiff(order(1:i-1), ps); % potential parents
     nps = length(pps);
     pscore = zeros(1, nps);
