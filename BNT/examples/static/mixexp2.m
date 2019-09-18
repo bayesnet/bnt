@@ -50,7 +50,7 @@ end
 
 
 
-load('/examples/static/Misc/mixexp_data.txt', '-ascii');        
+load(fullfile(bntRoot(),'BNT','examples','static','Misc','mixexp_data.txt'), '-ascii');        
 % Just use 1/10th of the data, to speed things up
 data = mixexp_data(1:10:end, :);
 %data = mixexp_data;
