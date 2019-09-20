@@ -101,6 +101,8 @@ if exist('@jtree_sparse_inf_engine/init_pot','file')
   water2
 end
 
+disp('BNT testing completed successfully.')
+
 %find . -path '*.m' -exec wc -l {} \; | ~/count.pl
 
 % we cannot use tic;toc to time test_BNT, since functions within this script
